@@ -1,6 +1,6 @@
 const configs = {
 	baseUrl: '/api',
-	proxyUrl: '',
+	proxyUrl: 'localhost:9000',
 };
 
 export default configs;

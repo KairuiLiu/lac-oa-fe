@@ -1,5 +1,11 @@
+<template>
+	<router-view id="app"></router-view>
+</template>
+
 <script setup lang="ts"></script>
 
-<template>
-	<router-view> </router-view>
-</template>
+<style lang="less" scoped>
+#app {
+	min-height: 100%;
+}
+</style>

@@ -4,10 +4,16 @@ import path from 'path';
 import styleImport from 'vite-plugin-style-import';
 import Components from 'unplugin-vue-components/vite'; // 自动化组件引入
 import configs from './src/configs';
+import { AntDesignVueResolver } from 'unplugin-vue-components/resolvers';
 
 // https://vitejs.dev/config/
 export default defineConfig({
-	plugins: [vue(), Components({})],
+	plugins: [
+		vue(),
+		Components({
+			resolvers: [AntDesignVueResolver()],
+		}),
+	],
 	server: {
 		host: '0.0.0.0',
 		proxy: {
