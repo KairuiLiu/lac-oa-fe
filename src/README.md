@@ -1,0 +1,25 @@
+- 路由组件
+  - login
+  - admin
+    - home
+    - apply
+    - allocate
+    - manage
+    - profile
+  - applicant
+    - home
+    - apply
+      - new
+      - edit
+    - profile
+  - audit
+    - home
+    - works
+    - apply
+    - profile
+  - support
+    - home
+    - goods
+    - order
+      - OrderDetail
+    - profile
