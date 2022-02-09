@@ -1,28 +1,27 @@
 <template>
-	<section class="worksArea">
-		<div class="left">
-			<a-typography-title :level="2">今日,</a-typography-title>
-			<a-typography-text strong>{{ welcomeText }}</a-typography-text>
-		</div>
-		<div class="right"></div>
-	</section>
-	<section class="plots"></section>
+	<div class="adminHome">
+		<AdminHomeHeader></AdminHomeHeader>
+		<AdminHomePlots></AdminHomePlots>
+	</div>
 </template>
 
 <script setup lang="ts">
-import { computed, defineComponent } from 'vue';
-import { useStore } from 'vuex';
-
-// eslint-disable-next-line
-const store = useStore();
-const welcomeText = computed(() => {
-	const date = new Date();
-	return `${date.getFullYear()}年${date.getMonth()}月${date.getDate()}日星期${date.getDay()}, 欢迎您userName.`;
-});
+import { defineComponent } from 'vue';
+import AdminHomeHeader from './AdminHomeHeader.vue';
+import AdminHomePlots from './AdminHomePlots.vue';
 </script>
 
 <script lang="ts">
 export default defineComponent({
 	name: 'AdminHome',
+	components: { AdminHomePlots },
 });
 </script>
+
+<style lang="less" scoped>
+.adminHome {
+	display: flex;
+	flex-direction: column;
+	gap: 30px;
+}
+</style>

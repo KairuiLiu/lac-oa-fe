@@ -52,6 +52,7 @@ export default defineComponent({
 
 .content {
 	padding: 16px 50px;
+	min-width: 1200px;
 	.router-box {
 		// background: #fff;
 		padding: 24px;
