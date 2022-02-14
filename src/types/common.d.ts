@@ -13,3 +13,9 @@ export type CustomConfig = {
 	successTitle?: string; // success提示
 	errorTitle?: string; // error提示
 };
+
+export default interface IAjaxRestlt {
+	code: number;
+	msg?: 'string';
+	data: any;
+}

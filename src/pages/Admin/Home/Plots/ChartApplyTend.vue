@@ -1,49 +1,46 @@
 <template>
-	<a-card :bordered="false" title="申请总数" class="card">
+	<a-card :bordered="false" title="新增申请趋势" class="card">
 		<template #extra>
 			<a-switch v-model:checked="state.showMonth" checked-children="本月" un-checked-children="本年" />
 		</template>
 		<div class="dataWapper">
-			<ChatText id="text" :text="curData.number" suffix="件"></ChatText>
-			<div id="ChartTotleApplyContainer"></div>
+			<div id="ChartApplyTendContainer"></div>
 		</div>
 	</a-card>
 </template>
 
 <script lang="ts" setup>
 import { reactive, onMounted, computed, toRaw, watch } from 'vue';
-import { Column } from '@antv/g2plot';
-import ChatText from '../../../../components/ChatText.vue';
+import { Area } from '@antv/g2plot';
 import { getResentDays, getResentMonths } from '../../../../utils/dateTime';
 
 const props = defineProps<{
-	data: { month: any; year: any };
+	data: { month: any[]; year: any[] };
 }>();
 
 const state = reactive({
 	showMonth: true,
-	recentDates: getResentDays(7),
-	recentmonths: getResentMonths(7),
+	recentDates: getResentDays(29, null, true),
+	recentmonths: getResentMonths(11, null, true),
 });
 
 const data = toRaw(props.data);
-data.month.trend = data.month.trend.map((d: number, i: number) => ({
+data.month = data.month.map((d: number, i: number) => ({
 	time: state.recentDates[i],
 	value: d,
 }));
-data.year.trend = data.year.trend.map((d: number, i: number) => ({
+data.year = data.year.map((d: number, i: number) => ({
 	time: state.recentmonths[i],
 	value: d,
 }));
 const curData = computed(() => (state.showMonth ? data?.month : data?.year));
 
-let column: Column;
+let area: Area;
 watch(
 	() => state.showMonth,
 	() => {
-		column.changeData(curData.value.trend);
-		console.table(curData.value.trend);
-		column.update({
+		area.changeData(curData.value);
+		area.update({
 			xAxis: {
 				label: {
 					formatter: (v: string) => {
@@ -57,8 +54,8 @@ watch(
 );
 
 onMounted(() => {
-	column = new Column('ChartTotleApplyContainer', {
-		data: curData.value.trend,
+	area = new Area('ChartApplyTendContainer', {
+		data: curData.value,
 		padding: 'auto',
 		xField: 'time',
 		yField: 'value',
@@ -69,14 +66,23 @@ onMounted(() => {
 				},
 			},
 		},
+		yAxis: {
+			title: { text: '单位(件)' },
+		},
+		areaStyle: () => {
+			return {
+				fill: 'l(270) 0:#ffffff 0.5:#7ec2f3 1:#1890ff',
+			};
+		},
+		smooth: true,
 	});
-	column.render();
+	area.render();
 });
 </script>
 
 <script lang="ts">
 export default {
-	name: 'ChartTotleWork',
+	name: 'ChartApplyTend',
 };
 </script>
 
@@ -88,11 +94,11 @@ export default {
 	overflow: auto;
 	/deep/ .ant-card-head {
 		flex-shrink: 0;
-		height: 20%;
+		height: 10%;
 	}
 	/deep/ .ant-card-body {
 		flex-shrink: 1;
-		height: 80%;
+		height: 90%;
 	}
 }
 
@@ -102,14 +108,9 @@ export default {
 	align-items: center;
 	height: 100%;
 	overflow: hidden;
-	#ChartTotleApplyContainer {
+	#ChartApplyTendContainer {
 		height: 100%;
-		flex-shrink: 3;
-		width: 19vw;
-	}
-	.text {
-		flex-shrink: 1;
-		width: 10vw;
+		width: 100%;
 	}
 }
 </style>

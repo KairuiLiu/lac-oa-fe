@@ -3,14 +3,19 @@ import ajax from '../ajax';
 const BASE_URL = '/api';
 
 const commonApi = {
-	reqSignin: () =>
-		ajax(
-			`${BASE_URL}/user/signin`,
+	reqLogin({ userid, passWord }) {
+		return ajax(
+			`${BASE_URL}/user/login`,
 			{
-				/* userid, passOrigin */
+				userid,
+				passWord,
 			},
 			'POST'
-		),
+		);
+	},
+	reqLoginTk(token) {
+		return ajax(`${BASE_URL}/user/login`, {}, 'POST', { auth: { token } });
+	},
 };
 
 export default commonApi;

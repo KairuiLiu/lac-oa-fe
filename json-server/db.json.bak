@@ -1,0 +1,360 @@
+{
+	"systemData": {
+		"tottleApply": {
+			"month": {
+				"number": 100,
+				"trend": [1, 2, 3, 4, 5, 6, 7]
+			},
+			"year": {
+				"number": 1000,
+				"trend": [9, 8, 7, 6, 5, 4, 3]
+			}
+		},
+		"taskType": {
+			"totle": 66,
+			"detail": [{
+					"type": "伦理审查",
+					"value": 11
+				},
+				{
+					"type": "采购申请",
+					"value": 22
+				},
+				{
+					"type": "实验审核",
+					"value": 33
+				}
+			]
+		},
+		"totleWork": {
+			"month": {
+				"number": 300,
+				"trend": [1, 2, 3, 4, 5, 6, 7]
+			},
+			"year": {
+				"number": 3000,
+				"trend": [9, 8, 7, 6, 5, 4, 3]
+			}
+		},
+		"ethicsAnimal": {
+			"month": {
+				"totle": 7300,
+				"detail": [{
+						"type": "鸡",
+						"value": 123
+					},
+					{
+						"type": "鸭",
+						"value": 123
+					},
+					{
+						"type": "鱼",
+						"value": 123
+					},
+					{
+						"type": "狗",
+						"value": 123
+					}
+				]
+			},
+			"year": {
+				"totle": 7300,
+				"detail": [{
+						"type": "鸡",
+						"value": 123
+					},
+					{
+						"type": "鸭",
+						"value": 123
+					},
+					{
+						"type": "鱼",
+						"value": 123
+					},
+					{
+						"type": "狗",
+						"value": 123
+					}
+				]
+			}
+		},
+		"buyAnimal": {
+			"month": {
+				"totle": 7300,
+				"detail": [{
+						"type": "鸡",
+						"value": 123
+					},
+					{
+						"type": "鸭",
+						"value": 123
+					},
+					{
+						"type": "鱼",
+						"value": 123
+					},
+					{
+						"type": "狗",
+						"value": 123
+					}
+				]
+			},
+			"year": {
+				"totle": 7300,
+				"detail": [{
+						"type": "鸡",
+						"value": 123
+					},
+					{
+						"type": "鸭",
+						"value": 123
+					},
+					{
+						"type": "鱼",
+						"value": 123
+					},
+					{
+						"type": "狗",
+						"value": 123
+					}
+				]
+			}
+		},
+		"expAnimal": {
+			"month": {
+				"totle": 7300,
+				"detail": [{
+						"type": "鸡",
+						"value": 123
+					},
+					{
+						"type": "鸭",
+						"value": 123
+					},
+					{
+						"type": "鱼",
+						"value": 123
+					},
+					{
+						"type": "狗",
+						"value": 123
+					}
+				]
+			},
+			"year": {
+				"totle": 7300,
+				"detail": [{
+						"type": "鸡",
+						"value": 123
+					},
+					{
+						"type": "鸭",
+						"value": 123
+					},
+					{
+						"type": "鱼",
+						"value": 123
+					},
+					{
+						"type": "狗",
+						"value": 123
+					}
+				]
+			}
+		},
+		"newApply": {
+			"month": [1, 2, 3, 4, 5, 6, 7, 8, 9, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 0],
+			"year": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+		},
+		"applyNotify": [{
+				"title": "申请修改通知1",
+				"date": "2022-1-1",
+				"detail": "您好,乌拉乌拉乌拉",
+				"applyId": 1
+			},
+			{
+				"title": "申请修改通知2",
+				"date": "2022-1-1",
+				"detail": "您好,乌拉乌拉乌拉",
+				"applyId": 2
+			},
+			{
+				"title": "申请修改通知3",
+				"date": "2022-1-1",
+				"detail": "您好,乌拉乌拉乌拉",
+				"applyId": 3
+			},
+			{
+				"title": "申请修改通知4",
+				"date": "2022-1-1",
+				"detail": "您好,乌拉乌拉乌拉",
+				"applyId": 4
+			},
+			{
+				"title": "申请修改通知5",
+				"date": "2022-1-1",
+				"detail": "您好,乌拉乌拉乌拉",
+				"applyId": 5
+			},
+			{
+				"title": "申请修改通知6",
+				"date": "2022-1-1",
+				"detail": "您好,乌拉乌拉乌拉",
+				"applyId": 6
+			},
+			{
+				"title": "申请修改通知7",
+				"date": "2022-1-1",
+				"detail": "您好,乌拉乌拉乌拉",
+				"applyId": 7
+			},
+			{
+				"title": "申请修改通知8",
+				"date": "2022-1-1",
+				"detail": "您好,乌拉乌拉乌拉",
+				"applyId": 8
+			},
+			{
+				"title": "申请修改通知9",
+				"date": "2022-1-1",
+				"detail": "您好,乌拉乌拉乌拉",
+				"applyId": 9
+			}
+		],
+		"applyType": {
+			"done": [{
+					"type": "伦理",
+					"value": 12
+				},
+				{
+					"type": "采购",
+					"value": 13
+				},
+				{
+					"type": "实验",
+					"value": 14
+				},
+				{
+					"type": "供应",
+					"value": 15
+				}
+			],
+			"doing": [{
+					"type": "伦理",
+					"value": 12
+				},
+				{
+					"type": "采购",
+					"value": 13
+				},
+				{
+					"type": "实验",
+					"value": 14
+				},
+				{
+					"type": "供应",
+					"value": 15
+				}
+			]
+		},
+		"applyProp": [{
+				"type": "伦理",
+				"value": 12
+			},
+			{
+				"type": "采购",
+				"value": 13
+			},
+			{
+				"type": "实验",
+				"value": 14
+			}
+		],
+		"doingApplyType": [{
+				"type": "等待存档",
+				"value": 291
+			},
+			{
+				"type": "一周以上",
+				"value": 10
+			},
+			{
+				"type": "一周内",
+				"value": 29
+			}
+		],
+		"userInfo": {
+			"userType": [{
+					"type": "申请人",
+					"value": 12
+				},
+				{
+					"type": "审核人",
+					"value": 99
+				},
+				{
+					"type": "供应商",
+					"value": 1
+				}
+			],
+			"aduitType": [{
+					"type": "A领域专家",
+					"value": 1
+				},
+				{
+					"type": "B领域专家",
+					"value": 2
+				},
+				{
+					"type": "C领域专家",
+					"value": 3
+				},
+				{
+					"type": "D领域专家",
+					"value": 4
+				},
+				{
+					"type": "E领域专家",
+					"value": 5
+				}
+			]
+		},
+		"operateInfo": [{
+				"applyId": 1,
+				"title": "关于A的申请",
+				"userName": "AAA",
+				"date": "2022-1-1"
+			},
+			{
+				"applyId": 2,
+				"title": "关于A的申请",
+				"userName": "AAA",
+				"date": "2022-1-1"
+			},
+			{
+				"applyId": 3,
+				"title": "关于A的申请",
+				"userName": "AAA",
+				"date": "2022-1-1"
+			},
+			{
+				"applyId": 4,
+				"title": "关于A的申请",
+				"userName": "AAA",
+				"date": "2022-1-1"
+			},
+			{
+				"applyId": 5,
+				"title": "关于A的申请",
+				"userName": "AAA",
+				"date": "2022-1-1"
+			},
+			{
+				"applyId": 6,
+				"title": "关于A的申请",
+				"userName": "AAA",
+				"date": "2022-1-1"
+			}
+		]
+	}
+}

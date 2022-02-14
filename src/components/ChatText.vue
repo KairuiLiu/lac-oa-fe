@@ -1,6 +1,6 @@
 <template>
 	<div class="textBox">
-		<div class="text">{{ props.text }}</div>
+		<div class="text" :class="{ bgc: !nobgc }">{{ props.text }}</div>
 		<div class="suffix">{{ props.suffix }}</div>
 	</div>
 </template>
@@ -9,6 +9,7 @@
 const props = defineProps<{
 	text: number;
 	suffix: string;
+	nobgc?: boolean;
 }>();
 </script>
 
@@ -24,12 +25,13 @@ export default {
 	align-items: flex-end;
 	font-weight: bold;
 	.text {
-		background: center / contain no-repeat url(../assets/paint.jpg);
 		height: 80px;
-		width: 80px;
 		text-align: center;
 		line-height: 80px;
 		font-size: 36px;
+		&.bgc {
+			background: center / contain no-repeat url(../assets/paint.jpg);
+		}
 	}
 	.suffix {
 		padding-bottom: 10px;

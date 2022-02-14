@@ -34,7 +34,7 @@ const router = useRouter();
 
 const welcomeText = computed(() => {
 	const date = new Date();
-	return `${date.getFullYear()}年${date.getMonth()}月${date.getDate()}日星期${date.getDay()}, 欢迎您userName.`;
+	return `${date.getFullYear()}年${date.getMonth()}月${date.getDate()}日星期${date.getDay() + 1}, 欢迎您userName.`;
 });
 </script>
 

@@ -1,19 +1,17 @@
 <template>
-	<a-card :bordered="false" title="申请总数" class="card">
+	<a-card :bordered="false" title="工作量" class="card">
 		<template #extra>
 			<a-switch v-model:checked="state.showMonth" checked-children="本月" un-checked-children="本年" />
 		</template>
 		<div class="dataWapper">
-			<ChatText id="text" :text="curData.number" suffix="件"></ChatText>
-			<div id="ChartTotleApplyContainer"></div>
+			<div id="ChartTotleApply"></div>
 		</div>
 	</a-card>
 </template>
 
 <script lang="ts" setup>
 import { reactive, onMounted, computed, toRaw, watch } from 'vue';
-import { Column } from '@antv/g2plot';
-import ChatText from '../../../../components/ChatText.vue';
+import { Area } from '@antv/g2plot';
 import { getResentDays, getResentMonths } from '../../../../utils/dateTime';
 
 const props = defineProps<{
@@ -22,8 +20,8 @@ const props = defineProps<{
 
 const state = reactive({
 	showMonth: true,
-	recentDates: getResentDays(7),
-	recentmonths: getResentMonths(7),
+	recentDates: getResentDays(7, null, true),
+	recentmonths: getResentMonths(7, null, true),
 });
 
 const data = toRaw(props.data);
@@ -37,13 +35,12 @@ data.year.trend = data.year.trend.map((d: number, i: number) => ({
 }));
 const curData = computed(() => (state.showMonth ? data?.month : data?.year));
 
-let column: Column;
+let area: Area;
 watch(
 	() => state.showMonth,
 	() => {
-		column.changeData(curData.value.trend);
-		console.table(curData.value.trend);
-		column.update({
+		area.changeData(curData.value.trend);
+		area.update({
 			xAxis: {
 				label: {
 					formatter: (v: string) => {
@@ -57,7 +54,7 @@ watch(
 );
 
 onMounted(() => {
-	column = new Column('ChartTotleApplyContainer', {
+	area = new Area('ChartTotleApply', {
 		data: curData.value.trend,
 		padding: 'auto',
 		xField: 'time',
@@ -69,14 +66,23 @@ onMounted(() => {
 				},
 			},
 		},
+		yAxis: {
+			title: { text: '单位(件)' },
+		},
+		areaStyle: () => {
+			return {
+				fill: 'l(270) 0:#ffffff 0.5:#7ec2f3 1:#1890ff',
+			};
+		},
+		smooth: true,
 	});
-	column.render();
+	area.render();
 });
 </script>
 
 <script lang="ts">
 export default {
-	name: 'ChartTotleWork',
+	name: 'ChartTotleApply',
 };
 </script>
 
@@ -102,14 +108,9 @@ export default {
 	align-items: center;
 	height: 100%;
 	overflow: hidden;
-	#ChartTotleApplyContainer {
+	#ChartTotleApply {
 		height: 100%;
-		flex-shrink: 3;
-		width: 19vw;
-	}
-	.text {
-		flex-shrink: 1;
-		width: 10vw;
+		width: 100%;
 	}
 }
 </style>

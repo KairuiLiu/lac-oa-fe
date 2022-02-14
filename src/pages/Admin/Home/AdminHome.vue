@@ -14,7 +14,6 @@ import AdminHomePlots from './AdminHomePlots.vue';
 <script lang="ts">
 export default defineComponent({
 	name: 'AdminHome',
-	components: { AdminHomePlots },
 });
 </script>
 
