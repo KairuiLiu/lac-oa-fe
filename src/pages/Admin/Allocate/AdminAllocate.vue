@@ -1,6 +1,4 @@
-<template>
-	<router-view></router-view>
-</template>
+<template>ewq</template>
 
 <script setup lang="ts"></script>
 

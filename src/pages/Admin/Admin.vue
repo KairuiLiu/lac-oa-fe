@@ -2,15 +2,19 @@
 	<a-layout class="layout">
 		<a-layout-header>
 			<div class="logo" />
-			<a-menu v-model:selectedKeys="selectedKeys" theme="dark" mode="horizontal" :style="{ lineHeight: '64px' }">
-				<a-menu-item key="0">首页</a-menu-item>
-				<a-menu-item key="1">申请分配</a-menu-item>
-				<a-menu-item key="2">人员管理</a-menu-item>
-				<a-menu-item key="3">供应商管理</a-menu-item>
-				<a-menu-item key="4">数据处理</a-menu-item>
+			<a-menu v-model:selectedKeys="selectedKeys" theme="dark" mode="horizontal" :style="{ lineHeight: '64px' }" @select="handleMenuChange">
+				<a-menu-item key="/admin/home">首页</a-menu-item>
+				<a-menu-item key="/admin/allocate">申请分配</a-menu-item>
+				<a-menu-item key="/admin/manage">人员管理</a-menu-item>
+				<a-menu-item key="/admin/w1">供应商管理</a-menu-item>
+				<a-menu-item key="/admin/w2">数据处理</a-menu-item>
 			</a-menu>
 		</a-layout-header>
 		<a-layout-content class="content">
+			<a-breadcrumb v-if="selectedKeys[0] !== '/admin/home'">
+				<a-breadcrumb-item> <home-filled /> </a-breadcrumb-item>
+				<a-breadcrumb-item v-for="item in breadcrumbRoutes" :key="item">{{ item }}</a-breadcrumb-item>
+			</a-breadcrumb>
 			<div class="router-box">
 				<router-view></router-view>
 			</div>
@@ -18,11 +22,32 @@
 	</a-layout>
 </template>
 
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import { computed, defineComponent, ref } from 'vue';
+import { useRoute, useRouter } from 'vue-router';
+import { HomeFilled } from '@ant-design/icons-vue';
 
-<script>
-import { defineComponent } from 'vue';
+const router = useRouter();
+const route = useRoute();
+const selectedKeys = ref<Array<string>>([route.path]);
 
+const handleMenuChange = ({ key }: { key: string }) => {
+	router.push(key);
+};
+
+const breadcrumbRouter = router.options.routes[0].children[0];
+const breadcrumbRoutes = computed(() => {
+	let t = breadcrumbRouter;
+	const res = [];
+	while (t !== undefined) {
+		res.push(t.meta.breadcrumbName);
+		t = t?.children?.find(d => route.path.includes(d.path));
+	}
+	res.shift();
+	return res;
+});
+</script>
+<script lang="ts">
 export default defineComponent({
 	name: 'AdminPage',
 });

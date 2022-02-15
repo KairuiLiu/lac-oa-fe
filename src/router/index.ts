@@ -9,29 +9,44 @@ const routes: RouteRecordRaw[] = [
 			{
 				path: '/admin',
 				name: 'admin',
+				meta: {
+					breadcrumbName: '管理员',
+				},
 				component: () => import('../pages/Admin/Admin.vue'),
 				redirect: '/admin/home',
 				children: [
 					{
 						path: '/admin/allocate',
 						name: 'admin-allocate',
+						meta: {
+							breadcrumbName: '申请分配',
+						},
 						component: () => import('../pages/Admin/Allocate/AdminAllocate.vue'),
 					},
 					{
 						path: '/admin/apply',
 						name: 'admin-apply',
+						meta: {
+							breadcrumbName: '申请管理',
+						},
 						component: () => import('../pages/Admin/Apply/AdminApply.vue'),
 					},
 
 					{
 						path: '/admin/home',
 						name: 'admin-home',
+						meta: {
+							breadcrumbName: '主页',
+						},
 						component: () => import('../pages/Admin/Home/AdminHome.vue'),
 					},
 
 					{
 						path: '/admin/manage',
 						name: 'admin-manage',
+						meta: {
+							breadcrumbName: '人员管理',
+						},
 						component: () => import('../pages/Admin/Manage/AdminManage.vue'),
 					},
 
