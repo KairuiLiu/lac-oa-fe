@@ -4,8 +4,8 @@
 
 <script setup lang="ts"></script>
 
-<style lang="less" scoped>
+<style lang="less">
 #app {
-	min-height: 100%;
+	height: 100%;
 }
 </style>

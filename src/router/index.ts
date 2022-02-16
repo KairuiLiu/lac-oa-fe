@@ -10,7 +10,7 @@ const routes: RouteRecordRaw[] = [
 				path: '/admin',
 				name: 'admin',
 				meta: {
-					breadcrumbName: '管理员',
+					breadcrumbName: ['管理员'],
 				},
 				component: () => import('../pages/Admin/Admin.vue'),
 				redirect: '/admin/home',
@@ -19,15 +19,23 @@ const routes: RouteRecordRaw[] = [
 						path: '/admin/allocate',
 						name: 'admin-allocate',
 						meta: {
-							breadcrumbName: '申请分配',
+							breadcrumbName: ['管理员', '申请分配', '待分配申请'],
 						},
 						component: () => import('../pages/Admin/Allocate/AdminAllocate.vue'),
 					},
 					{
-						path: '/admin/apply',
+						path: '/admin/aduit/:applyId',
+						name: 'admin-aduit',
+						meta: {
+							breadcrumbName: ['管理员', '申请分配', '选择审核人'],
+						},
+						component: () => import('../pages/Admin/Aduit/AdminAduit.vue'),
+					},
+					{
+						path: '/admin/apply/:applyId',
 						name: 'admin-apply',
 						meta: {
-							breadcrumbName: '申请管理',
+							breadcrumbName: ['管理员', '申请分配', '申请管理'],
 						},
 						component: () => import('../pages/Admin/Apply/AdminApply.vue'),
 					},
@@ -36,16 +44,16 @@ const routes: RouteRecordRaw[] = [
 						path: '/admin/home',
 						name: 'admin-home',
 						meta: {
-							breadcrumbName: '主页',
+							breadcrumbName: ['管理员', '主页'],
 						},
 						component: () => import('../pages/Admin/Home/AdminHome.vue'),
 					},
 
 					{
-						path: '/admin/manage',
+						path: '/admin/manage/:applyId',
 						name: 'admin-manage',
 						meta: {
-							breadcrumbName: '人员管理',
+							breadcrumbName: ['管理员', '人员管理'],
 						},
 						component: () => import('../pages/Admin/Manage/AdminManage.vue'),
 					},

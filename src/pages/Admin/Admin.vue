@@ -15,7 +15,7 @@
 				<a-breadcrumb-item> <home-filled /> </a-breadcrumb-item>
 				<a-breadcrumb-item v-for="item in breadcrumbRoutes" :key="item">{{ item }}</a-breadcrumb-item>
 			</a-breadcrumb>
-			<div class="router-box">
+			<div class="router-box router">
 				<router-view></router-view>
 			</div>
 		</a-layout-content>
@@ -37,14 +37,14 @@ const handleMenuChange = ({ key }: { key: string }) => {
 
 const breadcrumbRouter = router.options.routes[0].children[0];
 const breadcrumbRoutes = computed(() => {
-	let t = breadcrumbRouter;
-	const res = [];
-	while (t !== undefined) {
-		res.push(t.meta.breadcrumbName);
-		t = t?.children?.find(d => route.path.includes(d.path));
+	let res: any = breadcrumbRouter;
+	while (res) {
+		// res.push(t?.meta?.breadcrumbName);
+		const child = res?.children?.find((d: any) => route.name.includes(d.name));
+		if (child === undefined) break;
+		res = child;
 	}
-	res.shift();
-	return res;
+	return res.meta.breadcrumbName.slice(1);
 });
 </script>
 <script lang="ts">
@@ -75,13 +75,25 @@ export default defineComponent({
 	background: #141414;
 }
 
-.content {
-	padding: 16px 50px;
-	min-width: 1200px;
-	.router-box {
-		// background: #fff;
-		padding: 24px;
-		min-height: 280px;
+.layout {
+	display: flex;
+	flex-direction: column;
+	.content {
+		flex-grow: 1;
+		display: flex;
+		flex-direction: column;
+		padding: 16px 50px;
+		min-width: 1200px;
+
+		.router-box {
+			position: relative;
+			// background: #fff;
+			display: flex;
+			padding: 24px;
+			height: 100%;
+			flex-grow: 1;
+			flex-direction: column;
+		}
 	}
 }
 </style>

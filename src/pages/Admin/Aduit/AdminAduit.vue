@@ -1,7 +1,7 @@
 <template>
 	<div class="applyWapper">
-		<ApplySearchBox @search="handleSearch"></ApplySearchBox>
-		<div class="applyList" :scroll-y="{ enabled: true }">
+		<AdultSearchBox @search="handleSearch"></AdultSearchBox>
+		<div class="applyList">
 			<vxe-grid v-bind="gridOptions" class="table">
 				<template #pager>
 					<vxe-pager
@@ -15,14 +15,15 @@
 				</template>
 
 				<template #operate="{ row }">
-					<a-button type="link" @click="toShowApply(row.applyId)">查看申请</a-button>
-					<a-button type="link" @click="toShowFollow(row.applyId)">流转过程</a-button>
-					<a-button v-if="row.adminPassed" type="link" @click="toShowAduit(row.applyId)">分配审核</a-button>
+					<div class="linkContent">
+						<a-button type="link" @click="toShowApply(row.applyId)">查看申请</a-button>
+						<a-button type="link" @click="toShowFollow(row.applyId)">流转过程</a-button>
+						<a-button v-if="row.adminPassed" type="link" @click="toShowAduit(row.applyId)">分配审核</a-button>
+					</div>
 				</template>
 			</vxe-grid>
 		</div>
 	</div>
-	<ApplyProcess :visible="state.visible" :apply-id="state.applyId" @close="state.visible = false"></ApplyProcess>
 </template>
 
 <script setup lang="ts">
@@ -31,10 +32,9 @@ import { defineComponent, reactive } from 'vue';
 import { useRouter } from 'vue-router';
 import { VxeGridProps, VxePagerEvents } from 'vxe-table';
 import { adminApi } from '../../../api';
-import ApplySearchBox from '../../../components/ApplySearchBox.vue';
+import AdultSearchBox from '../../../components/ApplySearchBox.vue';
 import IAjaxRestlt from '../../../types/common';
 import { applyIdx2Name } from '../../../utils/applyTypes';
-import ApplyProcess from '../../../components/ApplyProcess.vue';
 
 const router = useRouter();
 const tablePage = reactive({
@@ -53,15 +53,15 @@ const gridOptions = reactive<VxeGridProps>({
 	loading: false,
 	data: [],
 	columns: [
-		{ field: 'applyId', title: '申请编号' },
-		{ field: 'applyTitle', title: '申请名称' },
-		{ field: 'applyUserName', title: '申请用户' },
-		{ field: 'applyDate', title: '申请日期' },
-		{ field: 'applyType', title: '申请类型' },
-		{ field: 'applyProp', title: '申请用途' },
-		{ field: 'allocated', title: '分配人数' },
-		{ field: 'adminPassed', title: '管理员审核' },
-		{ title: '操作', slots: { default: 'operate' }, fixed: 'right' },
+		{ field: 'applyId', title: '申请编号', showOverflow: true },
+		{ field: 'applyTitle', title: '申请名称', showOverflow: true },
+		{ field: 'applyUserName', title: '申请用户', showOverflow: true },
+		{ field: 'applyDate', title: '申请日期', showOverflow: true },
+		{ field: 'applyType', title: '申请类型', showOverflow: true },
+		{ field: 'applyProp', title: '申请用途', showOverflow: true },
+		{ field: 'allocated', title: '分配人数', showOverflow: true },
+		{ field: 'adminPassed', title: '管理员审核', showOverflow: true },
+		{ title: '操作', slots: { default: 'operate' }, showOverflow: true },
 	],
 });
 
@@ -120,7 +120,7 @@ searchEvent();
 
 <script lang="ts">
 export default defineComponent({
-	name: 'AdminAllocate',
+	name: 'AdminAduit',
 });
 </script>
 

@@ -1,0 +1,107 @@
+<template>
+	<div>
+		<a-modal v-model:visible="visible" title="流转过程" :closable="false">
+			<template #footer>
+				<a-button key="back" @click="close">确定</a-button>
+			</template>
+			<div v-if="state.loading" class="loadCircleWapper"><a-spin /></div>
+			<div v-else class="peocessBox">
+				<a-steps direction="vertical">
+					<a-step v-for="(item, index) in processes" :key="`${index}-${item.type}`" :title="item.title" :status="item.status">
+						<template #description>
+							<a-comment v-for="(item2, index2) in item.processes" :key="`${index}-${item.type}-${index2}`">
+								<template #author>{{ item2.userName }}</template>
+								<template #avatar>
+									<a-avatar src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png" alt="Han Solo" />
+								</template>
+								<template #content>
+									<p>备注: {{ item2.note }}</p>
+								</template>
+								<template #datetime> {{ item2.dateTime }} </template>
+							</a-comment>
+						</template>
+					</a-step>
+				</a-steps>
+			</div>
+		</a-modal>
+	</div>
+</template>
+
+<script setup lang="ts">
+import { message } from 'ant-design-vue';
+import { defineComponent, reactive, watch, computed } from 'vue';
+import { adminApi } from '../api';
+import { getProcessTitle } from '../utils/applyTypes';
+import IAjaxRestlt from '../types/common';
+
+const props = defineProps<{
+	visible: boolean;
+	applyID: string;
+}>();
+
+const emits = defineEmits<{
+	(e: 'close'): void;
+}>();
+
+const state = reactive({
+	loading: true,
+	process: [],
+});
+
+function close() {
+	emits('close');
+}
+
+const visible = computed(() => props.visible);
+
+const processes = computed(() => {
+	const stages = [...new Set(state.process.map(d => d.stage))];
+	const processes = stages.map(d => {
+		const res = state.process.filter(dd => dd.stage === d);
+		res.sort((l, r) => +new Date(l.dateTime) - +new Date(r.dateTime));
+		let status = 'process';
+		if (res.findIndex(d => d.end) + 1) status = 'finish';
+		if (res.findIndex(d => d.error) + 1) status = 'error';
+		return {
+			type: d % 10,
+			title: getProcessTitle(d % 10),
+			status,
+			processes: res,
+		};
+	});
+	return processes;
+});
+
+watch(
+	() => props.visible,
+	async () => {
+		state.loading = true;
+		if (!props.visible) return;
+		const res = (await adminApi.reqApplyProcess({ token: '123', applyId: props.applyID })) as IAjaxRestlt;
+		if (res.code) {
+			message.error('加载失败');
+			return;
+		}
+		state.process = res.data.process;
+		state.loading = false;
+	}
+);
+</script>
+
+<script lang="ts">
+export default defineComponent({
+	name: 'ApplyProcess',
+});
+</script>
+
+<style lang="less" scoped>
+.loadCircleWapper {
+	display: flex;
+	justify-content: space-around;
+}
+
+.peocessBox {
+	max-height: calc(80vh - 100px);
+	overflow: auto;
+}
+</style>
