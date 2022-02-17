@@ -1,4 +1,242 @@
 {
+	"aduitList": {
+		"code": 0,
+		"data": [
+			{
+				"userName": "张1",
+				"userId": 1234561,
+				"enable": true
+			},
+			{
+				"userName": "张2",
+				"userId": 1234562,
+				"enable": false
+			},
+			{
+				"userName": "张3",
+				"userId": 1234563,
+				"enable": true
+			},
+			{
+				"userName": "张4",
+				"userId": 1234564,
+				"enable": true
+			},
+			{
+				"userName": "张5",
+				"userId": 1234565,
+				"enable": false
+			},
+			{
+				"userName": "张6",
+				"userId": 1234566,
+				"enable": true
+			},
+			{
+				"userName": "张7",
+				"userId": 1234567,
+				"enable": true
+			}
+		]
+	},
+	"aduitType": {
+		"code": 0,
+		"data": [
+			{
+				"type": 10,
+				"name": "伦理审核人员",
+				"subType": [
+					{
+						"type": 11,
+						"name": "社会人士"
+					},
+					{
+						"type": 12,
+						"name": "A领域专家"
+					},
+					{
+						"type": 13,
+						"name": "B领域专家"
+					},
+					{
+						"type": 14,
+						"name": "C领域专家"
+					},
+					{
+						"type": 15,
+						"name": "D领域专家"
+					}
+				]
+			},
+			{
+				"type": 20,
+				"name": "采购审核人员",
+				"subType": [
+					{
+						"type": 21,
+						"name": "社会人士"
+					},
+					{
+						"type": 22,
+						"name": "A领域专家"
+					},
+					{
+						"type": 23,
+						"name": "B领域专家"
+					},
+					{
+						"type": 24,
+						"name": "C领域专家"
+					},
+					{
+						"type": 25,
+						"name": "D领域专家"
+					}
+				]
+			},
+			{
+				"type": 30,
+				"name": "供应商",
+				"subType": [
+					{
+						"type": 31,
+						"name": "全部供应商"
+					}
+				]
+			}
+		]
+	},
+	"allocateWork": {
+		"code": 0
+	},
+	"allocateAduitList": [
+		{
+			"userId": 1,
+			"userName": "张1",
+			"type": "社会人士",
+			"onWork": false,
+			"workings": 2
+		},
+		{
+			"userId": 2,
+			"userName": "张2",
+			"type": "A领域专家",
+			"onWork": true,
+			"workings": 2
+		},
+		{
+			"userId": 3,
+			"userName": "张3",
+			"type": "B领域专家",
+			"onWork": true,
+			"workings": 21
+		},
+		{
+			"userId": 4,
+			"userName": "张4",
+			"type": "社会人士",
+			"onWork": true,
+			"workings": 22
+		},
+		{
+			"userId": 5,
+			"userName": "张5",
+			"type": "社会人士",
+			"onWork": false,
+			"workings": 32
+		},
+		{
+			"userId": 6,
+			"userName": "张6",
+			"type": "A领域专家",
+			"onWork": false,
+			"workings": 12
+		},
+		{
+			"userId": 7,
+			"userName": "张7",
+			"type": "A领域专家",
+			"onWork": true,
+			"workings": 22
+		},
+		{
+			"userId": 8,
+			"userName": "张8",
+			"type": "B领域专家",
+			"onWork": false,
+			"workings": 22
+		},
+		{
+			"userId": 9,
+			"userName": "张9",
+			"type": "B领域专家",
+			"onWork": false,
+			"workings": 2
+		},
+		{
+			"userId": 10,
+			"userName": "张三0",
+			"type": "B领域专家",
+			"onWork": true,
+			"workings": 21
+		},
+		{
+			"userId": 11,
+			"userName": "张三1",
+			"type": "社会人士",
+			"onWork": false,
+			"workings": 12
+		},
+		{
+			"userId": 12,
+			"userName": "张三2",
+			"type": "社会人士",
+			"onWork": true,
+			"workings": 2
+		},
+		{
+			"userId": 13,
+			"userName": "张三3",
+			"type": "社会人士",
+			"onWork": false,
+			"workings": 42
+		},
+		{
+			"userId": 14,
+			"userName": "张三4",
+			"type": "社会人士",
+			"onWork": true,
+			"workings": 24
+		},
+		{
+			"userId": 15,
+			"userName": "张三5",
+			"type": "B领域专家",
+			"onWork": false,
+			"workings": 24
+		},
+		{
+			"userId": 16,
+			"userName": "张三6",
+			"type": "C领域专家",
+			"onWork": false,
+			"workings": 42
+		},
+		{
+			"userId": 17,
+			"userName": "张三7",
+			"type": "C领域专家",
+			"onWork": true,
+			"workings": 24
+		},
+		{
+			"userId": 18,
+			"userName": "张三8",
+			"type": "C领域专家",
+			"onWork": false,
+			"workings": 42
+		}
+	],
 	"applyProcess": {
 		"code": 0,
 		"data": {
