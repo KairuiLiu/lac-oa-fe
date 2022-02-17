@@ -1,4 +1,281 @@
 {
+	"applyProcess": {
+		"code": 0,
+		"data": {
+			"process": [
+				{
+					"userName": "申请人1",
+					"note": "发起申请",
+					"error": false,
+					"end": false,
+					"dateTime": "2022-1-1:09:00:01",
+					"stage": 0
+				},
+				{
+					"userName": "管理员2",
+					"note": "审核不通过, 发回修改",
+					"error": true,
+					"end": false,
+					"dateTime": "2022-1-2:09:00:01",
+					"stage": 1
+				},
+				{
+					"userName": "申请人1",
+					"note": "发起申请",
+					"error": false,
+					"end": false,
+					"dateTime": "2022-1-3:09:00:01",
+					"stage": 10
+				},
+				{
+					"userName": "管理员2",
+					"note": "审核通过, 发往审核人",
+					"error": false,
+					"end": false,
+					"dateTime": "2022-1-4:09:00:01",
+					"stage": 11
+				},
+				{
+					"userName": "审核人1",
+					"note": "审核通过",
+					"error": false,
+					"end": false,
+					"dateTime": "2022-1-5:09:00:01",
+					"stage": 12
+				},
+				{
+					"userName": "审核人2",
+					"note": "审核不通过, 修改意见: 不知道",
+					"error": true,
+					"end": false,
+					"dateTime": "2022-1-6:09:00:01",
+					"stage": 12
+				},
+				{
+					"userName": "申请人1",
+					"note": "发起申请",
+					"error": false,
+					"end": false,
+					"dateTime": "2022-1-7:09:00:01",
+					"stage": 20
+				},
+				{
+					"userName": "管理员2",
+					"note": "审核通过, 发往审核人",
+					"error": false,
+					"end": false,
+					"dateTime": "2022-1-8:09:00:01",
+					"stage": 21
+				},
+				{
+					"userName": "审核人1",
+					"note": "审核通过",
+					"error": false,
+					"end": false,
+					"dateTime": "2022-1-9:09:00:01",
+					"stage": 22
+				},
+				{
+					"userName": "审核人2",
+					"note": "审核通过",
+					"error": false,
+					"end": false,
+					"dateTime": "2022-1-16:09:00:01",
+					"stage": 22
+				},
+				{
+					"userName": "申请人1",
+					"note": "存档完成",
+					"error": false,
+					"end": true,
+					"dateTime": "2022-1-19:09:00:01",
+					"stage": 23
+				}
+			]
+		}
+	},
+	"allocateApplyList": [
+		{
+			"applyId": 1,
+			"applyTitle": "研究1的申请",
+			"applyUserName": "张三",
+			"applyDate": "2022-1-1",
+			"applyType": 0,
+			"applyProp": 1,
+			"allocated": 2,
+			"adminPassed": 0
+		},
+		{
+			"applyId": 2,
+			"applyTitle": "研究2的申请",
+			"applyUserName": "张2",
+			"applyDate": "2022-1-2",
+			"applyType": 0,
+			"applyProp": 2,
+			"allocated": 1,
+			"adminPassed": 1
+		},
+		{
+			"applyId": 3,
+			"applyTitle": "研究3的申请",
+			"applyUserName": "张3",
+			"applyDate": "2022-1-3",
+			"applyType": 0,
+			"applyProp": 0,
+			"allocated": 3,
+			"adminPassed": 0
+		},
+		{
+			"applyId": 4,
+			"applyTitle": "研究4的申请",
+			"applyUserName": "张4",
+			"applyDate": "2022-1-4",
+			"applyType": 0,
+			"applyProp": 1,
+			"allocated": 1,
+			"adminPassed": 1
+		},
+		{
+			"applyId": 5,
+			"applyTitle": "研究5的申请",
+			"applyUserName": "张5",
+			"applyDate": "2022-1-5",
+			"applyType": 0,
+			"applyProp": 2,
+			"allocated": 1,
+			"adminPassed": 1
+		},
+		{
+			"applyId": 6,
+			"applyTitle": "研究6的申请",
+			"applyUserName": "张6",
+			"applyDate": "2022-1-6",
+			"applyType": 0,
+			"applyProp": 0,
+			"allocated": 1,
+			"adminPassed": 0
+		},
+		{
+			"applyId": 7,
+			"applyTitle": "研究17的申请",
+			"applyUserName": "张三7",
+			"applyDate": "2022-1-17",
+			"applyType": 0,
+			"applyProp": 1,
+			"allocated": 2,
+			"adminPassed": 0
+		},
+		{
+			"applyId": 8,
+			"applyTitle": "研究28的申请",
+			"applyUserName": "张28",
+			"applyDate": "2022-1-28",
+			"applyType": 0,
+			"applyProp": 2,
+			"allocated": 1,
+			"adminPassed": 1
+		},
+		{
+			"applyId": 9,
+			"applyTitle": "研究9的申请",
+			"applyUserName": "张9",
+			"applyDate": "2022-1-9",
+			"applyType": 0,
+			"applyProp": 0,
+			"allocated": 3,
+			"adminPassed": 0
+		},
+		{
+			"applyId": 10,
+			"applyTitle": "研究41的申请",
+			"applyUserName": "张41",
+			"applyDate": "2022-1-1",
+			"applyType": 0,
+			"applyProp": 1,
+			"allocated": 1,
+			"adminPassed": 1
+		},
+		{
+			"applyId": 15,
+			"applyTitle": "研究15的申请",
+			"applyUserName": "张15",
+			"applyDate": "2022-11-5",
+			"applyType": 0,
+			"applyProp": 2,
+			"allocated": 1,
+			"adminPassed": 1
+		},
+		{
+			"applyId": 16,
+			"applyTitle": "研究61的申请",
+			"applyUserName": "张16",
+			"applyDate": "2022-1-6",
+			"applyType": 0,
+			"applyProp": 0,
+			"allocated": 1,
+			"adminPassed": 0
+		},
+		{
+			"applyId": 21,
+			"applyTitle": "研究12的申请",
+			"applyUserName": "张三2",
+			"applyDate": "2022-12-1",
+			"applyType": 0,
+			"applyProp": 1,
+			"allocated": 2,
+			"adminPassed": 0
+		},
+		{
+			"applyId": 22,
+			"applyTitle": "研究22的申请",
+			"applyUserName": "张22",
+			"applyDate": "2022-12-2",
+			"applyType": 0,
+			"applyProp": 2,
+			"allocated": 1,
+			"adminPassed": 1
+		},
+		{
+			"applyId": 23,
+			"applyTitle": "研究32的申请",
+			"applyUserName": "张3",
+			"applyDate": "2022-12-3",
+			"applyType": 0,
+			"applyProp": 0,
+			"allocated": 3,
+			"adminPassed": 0
+		},
+		{
+			"applyId": 24,
+			"applyTitle": "研究24的申请",
+			"applyUserName": "张42",
+			"applyDate": "2022-12-4",
+			"applyType": 0,
+			"applyProp": 1,
+			"allocated": 1,
+			"adminPassed": 1
+		},
+		{
+			"applyId": 25,
+			"applyTitle": "研究52的申请",
+			"applyUserName": "张52",
+			"applyDate": "2022-12-5",
+			"applyType": 0,
+			"applyProp": 2,
+			"allocated": 1,
+			"adminPassed": 1
+		},
+		{
+			"applyId": 26,
+			"applyTitle": "研究16的申请",
+			"applyUserName": "张26",
+			"applyDate": "2022-12-6",
+			"applyType": 0,
+			"applyProp": 0,
+			"allocated": 1,
+			"adminPassed": 0
+		}
+	],
 	"systemData": {
 		"code": 0,
 		"data": {
@@ -14,7 +291,8 @@
 			},
 			"taskType": {
 				"totle": 66,
-				"detail": [{
+				"detail": [
+					{
 						"type": "伦理审查",
 						"value": 44
 					},
@@ -41,7 +319,8 @@
 			"ethicsAnimal": {
 				"month": {
 					"totle": 7300,
-					"detail": [{
+					"detail": [
+						{
 							"type": "鸡",
 							"value": 123
 						},
@@ -61,7 +340,8 @@
 				},
 				"year": {
 					"totle": 72,
-					"detail": [{
+					"detail": [
+						{
 							"type": "鸡",
 							"value": 1232
 						},
@@ -83,7 +363,8 @@
 			"buyAnimal": {
 				"month": {
 					"totle": 7300,
-					"detail": [{
+					"detail": [
+						{
 							"type": "鸡",
 							"value": 123
 						},
@@ -103,7 +384,8 @@
 				},
 				"year": {
 					"totle": 73200,
-					"detail": [{
+					"detail": [
+						{
 							"type": "鸡",
 							"value": 123
 						},
@@ -125,7 +407,8 @@
 			"expAnimal": {
 				"month": {
 					"totle": 7300,
-					"detail": [{
+					"detail": [
+						{
 							"type": "鸡",
 							"value": 123
 						},
@@ -145,7 +428,8 @@
 				},
 				"year": {
 					"totle": 7300,
-					"detail": [{
+					"detail": [
+						{
 							"type": "鸡",
 							"value": 123
 						},
@@ -168,7 +452,8 @@
 				"month": [1, 2, 3, 4, 5, 6, 7, 8, 9, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 0],
 				"year": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
 			},
-			"applyNotify": [{
+			"applyNotify": [
+				{
 					"title": "申请修改通知1",
 					"date": "2022-1-1",
 					"detail": "您好,乌拉乌拉乌拉",
@@ -224,7 +509,8 @@
 				}
 			],
 			"applyType": {
-				"done": [{
+				"done": [
+					{
 						"type": "伦理",
 						"value": 12
 					},
@@ -241,7 +527,8 @@
 						"value": 15
 					}
 				],
-				"doing": [{
+				"doing": [
+					{
 						"type": "伦理",
 						"value": 122
 					},
@@ -260,7 +547,8 @@
 				]
 			},
 			"applyProp": {
-				"ethic": [{
+				"ethic": [
+					{
 						"type": "教学",
 						"value": 12
 					},
@@ -273,7 +561,8 @@
 						"value": 14
 					}
 				],
-				"buy": [{
+				"buy": [
+					{
 						"type": "教学",
 						"value": 122
 					},
@@ -287,7 +576,8 @@
 					}
 				]
 			},
-			"doingApplyType": [{
+			"doingApplyType": [
+				{
 					"type": "等待存档",
 					"value": 291
 				},
@@ -301,7 +591,8 @@
 				}
 			],
 			"userInfo": {
-				"userType": [{
+				"userType": [
+					{
 						"type": "申请人",
 						"value": 12
 					},
@@ -314,7 +605,8 @@
 						"value": 1
 					}
 				],
-				"aduitType": [{
+				"aduitType": [
+					{
 						"type": "A领域专家",
 						"value": 1
 					},
@@ -335,7 +627,8 @@
 						"value": 5
 					}
 				],
-				"userStat": [{
+				"userStat": [
+					{
 						"type": "在线用户",
 						"value": 4
 					},
@@ -345,7 +638,8 @@
 					}
 				]
 			},
-			"operateInfo": [{
+			"operateInfo": [
+				{
 					"applyId": 1,
 					"title": "关于A的申请",
 					"userName": "AAA",

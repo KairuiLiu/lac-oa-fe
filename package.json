@@ -16,11 +16,15 @@
 		"@antv/g2plot": "^2.4.8",
 		"ant-design-vue": "^2.2.8",
 		"axios": "^0.25.0",
+		"dayjs": "^1.10.7",
 		"install": "^0.13.0",
+		"lodash": "^4.17.21",
 		"npm": "^8.4.1",
 		"vue": "^3.2.30",
 		"vue-router": "^4.0.12",
-		"vuex": "^4.0.2"
+		"vuex": "^4.0.2",
+		"vxe-table": "^4.1.21",
+		"xe-utils": "3"
 	},
 	"devDependencies": {
 		"@commitlint/cli": "^16.1.0",

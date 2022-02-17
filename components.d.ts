@@ -3,29 +3,34 @@
 // Read more: https://github.com/vuejs/vue-next/pull/3399
 
 declare module 'vue' {
-  export interface GlobalComponents {
-    AAvatar: typeof import('ant-design-vue/es')['Avatar']
-    ACard: typeof import('ant-design-vue/es')['Card']
-    ACol: typeof import('ant-design-vue/es')['Col']
-    AdminIconCard: typeof import('./src/components/AdminIconCard.vue')['default']
-    ALayout: typeof import('ant-design-vue/es')['Layout']
-    ALayoutContent: typeof import('ant-design-vue/es')['LayoutContent']
-    ALayoutFooter: typeof import('ant-design-vue/es')['LayoutFooter']
-    ALayoutHeader: typeof import('ant-design-vue/es')['LayoutHeader']
-    AList: typeof import('ant-design-vue/es')['List']
-    AListItem: typeof import('ant-design-vue/es')['ListItem']
-    AListItemMeta: typeof import('ant-design-vue/es')['ListItemMeta']
-    AMenu: typeof import('ant-design-vue/es')['Menu']
-    AMenuItem: typeof import('ant-design-vue/es')['MenuItem']
-    ARow: typeof import('ant-design-vue/es')['Row']
-    ASelect: typeof import('ant-design-vue/es')['Select']
-    ASelectOption: typeof import('ant-design-vue/es')['SelectOption']
-    AStatistic: typeof import('ant-design-vue/es')['Statistic']
-    ASwitch: typeof import('ant-design-vue/es')['Switch']
-    ATypographyText: typeof import('ant-design-vue/es')['TypographyText']
-    ATypographyTitle: typeof import('ant-design-vue/es')['TypographyTitle']
-    ChatText: typeof import('./src/components/ChatText.vue')['default']
-  }
+	export interface GlobalComponents {
+		AAvatar: typeof import('ant-design-vue/es')['Avatar'];
+		ABreadcrumb: typeof import('ant-design-vue/es')['Breadcrumb'];
+		ABreadcrumbItem: typeof import('ant-design-vue/es')['BreadcrumbItem'];
+		ACard: typeof import('ant-design-vue/es')['Card'];
+		ACol: typeof import('ant-design-vue/es')['Col'];
+		AdminIconCard: typeof import('./src/components/AdminIconCard.vue')['default'];
+		AdultSearchBox: typeof import('./src/components/AdultSearchBox.vue')['default'];
+		ALayout: typeof import('ant-design-vue/es')['Layout'];
+		ALayoutContent: typeof import('ant-design-vue/es')['LayoutContent'];
+		ALayoutFooter: typeof import('ant-design-vue/es')['LayoutFooter'];
+		ALayoutHeader: typeof import('ant-design-vue/es')['LayoutHeader'];
+		AList: typeof import('ant-design-vue/es')['List'];
+		AListItem: typeof import('ant-design-vue/es')['ListItem'];
+		AListItemMeta: typeof import('ant-design-vue/es')['ListItemMeta'];
+		AMenu: typeof import('ant-design-vue/es')['Menu'];
+		AMenuItem: typeof import('ant-design-vue/es')['MenuItem'];
+		ApplyProcess: typeof import('./src/components/ApplyProcess.vue')['default'];
+		ApplySearchBox: typeof import('./src/components/ApplySearchBox.vue')['default'];
+		ARow: typeof import('ant-design-vue/es')['Row'];
+		ASelect: typeof import('ant-design-vue/es')['Select'];
+		ASelectOption: typeof import('ant-design-vue/es')['SelectOption'];
+		AStatistic: typeof import('ant-design-vue/es')['Statistic'];
+		ASwitch: typeof import('ant-design-vue/es')['Switch'];
+		ATypographyText: typeof import('ant-design-vue/es')['TypographyText'];
+		ATypographyTitle: typeof import('ant-design-vue/es')['TypographyTitle'];
+		ChatText: typeof import('./src/components/ChatText.vue')['default'];
+	}
 }
 
-export { }
+export {};
