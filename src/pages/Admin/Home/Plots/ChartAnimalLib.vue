@@ -126,11 +126,11 @@ export default {
 	display: flex;
 	flex-direction: column;
 	overflow: auto;
-	/deep/ .ant-card-head {
+	:deep(.ant-card-head) {
 		flex-shrink: 0;
 		height: 10%;
 	}
-	/deep/ .ant-card-body {
+	:deep(.ant-card-body) {
 		flex-shrink: 1;
 		height: 90%;
 	}
@@ -143,12 +143,12 @@ export default {
 	height: 100%;
 	overflow: hidden;
 	flex-direction: column;
-	/deep/ #ChartAnimalLibContianer {
+	:deep(#ChartAnimalLibContianer) {
 		height: 100%;
 		flex-shrink: 3;
 		width: 100%;
 	}
-	/deep/ .textBox {
+	:deep(.textBox) {
 		flex-shrink: 1;
 		width: 10vw;
 		align-self: flex-start;

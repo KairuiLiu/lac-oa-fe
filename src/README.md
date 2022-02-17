@@ -24,11 +24,10 @@
       - OrderDetail
     - profile
 
-
 // applyType
-    0 采购
-    1 伦理
+0 采购
+1 伦理
 // applyProp
-    0 教学
-    1 科研实验
-    2 科研项目
+0 教学
+1 科研实验
+2 科研项目

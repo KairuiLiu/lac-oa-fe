@@ -46,11 +46,11 @@ export default {
 	display: flex;
 	flex-direction: column;
 	overflow: auto;
-	/deep/ .ant-card-head {
+	:deep(.ant-card-head) {
 		flex-shrink: 0;
 		height: 10%;
 	}
-	/deep/ .ant-card-body {
+	:deep(.ant-card-body) {
 		flex-shrink: 1;
 		height: 90%;
 	}
@@ -59,7 +59,7 @@ export default {
 .dataWapper {
 	height: 100%;
 	width: 100%;
-	/deep/ .ant-list {
+	:deep(.ant-list) {
 		max-height: 100%;
 		display: flex;
 		flex-direction: column;

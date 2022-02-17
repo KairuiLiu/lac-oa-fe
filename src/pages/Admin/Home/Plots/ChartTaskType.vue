@@ -71,11 +71,11 @@ export default {
 	display: flex;
 	flex-direction: column;
 	overflow: auto;
-	/deep/ .ant-card-head {
+	:deep(.ant-card-head) {
 		flex-shrink: 0;
 		height: 20%;
 	}
-	/deep/ .ant-card-body {
+	:deep(.ant-card-body) {
 		flex-shrink: 1;
 		height: 80%;
 	}

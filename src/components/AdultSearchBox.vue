@@ -144,7 +144,7 @@ export default defineComponent({
 	box-shadow: 0 0 0.6vw rgba(0, 0, 0, 0.2);
 	border: rgba(217, 217, 217) 1px solid;
 	border-radius: 2px;
-	/deep/ .easySearch input {
+	:deep(.easySearch input) {
 		border-top: none !important;
 		border-left: none !important;
 		border-right: none !important;
