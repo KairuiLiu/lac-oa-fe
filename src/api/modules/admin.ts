@@ -85,6 +85,62 @@ const adminApi = {
 			{ auth: { token } }
 		);
 	},
+	reqDeleteAduitGroup({ token, aduitType }: { token: string; aduitType: number }) {
+		return ajax(
+			`${BASE_URL}/delAduitGroup`,
+			{
+				t: Date.now(),
+				aduitType,
+			},
+			'POST',
+			{ auth: { token } }
+		);
+	},
+	reqAddAduitGroup({ token, aduitType, groupName }: { token: string; aduitType: number; groupName: string }) {
+		return ajax(
+			`${BASE_URL}/addAduitGroup`,
+			{
+				t: Date.now(),
+				aduitType,
+				groupName,
+			},
+			'POST',
+			{ auth: { token } }
+		);
+	},
+	reqUserDisable({ token, userId }: { token: string; userId: string }) {
+		return ajax(
+			`${BASE_URL}/userDisable`,
+			{
+				t: Date.now(),
+				userId,
+			},
+			'POST',
+			{ auth: { token } }
+		);
+	},
+	reqUserEnable({ token, userId }: { token: string; userId: string }) {
+		return ajax(
+			`${BASE_URL}/userEnable`,
+			{
+				t: Date.now(),
+				userId,
+			},
+			'POST',
+			{ auth: { token } }
+		);
+	},
+	reqUserEdit({ token, userInfo }: { token: string; userInfo: any }) {
+		return ajax(
+			`${BASE_URL}/userEdit`,
+			{
+				t: Date.now(),
+				userInfo,
+			},
+			'POST',
+			{ auth: { token } }
+		);
+	},
 };
 
 export default adminApi;

@@ -11,61 +11,127 @@
 		</a-menu>
 		<div class="listWapper">
 			<div v-if="state.loading" class="loading"><a-spin size="large" /></div>
-			<div v-else class="content">
+			<div v-else-if="selectedKeys.length" class="content">
 				<div class="toolBar">
-					<a-button danger ghost><close-outlined />删除分组</a-button>
-					<a-button type="primary" style="margin-right: 15px"><plus-outlined />新建分组</a-button>
+					<a-popconfirm title="确定删除分组?" ok-text="确定" cancel-text="取消" @confirm="handleGroupDelete">
+						<a-button danger ghost><close-outlined />删除分组</a-button>
+					</a-popconfirm>
+					<a-button type="primary" style="margin-right: 15px" @click="showGroupAdd"><plus-outlined />新建分组</a-button>
 				</div>
-				<div class="userList">
-					<a-list class="demo-loadmore-list" :loading="loading" item-layout="horizontal" :data-source="dataList">
-						<!-- <template #loadMore>
-							<div :style="{ textAlign: 'center', marginTop: '12px', height: '32px', lineHeight: '32px' }">
-								<a-spin v-if="loadingMore" />
-								<a-button v-else @click="loadMore">loading more</a-button>
-							</div>
-						</template> -->
-						<template #renderItem="{ item }">
-							<a-list-item>
-								<template #actions>
-									<a>edit</a>
-									<a>more</a>
+				<a-list item-layout="vertical" size="large" :pagination="state.pagination" :data-source="state.aduitList">
+					<template #renderItem="{ item }">
+						<a-list-item key="item.userName" class="userListItem">
+							<template #extra>
+								<a-button type="link" @click="showUserEdit(item.userName, item.userId)">编辑帐号</a-button>
+								<a-popconfirm v-if="item.enable" title="确定停用帐号?" ok-text="确定" cancel-text="取消" @confirm="handleUserDisable(item.userId)">
+									<a-button type="link">停用帐号</a-button>
+								</a-popconfirm>
+								<a-popconfirm v-else title="确定启用帐号?" ok-text="确定" cancel-text="取消" @confirm="handleUserEnable(item.userId)">
+									<a-button type="link">启用帐号</a-button>
+								</a-popconfirm>
+							</template>
+							<a-list-item-meta :description="item.description">
+								<template #title>
+									{{ item.userName }}
 								</template>
-								<a-list-item-meta description="Ant Design, a design language for background applications, is refined by Ant UED Team">
-									<template #title>
-										<a href="https://www.antdv.com/">{{ item.name.last }}</a>
-									</template>
-									<template #avatar>
-										<a-avatar src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png" />
-									</template>
-								</a-list-item-meta>
-								<div>content</div>
-							</a-list-item>
-						</template>
-					</a-list>
-				</div>
-				{{ state.aduitList }}
+								<template #avatar><a-avatar :src="item.userName" /></template>
+							</a-list-item-meta>
+							{{ item.content }}
+						</a-list-item>
+					</template>
+				</a-list>
 			</div>
 		</div>
 	</div>
+	<a-modal
+		v-model:visible="state.groupAddVisible"
+		title="新建分组"
+		:confirm-loading="state.submitLoading"
+		:cancel-button-props="{ disabled: state.submitLoading }"
+		:closable="false"
+		ok-text="提交"
+		cancel-text="取消"
+		@ok="handleGroupAdd"
+	>
+		<a-form :model="state.newGroupStat" name="basic" :label-col="{ span: 8 }" :wrapper-col="{ span: 16 }" autocomplete="off">
+			<a-form-item label="组名" name="groupName">
+				<a-input v-model:value="state.newGroupStat.groupName" />
+			</a-form-item>
+			<a-form-item label="所属组" name="groupType">
+				<a-select ref="select" v-model:value="state.newGroupStat.parentGroup" :options="newGroupOptions" @focus="focus"></a-select>
+			</a-form-item>
+		</a-form>
+	</a-modal>
+	<a-modal
+		v-model:visible="state.userEditVisible"
+		title="编辑用户"
+		:confirm-loading="state.submitLoading"
+		:cancel-button-props="{ disabled: state.userEditSubmitLoading }"
+		:closable="false"
+		ok-text="提交"
+		cancel-text="取消"
+		@ok="handleUserEdit"
+	>
+		<a-form :model="state.userEditStat" name="basic" :label-col="{ span: 8 }" :wrapper-col="{ span: 16 }" autocomplete="off">
+			<a-form-item label="用户编号" name="userId">
+				<a-input v-model:value="state.userEditStat.userId" disabled />
+			</a-form-item>
+			<a-form-item label="用户名" name="userName">
+				<a-input v-model:value="state.userEditStat.userName" />
+			</a-form-item>
+			<a-form-item label="所属组" name="userType">
+				<a-cascader ref="select" v-model:value="state.userEditStat.group" :options="userGroup" @focus="focus"></a-cascader>
+			</a-form-item>
+		</a-form>
+	</a-modal>
 </template>
 
 <script setup lang="ts">
-import { defineComponent, ref, onMounted, reactive } from 'vue';
+import { defineComponent, ref, onMounted, reactive, computed } from 'vue';
 import { PlusOutlined, CloseOutlined } from '@ant-design/icons-vue';
 import { useStore } from 'vuex';
 import { message } from 'ant-design-vue';
+import { useRouter } from 'vue-router';
 import { adminApi } from '../../../api';
 import IAjaxRestlt from '../../../types/common';
 
-const openKeys = ref<string[]>(['1']);
-const selectedKeys = ref<string[]>(['1']);
+const openKeys = ref<string[]>([]);
+const selectedKeys = ref<string[]>([]);
 const store = useStore();
+const router = useRouter();
 
 const state = reactive({
 	aduitType: null,
 	aduitList: [],
 	loading: false,
+	curType: -1,
+	pagination: {
+		pageSize: 10,
+	},
+	groupAddVisible: false,
+	submitLoading: false,
+	newGroupStat: {
+		groupName: '',
+		parentGroup: null,
+	},
+	userEditVisible: false,
+	userEditSubmitLoading: false,
+	userEditStat: {
+		userName: '',
+		group: [10, 11],
+		userId: null,
+	},
 });
+
+function getOptions(arr, deep) {
+	return arr.map(d => {
+		if (!deep || !Object.keys(d).includes('subType')) return { value: d.type, label: d.name };
+		return { value: d.type, label: d.name, children: getOptions(d.subType, deep) };
+	});
+}
+
+const newGroupOptions = computed(() => getOptions(state.aduitType, false));
+const userGroup = computed(() => getOptions(state.aduitType, true));
 
 onMounted(async () => {
 	if (!store.state.admin?.aduitType) {
@@ -80,10 +146,97 @@ onMounted(async () => {
 async function handleMenu(type) {
 	state.loading = true;
 	state.aduitList = [];
+	state.curType = -1;
 	const result = (await adminApi.reqAduitList({ token: '123', aduitType: type })) as IAjaxRestlt;
-	if (result?.code) return false;
-	state.aduitList = result.data;
 	state.loading = false;
+	if (result?.code) return false;
+	state.curType = type;
+	state.aduitList = result.data;
+	return true;
+}
+
+async function handleGroupDelete() {
+	if (state.aduitList.length) {
+		message.error('无法删除非空分组');
+		return false;
+	}
+	const res = (await adminApi.reqDeleteAduitGroup({ token: '123', aduitType: state.aduitType })) as IAjaxRestlt;
+	if (res.code) {
+		message.error('删除失败');
+	} else {
+		router.go(0);
+	}
+	return true;
+}
+
+function showGroupAdd() {
+	state.newGroupStat.parentGroup = state.curType - (state.curType % 10);
+	state.newGroupStat.groupName = '';
+	state.groupAddVisible = true;
+}
+
+async function handleGroupAdd() {
+	if (state.newGroupStat.groupName.trim().length === 0) {
+		message.error('组名不得为空');
+		return false;
+	}
+	state.submitLoading = true;
+	const result = (await adminApi.reqAddAduitGroup({ token: '213', aduitType: state.newGroupStat.parentGroup, groupName: state.newGroupStat.groupName.trim() })) as IAjaxRestlt;
+	state.submitLoading = false;
+	if (result.code) {
+		message.error('添加失败');
+		return false;
+	}
+	message.success('添加成功');
+	state.groupAddVisible = false;
+	router.go(0);
+	return true;
+}
+
+async function handleUserDisable(userId) {
+	const result = (await adminApi.reqUserDisable({ token: '123', userId })) as IAjaxRestlt;
+	if (result.code) {
+		message.error('停用失败');
+		return false;
+	}
+	message.success('停用成功');
+	router.go(0);
+	return true;
+}
+
+async function handleUserEnable(userId) {
+	const result = (await adminApi.reqUserEnable({ token: '123', userId })) as IAjaxRestlt;
+	if (result.code) {
+		message.error('启用失败');
+		return false;
+	}
+	message.success('启用成功');
+	router.go(0);
+	return true;
+}
+
+function showUserEdit(userName, userId) {
+	state.userEditStat.userName = userName;
+	state.userEditStat.userId = userId;
+	state.userEditStat.group = [state.curType - (state.curType % 10), state.curType];
+	state.userEditVisible = true;
+}
+
+async function handleUserEdit() {
+	if (state.userEditStat.userName.trim().length === 0) {
+		message.error('用户名不得为空');
+		return false;
+	}
+	state.userEditSubmitLoading = true;
+	const result = (await adminApi.reqUserEdit({ token: '213', userInfo: state.userEditStat })) as IAjaxRestlt;
+	state.userEditSubmitLoading = false;
+	if (result.code) {
+		message.error('编辑失败');
+		return false;
+	}
+	message.success('编辑成功');
+	state.userEditVisible = false;
+	router.go(0);
 	return true;
 }
 </script>
@@ -131,5 +284,9 @@ export default defineComponent({
 			background-color: #f0f2f5ff;
 		}
 	}
+}
+
+.userListItem {
+	border-bottom: 1px solid #00000040;
 }
 </style>
