@@ -3,6 +3,7 @@ import IAjaxRestlt from '../../types/common';
 
 const state = () => ({
 	sysData: {},
+	aduitType: null,
 });
 
 // getters
@@ -16,11 +17,20 @@ const actions = {
 		commit('updateSysData', result.data);
 		return true;
 	},
+	async getAduitType({ commit }, token: string) {
+		const result = (await adminApi.reqAduitType({ token })) as IAjaxRestlt;
+		if (result?.code) return false;
+		commit('updateAduitType', result.data);
+		return true;
+	},
 };
 
 const mutations = {
 	updateSysData($state, sysData) {
 		$state.sysData = sysData;
+	},
+	updateAduitType($state, aduitType) {
+		$state.aduitType = aduitType;
 	},
 };
 

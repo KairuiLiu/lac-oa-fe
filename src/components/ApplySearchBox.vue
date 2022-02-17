@@ -1,7 +1,7 @@
 <template>
 	<div class="searchWapper">
 		<div class="easySearch">
-			<a-input-search v-model:value="dataTitle" enter-button="搜索" size="large" @search="handleSearch" />
+			<a-input-search v-model:value="dataTitle" enter-button="搜索" size="large" @search="handleSearch(0)" />
 		</div>
 		<div class="searechMore" :class="{ active: !state.easySeach }">
 			<a-form ref="formRef" :label-col="{ style: { width: '100px' } }" name="advanced_search" class="ant-advanced-search-form">
@@ -65,7 +65,7 @@
 				</a-row>
 				<a-row>
 					<a-col :span="24" style="text-align: right">
-						<a-button type="primary" html-type="submit" @click="handleSearch">搜索</a-button>
+						<a-button type="primary" html-type="submit" @click="handleSearch(1)">搜索</a-button>
 						<a-button style="margin: 0 8px" @click="clearSearch">清空</a-button>
 					</a-col>
 				</a-row>
@@ -118,8 +118,8 @@ const data = ref(JSON.parse(JSON.stringify(searchInit)));
 
 const dataTitle = ref('');
 
-function handleSearch() {
-	if (state.easySeach) emit('search', { applyTitle: dataTitle.value });
+function handleSearch(type) {
+	if (state.easySeach || type === 0) emit('search', { applyTitle: dataTitle.value });
 	else {
 		emit('search', data.value);
 	}

@@ -42,7 +42,6 @@ watch(
 	() => state.showMonth,
 	() => {
 		column.changeData(curData.value.trend);
-		console.table(curData.value.trend);
 		column.update({
 			xAxis: {
 				label: {

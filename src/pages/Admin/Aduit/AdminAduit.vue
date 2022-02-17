@@ -1,7 +1,8 @@
 <template>
 	<div class="applyWapper">
 		<AdultSearchBox @search="handleSearch"></AdultSearchBox>
-		<div class="applyList">
+		当前还需要{{ state.aduitNeed }}位审核人
+		<div class="applyList" :scroll-y="{ enabled: true }">
 			<vxe-grid v-bind="gridOptions" class="table">
 				<template #pager>
 					<vxe-pager
@@ -15,11 +16,7 @@
 				</template>
 
 				<template #operate="{ row }">
-					<div class="linkContent">
-						<a-button type="link" @click="toShowApply(row.applyId)">查看申请</a-button>
-						<a-button type="link" @click="toShowFollow(row.applyId)">流转过程</a-button>
-						<a-button v-if="row.adminPassed" type="link" @click="toShowAduit(row.applyId)">分配审核</a-button>
-					</div>
+					<a-button type="link" @click="toAllocateWork(row.userId)">分配</a-button>
 				</template>
 			</vxe-grid>
 		</div>
@@ -29,14 +26,14 @@
 <script setup lang="ts">
 import { message } from 'ant-design-vue';
 import { defineComponent, reactive } from 'vue';
-import { useRouter } from 'vue-router';
-import { VxeGridProps, VxePagerEvents } from 'vxe-table';
+import { useRoute } from 'vue-router';
+import { VxeGridProps, VxePagerEvents, VxeColumnPropTypes } from 'vxe-table';
 import { adminApi } from '../../../api';
-import AdultSearchBox from '../../../components/ApplySearchBox.vue';
+import AdultSearchBox from '../../../components/AdultSearchBox.vue';
 import IAjaxRestlt from '../../../types/common';
-import { applyIdx2Name } from '../../../utils/applyTypes';
 
-const router = useRouter();
+const route = useRoute();
+
 const tablePage = reactive({
 	total: 0,
 	currentPage: 1,
@@ -44,8 +41,13 @@ const tablePage = reactive({
 });
 const state = reactive({
 	visible: false,
-	applyId: null,
+	applyId: route.params.applyId as string,
+	aduitNeed: 0,
 });
+
+const formatOnWork: VxeColumnPropTypes.Formatter = ({ cellValue }) => {
+	return cellValue ? '是' : '否';
+};
 
 const gridOptions = reactive<VxeGridProps>({
 	border: false,
@@ -53,27 +55,25 @@ const gridOptions = reactive<VxeGridProps>({
 	loading: false,
 	data: [],
 	columns: [
-		{ field: 'applyId', title: '申请编号', showOverflow: true },
-		{ field: 'applyTitle', title: '申请名称', showOverflow: true },
-		{ field: 'applyUserName', title: '申请用户', showOverflow: true },
-		{ field: 'applyDate', title: '申请日期', showOverflow: true },
-		{ field: 'applyType', title: '申请类型', showOverflow: true },
-		{ field: 'applyProp', title: '申请用途', showOverflow: true },
-		{ field: 'allocated', title: '分配人数', showOverflow: true },
-		{ field: 'adminPassed', title: '管理员审核', showOverflow: true },
-		{ title: '操作', slots: { default: 'operate' }, showOverflow: true },
+		{ field: 'userId', title: '用户编号' },
+		{ field: 'userName', title: '姓名' },
+		{ field: 'type', title: '分类' },
+		{ field: 'onWork', title: '五分钟内是否在线', formatter: formatOnWork },
+		{ field: 'workings', title: '待处理工作' },
+		{ title: '操作', slots: { default: 'operate' }, fixed: 'right', showOverflow: false },
 	],
 });
 
 const findList = async (condition = null) => {
 	gridOptions.loading = true;
-	const res = (await adminApi.reqAllocateApply({ token: '123', pageId: tablePage.currentPage, pageSize: tablePage.pageSize, condition })) as IAjaxRestlt;
+	const res = (await adminApi.reqAllocateAduitList({ token: '123', applyId: state.applyId, pageId: tablePage.currentPage, pageSize: tablePage.pageSize, condition })) as IAjaxRestlt;
 	if (res.code) {
 		message.error('数据请求失败');
 	} else {
 		gridOptions.loading = false;
 		tablePage.total = 100; // res.data.totle;
-		gridOptions.data = applyIdx2Name(res as unknown as any[]); // .data.data;
+		gridOptions.data = res as unknown as any[]; // .data.data;
+		// state.aduitNeed = res.data.aduitNeed;
 	}
 };
 
@@ -88,27 +88,14 @@ const handlePageChange: VxePagerEvents.PageChange = ({ currentPage, pageSize }) 
 	findList();
 };
 
-function toShowApply(applyId) {
-	router.push({
-		name: 'admin-apply',
-		params: {
-			applyId,
-		},
-	});
-}
-
-function toShowFollow(applyId) {
-	state.applyId = applyId;
-	state.visible = true;
-}
-
-function toShowAduit(applyId) {
-	router.push({
-		name: 'admin-aduit',
-		params: {
-			applyId,
-		},
-	});
+async function toAllocateWork(userId) {
+	const res = (await adminApi.reqAdminAllocateWork({ token: '123', userId, applyId: state.applyId })) as IAjaxRestlt;
+	if (res.code) {
+		message.error('分配失败');
+		return;
+	}
+	message.info('分配成功');
+	handleSearch({});
 }
 
 function handleSearch(condition) {
@@ -120,7 +107,7 @@ searchEvent();
 
 <script lang="ts">
 export default defineComponent({
-	name: 'AdminAduit',
+	name: 'AdminAllocate',
 });
 </script>
 

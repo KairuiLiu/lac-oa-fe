@@ -36,7 +36,7 @@ import IAjaxRestlt from '../types/common';
 
 const props = defineProps<{
 	visible: boolean;
-	applyID: string;
+	applyid: string;
 }>();
 
 const emits = defineEmits<{
@@ -77,7 +77,7 @@ watch(
 	async () => {
 		state.loading = true;
 		if (!props.visible) return;
-		const res = (await adminApi.reqApplyProcess({ token: '123', applyId: props.applyID })) as IAjaxRestlt;
+		const res = (await adminApi.reqApplyProcess({ token: '123', applyId: props.applyid })) as IAjaxRestlt;
 		if (res.code) {
 			message.error('加载失败');
 			return;

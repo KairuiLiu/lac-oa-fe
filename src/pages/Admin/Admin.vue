@@ -23,13 +23,16 @@
 </template>
 
 <script setup lang="ts">
-import { computed, defineComponent, ref } from 'vue';
+import { computed, defineComponent } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
 import { HomeFilled } from '@ant-design/icons-vue';
 
 const router = useRouter();
 const route = useRoute();
-const selectedKeys = ref<Array<string>>([route.path]);
+const selectedKeys = computed((): string[] => {
+	if (route?.meta?.toMenu) return [route?.meta?.toMenu];
+	return [route.path];
+});
 
 const handleMenuChange = ({ key }: { key: string }) => {
 	router.push(key);

@@ -28,6 +28,7 @@ const routes: RouteRecordRaw[] = [
 						name: 'admin-aduit',
 						meta: {
 							breadcrumbName: ['管理员', '申请分配', '选择审核人'],
+							toMenu: '/admin/allocate',
 						},
 						component: () => import('../pages/Admin/Aduit/AdminAduit.vue'),
 					},
@@ -36,6 +37,7 @@ const routes: RouteRecordRaw[] = [
 						name: 'admin-apply',
 						meta: {
 							breadcrumbName: ['管理员', '申请分配', '申请管理'],
+							toMenu: '/admin/allocate',
 						},
 						component: () => import('../pages/Admin/Apply/AdminApply.vue'),
 					},
@@ -50,7 +52,7 @@ const routes: RouteRecordRaw[] = [
 					},
 
 					{
-						path: '/admin/manage/:applyId',
+						path: '/admin/manage/',
 						name: 'admin-manage',
 						meta: {
 							breadcrumbName: ['管理员', '人员管理'],

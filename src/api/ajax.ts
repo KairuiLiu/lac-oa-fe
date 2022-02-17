@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 export default function ajax(url, data = {}, type = 'GET', conf = {}) {
-	return new Promise((resolve, reject) => {
+	return new Promise(resolve => {
 		let promise;
 		if (type === 'GET') {
 			let dataStr = '';
@@ -21,7 +21,7 @@ export default function ajax(url, data = {}, type = 'GET', conf = {}) {
 				resolve(response.data);
 			})
 			.catch(error => {
-				reject(error);
+				resolve({ code: 1, msg: error.message });
 			});
 	});
 }

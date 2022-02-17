@@ -5,6 +5,13 @@ export interface ISearchCondition {
 	applyType?: number;
 	applyProp?: number;
 	applyTitle?: string;
-	notFirst?: boolean;
+	notFirst?: number;
 	completeMatching?: number;
+}
+
+export interface IAduitSearchCondition {
+	userName?: string;
+	type?: string;
+	onWork?: number;
+	workings?: number;
 }

@@ -7,7 +7,6 @@ export function applyIdx2Name(data) {
 		if (Object.keys(d).includes('applyType')) d.applyType = applyTypes[d.applyType];
 		if (Object.keys(d).includes('applyProp')) d.applyProp = applyProps[d.applyProp];
 		if (Object.keys(d).includes('adminPassed')) d.adminPassed = d.adminPassed ? '已通过' : '未审核';
-
 		return d;
 	});
 }

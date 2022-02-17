@@ -22,7 +22,7 @@
 			</vxe-grid>
 		</div>
 	</div>
-	<ApplyProcess :visible="state.visible" :apply-id="state.applyId" @close="state.visible = false"></ApplyProcess>
+	<ApplyProcess :visible="state.visible" :applyid="state.applyId" @close="state.visible = false"></ApplyProcess>
 </template>
 
 <script setup lang="ts">
@@ -61,7 +61,7 @@ const gridOptions = reactive<VxeGridProps>({
 		{ field: 'applyProp', title: '申请用途' },
 		{ field: 'allocated', title: '分配人数' },
 		{ field: 'adminPassed', title: '管理员审核' },
-		{ title: '操作', slots: { default: 'operate' }, fixed: 'right' },
+		{ title: '操作', slots: { default: 'operate' }, fixed: 'right', showOverflow: false, width: 300 },
 	],
 });
 
