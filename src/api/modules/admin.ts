@@ -1,3 +1,4 @@
+import { IGoodConfig, IGoodSearchCondition } from '../../types/admin.d';
 import { ISearchCondition } from '../../types/admin';
 import ajax from '../ajax';
 
@@ -138,6 +139,71 @@ const adminApi = {
 				userInfo,
 			},
 			'POST',
+			{ auth: { token } }
+		);
+	},
+	reqGoodList({ token, supportId, condition, pageSize = 5, pageId = 1 }: { token: string; supportId: string; condition: IGoodSearchCondition; pageSize: number; pageId: number }) {
+		return ajax(
+			`${BASE_URL}/goodList`,
+			{
+				t: Date.now(),
+				supportId,
+				condition,
+				_limit: pageSize,
+				_page: pageId,
+			},
+			'GET',
+			{ auth: { token } }
+		);
+	},
+	reqAddGood({ token, supportId, condition, pageSize = 5, pageId = 1 }: { token: string; supportId: string; condition: IGoodSearchCondition; pageSize: number; pageId: number }) {
+		return ajax(
+			`${BASE_URL}/goodList`,
+			{
+				t: Date.now(),
+				supportId,
+				condition,
+				_limit: pageSize,
+				_page: pageId,
+			},
+			'GET',
+			{ auth: { token } }
+		);
+	},
+	reqDelGood({ token, supportId, goodId }: { token: string; supportId: string; goodId: string }) {
+		return ajax(
+			`${BASE_URL}/delgood`,
+			{
+				t: Date.now(),
+				supportId,
+				goodId,
+			},
+			'POST',
+			{ auth: { token } }
+		);
+	},
+	reqUpdGood({ token, supportId, goodId, config }: { token: string; supportId: string; goodId: string; config: IGoodConfig }) {
+		return ajax(
+			`${BASE_URL}/upgoodlist`,
+			{
+				t: Date.now(),
+				supportId,
+				goodId,
+				config,
+			},
+			'POST',
+			{ auth: { token } }
+		);
+	},
+	reqGoodLog({ token, supportId, goodId }: { token: string; supportId: string; goodId: string }) {
+		return ajax(
+			`${BASE_URL}/goodLog`,
+			{
+				t: Date.now(),
+				supportId,
+				goodId,
+			},
+			'GET',
 			{ auth: { token } }
 		);
 	},

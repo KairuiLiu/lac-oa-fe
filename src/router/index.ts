@@ -59,7 +59,15 @@ const routes: RouteRecordRaw[] = [
 						},
 						component: () => import('../pages/Admin/Manage/AdminManage.vue'),
 					},
-
+					{
+						path: '/admin/support/:supportId',
+						name: 'admin-support',
+						meta: {
+							breadcrumbName: ['管理员', '人员管理', '供应商管理'],
+							toMenu: '/admin/manage',
+						},
+						component: () => import('../pages/Admin/Support/AdminSupport.vue'),
+					},
 					{
 						path: '/admin/profile',
 						name: 'admin-profile',

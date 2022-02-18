@@ -6,7 +6,6 @@
 				<a-menu-item key="/admin/home">首页</a-menu-item>
 				<a-menu-item key="/admin/allocate">申请分配</a-menu-item>
 				<a-menu-item key="/admin/manage">人员管理</a-menu-item>
-				<a-menu-item key="/admin/w1">供应商管理</a-menu-item>
 				<a-menu-item key="/admin/w2">数据处理</a-menu-item>
 			</a-menu>
 		</a-layout-header>
@@ -30,7 +29,7 @@ import { HomeFilled } from '@ant-design/icons-vue';
 const router = useRouter();
 const route = useRoute();
 const selectedKeys = computed((): string[] => {
-	if (route?.meta?.toMenu) return [route?.meta?.toMenu];
+	if (route?.meta?.toMenu) return [route?.meta?.toMenu as string];
 	return [route.path];
 });
 
