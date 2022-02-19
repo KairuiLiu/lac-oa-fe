@@ -6,7 +6,7 @@
 				<a-menu-item key="/admin/home">首页</a-menu-item>
 				<a-menu-item key="/admin/allocate">申请分配</a-menu-item>
 				<a-menu-item key="/admin/manage">人员管理</a-menu-item>
-				<a-menu-item key="/admin/w2">数据处理</a-menu-item>
+				<a-menu-item key="/admin/data">数据处理</a-menu-item>
 			</a-menu>
 		</a-layout-header>
 		<a-layout-content class="content">

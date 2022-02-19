@@ -7,21 +7,20 @@
 			"class": "猫",
 			"goodPrice": {
 				"unit": "只",
-				"perPrice": "10085",
+				"perPrice": 10085,
 				"transPerPrice": 1,
 				"transBasePrice": 12
 			},
 			"goodStock": 212,
 			"shipTag": ["同城配送", "次日达", "分批配送"],
 			"customeType": ["性别定制", "年龄定制"],
-			"detail": "223134141343",
+			"detail": "<h1 id=\"mq6sv\">你好啊😁</h1><p>欢迎购买机器猫</p>",
 			"enable": true,
 			"aduit": -1
 		}
 	},
 	"goodLog": ["[2022-1-1]: 创建商品", "[2022-1-2]: 上架商品", "[2022-1-3]: 下架商品", "[2022-1-4]: 删除商品", "[2022-1-5]: 上架商品"],
-	"goodList": [
-		{
+	"goodList": [{
 			"goodId": 1,
 			"goodName": "鸡1",
 			"goodPrice": {
@@ -248,8 +247,7 @@
 	],
 	"aduitList": {
 		"code": 0,
-		"data": [
-			{
+		"data": [{
 				"userName": "张1",
 				"userId": 1234561,
 				"enable": true
@@ -288,12 +286,10 @@
 	},
 	"aduitType": {
 		"code": 0,
-		"data": [
-			{
+		"data": [{
 				"type": 10,
 				"name": "伦理审核人员",
-				"subType": [
-					{
+				"subType": [{
 						"type": 11,
 						"name": "社会人士"
 					},
@@ -318,8 +314,7 @@
 			{
 				"type": 20,
 				"name": "采购审核人员",
-				"subType": [
-					{
+				"subType": [{
 						"type": 21,
 						"name": "社会人士"
 					},
@@ -344,12 +339,10 @@
 			{
 				"type": 30,
 				"name": "供应商",
-				"subType": [
-					{
-						"type": 31,
-						"name": "全部供应商"
-					}
-				]
+				"subType": [{
+					"type": 31,
+					"name": "全部供应商"
+				}]
 			}
 		]
 	},
@@ -358,8 +351,7 @@
 		"userId": 1,
 		"applyId": "1"
 	},
-	"allocateAduitList": [
-		{
+	"allocateAduitList": [{
 			"userId": 1,
 			"userName": "张1",
 			"type": "社会人士",
@@ -489,8 +481,7 @@
 	"applyProcess": {
 		"code": 0,
 		"data": {
-			"process": [
-				{
+			"process": [{
 					"userName": "申请人1",
 					"note": "发起申请",
 					"error": false,
@@ -581,8 +572,7 @@
 			]
 		}
 	},
-	"allocateApplyList": [
-		{
+	"allocateApplyList": [{
 			"applyId": 1,
 			"applyTitle": "研究1的申请",
 			"applyUserName": "张三",
@@ -778,8 +768,7 @@
 			},
 			"taskType": {
 				"totle": 66,
-				"detail": [
-					{
+				"detail": [{
 						"type": "伦理审查",
 						"value": 44
 					},
@@ -806,8 +795,7 @@
 			"ethicsAnimal": {
 				"month": {
 					"totle": 7300,
-					"detail": [
-						{
+					"detail": [{
 							"type": "鸡",
 							"value": 123
 						},
@@ -827,8 +815,7 @@
 				},
 				"year": {
 					"totle": 72,
-					"detail": [
-						{
+					"detail": [{
 							"type": "鸡",
 							"value": 1232
 						},
@@ -850,8 +837,7 @@
 			"buyAnimal": {
 				"month": {
 					"totle": 7300,
-					"detail": [
-						{
+					"detail": [{
 							"type": "鸡",
 							"value": 123
 						},
@@ -871,8 +857,7 @@
 				},
 				"year": {
 					"totle": 73200,
-					"detail": [
-						{
+					"detail": [{
 							"type": "鸡",
 							"value": 123
 						},
@@ -894,8 +879,7 @@
 			"expAnimal": {
 				"month": {
 					"totle": 7300,
-					"detail": [
-						{
+					"detail": [{
 							"type": "鸡",
 							"value": 123
 						},
@@ -915,8 +899,7 @@
 				},
 				"year": {
 					"totle": 7300,
-					"detail": [
-						{
+					"detail": [{
 							"type": "鸡",
 							"value": 123
 						},
@@ -939,8 +922,7 @@
 				"month": [1, 2, 3, 4, 5, 6, 7, 8, 9, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 0],
 				"year": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
 			},
-			"applyNotify": [
-				{
+			"applyNotify": [{
 					"title": "申请修改通知1",
 					"date": "2022-1-1",
 					"detail": "您好,乌拉乌拉乌拉",
@@ -996,8 +978,7 @@
 				}
 			],
 			"applyType": {
-				"done": [
-					{
+				"done": [{
 						"type": "伦理",
 						"value": 12
 					},
@@ -1014,8 +995,7 @@
 						"value": 15
 					}
 				],
-				"doing": [
-					{
+				"doing": [{
 						"type": "伦理",
 						"value": 122
 					},
@@ -1034,8 +1014,7 @@
 				]
 			},
 			"applyProp": {
-				"ethic": [
-					{
+				"ethic": [{
 						"type": "教学",
 						"value": 12
 					},
@@ -1048,8 +1027,7 @@
 						"value": 14
 					}
 				],
-				"buy": [
-					{
+				"buy": [{
 						"type": "教学",
 						"value": 122
 					},
@@ -1063,8 +1041,7 @@
 					}
 				]
 			},
-			"doingApplyType": [
-				{
+			"doingApplyType": [{
 					"type": "等待存档",
 					"value": 291
 				},
@@ -1078,8 +1055,7 @@
 				}
 			],
 			"userInfo": {
-				"userType": [
-					{
+				"userType": [{
 						"type": "申请人",
 						"value": 12
 					},
@@ -1092,8 +1068,7 @@
 						"value": 1
 					}
 				],
-				"aduitType": [
-					{
+				"aduitType": [{
 						"type": "A领域专家",
 						"value": 1
 					},
@@ -1114,8 +1089,7 @@
 						"value": 5
 					}
 				],
-				"userStat": [
-					{
+				"userStat": [{
 						"type": "在线用户",
 						"value": 4
 					},
@@ -1125,8 +1099,7 @@
 					}
 				]
 			},
-			"operateInfo": [
-				{
+			"operateInfo": [{
 					"applyId": 1,
 					"title": "关于A的申请",
 					"userName": "AAA",
@@ -1164,5 +1137,13 @@
 				}
 			]
 		}
+	},
+	"uploadImg": {
+		"errno": 0,
+		"data": [{
+			"url": "111",
+			"alt": "222",
+			"href": "333"
+		}]
 	}
 }
