@@ -23,16 +23,18 @@ export interface IGoodSearchCondition {
 }
 
 export interface IGoodConfig {
-	id: number;
+	id: string;
 	name: string;
 	class: string;
+	enable: boolean;
+	aduit: number;
 	goodPrice: {
 		unit: string;
 		perPrice: number;
 		transPerPrice: number;
 		transBasePrice: number;
 	};
-	goodStock: 1233;
+	goodStock: number;
 	shipTag: string[];
 	customeType: string[];
 	detail: string;

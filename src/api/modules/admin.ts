@@ -156,27 +156,25 @@ const adminApi = {
 			{ auth: { token } }
 		);
 	},
-	reqAddGood({ token, supportId, condition, pageSize = 5, pageId = 1 }: { token: string; supportId: string; condition: IGoodSearchCondition; pageSize: number; pageId: number }) {
+	reqAddGood({ token, supportId, config }: { token: string; supportId: string; config: IGoodConfig }) {
 		return ajax(
-			`${BASE_URL}/goodList`,
+			`${BASE_URL}/addgood`,
 			{
 				t: Date.now(),
 				supportId,
-				condition,
-				_limit: pageSize,
-				_page: pageId,
+				config,
 			},
-			'GET',
+			'POST',
 			{ auth: { token } }
 		);
 	},
-	reqDelGood({ token, supportId, goodId }: { token: string; supportId: string; goodId: string }) {
+	reqDelGood({ token, supportId, goodIds }: { token: string; supportId: string; goodIds: string[] }) {
 		return ajax(
 			`${BASE_URL}/delgood`,
 			{
 				t: Date.now(),
 				supportId,
-				goodId,
+				goodIds,
 			},
 			'POST',
 			{ auth: { token } }
@@ -198,6 +196,18 @@ const adminApi = {
 	reqGoodLog({ token, supportId, goodId }: { token: string; supportId: string; goodId: string }) {
 		return ajax(
 			`${BASE_URL}/goodLog`,
+			{
+				t: Date.now(),
+				supportId,
+				goodId,
+			},
+			'GET',
+			{ auth: { token } }
+		);
+	},
+	reqGoodDetail({ token, supportId, goodId }: { token: string; supportId: string; goodId: string }) {
+		return ajax(
+			`${BASE_URL}/goodDetail`,
 			{
 				t: Date.now(),
 				supportId,

@@ -35,8 +35,10 @@
 	</a-tabs>
 	<div class="searchBar">
 		<div class="l">
-			<a-button type="primary" style="margin-right: 15px"><plus-circle-filled />添加商品</a-button>
-			<a-button type="primary" danger><delete-filled />批量删除</a-button>
+			<a-button type="primary" style="margin-right: 15px" @click="toShowEdit('-1')"><plus-circle-filled />添加商品</a-button>
+			<a-popconfirm title="确定删除商品?" ok-text="确定" cancel-text="取消" @confirm="handleDelGood(getGoodsId())">
+				<a-button type="primary" danger><delete-filled />批量删除</a-button>
+			</a-popconfirm>
 		</div>
 		<div class="r">
 			<a-form :model="state.search" name="goodSearch" autocomplete="off">
@@ -55,7 +57,7 @@
 		</div>
 	</div>
 	<div class="goodsList" :scroll-y="{ enabled: true }">
-		<vxe-grid v-bind="gridOptions" class="table">
+		<vxe-grid ref="goodsTable" v-bind="gridOptions" class="table">
 			<template #pager>
 				<vxe-pager
 					v-model:current-page="tablePage.currentPage"
@@ -70,7 +72,7 @@
 			<template #operate="{ row }">
 				<div class="btns">
 					<a-button type="primary" @click="toShowEdit(row.goodId)"><edit-filled /></a-button>
-					<a-popconfirm title="确定删除商品?" ok-text="确定" cancel-text="取消" @confirm="handleDelGood(row.goodId)">
+					<a-popconfirm title="确定删除商品?" ok-text="确定" cancel-text="取消" @confirm="handleDelGood([row.goodId])">
 						<a-button type="primary" danger><delete-filled /></a-button>
 					</a-popconfirm>
 					<a-button @click="toShowLog(row.goodId)"><profile-filled /></a-button>
@@ -78,11 +80,6 @@
 			</template>
 		</vxe-grid>
 	</div>
-	<a-modal v-model:visible="state.modalEdit.visible" title="编辑商品" cancel-text="取消" ok-text="提交" :confirm-loading="state.modalEdit.submitLoading" @ok="handleEdit">
-		<p>Some contents...</p>
-		<p>Some contents...</p>
-		<p>Some contents...</p>
-	</a-modal>
 	<a-modal v-model:visible="state.modalLog.visible" title="商品日志" cancel-text="取消">
 		<div v-if="state.modalLog.loading" class="loading"><a-spin /></div>
 		<div v-else class="logcontent">
@@ -96,6 +93,7 @@
 			<a-button key="back" @click="state.modalLog.visible = false">返回</a-button>
 		</template>
 	</a-modal>
+	<GoodEditModal :support-id="state.supportId" :visible="state.modalEdit.visible" :good-id="state.modalEdit.goodId" @cancel="handleEditCancel"></GoodEditModal>
 </template>
 
 <script setup lang="ts">
@@ -105,12 +103,13 @@ import type { Dayjs } from 'dayjs';
 import dayjs from 'dayjs';
 import 'dayjs/locale/zh-cn';
 import locale from 'ant-design-vue/es/date-picker/locale/zh_CN';
-import { VxeGridProps, VxePagerEvents } from 'vxe-table';
+import { VxeGridProps, VxePagerEvents, VxeTableInstance } from 'vxe-table';
 import { message } from 'ant-design-vue';
 import { useRoute, useRouter } from 'vue-router';
 import { adminApi } from '../../../api';
 import IAjaxRestlt from '../../../types/common';
 import { goodFormate } from '../../../utils/goodTypes';
+import GoodEditModal from './GoodEditModal.vue';
 
 dayjs.locale('zh-cn');
 type RangeValue = [Dayjs, Dayjs];
@@ -127,8 +126,7 @@ const state = reactive({
 	supportId: route.params.supportId as string,
 	modalEdit: {
 		visible: false,
-		submitLoading: false,
-		loading: false,
+		goodId: '',
 	},
 	modalLog: {
 		visible: false,
@@ -143,12 +141,15 @@ const tablePage = reactive({
 	pageSize: 10,
 });
 
+const goodsTable = ref({} as VxeTableInstance);
+
 const gridOptions = reactive<VxeGridProps>({
 	border: false,
 	resizable: true,
 	loading: false,
 	data: [],
 	columns: [
+		{ type: 'checkbox', width: 40 },
 		{ field: 'goodId', title: '商品编号' },
 		{ field: 'goodName', title: '商品名称' },
 		{ field: 'goodPrice', title: '价格与运费', formatter: goodFormate.formatPrice },
@@ -185,6 +186,12 @@ const handlePageChange: VxePagerEvents.PageChange = ({ currentPage, pageSize }) 
 	findList();
 };
 
+function getGoodsId() {
+	const $table = goodsTable.value;
+	const selectRecords = $table.getCheckboxRecords();
+	return selectRecords.map(d => d.goodId);
+}
+
 function handleSearch() {
 	searchEvent(state.search);
 }
@@ -195,8 +202,12 @@ function handleTabChange(a) {
 
 searchEvent();
 
-async function handleDelGood(goodId) {
-	const res = (await adminApi.reqDelGood({ token: '213', supportId: state.supportId, goodId })) as IAjaxRestlt;
+async function handleDelGood(goodIds) {
+	if (goodIds.length === 0) {
+		message.error('请选择要删除的商品');
+		return;
+	}
+	const res = (await adminApi.reqDelGood({ token: '213', supportId: state.supportId, goodIds })) as IAjaxRestlt;
 	if (res.code) {
 		message.error('删除失败');
 		return;
@@ -206,6 +217,7 @@ async function handleDelGood(goodId) {
 }
 
 function toShowEdit(goodId) {
+	state.modalEdit.goodId = goodId;
 	state.modalEdit.visible = true;
 }
 
@@ -223,9 +235,10 @@ async function handleLog(goodId) {
 	state.modalLog.loading = false;
 	state.modalLog.data = res as unknown as string; // .data;
 }
-// async
-function handleEdit() {}
-// async function handleEditSubmit() {}
+
+function handleEditCancel() {
+	state.modalEdit.visible = false;
+}
 </script>
 
 <script lang="ts">
@@ -240,7 +253,7 @@ export default defineComponent({
 	justify-content: space-between;
 	.form-row {
 		display: flex;
-		gap: 24px;
+		gap: 12px;
 	}
 }
 .btns {

@@ -42,7 +42,7 @@ const breadcrumbRoutes = computed(() => {
 	let res: any = breadcrumbRouter;
 	while (res) {
 		// res.push(t?.meta?.breadcrumbName);
-		const child = res?.children?.find((d: any) => route.name.includes(d.name));
+		const child = res?.children?.find((d: any) => (route.name as string).includes(d.name));
 		if (child === undefined) break;
 		res = child;
 	}

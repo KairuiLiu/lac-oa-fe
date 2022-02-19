@@ -82,7 +82,7 @@ const marks = ref<Record<number, any>>({
 });
 
 function handleSearch(type) {
-	if (state.easySeach || type === 0) emit('search', { applyTitle: dataTitle.value });
+	if (state.easySeach || type === 0) emit('search', { userName: dataTitle.value });
 	else {
 		emit('search', data.value);
 	}
