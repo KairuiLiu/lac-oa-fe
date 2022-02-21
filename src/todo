@@ -1,8 +1,5 @@
 申请组件
 供应商检索    22
-admin
-  profile     2.20 A
-login         2.20 B
 applyer
   sidebar     2.20 C
   toolbar     23
@@ -10,7 +7,3 @@ applyer
   首页         2.20 C
 供应商
   订单页        21
-
-face:
-  流转
-  人员管理

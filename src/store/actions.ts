@@ -14,10 +14,10 @@ export default {
 		if (!token) return false;
 		const result = (await commonApi.reqLoginTk(token)) as IAjaxRestlt;
 		if (result?.code) return false;
-		const userInfo = result.data;
+		const { userInfo } = result.data;
 		localStorage.setItem('token', userInfo.token);
 		commit(SAVE_LOG_IN, userInfo);
-		return true;
+		return result.data.type;
 	},
 
 	clearLogin({ commit }) {

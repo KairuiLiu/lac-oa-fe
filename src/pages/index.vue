@@ -11,8 +11,8 @@ import { useStore } from 'vuex';
 const router = useRouter();
 const store = useStore();
 onMounted(async () => {
-	const logined = store.dispatch('tryLoginToken');
-	if (!logined) router.push({ path: '/login' });
+	const logined = (await store.dispatch('tryLoginToken')) as string;
+	router.push({ name: logined || 'login' });
 });
 </script>
 
