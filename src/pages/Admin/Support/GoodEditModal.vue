@@ -132,7 +132,7 @@ import { useRouter } from 'vue-router';
 import WangEditor from 'wangeditor';
 import { adminApi } from '../../../api';
 import { IGoodConfig } from '../../../types/admin';
-import IAjaxRestlt from '../../../types/common';
+import { IAjaxRestlt } from '../../../types/common';
 
 const router = useRouter();
 

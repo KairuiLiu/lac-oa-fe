@@ -76,11 +76,6 @@ const routes: RouteRecordRaw[] = [
 						},
 						component: () => import('../pages/Admin/Data/AdminData.vue'),
 					},
-					{
-						path: '/admin/profile',
-						name: 'admin-profile',
-						component: () => import('../pages/Admin/Profile/AdminProfile.vue'),
-					},
 				],
 			},
 			{

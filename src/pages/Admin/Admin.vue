@@ -1,13 +1,13 @@
 <template>
 	<a-layout class="layout">
-		<a-layout-header>
-			<div class="logo" />
+		<a-layout-header class="header">
 			<a-menu v-model:selectedKeys="selectedKeys" theme="dark" mode="horizontal" :style="{ lineHeight: '64px' }" @select="handleMenuChange">
 				<a-menu-item key="/admin/home">首页</a-menu-item>
 				<a-menu-item key="/admin/allocate">申请分配</a-menu-item>
 				<a-menu-item key="/admin/manage">人员管理</a-menu-item>
 				<a-menu-item key="/admin/data">数据处理</a-menu-item>
 			</a-menu>
+			<UserIcon face="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png"></UserIcon>
 		</a-layout-header>
 		<a-layout-content class="content">
 			<a-breadcrumb v-if="selectedKeys[0] !== '/admin/home'">
@@ -25,6 +25,7 @@
 import { computed, defineComponent } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
 import { HomeFilled } from '@ant-design/icons-vue';
+import UserIcon from '../../components/UserIcon.vue';
 
 const router = useRouter();
 const route = useRoute();
@@ -97,5 +98,10 @@ export default defineComponent({
 			flex-direction: column;
 		}
 	}
+}
+
+.header {
+	display: flex;
+	justify-content: space-between;
 }
 </style>

@@ -75,7 +75,7 @@ const adminApi = {
 			{ auth: { token } }
 		);
 	},
-	reqAduitList({ token, aduitType }: { token: string; aduitType: number }) {
+	reqAduitList({ token, aduitType }: { token: string; aduitType: string[] }) {
 		return ajax(
 			`${BASE_URL}/aduitList`,
 			{
@@ -86,7 +86,7 @@ const adminApi = {
 			{ auth: { token } }
 		);
 	},
-	reqDeleteAduitGroup({ token, aduitType }: { token: string; aduitType: number }) {
+	reqDeleteAduitGroup({ token, aduitType }: { token: string; aduitType: string[] }) {
 		return ajax(
 			`${BASE_URL}/delAduitGroup`,
 			{
@@ -97,7 +97,7 @@ const adminApi = {
 			{ auth: { token } }
 		);
 	},
-	reqAddAduitGroup({ token, aduitType, groupName }: { token: string; aduitType: number; groupName: string }) {
+	reqAddAduitGroup({ token, aduitType, groupName }: { token: string; aduitType: string; groupName: string }) {
 		return ajax(
 			`${BASE_URL}/addAduitGroup`,
 			{
@@ -212,6 +212,17 @@ const adminApi = {
 				t: Date.now(),
 				supportId,
 				goodId,
+			},
+			'GET',
+			{ auth: { token } }
+		);
+	},
+	reqUserDetail({ token, userId }: { token: string; userId: string }) {
+		return ajax(
+			`${BASE_URL}/userInfo`,
+			{
+				t: Date.now(),
+				userId,
 			},
 			'GET',
 			{ auth: { token } }

@@ -1,12 +1,12 @@
 <template>
 	<div class="manageWapper">
 		<a-menu v-model:openKeys="openKeys" v-model:selectedKeys="selectedKeys" class="left-side-bar" style="width: 256px" mode="inline">
-			<a-sub-menu v-for="item in state.aduitType" :key="item.type">
+			<a-sub-menu v-for="item in state.aduitType" :key="item.name">
 				<template #icon>
 					<sliders-outlined />
 				</template>
 				<template #title>{{ item.name }}</template>
-				<a-menu-item v-for="item2 in item.subType" :key="item2.type" @click="handleMenu(item2.type)">{{ item2.name }}</a-menu-item>
+				<a-menu-item v-for="item2 in item.subType" :key="`[${item.name}, ${item2.name}]`" @click="handleMenu([item.name, item2.name])">{{ item2.name }}</a-menu-item>
 			</a-sub-menu>
 		</a-menu>
 		<div class="listWapper">
@@ -22,20 +22,20 @@
 					<template #renderItem="{ item }">
 						<a-list-item key="item.userName" class="userListItem">
 							<template #extra>
-								<a-button type="link" @click="showUserEdit(item.userName, item.userId)">编辑帐号</a-button>
+								<a-button type="link" @click="showUserEdit(item.userId)">编辑帐号</a-button>
 								<a-popconfirm v-if="item.enable" title="确定停用帐号?" ok-text="确定" cancel-text="取消" @confirm="handleUserDisable(item.userId)">
 									<a-button type="link">停用帐号</a-button>
 								</a-popconfirm>
 								<a-popconfirm v-else title="确定启用帐号?" ok-text="确定" cancel-text="取消" @confirm="handleUserEnable(item.userId)">
 									<a-button type="link">启用帐号</a-button>
 								</a-popconfirm>
-								<a-button v-if="state.curType > 30" type="link" @click="toSupportEdit(item.userId)">编辑产品</a-button>
+								<a-button v-if="state.curType === '供应商'" type="link" @click="toSupportEdit(item.userId)">编辑产品</a-button>
 							</template>
 							<a-list-item-meta :description="item.description">
 								<template #title>
 									{{ item.userName }}
 								</template>
-								<template #avatar><a-avatar :src="item.userName" /></template>
+								<template #avatar><a-avatar :src="item.face" /></template>
 							</a-list-item-meta>
 							{{ item.content }}
 						</a-list-item>
@@ -63,7 +63,7 @@
 			</a-form-item>
 		</a-form>
 	</a-modal>
-	<a-modal
+	<!-- <a-modal
 		v-model:visible="state.userEditVisible"
 		title="编辑用户"
 		:confirm-loading="state.submitLoading"
@@ -84,7 +84,8 @@
 				<a-cascader ref="select" v-model:value="state.userEditStat.group" :options="userGroup" @focus="focus"></a-cascader>
 			</a-form-item>
 		</a-form>
-	</a-modal>
+	</a-modal> -->
+	<UserProfile :visible="state.userEditVisible" :user-id="state.userEditStat.userId" :group-options="getOptions(state.aduitType, true)" @cancel="handleProfileCancel"></UserProfile>
 </template>
 
 <script setup lang="ts">
@@ -94,7 +95,8 @@ import { useStore } from 'vuex';
 import { message } from 'ant-design-vue';
 import { useRouter } from 'vue-router';
 import { adminApi } from '../../../api';
-import IAjaxRestlt from '../../../types/common';
+import { IAjaxRestlt } from '../../../types/common';
+import UserProfile from '../../../components/UserProfile.vue';
 
 const openKeys = ref<string[]>([]);
 const selectedKeys = ref<string[]>([]);
@@ -102,10 +104,10 @@ const store = useStore();
 const router = useRouter();
 
 const state = reactive({
-	aduitType: null,
+	aduitType: [],
 	aduitList: [],
+	curType: ref(''),
 	loading: false,
-	curType: -1,
 	pagination: {
 		pageSize: 10,
 	},
@@ -116,23 +118,19 @@ const state = reactive({
 		parentGroup: null,
 	},
 	userEditVisible: false,
-	userEditSubmitLoading: false,
 	userEditStat: {
-		userName: '',
-		group: [10, 11],
 		userId: null,
 	},
 });
 
 function getOptions(arr, deep) {
 	return arr.map(d => {
-		if (!deep || !Object.keys(d).includes('subType')) return { value: d.type, label: d.name };
-		return { value: d.type, label: d.name, children: getOptions(d.subType, deep) };
+		if (!deep || !Object.keys(d).includes('subType')) return { value: d.name, label: d.name };
+		return { value: d.name, label: d.name, children: getOptions(d.subType, deep) };
 	});
 }
 
 const newGroupOptions = computed(() => getOptions(state.aduitType, false));
-const userGroup = computed(() => getOptions(state.aduitType, true));
 
 onMounted(async () => {
 	if (!store.state.admin?.aduitType) {
@@ -147,7 +145,7 @@ onMounted(async () => {
 async function handleMenu(type) {
 	state.loading = true;
 	state.aduitList = [];
-	state.curType = -1;
+	state.curType = '';
 	const result = (await adminApi.reqAduitList({ token: '123', aduitType: type })) as IAjaxRestlt;
 	state.loading = false;
 	if (result?.code) return false;
@@ -171,7 +169,7 @@ async function handleGroupDelete() {
 }
 
 function showGroupAdd() {
-	state.newGroupStat.parentGroup = state.curType - (state.curType % 10);
+	state.newGroupStat.parentGroup = state.curType;
 	state.newGroupStat.groupName = '';
 	state.groupAddVisible = true;
 }
@@ -216,29 +214,13 @@ async function handleUserEnable(userId) {
 	return true;
 }
 
-function showUserEdit(userName, userId) {
-	state.userEditStat.userName = userName;
+function showUserEdit(userId) {
 	state.userEditStat.userId = userId;
-	state.userEditStat.group = [state.curType - (state.curType % 10), state.curType];
 	state.userEditVisible = true;
 }
 
-async function handleUserEdit() {
-	if (state.userEditStat.userName.trim().length === 0) {
-		message.error('用户名不得为空');
-		return false;
-	}
-	state.userEditSubmitLoading = true;
-	const result = (await adminApi.reqUserEdit({ token: '213', userInfo: state.userEditStat })) as IAjaxRestlt;
-	state.userEditSubmitLoading = false;
-	if (result.code) {
-		message.error('编辑失败');
-		return false;
-	}
-	message.success('编辑成功');
+function handleProfileCancel() {
 	state.userEditVisible = false;
-	router.go(0);
-	return true;
 }
 
 function toSupportEdit(supportId) {

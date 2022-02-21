@@ -12,7 +12,7 @@
 							<a-comment v-for="(item2, index2) in item.processes" :key="`${index}-${item.type}-${index2}`">
 								<template #author>{{ item2.userName }}</template>
 								<template #avatar>
-									<a-avatar src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png" alt="Han Solo" />
+									<a-avatar :src="item2.face" :alt="item2.userName" />
 								</template>
 								<template #content>
 									<p>备注: {{ item2.note }}</p>
@@ -32,7 +32,7 @@ import { message } from 'ant-design-vue';
 import { defineComponent, reactive, watch, computed } from 'vue';
 import { adminApi } from '../api';
 import { getProcessTitle } from '../utils/applyTypes';
-import IAjaxRestlt from '../types/common';
+import { IAjaxRestlt } from '../types/common';
 
 const props = defineProps<{
 	visible: boolean;

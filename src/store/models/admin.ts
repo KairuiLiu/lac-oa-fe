@@ -1,5 +1,5 @@
 import { adminApi } from '../../api/index';
-import IAjaxRestlt from '../../types/common';
+import { IAjaxRestlt } from '../../types/common';
 
 const state = () => ({
 	sysData: {},

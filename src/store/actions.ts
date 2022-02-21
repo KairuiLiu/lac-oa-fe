@@ -1,11 +1,11 @@
 import { SAVE_LOG_IN, CLEAR_LOG_IN } from './mutationType';
 
 import { commonApi } from '../api/index';
-import IAjaxRestlt from '../types/common';
+import { IAjaxRestlt } from '../types/common';
 
 export default {
 	saveLogin({ commit }, userInfo) {
-		localStorage.setItem('token', userInfo.tk);
+		localStorage.setItem('token', userInfo.token);
 		commit(SAVE_LOG_IN, userInfo);
 	},
 
@@ -20,8 +20,8 @@ export default {
 		return true;
 	},
 
-	clearLogin({ commit }, userInfo) {
+	clearLogin({ commit }) {
 		localStorage.removeItem('token');
-		commit(CLEAR_LOG_IN, userInfo);
+		commit(CLEAR_LOG_IN);
 	},
 };

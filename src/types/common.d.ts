@@ -14,8 +14,20 @@ export type CustomConfig = {
 	errorTitle?: string; // error提示
 };
 
-export default interface IAjaxRestlt {
+export interface IAjaxRestlt {
 	code: number;
 	msg?: 'string';
 	data: any;
+}
+
+export interface IUserInfo {
+	token?: string;
+	userId?: string;
+	username?: string;
+	email?: string;
+	department?: string;
+	face?: string;
+	phone?: string;
+	password?: string;
+	group?: string[];
 }

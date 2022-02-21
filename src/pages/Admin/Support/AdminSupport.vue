@@ -107,7 +107,7 @@ import { VxeGridProps, VxePagerEvents, VxeTableInstance } from 'vxe-table';
 import { message } from 'ant-design-vue';
 import { useRoute, useRouter } from 'vue-router';
 import { adminApi } from '../../../api';
-import IAjaxRestlt from '../../../types/common';
+import { IAjaxRestlt } from '../../../types/common';
 import { goodFormate } from '../../../utils/goodTypes';
 import GoodEditModal from './GoodEditModal.vue';
 

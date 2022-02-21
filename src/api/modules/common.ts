@@ -1,8 +1,10 @@
+import { IUserInfo } from '../../types/common.d';
 import ajax from '../ajax';
 
 const BASE_URL = '/api';
 
 const commonApi = {
+	// 记得上下线改成post
 	reqLogin({ userid, passWord }) {
 		return ajax(
 			`${BASE_URL}/user/login`,
@@ -10,11 +12,22 @@ const commonApi = {
 				userid,
 				passWord,
 			},
-			'POST'
+			'GET'
 		);
 	},
 	reqLoginTk(token) {
-		return ajax(`${BASE_URL}/user/login`, {}, 'POST', { auth: { token } });
+		return ajax(`${BASE_URL}/user/login`, {}, 'GET', { auth: { token } });
+	},
+	reqUpdUserInfo({ token, config }: { token: string; config: IUserInfo }) {
+		return ajax(
+			`${BASE_URL}/user/upduserinfo`,
+			{
+				token,
+				config,
+			},
+			'POST',
+			{ auth: { token } }
+		);
 	},
 };
 

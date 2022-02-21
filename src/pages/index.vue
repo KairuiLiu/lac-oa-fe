@@ -3,11 +3,20 @@
 	<a-layout-footer style="text-align: center"> 西南大学动物中心 ©2022 渝 ICP 备 xxxxxxxxx号 </a-layout-footer>
 </template>
 
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import { onMounted, defineComponent } from 'vue';
+import { useRouter } from 'vue-router';
+import { useStore } from 'vuex';
 
-<script>
-import { defineComponent } from 'vue';
+const router = useRouter();
+const store = useStore();
+onMounted(async () => {
+	const logined = store.dispatch('tryLoginToken');
+	if (!logined) router.push({ path: '/login' });
+});
+</script>
 
+<script lang="ts">
 export default defineComponent({
 	name: 'IndexPage',
 });

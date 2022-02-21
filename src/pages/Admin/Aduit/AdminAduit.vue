@@ -30,7 +30,7 @@ import { useRoute } from 'vue-router';
 import { VxeGridProps, VxePagerEvents, VxeColumnPropTypes } from 'vxe-table';
 import { adminApi } from '../../../api';
 import AdultSearchBox from '../../../components/AdultSearchBox.vue';
-import IAjaxRestlt from '../../../types/common';
+import { IAjaxRestlt } from '../../../types/common';
 
 const route = useRoute();
 
