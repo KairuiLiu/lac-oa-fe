@@ -7,7 +7,7 @@
 				<a-menu-item key="/admin/manage">人员管理</a-menu-item>
 				<a-menu-item key="/admin/data">数据处理</a-menu-item>
 			</a-menu>
-			<UserIcon face="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png"></UserIcon>
+			<UserIcon :face="store.state?.userInfo?.face || ''"></UserIcon>
 		</a-layout-header>
 		<a-layout-content class="content">
 			<a-breadcrumb v-if="selectedKeys[0] !== '/admin/home'">
@@ -25,10 +25,13 @@
 import { computed, defineComponent } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
 import { HomeFilled } from '@ant-design/icons-vue';
+import { useStore } from 'vuex';
 import UserIcon from '../../components/UserIcon.vue';
 
 const router = useRouter();
 const route = useRoute();
+const store = useStore();
+
 const selectedKeys = computed((): string[] => {
 	if (route?.meta?.toMenu) return [route?.meta?.toMenu as string];
 	return [route.path];
