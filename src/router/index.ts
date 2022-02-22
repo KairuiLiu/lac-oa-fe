@@ -41,7 +41,6 @@ const routes: RouteRecordRaw[] = [
 						},
 						component: () => import('../pages/Admin/Apply/AdminApply.vue'),
 					},
-
 					{
 						path: '/admin/home',
 						name: 'admin-home',
@@ -81,28 +80,22 @@ const routes: RouteRecordRaw[] = [
 			{
 				path: '/aduit',
 				name: 'aduit',
+				redirect: '/aduit/home',
 				component: () => import('../pages/Aduit/Aduit.vue'),
 				children: [
 					{
-						path: '/adult/apply',
-						name: 'adult-apply',
+						path: '/aduit/apply',
+						name: 'aduit-apply',
 						component: () => import('../pages/Aduit/Apply/AduitApply.vue'),
 					},
 					{
-						path: '/adult/home',
-						name: 'adult-home',
+						path: '/aduit/home',
+						name: 'aduit-home',
 						component: () => import('../pages/Aduit/Home/AduitHome.vue'),
 					},
-
 					{
-						path: '/adult/profile',
-						name: 'adult-profile',
-						component: () => import('../pages/Aduit/Profile/AduitProfile.vue'),
-					},
-
-					{
-						path: '/adult/works',
-						name: 'adult-works',
+						path: '/aduit/works',
+						name: 'aduit-works',
 						component: () => import('../pages/Aduit/Works/AduitWorks.vue'),
 					},
 				],
@@ -111,33 +104,17 @@ const routes: RouteRecordRaw[] = [
 				path: '/applicant',
 				name: 'applicant',
 				component: () => import('../pages/Applicant/Applicant.vue'),
+				redirect: '/applicant/home',
 				children: [
-					{
-						path: '/applicant/apply',
-						name: 'applicant-apply',
-						component: () => import('../pages/Applicant/Apply/ApplicantApply.vue'),
-						children: [
-							{
-								path: '/applicant/apply/new',
-								name: 'applicant-apply-new',
-								component: () => import('../pages/Applicant/Apply/New/ApplicantApplyNew.vue'),
-							},
-							{
-								path: '/applicant/apply/edit',
-								name: 'applicant-apply-edit',
-								component: () => import('../pages/Applicant/Apply/Edit/ApplicantApplyEdit.vue'),
-							},
-						],
-					},
 					{
 						path: '/applicant/home',
 						name: 'applicant-home',
 						component: () => import('../pages/Applicant/Home/ApplicantHome.vue'),
 					},
 					{
-						path: '/applicant/profile',
-						name: 'applicant-profile',
-						component: () => import('../pages/Applicant/Profile/ApplicantProfile.vue'),
+						path: '/applicant/apply/:applyId',
+						name: 'applicant-apply',
+						component: () => import('../pages/Applicant/Apply/ApplicantApply.vue'),
 					},
 				],
 			},

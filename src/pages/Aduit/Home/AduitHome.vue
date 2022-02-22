@@ -1,5 +1,6 @@
 <template>
-	<router-view></router-view>
+	<div class="searchBox"></div>
+	<div class="plots"></div>
 </template>
 
 <script setup lang="ts"></script>

@@ -9,7 +9,7 @@
 			"department": "计算机学院",
 			"face": "https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png",
 			"phone": "12345678900",
-			"group": ["审核人", "社会人士"]
+			"group": ["申请人", "2019本科生"]
 		}
 	},
 	"login": {
@@ -23,9 +23,9 @@
 				"department": "计算机学院",
 				"face": "https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png",
 				"phone": "12345678900",
-				"group": ["审核人", "社会人士"]
+				"group": ["申请人", "2019本科生"]
 			},
-			"type": "aduit"
+			"type": "applicant"
 		}
 	},
 	"applytypes": {

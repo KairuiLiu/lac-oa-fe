@@ -28,17 +28,6 @@ const adminApi = {
 			{ auth: { token } }
 		);
 	},
-	reqApplyProcess({ token, applyId }: { token: string; applyId: string }) {
-		return ajax(
-			`${BASE_URL}/applyProcess`,
-			{
-				t: Date.now(),
-				applyId,
-			},
-			'GET',
-			{ auth: { token } }
-		);
-	},
 	reqAllocateAduitList({ token, pageSize = 5, pageId = 1, condition = null, applyId }: { token: string; pageSize?: number; pageId?: number; condition?: ISearchCondition; applyId: string }) {
 		return ajax(
 			`${BASE_URL}/allocateAduitList`,

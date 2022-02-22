@@ -1,6 +1,6 @@
 <template>
 	<div class="applyWapper">
-		<AdultSearchBox @search="handleSearch"></AdultSearchBox>
+		<AduitSearchBox @search="handleSearch"></AduitSearchBox>
 		当前还需要{{ state.aduitNeed }}位审核人
 		<div class="applyList" :scroll-y="{ enabled: true }">
 			<vxe-grid v-bind="gridOptions" class="table">
@@ -29,7 +29,7 @@ import { defineComponent, reactive } from 'vue';
 import { useRoute } from 'vue-router';
 import { VxeGridProps, VxePagerEvents, VxeColumnPropTypes } from 'vxe-table';
 import { adminApi } from '../../../api';
-import AdultSearchBox from '../../../components/AdultSearchBox.vue';
+import AduitSearchBox from '../../../components/AduitSearchBox.vue';
 import { IAjaxRestlt } from '../../../types/common';
 
 const route = useRoute();

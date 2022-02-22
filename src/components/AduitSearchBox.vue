@@ -95,7 +95,7 @@ function clearSearch() {
 
 <script lang="ts">
 export default defineComponent({
-	name: 'AdultSearchBox',
+	name: 'AduitSearchBox',
 });
 </script>
 

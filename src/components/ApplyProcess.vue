@@ -30,7 +30,7 @@
 <script setup lang="ts">
 import { message } from 'ant-design-vue';
 import { defineComponent, reactive, watch, computed } from 'vue';
-import { adminApi } from '../api';
+import { commonApi } from '../api';
 import { getProcessTitle } from '../utils/applyTypes';
 import { IAjaxRestlt } from '../types/common';
 
@@ -77,7 +77,7 @@ watch(
 	async () => {
 		state.loading = true;
 		if (!props.visible) return;
-		const res = (await adminApi.reqApplyProcess({ token: '123', applyId: props.applyid })) as IAjaxRestlt;
+		const res = (await commonApi.reqApplyProcess({ token: '123', applyId: props.applyid })) as IAjaxRestlt;
 		if (res.code) {
 			message.error('加载失败');
 			return;
