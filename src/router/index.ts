@@ -126,6 +126,7 @@ const routes: RouteRecordRaw[] = [
 			{
 				path: '/support',
 				name: 'support',
+				redirect: '/support/home',
 				component: () => import('../pages/Support/Support.vue'),
 				children: [
 					{
@@ -138,24 +139,18 @@ const routes: RouteRecordRaw[] = [
 						name: 'support-home',
 						component: () => import('../pages/Support/Home/SupportHome.vue'),
 					},
-
 					{
 						path: '/support/orders',
 						name: 'support-orders',
 						component: () => import('../pages/Support/Orders/SupportOrders.vue'),
-						children: [
-							{
-								path: '/support/orders/detail',
-								name: 'support-orders-detail',
-								component: () => import('../pages/Support/Orders/Detail/SupportOrdersDetail.vue'),
-							},
-						],
 					},
-
 					{
-						path: '/support/profile',
-						name: 'support-profile',
-						component: () => import('../pages/Support/Profile/SupportProfile.vue'),
+						path: '/support/detail/:orderId',
+						name: 'support-detail',
+						component: () => import('../pages/Support/Detail/SupportDetail.vue'),
+						meta: {
+							toMenu: '/support/orders',
+						},
 					},
 				],
 			},

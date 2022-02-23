@@ -17,6 +17,7 @@
 		"ant-design-vue": "^2.2.8",
 		"axios": "^0.25.0",
 		"dayjs": "^1.10.7",
+		"default-passive-events": "^2.0.0",
 		"install": "^0.13.0",
 		"lodash": "^4.17.21",
 		"npm": "^8.5.1",

@@ -1,4 +1,4 @@
-import { ISearchCondition } from '../../types/admin.d';
+import { ISearchCondition } from '../../types/admin';
 import ajax from '../ajax';
 
 const BASE_URL = '/api/aduit';

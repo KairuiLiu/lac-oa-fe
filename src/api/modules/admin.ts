@@ -1,5 +1,4 @@
-import { IGoodConfig, IGoodSearchCondition } from '../../types/admin.d';
-import { ISearchCondition } from '../../types/admin';
+import { IGoodConfig, IGoodSearchCondition, ISearchCondition } from '../../types/admin';
 import ajax from '../ajax';
 
 const BASE_URL = '/api/admin';

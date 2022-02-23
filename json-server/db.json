@@ -25,15 +25,15 @@
 				"phone": "12345678900",
 				"group": ["审核人", "社会人士"]
 			},
-			"type": "aduit"
+			"type": "support"
 		}
 	},
 	"sysdata": {
 		"code": 0,
 		"data": {
-			"searchYears": [2022, 2021],
+			"searchYears": [2022, 2021, 2020],
 			"plots": {
-				"totleApply": {
+				"totleGoods": {
 					"month": {
 						"number": 100,
 						"trend": [1, 3, 2, 4, 2, 6, 1]
@@ -43,32 +43,281 @@
 						"trend": [9, 8, 7, 6, 5, 4, 3]
 					}
 				},
-				"applyRes": {
+				"orderState": {
 					"totle": 7300,
-					"detail": [
-						{
-							"type": "审核通过",
+					"detail": [{
+							"type": "未发货",
 							"value": 123
 						},
 						{
-							"type": "审核未通过",
+							"type": "已发货",
 							"value": 123
 						},
 						{
-							"type": "待审核",
+							"type": "已收货",
+							"value": 123
+						},
+						{
+							"type": "已完成",
 							"value": 123
 						}
 					]
 				},
-				"applyWait": {
+				"orderWait": {
 					"number": 1000,
 					"trend": [9, 8, 7, 6, 5, 4, 3]
 				},
-				"workRank": {
-					"number": 40,
-					"trend": [9, 8, 7, 6, 5, 4, 3]
+				"orderGet": {
+					"month": [1, 2, 3, 4, 5, 6, 7, 8, 9, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 0],
+					"year": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
 				}
 			}
 		}
-	}
+	},
+	"goodDetail": {
+		"code": 0,
+		"data": {
+			"id": "123",
+			"name": "机器猫",
+			"class": "猫",
+			"goodPrice": {
+				"unit": "只",
+				"perPrice": 10085,
+				"transPerPrice": 1,
+				"transBasePrice": 12
+			},
+			"goodStock": 212,
+			"shipTag": ["同城配送", "次日达", "分批配送"],
+			"customeType": ["性别定制", "年龄定制"],
+			"detail": "<h1 id=\"mq6sv\">你好啊😁</h1><p>欢迎购买机器猫</p>",
+			"enable": true,
+			"aduit": -1
+		}
+	},
+	"goodLog": ["[2022-1-1]: 创建商品", "[2022-1-2]: 上架商品", "[2022-1-3]: 下架商品", "[2022-1-4]: 删除商品", "[2022-1-5]: 上架商品"],
+	"goodList": [{
+			"goodId": 1,
+			"goodName": "鸡1",
+			"goodPrice": {
+				"perPrice": 1.23,
+				"transPerPrice": 1,
+				"unit": "只",
+				"transBasePrice": 1
+			},
+			"goodAduit": 1,
+			"goodEnable": false,
+			"goodStock": 123,
+			"goodAddTime": "2022-1-1:09:00:01"
+		},
+		{
+			"goodId": 2,
+			"goodName": "鸡2",
+			"goodPrice": {
+				"unit": "斤",
+				"perPrice": 2.23,
+				"transPerPrice": 2,
+				"transBasePrice": 2
+			},
+			"goodAduit": 0,
+			"goodEnable": true,
+			"goodStock": 223,
+			"goodAddTime": "2022-1-2:09:00:01"
+		},
+		{
+			"goodId": 3,
+			"goodName": "鸡3",
+			"goodPrice": {
+				"unit": "只",
+				"perPrice": 3.23,
+				"transPerPrice": 3,
+				"transBasePrice": 3
+			},
+			"goodAduit": 1,
+			"goodEnable": false,
+			"goodStock": 323,
+			"goodAddTime": "2022-1-3:09:00:01"
+		},
+		{
+			"goodId": 4,
+			"goodName": "鸡4",
+			"goodPrice": {
+				"unit": "斤",
+				"perPrice": 4.23,
+				"transPerPrice": 4,
+				"transBasePrice": 4
+			},
+			"goodAduit": 0,
+			"goodEnable": true,
+			"goodStock": 423,
+			"goodAddTime": "2022-1-4:09:00:01"
+		},
+		{
+			"goodId": 5,
+			"goodName": "鸡5",
+			"goodPrice": {
+				"unit": "只",
+				"perPrice": 5.23,
+				"transPerPrice": 5,
+				"transBasePrice": 5
+			},
+			"goodAduit": -1,
+			"goodEnable": false,
+			"goodStock": 523,
+			"goodAddTime": "2022-1-5:09:00:01"
+		},
+		{
+			"goodId": 6,
+			"goodName": "鸡6",
+			"goodPrice": {
+				"unit": "斤",
+				"perPrice": 6.23,
+				"transPerPrice": 6,
+				"transBasePrice": 6
+			},
+			"goodAduit": -1,
+			"goodEnable": true,
+			"goodStock": 623,
+			"goodAddTime": "2022-1-6:09:00:01"
+		},
+		{
+			"goodId": 7,
+			"goodName": "鸡7",
+			"goodPrice": {
+				"unit": "只",
+				"perPrice": 7.23,
+				"transPerPrice": 7,
+				"transBasePrice": 7
+			},
+			"goodAduit": 0,
+			"goodEnable": true,
+			"goodStock": 723,
+			"goodAddTime": "2022-1-7:09:00:01"
+		},
+		{
+			"goodId": 8,
+			"goodName": "鸡8",
+			"goodPrice": {
+				"unit": "只",
+				"perPrice": 8.23,
+				"transPerPrice": 8,
+				"transBasePrice": 8
+			},
+			"goodAduit": 1,
+			"goodEnable": true,
+			"goodStock": 823,
+			"goodAddTime": "2022-1-8:09:00:01"
+		},
+		{
+			"goodId": 9,
+			"goodName": "鸡9",
+			"goodPrice": {
+				"unit": "袋",
+				"perPrice": 9.23,
+				"transPerPrice": 9,
+				"transBasePrice": 9
+			},
+			"goodAduit": -1,
+			"goodEnable": true,
+			"goodStock": 923,
+			"goodAddTime": "2022-1-9:09:00:01"
+		},
+		{
+			"goodId": 10,
+			"goodName": "鸡10",
+			"goodPrice": {
+				"unit": "只",
+				"perPrice": 10.23,
+				"transPerPrice": 10,
+				"transBasePrice": 10
+			},
+			"goodAduit": 1,
+			"goodEnable": false,
+			"goodStock": 1023,
+			"goodAddTime": "2022-1-10:09:00:01"
+		},
+		{
+			"goodId": 11,
+			"goodName": "鸡11",
+			"goodPrice": {
+				"unit": "袋",
+				"perPrice": 11.23,
+				"transPerPrice": 11,
+				"transBasePrice": 11
+			},
+			"goodAduit": 0,
+			"goodEnable": false,
+			"goodStock": 1123,
+			"goodAddTime": "2022-1-11:09:00:01"
+		},
+		{
+			"goodId": 12,
+			"goodName": "鸡12",
+			"goodPrice": {
+				"unit": "只",
+				"perPrice": 12.23,
+				"transPerPrice": 12,
+				"transBasePrice": 22
+			},
+			"goodAduit": 0,
+			"goodEnable": true,
+			"goodStock": 1232,
+			"goodAddTime": "2022-12-31:09:00:01"
+		},
+		{
+			"goodId": 13,
+			"goodName": "鸡13",
+			"goodPrice": {
+				"unit": "袋",
+				"perPrice": 13.23,
+				"transPerPrice": 13,
+				"transBasePrice": 23
+			},
+			"goodAduit": 0,
+			"goodEnable": true,
+			"goodStock": 1223,
+			"goodAddTime": "2022-11-23:09:00:01"
+		},
+		{
+			"goodId": 14,
+			"goodName": "鸡14",
+			"goodPrice": {
+				"unit": "只",
+				"perPrice": 14.23,
+				"transPerPrice": 14,
+				"transBasePrice": 24
+			},
+			"goodAduit": 0,
+			"goodEnable": true,
+			"goodStock": 1233,
+			"goodAddTime": "2022-11-23:09:00:01"
+		},
+		{
+			"goodId": 15,
+			"goodName": "鸡15",
+			"goodPrice": {
+				"unit": "只",
+				"perPrice": 15.23,
+				"transPerPrice": 15,
+				"transBasePrice": 25
+			},
+			"goodAduit": 0,
+			"goodEnable": false,
+			"goodStock": 1423,
+			"goodAddTime": "2022-12-31:09:00:01"
+		},
+		{
+			"goodId": 16,
+			"goodName": "鸡16",
+			"goodPrice": {
+				"unit": "只",
+				"perPrice": 16.23,
+				"transPerPrice": 16,
+				"transBasePrice": 26
+			},
+			"goodAduit": 0,
+			"goodEnable": true,
+			"goodStock": 1523,
+			"goodAddTime": "2022-11-31:09:00:01"
+		}
+	]
 }
