@@ -98,11 +98,6 @@ export default defineComponent({
 		'm m l';
 }
 
-.cell {
-	background-color: #bfa;
-	width: 100%;
-	height: 10vw;
-}
 #plot-1 {
 	grid-area: a;
 }

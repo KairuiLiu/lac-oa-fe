@@ -92,6 +92,7 @@ type RangeValue = [Dayjs, Dayjs];
 
 const props = defineProps<{
 	disable?: string[];
+	easySeach?: boolean;
 }>();
 
 const emit = defineEmits<{
@@ -99,7 +100,7 @@ const emit = defineEmits<{
 }>();
 
 const state = reactive({
-	easySeach: true,
+	easySeach: props.easySeach === undefined ? true : props.easySeach,
 	disable: props?.disable || [],
 });
 
@@ -145,9 +146,9 @@ export default defineComponent({
 	border: rgba(217, 217, 217) 1px solid;
 	border-radius: 2px;
 	:deep(.easySearch input) {
-		border-top: none !important;
-		border-left: none !important;
-		border-right: none !important;
+		border-top: #fff;
+		border-left: #fff;
+		border-right: #fff;
 	}
 }
 
