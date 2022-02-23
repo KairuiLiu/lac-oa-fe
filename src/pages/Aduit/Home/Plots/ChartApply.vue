@@ -1,11 +1,11 @@
 <template>
-	<a-card :bordered="false" title="申请总数" class="card">
+	<a-card :bordered="false" title="工作量" class="card">
 		<template #extra>
 			<a-switch v-model:checked="state.showMonth" checked-children="本月" un-checked-children="本年" />
 		</template>
 		<div class="dataWapper">
 			<ChatText id="text" :text="curData.number" suffix="件"></ChatText>
-			<div id="ChartTotleApplyContainer"></div>
+			<div id="ChartChartApplyContainer"></div>
 		</div>
 	</a-card>
 </template>
@@ -56,7 +56,7 @@ watch(
 );
 
 onMounted(() => {
-	column = new Column('ChartTotleApplyContainer', {
+	column = new Column('ChartChartApplyContainer', {
 		data: curData.value.trend,
 		padding: 'auto',
 		xField: 'time',
@@ -75,7 +75,7 @@ onMounted(() => {
 
 <script lang="ts">
 export default {
-	name: 'ChartTotleWork',
+	name: 'ChartApply',
 };
 </script>
 
@@ -101,7 +101,7 @@ export default {
 	align-items: center;
 	height: 100%;
 	overflow: hidden;
-	#ChartTotleApplyContainer {
+	#ChartChartApplyContainer {
 		height: 100%;
 		flex-shrink: 3;
 		width: 19vw;

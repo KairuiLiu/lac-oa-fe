@@ -3,7 +3,7 @@
 		<a-layout-header class="header">
 			<a-menu v-model:selectedKeys="selectedKeys" theme="dark" mode="horizontal" :style="{ lineHeight: '64px' }" @select="handleMenuChange">
 				<a-menu-item key="/aduit/home">首页</a-menu-item>
-				<a-menu-item key="/aduit/allocate">申请审核</a-menu-item>
+				<a-menu-item key="/aduit/works">申请审核</a-menu-item>
 			</a-menu>
 			<UserIcon :face="store.state?.userInfo?.face || ''"></UserIcon>
 		</a-layout-header>

@@ -4,12 +4,14 @@ export const applyTypes = ['伦理审核', '采购申请'];
 export const applyProps = ['教学用', '科研实验', '科研项目'];
 export const applyStage = ['发起申请', '管理员审核', '审核人审核', '存档完成', '其他'];
 export const applyState = ['草稿', '已提交', '待修改', '已通过', '已取消'];
+export const applyAduitState = ['已拒绝', '已通过', '待审核'];
 
 export function applyIdx2Name(data) {
 	return data.map(d => {
 		if (Object.keys(d).includes('applyType')) d.applyType = applyTypes[d.applyType];
 		if (Object.keys(d).includes('applyProp')) d.applyProp = applyProps[d.applyProp];
 		if (Object.keys(d).includes('adminPassed')) d.adminPassed = d.adminPassed ? '已通过' : '未审核';
+		if (Object.keys(d).includes('aduitPassed')) d.aduitPassed = applyAduitState[d.aduitPassed];
 		return d;
 	});
 }
