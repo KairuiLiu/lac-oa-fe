@@ -103,6 +103,28 @@ const supportApi = {
 			{ auth: { token } }
 		);
 	},
+	reqOrderDetail({ token, orderId }: { token: string; orderId: string }) {
+		return ajax(
+			`${BASE_URL}/orderDetail`,
+			{
+				t: Date.now(),
+				orderId,
+			},
+			'GET',
+			{ auth: { token } }
+		);
+	},
+	reqShipDetail({ token, shipNumber }: { token: string; shipNumber: string }) {
+		return ajax(
+			`${BASE_URL}/shipDetail`,
+			{
+				t: Date.now(),
+				shipNumber,
+			},
+			'GET',
+			{ auth: { token } }
+		);
+	},
 };
 
 export default supportApi;

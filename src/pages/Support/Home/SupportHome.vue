@@ -73,6 +73,12 @@ function handleSearch() {
 }
 
 onMounted(async () => {
+	router.push({
+		name: 'support-detail',
+		params: {
+			orderId: '123',
+		},
+	});
 	const res = (await supportApi.reqSupportSysDate({ token: '123' })) as IAjaxRestlt;
 	if (res.code) {
 		message.error('请求筛选列表失败');
