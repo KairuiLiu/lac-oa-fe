@@ -1,4 +1,5 @@
-import { IGoodConfig, IGoodSearchCondition, ISearchCondition } from '../../types/admin';
+import { shipAddInfo } from '../../types/support';
+import { IGoodConfig, IGoodSearchCondition } from '../../types/admin';
 import ajax from '../ajax';
 
 const BASE_URL = '/api/support';
@@ -14,13 +15,12 @@ const supportApi = {
 			{ auth: { token } }
 		);
 	},
-	reqOrderList({ token, filter, condition, pageSize = 5, pageId = 1 }: { token: string; filter?: any; condition?: ISearchCondition; pageSize?: number; pageId?: number }) {
+	reqOrderList({ token, filter, pageSize = 5, pageId = 1 }: { token: string; filter?: any; pageSize?: number; pageId?: number }) {
 		return ajax(
-			`${BASE_URL}/applylist`,
+			`${BASE_URL}/ordersList`,
 			{
 				t: Date.now(),
 				filter,
-				condition,
 				_limit: pageSize,
 				_page: pageId,
 			},
@@ -120,6 +120,27 @@ const supportApi = {
 			{
 				t: Date.now(),
 				shipNumber,
+			},
+			'GET',
+			{ auth: { token } }
+		);
+	},
+	reqAddShipId({ token, shipInfo }: { token: string; shipInfo: shipAddInfo }) {
+		return ajax(
+			`${BASE_URL}/addShipId`,
+			{
+				t: Date.now(),
+				shipInfo,
+			},
+			'GET',
+			{ auth: { token } }
+		);
+	},
+	reqShipCompList({ token }: { token: string }) {
+		return ajax(
+			`${BASE_URL}/shipCompList`,
+			{
+				t: Date.now(),
 			},
 			'GET',
 			{ auth: { token } }

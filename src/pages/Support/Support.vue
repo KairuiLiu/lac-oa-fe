@@ -17,7 +17,8 @@
 </template>
 
 <script setup lang="ts">
-import { computed, defineComponent } from 'vue';
+import { message } from 'ant-design-vue';
+import { computed, defineComponent, onMounted } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
 import { useStore } from 'vuex';
 import UserIcon from '../../components/UserIcon.vue';
@@ -34,6 +35,13 @@ const selectedKeys = computed((): string[] => {
 const handleMenuChange = ({ key }: { key: string }) => {
 	router.push(key);
 };
+
+onMounted(async () => {
+	const res = await store.dispatch('support/getShipCompList');
+	if (!res) {
+		message.error('获取数据失败');
+	}
+});
 </script>
 <script lang="ts">
 export default defineComponent({

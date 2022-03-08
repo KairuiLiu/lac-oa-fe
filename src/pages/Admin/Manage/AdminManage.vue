@@ -29,7 +29,7 @@
 								<a-popconfirm v-else title="确定启用帐号?" ok-text="确定" cancel-text="取消" @confirm="handleUserEnable(item.userId)">
 									<a-button type="link">启用帐号</a-button>
 								</a-popconfirm>
-								<a-button v-if="state.curType === '供应商'" type="link" @click="toSupportEdit(item.userId)">编辑产品</a-button>
+								<a-button v-if="state.curType[0] === '供应商'" type="link" @click="toSupportEdit(item.userId)">编辑产品</a-button>
 							</template>
 							<a-list-item-meta :description="item.description">
 								<template #title>

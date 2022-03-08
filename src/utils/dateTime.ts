@@ -1,10 +1,10 @@
 export function getResentDays(pastDays, date = null, str = false) {
 	date = date || Date.now();
-	let res: number[] | string[] = [new Date(date).getDate()];
+	let res: string[] = [`${new Date(date).getDate()}`];
 	if (pastDays === 0) return res;
 	const stp = -pastDays / Math.abs(pastDays);
 	for (let i = -Math.abs(pastDays); i < 0; i += 1) {
-		res.push(new Date((date += stp * 24 * 60 * 60 * 1000)).getDate());
+		res.push(`${new Date((date += stp * 24 * 60 * 60 * 1000)).getMonth() + 1}.${new Date((date += stp * 24 * 60 * 60 * 1000)).getDate()}`);
 	}
 	if (stp === -1) res.reverse();
 	if (str) res = res.map(d => `${d}`);

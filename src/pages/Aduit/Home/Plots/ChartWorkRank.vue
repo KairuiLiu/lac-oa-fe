@@ -38,7 +38,7 @@ onMounted(() => {
 		xAxis: {
 			label: {
 				formatter: (v: string) => {
-					return `${v}日`;
+					return `${v}`;
 				},
 			},
 		},

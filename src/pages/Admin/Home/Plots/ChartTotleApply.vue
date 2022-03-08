@@ -46,7 +46,7 @@ watch(
 			xAxis: {
 				label: {
 					formatter: (v: string) => {
-						if (state.showMonth) return `${v}日`;
+						if (state.showMonth) return `${v}`;
 						return `${v}月`;
 					},
 				},
@@ -64,7 +64,7 @@ onMounted(() => {
 		xAxis: {
 			label: {
 				formatter: (v: string) => {
-					return `${v}日`;
+					return `${v}`;
 				},
 			},
 		},
