@@ -9,7 +9,7 @@
 			"department": "计算机学院",
 			"face": "https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png",
 			"phone": "12345678900",
-			"group": ["审核人", "社会人士"]
+			"group": ["申请人", "2019本科生"]
 		}
 	},
 	"login": {
@@ -23,56 +23,9 @@
 				"department": "计算机学院",
 				"face": "https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png",
 				"phone": "12345678900",
-				"group": ["审核人", "社会人士"]
+				"group": ["管理员", "全部管理员"]
 			},
-			"type": "support"
-		}
-	},
-	"sysdata": {
-		"code": 0,
-		"data": {
-			"searchYears": [2022, 2021, 2020],
-			"plots": {
-				"totleGoods": {
-					"month": {
-						"number": 100,
-						"trend": [1, 3, 2, 4, 2, 6, 1]
-					},
-					"year": {
-						"number": 1000,
-						"trend": [9, 8, 7, 6, 5, 4, 3]
-					}
-				},
-				"orderState": {
-					"totle": 7300,
-					"detail": [
-						{
-							"type": "未发货",
-							"value": 123
-						},
-						{
-							"type": "已发货",
-							"value": 123
-						},
-						{
-							"type": "已收货",
-							"value": 123
-						},
-						{
-							"type": "已完成",
-							"value": 123
-						}
-					]
-				},
-				"orderWait": {
-					"number": 1000,
-					"trend": [9, 8, 7, 6, 5, 4, 3]
-				},
-				"orderGet": {
-					"month": [1, 2, 3, 4, 5, 6, 7, 8, 9, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 0],
-					"year": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
-				}
-			}
+			"type": "admin"
 		}
 	},
 	"goodDetail": {
@@ -96,8 +49,7 @@
 		}
 	},
 	"goodLog": ["[2022-1-1]: 创建商品", "[2022-1-2]: 上架商品", "[2022-1-3]: 下架商品", "[2022-1-4]: 删除商品", "[2022-1-5]: 上架商品"],
-	"goodList": [
-		{
+	"goodList": [{
 			"goodId": 1,
 			"goodName": "鸡1",
 			"goodPrice": {
@@ -322,494 +274,952 @@
 			"goodAddTime": "2022-11-31:09:00:01"
 		}
 	],
-	"ordersList": [
-		{
-			"id": 123,
-			"getTime": "2022-01-01 11:12:22",
-			"orderState": " 卖家已分批发货, 等待买家收货",
-			"orderAddress": "张三，15212346651，重庆市 北碚区 天生路2号西南大学 第一教学楼",
-			"orderBatch": [
-				{
-					"id": 1,
-					"expDate": "2022-11-11",
-					"shipState": "验货中",
-					"goods": [
-						{
-							"name": "机器猫",
-							"number": 2,
-							"specification": "20只",
-							"custome": "AAA"
-						},
-						{
-							"name": "机器猫1",
-							"number": 2,
-							"specification": "210只",
-							"custome": "A2AA"
-						}
-					]
-				},
-				{
-					"id": 2,
-					"expDate": "2022-11-11",
-					"shipState": "待发货",
-					"goods": [
-						{
-							"name": "机器猫",
-							"number": 2,
-							"specification": "20只",
-							"custome": "AAA"
-						},
-						{
-							"name": "机器猫1",
-							"number": 2,
-							"specification": "210只",
-							"custome": "A2AA"
-						}
-					]
-				},
-				{
-					"id": 3,
-					"expDate": "2022-11-11",
-					"shipState": "运输中",
-					"goods": [
-						{
-							"name": "机器猫",
-							"number": 2,
-							"specification": "20只",
-							"custome": "AAA"
-						},
-						{
-							"name": "机器猫1",
-							"number": 2,
-							"specification": "210只",
-							"custome": "A2AA"
-						}
-					]
-				}
-			],
-			"totleDiscount": 12,
-			"totleGoodsPrice": 22222,
-			"shipPrice": 22,
-			"finalPrice": 1111
-		},
-		{
-			"id": 123,
-			"getTime": "2022-01-01 11:12:22",
-			"orderState": " 卖家已分批发货, 等待买家收货",
-			"orderAddress": "张三，15212346651，重庆市 北碚区 天生路2号西南大学 第一教学楼",
-			"orderBatch": [
-				{
-					"id": 1,
-					"expDate": "2022-11-11",
-					"shipState": "验货中",
-					"goods": [
-						{
-							"name": "机器猫",
-							"number": 2,
-							"specification": "20只",
-							"custome": "AAA"
-						},
-						{
-							"name": "机器猫1",
-							"number": 2,
-							"specification": "210只",
-							"custome": "A2AA"
-						}
-					]
-				},
-				{
-					"id": 2,
-					"expDate": "2022-11-11",
-					"shipState": "待发货",
-					"goods": [
-						{
-							"name": "机器猫",
-							"number": 2,
-							"specification": "20只",
-							"custome": "AAA"
-						},
-						{
-							"name": "机器猫1",
-							"number": 2,
-							"specification": "210只",
-							"custome": "A2AA"
-						}
-					]
-				},
-				{
-					"id": 3,
-					"expDate": "2022-11-11",
-					"shipState": "运输中",
-					"goods": [
-						{
-							"name": "机器猫",
-							"number": 2,
-							"specification": "20只",
-							"custome": "AAA"
-						},
-						{
-							"name": "机器猫1",
-							"number": 2,
-							"specification": "210只",
-							"custome": "A2AA"
-						}
-					]
-				}
-			],
-			"totleDiscount": 12,
-			"totleGoodsPrice": 22222,
-			"shipPrice": 22,
-			"finalPrice": 1111
-		},
-		{
-			"id": 123,
-			"getTime": "2022-01-01 11:12:22",
-			"orderState": " 卖家已分批发货, 等待买家收货",
-			"orderAddress": "张三，15212346651，重庆市 北碚区 天生路2号西南大学 第一教学楼",
-			"orderBatch": [
-				{
-					"id": 1,
-					"expDate": "2022-11-11",
-					"shipState": "验货中",
-					"goods": [
-						{
-							"name": "机器猫",
-							"number": 2,
-							"specification": "20只",
-							"custome": "AAA"
-						},
-						{
-							"name": "机器猫1",
-							"number": 2,
-							"specification": "210只",
-							"custome": "A2AA"
-						}
-					]
-				},
-				{
-					"id": 2,
-					"expDate": "2022-11-11",
-					"shipState": "待发货",
-					"goods": [
-						{
-							"name": "机器猫",
-							"number": 2,
-							"specification": "20只",
-							"custome": "AAA"
-						},
-						{
-							"name": "机器猫1",
-							"number": 2,
-							"specification": "210只",
-							"custome": "A2AA"
-						}
-					]
-				},
-				{
-					"id": 3,
-					"expDate": "2022-11-11",
-					"shipState": "运输中",
-					"goods": [
-						{
-							"name": "机器猫",
-							"number": 2,
-							"specification": "20只",
-							"custome": "AAA"
-						},
-						{
-							"name": "机器猫1",
-							"number": 2,
-							"specification": "210只",
-							"custome": "A2AA"
-						}
-					]
-				}
-			],
-			"totleDiscount": 12,
-			"totleGoodsPrice": 22222,
-			"shipPrice": 22,
-			"finalPrice": 1111
-		},
-		{
-			"id": 123,
-			"getTime": "2022-01-01 11:12:22",
-			"orderState": " 卖家已分批发货, 等待买家收货",
-			"orderAddress": "张三，15212346651，重庆市 北碚区 天生路2号西南大学 第一教学楼",
-			"orderBatch": [
-				{
-					"id": 1,
-					"expDate": "2022-11-11",
-					"shipState": "验货中",
-					"goods": [
-						{
-							"name": "机器猫",
-							"number": 2,
-							"specification": "20只",
-							"custome": "AAA"
-						},
-						{
-							"name": "机器猫1",
-							"number": 2,
-							"specification": "210只",
-							"custome": "A2AA"
-						}
-					]
-				},
-				{
-					"id": 2,
-					"expDate": "2022-11-11",
-					"shipState": "待发货",
-					"goods": [
-						{
-							"name": "机器猫",
-							"number": 2,
-							"specification": "20只",
-							"custome": "AAA"
-						},
-						{
-							"name": "机器猫1",
-							"number": 2,
-							"specification": "210只",
-							"custome": "A2AA"
-						}
-					]
-				},
-				{
-					"id": 3,
-					"expDate": "2022-11-11",
-					"shipState": "运输中",
-					"goods": [
-						{
-							"name": "机器猫",
-							"number": 2,
-							"specification": "20只",
-							"custome": "AAA"
-						},
-						{
-							"name": "机器猫1",
-							"number": 2,
-							"specification": "210只",
-							"custome": "A2AA"
-						}
-					]
-				}
-			],
-			"totleDiscount": 12,
-			"totleGoodsPrice": 22222,
-			"shipPrice": 22,
-			"finalPrice": 1111
-		},
-		{
-			"id": 123,
-			"getTime": "2022-01-01 11:12:22",
-			"orderState": " 卖家已分批发货, 等待买家收货",
-			"orderAddress": "张三，15212346651，重庆市 北碚区 天生路2号西南大学 第一教学楼",
-			"orderBatch": [
-				{
-					"id": 1,
-					"expDate": "2022-11-11",
-					"shipState": "验货中",
-					"goods": [
-						{
-							"name": "机器猫",
-							"number": 2,
-							"specification": "20只",
-							"custome": "AAA"
-						},
-						{
-							"name": "机器猫1",
-							"number": 2,
-							"specification": "210只",
-							"custome": "A2AA"
-						}
-					]
-				},
-				{
-					"id": 2,
-					"expDate": "2022-11-11",
-					"shipState": "待发货",
-					"goods": [
-						{
-							"name": "机器猫",
-							"number": 2,
-							"specification": "20只",
-							"custome": "AAA"
-						},
-						{
-							"name": "机器猫1",
-							"number": 2,
-							"specification": "210只",
-							"custome": "A2AA"
-						}
-					]
-				},
-				{
-					"id": 3,
-					"expDate": "2022-11-11",
-					"shipState": "运输中",
-					"goods": [
-						{
-							"name": "机器猫",
-							"number": 2,
-							"specification": "20只",
-							"custome": "AAA"
-						},
-						{
-							"name": "机器猫1",
-							"number": 2,
-							"specification": "210只",
-							"custome": "A2AA"
-						}
-					]
-				}
-			],
-			"totleDiscount": 12,
-			"totleGoodsPrice": 22222,
-			"shipPrice": 22,
-			"finalPrice": 1111
-		}
-	],
-	"orderDetail": {
+	"aduitList": {
 		"code": 0,
-		"data": {
-			"getTime": "2022-01-01 11:12:22",
-			"shipTime": "2022-01-22 11:12:22",
-			"orderState": " 卖家已分批发货, 等待买家收货",
-			"userName": "张三",
-			"payMethod": "到付",
-			"orderAddress": "张三，15212346651，重庆市 北碚区 天生路2号西南大学 第一教学楼",
-			"shipInfo": [
-				{
-					"id": 1,
-					"expDate": "2022-11-11",
-					"shipComp": "顺丰冷链",
-					"shipNumber": "9620067407253",
-					"deliveryTime": "2022-02-11"
-				},
-				{
-					"id": 2,
-					"expDate": "2022-11-12",
-					"shipComp": "德邦物流",
-					"shipNumber": "9620067227253",
-					"deliveryTime": "2022-02-12"
-				},
-				{
-					"id": 3,
-					"expDate": "2022-11-13",
-					"shipComp": "暂无",
-					"shipNumber": "暂无",
-					"deliveryTime": "暂无"
-				}
-			],
-			"orderBatch": [
-				{
-					"id": 1,
-					"goods": [
-						{
-							"face": "https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png",
-							"name": "机器猫",
-							"number": 2,
-							"specification": "20只",
-							"custome": "AAA",
-							"price": 200
-						},
-						{
-							"face": "https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png",
-							"name": "机器猫1",
-							"number": 2,
-							"specification": "210只",
-							"custome": "A2AA",
-							"price": 2020
-						}
-					],
-					"totlePrice": 2222
-				},
-				{
-					"id": 2,
-					"goods": [
-						{
-							"face": "https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png",
-							"name": "机器猫",
-							"number": 2,
-							"specification": "20只",
-							"custome": "AAA",
-							"price": 200
-						},
-						{
-							"face": "https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png",
-							"name": "机器猫1",
-							"number": 2,
-							"specification": "210只",
-							"custome": "A2AA",
-							"price": 2020
-						}
-					],
-					"totlePrice": 1111
-				},
-				{
-					"id": 3,
-					"goods": [
-						{
-							"face": "https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png",
-							"name": "机器猫",
-							"number": 2,
-							"specification": "20只",
-							"custome": "AAA",
-							"price": 200
-						},
-						{
-							"face": "https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png",
-							"name": "机器猫1",
-							"number": 2,
-							"specification": "210只",
-							"custome": "A2AA",
-							"price": 2020
-						}
-					],
-					"totlePrice": 2222
-				}
-			],
-			"totleDiscount": 12,
-			"totleGoodsPrice": 22222,
-			"shipPrice": 22,
-			"finalPrice": 1111
-		}
-	},
-	"shipDetail": {
-		"code": 0,
-		"data": [
-			"2021-11-20 17:49:00  到达【顺丰西北枢纽(西安)",
-			"2021-11-20 20:45:08  离开【顺丰西北枢纽(西安)】，下一站【顺丰重庆两江中转】  ",
-			"2021-11-21 05:35:58  到达【重庆】",
-			"2021-11-21 06:55:38  到达【顺丰重庆两江中转】",
-			"2021-11-21 07:39:29  离开【顺丰重庆两江中转】，下一站【顺丰西南大学投递点】",
-			"2021-11-21 09:49:18  离开【顺丰西南大学投递点】正在投递 电话: 13349886616",
-			"2021-11-21 09:49:18  离开【顺丰西南大学投递点】验货中，投递员: 李佳欣"
-		]
-	},
-	"shipCompList": {
-		"code": 0,
-		"data": [
-			{
-				"id": 1,
-				"name": "顺丰快递"
+		"data": [{
+				"userName": "张1",
+				"userId": 1234561,
+				"enable": true,
+				"email": "123@t.com",
+				"department": "计算机学院",
+				"face": "https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png",
+				"phone": 13423232323
 			},
 			{
-				"id": 2,
-				"name": "顺水快递"
+				"userName": "张2",
+				"userId": 1234562,
+				"enable": false,
+				"email": "123@t.com",
+				"department": "计算机学院",
+				"face": "https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png",
+				"phone": 13423232323
 			},
 			{
-				"id": 3,
-				"name": "EMS"
+				"userName": "张3",
+				"userId": 1234563,
+				"enable": true,
+				"email": "123@t.com",
+				"department": "计算机学院",
+				"face": "https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png",
+				"phone": 13423232323
 			},
 			{
-				"id": 4,
-				"name": "中通快读"
+				"userName": "张4",
+				"userId": 1234564,
+				"enable": true,
+				"email": "123@t.com",
+				"department": "计算机学院",
+				"face": "https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png",
+				"phone": 13423232323
 			},
 			{
-				"id": 5,
-				"name": "圆通快递"
+				"userName": "张5",
+				"userId": 1234565,
+				"enable": false,
+				"email": "123@t.com",
+				"department": "计算机学院",
+				"face": "https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png",
+				"phone": 13423232323
+			},
+			{
+				"userName": "张6",
+				"userId": 1234566,
+				"enable": true,
+				"email": "123@t.com",
+				"department": "计算机学院",
+				"face": "https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png",
+				"phone": 13423232323
+			},
+			{
+				"userName": "张7",
+				"userId": 1234567,
+				"enable": true,
+				"email": "123@t.com",
+				"department": "计算机学院",
+				"face": "https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png",
+				"phone": 13423232323
 			}
 		]
+	},
+	"aduitType": {
+		"code": 0,
+		"data": [{
+				"name": "伦理审核人员",
+				"subType": [{
+						"name": "社会人士"
+					},
+					{
+						"name": "A领域专家"
+					},
+					{
+						"name": "B领域专家"
+					},
+					{
+						"name": "C领域专家"
+					},
+					{
+						"name": "D领域专家"
+					}
+				]
+			},
+			{
+				"name": "采购审核人员",
+				"subType": [{
+						"name": "社会人士"
+					},
+					{
+						"name": "A领域专家"
+					},
+					{
+						"name": "B领域专家"
+					},
+					{
+						"name": "C领域专家"
+					},
+					{
+						"name": "D领域专家"
+					}
+				]
+			},
+			{
+				"name": "供应商",
+				"subType": [{
+					"name": "全部供应商"
+				}]
+			},
+			{
+				"name": "管理员",
+				"subType": [{
+					"name": "全部管理员"
+				}]
+			},
+			{
+				"name": "申请人",
+				"subType": [{
+						"name": "教师"
+					},
+					{
+						"name": "2019本科生"
+					},
+					{
+						"name": "2020本科生"
+					}
+				]
+			}
+		]
+	},
+	"allocateWork": {
+		"t": 1645250288599,
+		"userId": 1,
+		"applyId": "1"
+	},
+	"allocateAduitList": [{
+			"userId": 1,
+			"userName": "张1",
+			"type": "社会人士",
+			"onWork": false,
+			"workings": 2
+		},
+		{
+			"userId": 2,
+			"userName": "张2",
+			"type": "A领域专家",
+			"onWork": true,
+			"workings": 2
+		},
+		{
+			"userId": 3,
+			"userName": "张3",
+			"type": "B领域专家",
+			"onWork": true,
+			"workings": 21
+		},
+		{
+			"userId": 4,
+			"userName": "张4",
+			"type": "社会人士",
+			"onWork": true,
+			"workings": 22
+		},
+		{
+			"userId": 5,
+			"userName": "张5",
+			"type": "社会人士",
+			"onWork": false,
+			"workings": 32
+		},
+		{
+			"userId": 6,
+			"userName": "张6",
+			"type": "A领域专家",
+			"onWork": false,
+			"workings": 12
+		},
+		{
+			"userId": 7,
+			"userName": "张7",
+			"type": "A领域专家",
+			"onWork": true,
+			"workings": 22
+		},
+		{
+			"userId": 8,
+			"userName": "张8",
+			"type": "B领域专家",
+			"onWork": false,
+			"workings": 22
+		},
+		{
+			"userId": 9,
+			"userName": "张9",
+			"type": "B领域专家",
+			"onWork": false,
+			"workings": 2
+		},
+		{
+			"userId": 10,
+			"userName": "张三0",
+			"type": "B领域专家",
+			"onWork": true,
+			"workings": 21
+		},
+		{
+			"userId": 11,
+			"userName": "张三1",
+			"type": "社会人士",
+			"onWork": false,
+			"workings": 12
+		},
+		{
+			"userId": 12,
+			"userName": "张三2",
+			"type": "社会人士",
+			"onWork": true,
+			"workings": 2
+		},
+		{
+			"userId": 13,
+			"userName": "张三3",
+			"type": "社会人士",
+			"onWork": false,
+			"workings": 42
+		},
+		{
+			"userId": 14,
+			"userName": "张三4",
+			"type": "社会人士",
+			"onWork": true,
+			"workings": 24
+		},
+		{
+			"userId": 15,
+			"userName": "张三5",
+			"type": "B领域专家",
+			"onWork": false,
+			"workings": 24
+		},
+		{
+			"userId": 16,
+			"userName": "张三6",
+			"type": "C领域专家",
+			"onWork": false,
+			"workings": 42
+		},
+		{
+			"userId": 17,
+			"userName": "张三7",
+			"type": "C领域专家",
+			"onWork": true,
+			"workings": 24
+		},
+		{
+			"userId": 18,
+			"userName": "张三8",
+			"type": "C领域专家",
+			"onWork": false,
+			"workings": 42
+		}
+	],
+	"applyProcess": {
+		"code": 0,
+		"data": {
+			"process": [{
+					"userName": "申请人1",
+					"note": "发起申请",
+					"error": false,
+					"end": false,
+					"dateTime": "2022-1-1:09:00:01",
+					"face": "https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png",
+					"stage": 0
+				},
+				{
+					"userName": "管理员2",
+					"note": "审核不通过, 发回修改",
+					"error": true,
+					"end": false,
+					"dateTime": "2022-1-2:09:00:01",
+					"face": "https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png",
+					"stage": 1
+				},
+				{
+					"userName": "申请人1",
+					"note": "发起申请",
+					"error": false,
+					"end": false,
+					"dateTime": "2022-1-3:09:00:01",
+					"face": "https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png",
+					"stage": 10
+				},
+				{
+					"userName": "管理员2",
+					"note": "审核通过, 发往审核人",
+					"error": false,
+					"end": false,
+					"dateTime": "2022-1-4:09:00:01",
+					"face": "https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png",
+					"stage": 11
+				},
+				{
+					"userName": "审核人1",
+					"note": "审核通过",
+					"error": false,
+					"end": false,
+					"dateTime": "2022-1-5:09:00:01",
+					"face": "https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png",
+					"stage": 12
+				},
+				{
+					"userName": "审核人2",
+					"note": "审核不通过, 修改意见: 不知道",
+					"error": true,
+					"end": false,
+					"dateTime": "2022-1-6:09:00:01",
+					"face": "https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png",
+					"stage": 12
+				},
+				{
+					"userName": "申请人1",
+					"note": "发起申请",
+					"error": false,
+					"end": false,
+					"dateTime": "2022-1-7:09:00:01",
+					"face": "https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png",
+					"stage": 20
+				},
+				{
+					"userName": "管理员2",
+					"note": "审核通过, 发往审核人",
+					"error": false,
+					"end": false,
+					"dateTime": "2022-1-8:09:00:01",
+					"face": "https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png",
+					"stage": 21
+				},
+				{
+					"userName": "审核人1",
+					"note": "审核通过",
+					"error": false,
+					"end": false,
+					"dateTime": "2022-1-9:09:00:01",
+					"face": "https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png",
+					"stage": 22
+				},
+				{
+					"userName": "审核人2",
+					"note": "审核通过",
+					"error": false,
+					"end": false,
+					"dateTime": "2022-1-16:09:00:01",
+					"face": "https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png",
+					"stage": 22
+				},
+				{
+					"userName": "申请人1",
+					"note": "存档完成",
+					"error": false,
+					"end": true,
+					"dateTime": "2022-1-19:09:00:01",
+					"face": "https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png",
+					"stage": 23
+				}
+			]
+		}
+	},
+	"allocateApplyList": [{
+			"applyId": 1,
+			"applyTitle": "研究1的申请",
+			"applyUserName": "张三",
+			"applyDate": "2022-1-1",
+			"applyType": 0,
+			"applyProp": 1,
+			"allocated": 2,
+			"adminPassed": 0
+		},
+		{
+			"applyId": 2,
+			"applyTitle": "研究2的申请",
+			"applyUserName": "张2",
+			"applyDate": "2022-1-2",
+			"applyType": 0,
+			"applyProp": 2,
+			"allocated": 1,
+			"adminPassed": 1
+		},
+		{
+			"applyId": 3,
+			"applyTitle": "研究3的申请",
+			"applyUserName": "张3",
+			"applyDate": "2022-1-3",
+			"applyType": 0,
+			"applyProp": 0,
+			"allocated": 3,
+			"adminPassed": 0
+		},
+		{
+			"applyId": 4,
+			"applyTitle": "研究4的申请",
+			"applyUserName": "张4",
+			"applyDate": "2022-1-4",
+			"applyType": 0,
+			"applyProp": 1,
+			"allocated": 1,
+			"adminPassed": 1
+		},
+		{
+			"applyId": 5,
+			"applyTitle": "研究5的申请",
+			"applyUserName": "张5",
+			"applyDate": "2022-1-5",
+			"applyType": 0,
+			"applyProp": 2,
+			"allocated": 1,
+			"adminPassed": 1
+		},
+		{
+			"applyId": 6,
+			"applyTitle": "研究6的申请",
+			"applyUserName": "张6",
+			"applyDate": "2022-1-6",
+			"applyType": 0,
+			"applyProp": 0,
+			"allocated": 1,
+			"adminPassed": 0
+		},
+		{
+			"applyId": 7,
+			"applyTitle": "研究17的申请",
+			"applyUserName": "张三7",
+			"applyDate": "2022-1-17",
+			"applyType": 0,
+			"applyProp": 1,
+			"allocated": 2,
+			"adminPassed": 0
+		},
+		{
+			"applyId": 8,
+			"applyTitle": "研究28的申请",
+			"applyUserName": "张28",
+			"applyDate": "2022-1-28",
+			"applyType": 0,
+			"applyProp": 2,
+			"allocated": 1,
+			"adminPassed": 1
+		},
+		{
+			"applyId": 9,
+			"applyTitle": "研究9的申请",
+			"applyUserName": "张9",
+			"applyDate": "2022-1-9",
+			"applyType": 0,
+			"applyProp": 0,
+			"allocated": 3,
+			"adminPassed": 0
+		},
+		{
+			"applyId": 10,
+			"applyTitle": "研究41的申请",
+			"applyUserName": "张41",
+			"applyDate": "2022-1-1",
+			"applyType": 0,
+			"applyProp": 1,
+			"allocated": 1,
+			"adminPassed": 1
+		},
+		{
+			"applyId": 15,
+			"applyTitle": "研究15的申请",
+			"applyUserName": "张15",
+			"applyDate": "2022-11-5",
+			"applyType": 0,
+			"applyProp": 2,
+			"allocated": 1,
+			"adminPassed": 1
+		},
+		{
+			"applyId": 16,
+			"applyTitle": "研究61的申请",
+			"applyUserName": "张16",
+			"applyDate": "2022-1-6",
+			"applyType": 0,
+			"applyProp": 0,
+			"allocated": 1,
+			"adminPassed": 0
+		},
+		{
+			"applyId": 21,
+			"applyTitle": "研究12的申请",
+			"applyUserName": "张三2",
+			"applyDate": "2022-12-1",
+			"applyType": 0,
+			"applyProp": 1,
+			"allocated": 2,
+			"adminPassed": 0
+		},
+		{
+			"applyId": 22,
+			"applyTitle": "研究22的申请",
+			"applyUserName": "张22",
+			"applyDate": "2022-12-2",
+			"applyType": 0,
+			"applyProp": 2,
+			"allocated": 1,
+			"adminPassed": 1
+		},
+		{
+			"applyId": 23,
+			"applyTitle": "研究32的申请",
+			"applyUserName": "张3",
+			"applyDate": "2022-12-3",
+			"applyType": 0,
+			"applyProp": 0,
+			"allocated": 3,
+			"adminPassed": 0
+		},
+		{
+			"applyId": 24,
+			"applyTitle": "研究24的申请",
+			"applyUserName": "张42",
+			"applyDate": "2022-12-4",
+			"applyType": 0,
+			"applyProp": 1,
+			"allocated": 1,
+			"adminPassed": 1
+		},
+		{
+			"applyId": 25,
+			"applyTitle": "研究52的申请",
+			"applyUserName": "张52",
+			"applyDate": "2022-12-5",
+			"applyType": 0,
+			"applyProp": 2,
+			"allocated": 1,
+			"adminPassed": 1
+		},
+		{
+			"applyId": 26,
+			"applyTitle": "研究16的申请",
+			"applyUserName": "张26",
+			"applyDate": "2022-12-6",
+			"applyType": 0,
+			"applyProp": 0,
+			"allocated": 1,
+			"adminPassed": 0
+		}
+	],
+	"systemData": {
+		"code": 0,
+		"data": {
+			"sysAllocate": 12,
+			"sysProcess": 12,
+			"sysDone": 12,
+			"tottleApply": {
+				"month": {
+					"number": 100,
+					"trend": [1, 3, 2, 4, 2, 6, 1]
+				},
+				"year": {
+					"number": 1000,
+					"trend": [9, 8, 7, 6, 5, 4, 3]
+				}
+			},
+			"taskType": {
+				"totle": 66,
+				"detail": [{
+						"type": "伦理审查",
+						"value": 44
+					},
+					{
+						"type": "采购申请",
+						"value": 22
+					},
+					{
+						"type": "实验审核",
+						"value": 44
+					}
+				]
+			},
+			"totleWork": {
+				"month": {
+					"number": 300,
+					"trend": [1, 2, 3, 4, 5, 6, 7]
+				},
+				"year": {
+					"number": 3000,
+					"trend": [9, 8, 7, 6, 5, 4, 3]
+				}
+			},
+			"ethicsAnimal": {
+				"month": {
+					"totle": 7300,
+					"detail": [{
+							"type": "鸡",
+							"value": 123
+						},
+						{
+							"type": "鸭",
+							"value": 123
+						},
+						{
+							"type": "鱼",
+							"value": 123
+						},
+						{
+							"type": "狗",
+							"value": 123
+						}
+					]
+				},
+				"year": {
+					"totle": 72,
+					"detail": [{
+							"type": "鸡",
+							"value": 1232
+						},
+						{
+							"type": "鸭",
+							"value": 1223
+						},
+						{
+							"type": "鱼",
+							"value": 1323
+						},
+						{
+							"type": "狗",
+							"value": 1123
+						}
+					]
+				}
+			},
+			"buyAnimal": {
+				"month": {
+					"totle": 7300,
+					"detail": [{
+							"type": "鸡",
+							"value": 123
+						},
+						{
+							"type": "鸭",
+							"value": 123
+						},
+						{
+							"type": "鱼",
+							"value": 123
+						},
+						{
+							"type": "狗",
+							"value": 123
+						}
+					]
+				},
+				"year": {
+					"totle": 73200,
+					"detail": [{
+							"type": "鸡",
+							"value": 123
+						},
+						{
+							"type": "鸭",
+							"value": 123
+						},
+						{
+							"type": "鱼",
+							"value": 123
+						},
+						{
+							"type": "狗",
+							"value": 123
+						}
+					]
+				}
+			},
+			"expAnimal": {
+				"month": {
+					"totle": 7300,
+					"detail": [{
+							"type": "鸡",
+							"value": 123
+						},
+						{
+							"type": "鸭",
+							"value": 123
+						},
+						{
+							"type": "鱼",
+							"value": 123
+						},
+						{
+							"type": "狗",
+							"value": 123
+						}
+					]
+				},
+				"year": {
+					"totle": 7300,
+					"detail": [{
+							"type": "鸡",
+							"value": 123
+						},
+						{
+							"type": "鸭",
+							"value": 123
+						},
+						{
+							"type": "鱼",
+							"value": 123
+						},
+						{
+							"type": "狗",
+							"value": 123
+						}
+					]
+				}
+			},
+			"newApply": {
+				"month": [1, 2, 3, 4, 5, 6, 7, 8, 9, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 0],
+				"year": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+			},
+			"applyNotify": [{
+					"title": "申请修改通知1",
+					"date": "2022-1-1",
+					"detail": "您好,乌拉乌拉乌拉",
+					"applyId": 1
+				},
+				{
+					"title": "申请修改通知2",
+					"date": "2022-1-1",
+					"detail": "您好,乌拉乌拉乌拉",
+					"applyId": 2
+				},
+				{
+					"title": "申请修改通知3",
+					"date": "2022-1-1",
+					"detail": "您好,乌拉乌拉乌拉",
+					"applyId": 3
+				},
+				{
+					"title": "申请修改通知4",
+					"date": "2022-1-1",
+					"detail": "您好,乌拉乌拉乌拉",
+					"applyId": 4
+				},
+				{
+					"title": "申请修改通知5",
+					"date": "2022-1-1",
+					"detail": "您好,乌拉乌拉乌拉",
+					"applyId": 5
+				},
+				{
+					"title": "申请修改通知6",
+					"date": "2022-1-1",
+					"detail": "您好,乌拉乌拉乌拉",
+					"applyId": 6
+				},
+				{
+					"title": "申请修改通知7",
+					"date": "2022-1-1",
+					"detail": "您好,乌拉乌拉乌拉",
+					"applyId": 7
+				},
+				{
+					"title": "申请修改通知8",
+					"date": "2022-1-1",
+					"detail": "您好,乌拉乌拉乌拉",
+					"applyId": 8
+				},
+				{
+					"title": "申请修改通知9",
+					"date": "2022-1-1",
+					"detail": "您好,乌拉乌拉乌拉",
+					"applyId": 9
+				}
+			],
+			"applyType": {
+				"done": [{
+						"type": "伦理",
+						"value": 12
+					},
+					{
+						"type": "采购",
+						"value": 13
+					},
+					{
+						"type": "实验",
+						"value": 14
+					},
+					{
+						"type": "供应",
+						"value": 15
+					}
+				],
+				"doing": [{
+						"type": "伦理",
+						"value": 122
+					},
+					{
+						"type": "采购",
+						"value": 13
+					},
+					{
+						"type": "实验",
+						"value": 14
+					},
+					{
+						"type": "供应",
+						"value": 15
+					}
+				]
+			},
+			"applyProp": {
+				"ethic": [{
+						"type": "教学",
+						"value": 12
+					},
+					{
+						"type": "采购",
+						"value": 13
+					},
+					{
+						"type": "实验",
+						"value": 14
+					}
+				],
+				"buy": [{
+						"type": "教学",
+						"value": 122
+					},
+					{
+						"type": "采购",
+						"value": 132
+					},
+					{
+						"type": "实验",
+						"value": 14
+					}
+				]
+			},
+			"doingApplyType": [{
+					"type": "等待存档",
+					"value": 291
+				},
+				{
+					"type": "一周以上",
+					"value": 10
+				},
+				{
+					"type": "一周内",
+					"value": 29
+				}
+			],
+			"userInfo": {
+				"userType": [{
+						"type": "申请人",
+						"value": 12
+					},
+					{
+						"type": "审核人",
+						"value": 99
+					},
+					{
+						"type": "供应商",
+						"value": 1
+					}
+				],
+				"aduitType": [{
+						"type": "A领域专家",
+						"value": 1
+					},
+					{
+						"type": "B领域专家",
+						"value": 2
+					},
+					{
+						"type": "C领域专家",
+						"value": 3
+					},
+					{
+						"type": "D领域专家",
+						"value": 4
+					},
+					{
+						"type": "E领域专家",
+						"value": 5
+					}
+				],
+				"userStat": [{
+						"type": "在线用户",
+						"value": 4
+					},
+					{
+						"type": "离线用户",
+						"value": 5
+					}
+				]
+			},
+			"operateInfo": [{
+					"applyId": 1,
+					"title": "关于A的申请",
+					"userName": "AAA",
+					"date": "2022-1-1"
+				},
+				{
+					"applyId": 2,
+					"title": "关于A的申请",
+					"userName": "AAA",
+					"date": "2022-1-1"
+				},
+				{
+					"applyId": 3,
+					"title": "关于A的申请",
+					"userName": "AAA",
+					"date": "2022-1-1"
+				},
+				{
+					"applyId": 4,
+					"title": "关于A的申请",
+					"userName": "AAA",
+					"date": "2022-1-1"
+				},
+				{
+					"applyId": 5,
+					"title": "关于A的申请",
+					"userName": "AAA",
+					"date": "2022-1-1"
+				},
+				{
+					"applyId": 6,
+					"title": "关于A的申请",
+					"userName": "AAA",
+					"date": "2022-1-1"
+				}
+			]
+		}
+	},
+	"uploadImg": {
+		"errno": 0,
+		"data": [{
+			"url": "111",
+			"alt": "222",
+			"href": "333"
+		}]
 	}
 }

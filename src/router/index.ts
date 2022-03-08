@@ -112,9 +112,31 @@ const routes: RouteRecordRaw[] = [
 						component: () => import('../pages/Applicant/Home/ApplicantHome.vue'),
 					},
 					{
-						path: '/applicant/apply/:applyId',
+						path: '/applicant/apply',
 						name: 'applicant-apply',
 						component: () => import('../pages/Applicant/Apply/ApplicantApply.vue'),
+						children: [
+							{
+								path: '/applicant/apply/edit/:applyId',
+								name: 'applicant-apply-edit',
+								component: () => import('../pages/Applicant/Apply/Edit/ApplicantApplyEdit.vue'),
+							},
+							{
+								path: '/applicant/apply/show/:applyId',
+								name: 'applicant-apply-show',
+								component: () => import('../pages/Applicant/Apply/Show/ApplicantApplyShow.vue'),
+							},
+							{
+								path: '/applicant/apply/new/:type',
+								name: 'applicant-apply-new',
+								component: () => import('../pages/Applicant/Apply/New/ApplicantApplyNew.vue'),
+							},
+							{
+								path: '/applicant/apply/license/:animalId',
+								name: 'applicant-apply-license',
+								component: () => import('../pages/Applicant/Apply/License/ApplicantApplyLicense.vue'),
+							},
+						],
 					},
 				],
 			},

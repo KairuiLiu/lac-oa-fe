@@ -35,7 +35,7 @@ const router = useRouter();
 const store = useStore();
 
 const state = reactive({
-	works: store.state.admin.sysData,
+	works: computed(() => store.state.admin.sysData),
 });
 
 const welcomeText = computed(() => {

@@ -7,6 +7,7 @@ import getters from './getters';
 import admin from './models/admin';
 import support from './models/support';
 import applicant from './models/applicant';
+import apply from './models/apply';
 
 export default createStore({
 	state,
@@ -17,5 +18,6 @@ export default createStore({
 		admin,
 		applicant,
 		support,
+		apply,
 	},
 });

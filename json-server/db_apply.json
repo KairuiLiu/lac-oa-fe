@@ -30,11 +30,9 @@
 	},
 	"applytypes": {
 		"code": 0,
-		"data": [
-			{
+		"data": [{
 				"name": "全部申请",
-				"subType": [
-					{
+				"subType": [{
 						"name": "2021"
 					},
 					{
@@ -44,8 +42,7 @@
 			},
 			{
 				"name": "采购申请",
-				"subType": [
-					{
+				"subType": [{
 						"name": "2021"
 					},
 					{
@@ -55,8 +52,7 @@
 			},
 			{
 				"name": "伦理审核申请",
-				"subType": [
-					{
+				"subType": [{
 						"name": "2021"
 					},
 					{
@@ -66,8 +62,7 @@
 			}
 		]
 	},
-	"applyList": [
-		{
+	"applyList": [{
 			"applyId": 1,
 			"applyTitle": "研究1的申请",
 			"applyUserName": "张三",
@@ -269,8 +264,7 @@
 	"applyProcess": {
 		"code": 0,
 		"data": {
-			"process": [
-				{
+			"process": [{
 					"userName": "申请人1",
 					"note": "发起申请",
 					"error": false,
@@ -371,5 +365,214 @@
 				}
 			]
 		}
-	}
+	},
+	"goodList": [{
+			"goodId": 1,
+			"goodName": "鸡1",
+			"goodPrice": {
+				"perPrice": 1.23,
+				"transPerPrice": 1,
+				"unit": "只",
+				"transBasePrice": 1
+			},
+			"goodLicense": "A123",
+			"goodStock": 123,
+			"compName": "A公司"
+		},
+		{
+			"goodId": 2,
+			"goodName": "鸡2",
+			"goodPrice": {
+				"unit": "斤",
+				"perPrice": 2.23,
+				"transPerPrice": 2,
+				"transBasePrice": 2
+			},
+			"goodLicense": "A123",
+			"goodStock": 223,
+			"compName": "A公司"
+		},
+		{
+			"goodId": 3,
+			"goodName": "鸡3",
+			"goodPrice": {
+				"unit": "只",
+				"perPrice": 3.23,
+				"transPerPrice": 3,
+				"transBasePrice": 3
+			},
+			"goodLicense": "A123",
+			"goodStock": 323,
+			"compName": "A公司"
+		},
+		{
+			"goodId": 4,
+			"goodName": "鸡4",
+			"goodPrice": {
+				"unit": "斤",
+				"perPrice": 4.23,
+				"transPerPrice": 4,
+				"transBasePrice": 4
+			},
+			"goodLicense": "A123",
+			"goodStock": 423,
+			"compName": "A公司"
+		},
+		{
+			"goodId": 5,
+			"goodName": "鸡5",
+			"goodPrice": {
+				"unit": "只",
+				"perPrice": 5.23,
+				"transPerPrice": 5,
+				"transBasePrice": 5
+			},
+			"goodLicense": "A123",
+			"goodStock": 523,
+			"compName": "A公司"
+		},
+		{
+			"goodId": 6,
+			"goodName": "鸡6",
+			"goodPrice": {
+				"unit": "斤",
+				"perPrice": 6.23,
+				"transPerPrice": 6,
+				"transBasePrice": 6
+			},
+			"goodLicense": "A123",
+			"goodStock": 623,
+			"compName": "A公司"
+		},
+		{
+			"goodId": 7,
+			"goodName": "鸡7",
+			"goodPrice": {
+				"unit": "只",
+				"perPrice": 7.23,
+				"transPerPrice": 7,
+				"transBasePrice": 7
+			},
+			"goodLicense": "A123",
+			"goodStock": 723,
+			"compName": "A公司"
+		},
+		{
+			"goodId": 8,
+			"goodName": "鸡8",
+			"goodPrice": {
+				"unit": "只",
+				"perPrice": 8.23,
+				"transPerPrice": 8,
+				"transBasePrice": 8
+			},
+			"goodLicense": "A123",
+			"goodStock": 823,
+			"compName": "A公司"
+		},
+		{
+			"goodId": 9,
+			"goodName": "鸡9",
+			"goodPrice": {
+				"unit": "袋",
+				"perPrice": 9.23,
+				"transPerPrice": 9,
+				"transBasePrice": 9
+			},
+			"goodLicense": "A123",
+			"goodStock": 923,
+			"compName": "A公司"
+		},
+		{
+			"goodId": 10,
+			"goodName": "鸡10",
+			"goodPrice": {
+				"unit": "只",
+				"perPrice": 10.23,
+				"transPerPrice": 10,
+				"transBasePrice": 10
+			},
+			"goodLicense": "A123",
+			"goodStock": 1023,
+			"compName": "A公司"
+		},
+		{
+			"goodId": 11,
+			"goodName": "鸡11",
+			"goodPrice": {
+				"unit": "袋",
+				"perPrice": 11.23,
+				"transPerPrice": 11,
+				"transBasePrice": 11
+			},
+			"goodLicense": "A123",
+			"goodStock": 1123,
+			"compName": "A公司"
+		},
+		{
+			"goodId": 12,
+			"goodName": "鸡12",
+			"goodPrice": {
+				"unit": "只",
+				"perPrice": 12.23,
+				"transPerPrice": 12,
+				"transBasePrice": 22
+			},
+			"goodLicense": "A123",
+			"goodStock": 1232,
+			"compName": "A公司"
+		},
+		{
+			"goodId": 13,
+			"goodName": "鸡13",
+			"goodPrice": {
+				"unit": "袋",
+				"perPrice": 13.23,
+				"transPerPrice": 13,
+				"transBasePrice": 23
+			},
+			"goodLicense": "A123",
+			"goodStock": 1223,
+			"compName": "A公司"
+		},
+		{
+			"goodId": 14,
+			"goodName": "鸡14",
+			"goodPrice": {
+				"unit": "只",
+				"perPrice": 14.23,
+				"transPerPrice": 14,
+				"transBasePrice": 24
+			},
+			"goodLicense": "A123",
+			"goodStock": 1233,
+			"compName": "A公司"
+		},
+		{
+			"goodId": 15,
+			"goodName": "鸡15",
+			"goodPrice": {
+				"unit": "只",
+				"perPrice": 15.23,
+				"transPerPrice": 15,
+				"transBasePrice": 25
+			},
+			"goodLicense": "A123",
+			"goodStock": 1423,
+			"compName": "A公司"
+		},
+		{
+			"goodId": 16,
+			"goodName": "鸡16",
+			"goodPrice": {
+				"unit": "只",
+				"perPrice": 16.23,
+				"transPerPrice": 16,
+				"transBasePrice": 26
+			},
+			"goodLicense": "A123",
+			"goodStock": 1523,
+			"compName": "A公司"
+		}
+	]
 }

@@ -84,7 +84,7 @@ export default defineComponent({
 }
 
 .login {
-	padding: 10vh 2vw;
+	padding: 7vh 2vw;
 	background-color: #fff;
 	border-radius: 40px;
 }

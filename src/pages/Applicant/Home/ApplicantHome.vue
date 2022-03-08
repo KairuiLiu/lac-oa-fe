@@ -208,7 +208,7 @@ const handlePageChange: VxePagerEvents.PageChange = ({ currentPage, pageSize }) 
 
 function toShowApply(id) {
 	router.push({
-		name: 'applicant-apply',
+		name: 'applicant-apply-show',
 		params: {
 			applyId: id,
 		},
@@ -217,7 +217,7 @@ function toShowApply(id) {
 
 function toEditApply(id) {
 	router.push({
-		name: 'applicant-apply',
+		name: 'applicant-apply-edit',
 		params: {
 			applyId: id,
 		},
@@ -264,7 +264,7 @@ function toShowFollow(id) {
 
 function toNewApply(v) {
 	router.push({
-		name: 'applicant-apply',
+		name: 'applicant-apply-new',
 		params: {
 			type: `${v[0]}-${v[1]}`,
 		},
