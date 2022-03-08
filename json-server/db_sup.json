@@ -45,7 +45,8 @@
 				},
 				"orderState": {
 					"totle": 7300,
-					"detail": [{
+					"detail": [
+						{
 							"type": "未发货",
 							"value": 123
 						},
@@ -95,7 +96,8 @@
 		}
 	},
 	"goodLog": ["[2022-1-1]: 创建商品", "[2022-1-2]: 上架商品", "[2022-1-3]: 下架商品", "[2022-1-4]: 删除商品", "[2022-1-5]: 上架商品"],
-	"goodList": [{
+	"goodList": [
+		{
 			"goodId": 1,
 			"goodName": "鸡1",
 			"goodPrice": {
@@ -320,312 +322,353 @@
 			"goodAddTime": "2022-11-31:09:00:01"
 		}
 	],
-	"ordersList": [{
-		"id": 123,
-		"getTime": "2022-01-01 11:12:22",
-		"orderState": " 卖家已分批发货, 等待买家收货",
-		"orderAddress": "张三，15212346651，重庆市 北碚区 天生路2号西南大学 第一教学楼",
-		"orderBatch": [{
-			"id": 1,
-			"expDate": "2022-11-11",
-			"shipState": "验货中",
-			"goods": [{
-					"name": "机器猫",
-					"number": 2,
-					"specification": "20只",
-					"custome": "AAA"
+	"ordersList": [
+		{
+			"id": 123,
+			"getTime": "2022-01-01 11:12:22",
+			"orderState": " 卖家已分批发货, 等待买家收货",
+			"orderAddress": "张三，15212346651，重庆市 北碚区 天生路2号西南大学 第一教学楼",
+			"orderBatch": [
+				{
+					"id": 1,
+					"expDate": "2022-11-11",
+					"shipState": "验货中",
+					"goods": [
+						{
+							"name": "机器猫",
+							"number": 2,
+							"specification": "20只",
+							"custome": "AAA"
+						},
+						{
+							"name": "机器猫1",
+							"number": 2,
+							"specification": "210只",
+							"custome": "A2AA"
+						}
+					]
 				},
 				{
-					"name": "机器猫1",
-					"number": 2,
-					"specification": "210只",
-					"custome": "A2AA"
-				}
-			]
-		}, {
-			"id": 2,
-			"expDate": "2022-11-11",
-			"shipState": "待发货",
-			"goods": [{
-					"name": "机器猫",
-					"number": 2,
-					"specification": "20只",
-					"custome": "AAA"
+					"id": 2,
+					"expDate": "2022-11-11",
+					"shipState": "待发货",
+					"goods": [
+						{
+							"name": "机器猫",
+							"number": 2,
+							"specification": "20只",
+							"custome": "AAA"
+						},
+						{
+							"name": "机器猫1",
+							"number": 2,
+							"specification": "210只",
+							"custome": "A2AA"
+						}
+					]
 				},
 				{
-					"name": "机器猫1",
-					"number": 2,
-					"specification": "210只",
-					"custome": "A2AA"
+					"id": 3,
+					"expDate": "2022-11-11",
+					"shipState": "运输中",
+					"goods": [
+						{
+							"name": "机器猫",
+							"number": 2,
+							"specification": "20只",
+							"custome": "AAA"
+						},
+						{
+							"name": "机器猫1",
+							"number": 2,
+							"specification": "210只",
+							"custome": "A2AA"
+						}
+					]
 				}
-			]
-		}, {
-			"id": 3,
-			"expDate": "2022-11-11",
-			"shipState": "运输中",
-			"goods": [{
-					"name": "机器猫",
-					"number": 2,
-					"specification": "20只",
-					"custome": "AAA"
+			],
+			"totleDiscount": 12,
+			"totleGoodsPrice": 22222,
+			"shipPrice": 22,
+			"finalPrice": 1111
+		},
+		{
+			"id": 123,
+			"getTime": "2022-01-01 11:12:22",
+			"orderState": " 卖家已分批发货, 等待买家收货",
+			"orderAddress": "张三，15212346651，重庆市 北碚区 天生路2号西南大学 第一教学楼",
+			"orderBatch": [
+				{
+					"id": 1,
+					"expDate": "2022-11-11",
+					"shipState": "验货中",
+					"goods": [
+						{
+							"name": "机器猫",
+							"number": 2,
+							"specification": "20只",
+							"custome": "AAA"
+						},
+						{
+							"name": "机器猫1",
+							"number": 2,
+							"specification": "210只",
+							"custome": "A2AA"
+						}
+					]
 				},
 				{
-					"name": "机器猫1",
-					"number": 2,
-					"specification": "210只",
-					"custome": "A2AA"
-				}
-			]
-		}],
-		"totleDiscount": 12,
-		"totleGoodsPrice": 22222,
-		"shipPrice": 22,
-		"finalPrice": 1111
-	}, {
-		"id": 123,
-		"getTime": "2022-01-01 11:12:22",
-		"orderState": " 卖家已分批发货, 等待买家收货",
-		"orderAddress": "张三，15212346651，重庆市 北碚区 天生路2号西南大学 第一教学楼",
-		"orderBatch": [{
-			"id": 1,
-			"expDate": "2022-11-11",
-			"shipState": "验货中",
-			"goods": [{
-					"name": "机器猫",
-					"number": 2,
-					"specification": "20只",
-					"custome": "AAA"
+					"id": 2,
+					"expDate": "2022-11-11",
+					"shipState": "待发货",
+					"goods": [
+						{
+							"name": "机器猫",
+							"number": 2,
+							"specification": "20只",
+							"custome": "AAA"
+						},
+						{
+							"name": "机器猫1",
+							"number": 2,
+							"specification": "210只",
+							"custome": "A2AA"
+						}
+					]
 				},
 				{
-					"name": "机器猫1",
-					"number": 2,
-					"specification": "210只",
-					"custome": "A2AA"
+					"id": 3,
+					"expDate": "2022-11-11",
+					"shipState": "运输中",
+					"goods": [
+						{
+							"name": "机器猫",
+							"number": 2,
+							"specification": "20只",
+							"custome": "AAA"
+						},
+						{
+							"name": "机器猫1",
+							"number": 2,
+							"specification": "210只",
+							"custome": "A2AA"
+						}
+					]
 				}
-			]
-		}, {
-			"id": 2,
-			"expDate": "2022-11-11",
-			"shipState": "待发货",
-			"goods": [{
-					"name": "机器猫",
-					"number": 2,
-					"specification": "20只",
-					"custome": "AAA"
+			],
+			"totleDiscount": 12,
+			"totleGoodsPrice": 22222,
+			"shipPrice": 22,
+			"finalPrice": 1111
+		},
+		{
+			"id": 123,
+			"getTime": "2022-01-01 11:12:22",
+			"orderState": " 卖家已分批发货, 等待买家收货",
+			"orderAddress": "张三，15212346651，重庆市 北碚区 天生路2号西南大学 第一教学楼",
+			"orderBatch": [
+				{
+					"id": 1,
+					"expDate": "2022-11-11",
+					"shipState": "验货中",
+					"goods": [
+						{
+							"name": "机器猫",
+							"number": 2,
+							"specification": "20只",
+							"custome": "AAA"
+						},
+						{
+							"name": "机器猫1",
+							"number": 2,
+							"specification": "210只",
+							"custome": "A2AA"
+						}
+					]
 				},
 				{
-					"name": "机器猫1",
-					"number": 2,
-					"specification": "210只",
-					"custome": "A2AA"
-				}
-			]
-		}, {
-			"id": 3,
-			"expDate": "2022-11-11",
-			"shipState": "运输中",
-			"goods": [{
-					"name": "机器猫",
-					"number": 2,
-					"specification": "20只",
-					"custome": "AAA"
+					"id": 2,
+					"expDate": "2022-11-11",
+					"shipState": "待发货",
+					"goods": [
+						{
+							"name": "机器猫",
+							"number": 2,
+							"specification": "20只",
+							"custome": "AAA"
+						},
+						{
+							"name": "机器猫1",
+							"number": 2,
+							"specification": "210只",
+							"custome": "A2AA"
+						}
+					]
 				},
 				{
-					"name": "机器猫1",
-					"number": 2,
-					"specification": "210只",
-					"custome": "A2AA"
+					"id": 3,
+					"expDate": "2022-11-11",
+					"shipState": "运输中",
+					"goods": [
+						{
+							"name": "机器猫",
+							"number": 2,
+							"specification": "20只",
+							"custome": "AAA"
+						},
+						{
+							"name": "机器猫1",
+							"number": 2,
+							"specification": "210只",
+							"custome": "A2AA"
+						}
+					]
 				}
-			]
-		}],
-		"totleDiscount": 12,
-		"totleGoodsPrice": 22222,
-		"shipPrice": 22,
-		"finalPrice": 1111
-	}, {
-		"id": 123,
-		"getTime": "2022-01-01 11:12:22",
-		"orderState": " 卖家已分批发货, 等待买家收货",
-		"orderAddress": "张三，15212346651，重庆市 北碚区 天生路2号西南大学 第一教学楼",
-		"orderBatch": [{
-			"id": 1,
-			"expDate": "2022-11-11",
-			"shipState": "验货中",
-			"goods": [{
-					"name": "机器猫",
-					"number": 2,
-					"specification": "20只",
-					"custome": "AAA"
+			],
+			"totleDiscount": 12,
+			"totleGoodsPrice": 22222,
+			"shipPrice": 22,
+			"finalPrice": 1111
+		},
+		{
+			"id": 123,
+			"getTime": "2022-01-01 11:12:22",
+			"orderState": " 卖家已分批发货, 等待买家收货",
+			"orderAddress": "张三，15212346651，重庆市 北碚区 天生路2号西南大学 第一教学楼",
+			"orderBatch": [
+				{
+					"id": 1,
+					"expDate": "2022-11-11",
+					"shipState": "验货中",
+					"goods": [
+						{
+							"name": "机器猫",
+							"number": 2,
+							"specification": "20只",
+							"custome": "AAA"
+						},
+						{
+							"name": "机器猫1",
+							"number": 2,
+							"specification": "210只",
+							"custome": "A2AA"
+						}
+					]
 				},
 				{
-					"name": "机器猫1",
-					"number": 2,
-					"specification": "210只",
-					"custome": "A2AA"
-				}
-			]
-		}, {
-			"id": 2,
-			"expDate": "2022-11-11",
-			"shipState": "待发货",
-			"goods": [{
-					"name": "机器猫",
-					"number": 2,
-					"specification": "20只",
-					"custome": "AAA"
+					"id": 2,
+					"expDate": "2022-11-11",
+					"shipState": "待发货",
+					"goods": [
+						{
+							"name": "机器猫",
+							"number": 2,
+							"specification": "20只",
+							"custome": "AAA"
+						},
+						{
+							"name": "机器猫1",
+							"number": 2,
+							"specification": "210只",
+							"custome": "A2AA"
+						}
+					]
 				},
 				{
-					"name": "机器猫1",
-					"number": 2,
-					"specification": "210只",
-					"custome": "A2AA"
+					"id": 3,
+					"expDate": "2022-11-11",
+					"shipState": "运输中",
+					"goods": [
+						{
+							"name": "机器猫",
+							"number": 2,
+							"specification": "20只",
+							"custome": "AAA"
+						},
+						{
+							"name": "机器猫1",
+							"number": 2,
+							"specification": "210只",
+							"custome": "A2AA"
+						}
+					]
 				}
-			]
-		}, {
-			"id": 3,
-			"expDate": "2022-11-11",
-			"shipState": "运输中",
-			"goods": [{
-					"name": "机器猫",
-					"number": 2,
-					"specification": "20只",
-					"custome": "AAA"
+			],
+			"totleDiscount": 12,
+			"totleGoodsPrice": 22222,
+			"shipPrice": 22,
+			"finalPrice": 1111
+		},
+		{
+			"id": 123,
+			"getTime": "2022-01-01 11:12:22",
+			"orderState": " 卖家已分批发货, 等待买家收货",
+			"orderAddress": "张三，15212346651，重庆市 北碚区 天生路2号西南大学 第一教学楼",
+			"orderBatch": [
+				{
+					"id": 1,
+					"expDate": "2022-11-11",
+					"shipState": "验货中",
+					"goods": [
+						{
+							"name": "机器猫",
+							"number": 2,
+							"specification": "20只",
+							"custome": "AAA"
+						},
+						{
+							"name": "机器猫1",
+							"number": 2,
+							"specification": "210只",
+							"custome": "A2AA"
+						}
+					]
 				},
 				{
-					"name": "机器猫1",
-					"number": 2,
-					"specification": "210只",
-					"custome": "A2AA"
-				}
-			]
-		}],
-		"totleDiscount": 12,
-		"totleGoodsPrice": 22222,
-		"shipPrice": 22,
-		"finalPrice": 1111
-	}, {
-		"id": 123,
-		"getTime": "2022-01-01 11:12:22",
-		"orderState": " 卖家已分批发货, 等待买家收货",
-		"orderAddress": "张三，15212346651，重庆市 北碚区 天生路2号西南大学 第一教学楼",
-		"orderBatch": [{
-			"id": 1,
-			"expDate": "2022-11-11",
-			"shipState": "验货中",
-			"goods": [{
-					"name": "机器猫",
-					"number": 2,
-					"specification": "20只",
-					"custome": "AAA"
+					"id": 2,
+					"expDate": "2022-11-11",
+					"shipState": "待发货",
+					"goods": [
+						{
+							"name": "机器猫",
+							"number": 2,
+							"specification": "20只",
+							"custome": "AAA"
+						},
+						{
+							"name": "机器猫1",
+							"number": 2,
+							"specification": "210只",
+							"custome": "A2AA"
+						}
+					]
 				},
 				{
-					"name": "机器猫1",
-					"number": 2,
-					"specification": "210只",
-					"custome": "A2AA"
+					"id": 3,
+					"expDate": "2022-11-11",
+					"shipState": "运输中",
+					"goods": [
+						{
+							"name": "机器猫",
+							"number": 2,
+							"specification": "20只",
+							"custome": "AAA"
+						},
+						{
+							"name": "机器猫1",
+							"number": 2,
+							"specification": "210只",
+							"custome": "A2AA"
+						}
+					]
 				}
-			]
-		}, {
-			"id": 2,
-			"expDate": "2022-11-11",
-			"shipState": "待发货",
-			"goods": [{
-					"name": "机器猫",
-					"number": 2,
-					"specification": "20只",
-					"custome": "AAA"
-				},
-				{
-					"name": "机器猫1",
-					"number": 2,
-					"specification": "210只",
-					"custome": "A2AA"
-				}
-			]
-		}, {
-			"id": 3,
-			"expDate": "2022-11-11",
-			"shipState": "运输中",
-			"goods": [{
-					"name": "机器猫",
-					"number": 2,
-					"specification": "20只",
-					"custome": "AAA"
-				},
-				{
-					"name": "机器猫1",
-					"number": 2,
-					"specification": "210只",
-					"custome": "A2AA"
-				}
-			]
-		}],
-		"totleDiscount": 12,
-		"totleGoodsPrice": 22222,
-		"shipPrice": 22,
-		"finalPrice": 1111
-	}, {
-		"id": 123,
-		"getTime": "2022-01-01 11:12:22",
-		"orderState": " 卖家已分批发货, 等待买家收货",
-		"orderAddress": "张三，15212346651，重庆市 北碚区 天生路2号西南大学 第一教学楼",
-		"orderBatch": [{
-			"id": 1,
-			"expDate": "2022-11-11",
-			"shipState": "验货中",
-			"goods": [{
-					"name": "机器猫",
-					"number": 2,
-					"specification": "20只",
-					"custome": "AAA"
-				},
-				{
-					"name": "机器猫1",
-					"number": 2,
-					"specification": "210只",
-					"custome": "A2AA"
-				}
-			]
-		}, {
-			"id": 2,
-			"expDate": "2022-11-11",
-			"shipState": "待发货",
-			"goods": [{
-					"name": "机器猫",
-					"number": 2,
-					"specification": "20只",
-					"custome": "AAA"
-				},
-				{
-					"name": "机器猫1",
-					"number": 2,
-					"specification": "210只",
-					"custome": "A2AA"
-				}
-			]
-		}, {
-			"id": 3,
-			"expDate": "2022-11-11",
-			"shipState": "运输中",
-			"goods": [{
-					"name": "机器猫",
-					"number": 2,
-					"specification": "20只",
-					"custome": "AAA"
-				},
-				{
-					"name": "机器猫1",
-					"number": 2,
-					"specification": "210只",
-					"custome": "A2AA"
-				}
-			]
-		}],
-		"totleDiscount": 12,
-		"totleGoodsPrice": 22222,
-		"shipPrice": 22,
-		"finalPrice": 1111
-	}],
+			],
+			"totleDiscount": 12,
+			"totleGoodsPrice": 22222,
+			"shipPrice": 22,
+			"finalPrice": 1111
+		}
+	],
 	"orderDetail": {
 		"code": 0,
 		"data": {
@@ -635,7 +678,8 @@
 			"userName": "张三",
 			"payMethod": "到付",
 			"orderAddress": "张三，15212346651，重庆市 北碚区 天生路2号西南大学 第一教学楼",
-			"shipInfo": [{
+			"shipInfo": [
+				{
 					"id": 1,
 					"expDate": "2022-11-11",
 					"shipComp": "顺丰冷链",
@@ -657,9 +701,11 @@
 					"deliveryTime": "暂无"
 				}
 			],
-			"orderBatch": [{
+			"orderBatch": [
+				{
 					"id": 1,
-					"goods": [{
+					"goods": [
+						{
 							"face": "https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png",
 							"name": "机器猫",
 							"number": 2,
@@ -680,7 +726,8 @@
 				},
 				{
 					"id": 2,
-					"goods": [{
+					"goods": [
+						{
 							"face": "https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png",
 							"name": "机器猫",
 							"number": 2,
@@ -701,7 +748,8 @@
 				},
 				{
 					"id": 3,
-					"goods": [{
+					"goods": [
+						{
 							"face": "https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png",
 							"name": "机器猫",
 							"number": 2,
@@ -741,7 +789,8 @@
 	},
 	"shipCompList": {
 		"code": 0,
-		"data": [{
+		"data": [
+			{
 				"id": 1,
 				"name": "顺丰快递"
 			},
