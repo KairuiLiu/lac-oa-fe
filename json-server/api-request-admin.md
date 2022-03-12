@@ -15,7 +15,9 @@ applyAduitState = ['已拒绝', '已通过', '待审核'];
   - 请求方式: `GET`
   - head
     ```js
-    authorization: { token }
+    authorization: {
+    	token;
+    }
     ```
   - 示例结果
     ```ts
@@ -179,7 +181,7 @@ applyAduitState = ['已拒绝', '已通过', '待审核'];
             "detail": "您好,乌拉乌拉乌拉",
             "applyId": 2
           },
-        ], 
+        ],
         "applyType": {              // 申请类型
           "done": [                 // 已完成的申请统计
             {
@@ -237,7 +239,7 @@ applyAduitState = ['已拒绝', '已通过', '待审核'];
             "type": "一周内",
             "value": 29
           }
-        ], 
+        ],
         "userInfo": {           // 人员概况
           "userType": [
             {
@@ -292,7 +294,9 @@ applyAduitState = ['已拒绝', '已通过', '待审核'];
   - 请求方式: `GET`
   - head
     ```js
-    authorization: { token }
+    authorization: {
+    	token;
+    }
     ```
   - query
     ```ts
@@ -308,7 +312,7 @@ applyAduitState = ['已拒绝', '已通过', '待审核'];
     //   applyType?: number;         // -1 = 不限, 其他为申请类型applyTypes下标
     //   applyProp?: number;         // -1 = 不限, 其他为申请目的applyProps下标
     //   applyTitle?: string;        // 申请名
-    //   notFirst?: number;          // 首次申请? -1 = 不限, 0 = 非首次申请 1 = 首次申请 
+    //   notFirst?: number;          // 首次申请? -1 = 不限, 0 = 非首次申请 1 = 首次申请
     //   completeMatching?: number;  // 0 = 模糊匹配 1 = 精确匹配
     // }
     ```
@@ -335,7 +339,9 @@ applyAduitState = ['已拒绝', '已通过', '待审核'];
   - 请求方式: `GET`
   - head
     ```js
-    authorization: { token }
+    authorization: {
+    	token;
+    }
     ```
   - query
     ```ts
@@ -372,11 +378,13 @@ applyAduitState = ['已拒绝', '已通过', '待审核'];
   - 请求方式: `POST`
   - head
     ```js
-    authorization: { token }
+    authorization: {
+    	token;
+    }
     ```
   - query
     ```ts
-    { 
+    {
       userId,       // 审核人Id
       applyId,
     }
@@ -392,7 +400,9 @@ applyAduitState = ['已拒绝', '已通过', '待审核'];
   - 请求方式: `GET`
   - head
     ```js
-    authorization: { token }
+    authorization: {
+    	token;
+    }
     ```
   - 示例结果
     ```js
@@ -456,40 +466,44 @@ applyAduitState = ['已拒绝', '已通过', '待审核'];
   - 请求方式: `GET`
   - head
     ```js
-    authorization: { token }
+    authorization: {
+    	token;
+    }
     ```
   - query
     ```js
     {
-      aduitType: ['伦理审核人员', '社会人士']   // [一级类型, 二级类型]
+    	aduitType: ['伦理审核人员', '社会人士']; // [一级类型, 二级类型]
     }
     ```
   - 示例结果
     ```js
-		"code": 0,
-		"data": [
-			{
-				"userName": "张1",
-				"userId": 1234561,
-				"enable": true,
-				"email": "123@t.com",
-				"department": "计算机学院",
-				"face": "https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png",
-				"phone": 13423232323
-			},
-		]
+    "code": 0,
+    "data": [
+    	{
+    		"userName": "张1",
+    		"userId": 1234561,
+    		"enable": true,
+    		"email": "123@t.com",
+    		"department": "计算机学院",
+    		"face": "https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png",
+    		"phone": 13423232323
+    	},
+    ]
     ```
 - 删除二级用户组
   - 地址`${BASE_URL}/delAduitGroup`
   - 请求方式: `POST`
   - head
     ```js
-    authorization: { token }
+    authorization: {
+    	token;
+    }
     ```
   - body
     ```ts
-    { 
-      aduitType     // 一级用户组
+    {
+    	aduitType; // 一级用户组
     }
     ```
   - 示例结果
@@ -503,13 +517,15 @@ applyAduitState = ['已拒绝', '已通过', '待审核'];
   - 请求方式: `POST`
   - head
     ```js
-    authorization: { token }
+    authorization: {
+    	token;
+    }
     ```
   - body
     ```ts
-    { 
-      aduitType     // 一级用户组
-      groupName     // 新二级用户组
+    {
+    	aduitType; // 一级用户组
+    	groupName; // 新二级用户组
     }
     ```
   - 示例结果
@@ -523,12 +539,14 @@ applyAduitState = ['已拒绝', '已通过', '待审核'];
   - 请求方式: `POST`
   - head
     ```js
-    authorization: { token }
+    authorization: {
+    	token;
+    }
     ```
   - body
     ```ts
-    { 
-      userId
+    {
+    	userId;
     }
     ```
   - 示例结果
@@ -542,12 +560,14 @@ applyAduitState = ['已拒绝', '已通过', '待审核'];
   - 请求方式: `POST`
   - head
     ```js
-    authorization: { token }
+    authorization: {
+    	token;
+    }
     ```
   - body
     ```ts
-    { 
-      userId     
+    {
+    	userId;
     }
     ```
   - 示例结果
@@ -562,7 +582,9 @@ applyAduitState = ['已拒绝', '已通过', '待审核'];
   - 请求方式: `GET`
   - head
     ```js
-    authorization: { token }
+    authorization: {
+    	token;
+    }
     ```
   - query
     ```js
@@ -580,8 +602,8 @@ applyAduitState = ['已拒绝', '已通过', '待审核'];
     ```
   - 示例结果
     ```js
-		"code": 0,
-		"data": [
+    "code": 0,
+    "data": [
       {
         "goodId": 1,
         "goodName": "鸡1",
@@ -603,11 +625,13 @@ applyAduitState = ['已拒绝', '已通过', '待审核'];
   - 请求方式: `POST`
   - head
     ```js
-    authorization: { token }
+    authorization: {
+    	token;
+    }
     ```
   - body
     ```ts
-    { 
+    {
       supportId,
       config,           // 商品配置
     }
@@ -640,11 +664,13 @@ applyAduitState = ['已拒绝', '已通过', '待审核'];
   - 请求方式: `POST`
   - head
     ```js
-    authorization: { token }
+    authorization: {
+    	token;
+    }
     ```
   - body
     ```ts
-    { 
+    {
       supportId,
       goodIds,
     }
@@ -660,11 +686,13 @@ applyAduitState = ['已拒绝', '已通过', '待审核'];
   - 请求方式: `POST`
   - head
     ```js
-    authorization: { token }
+    authorization: {
+    	token;
+    }
     ```
   - body
     ```ts
-    { 
+    {
       supportId,
       goodId,
       config,
@@ -698,7 +726,9 @@ applyAduitState = ['已拒绝', '已通过', '待审核'];
   - 请求方式: `GET`
   - head
     ```js
-    authorization: { token }
+    authorization: {
+    	token;
+    }
     ```
   - query
     ```js
@@ -719,7 +749,9 @@ applyAduitState = ['已拒绝', '已通过', '待审核'];
   - 请求方式: `GET`
   - head
     ```js
-    authorization: { token }
+    authorization: {
+    	token;
+    }
     ```
   - query
     ```js
@@ -751,5 +783,3 @@ applyAduitState = ['已拒绝', '已通过', '待审核'];
       }
     },
     ```
-
-

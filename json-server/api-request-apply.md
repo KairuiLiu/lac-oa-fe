@@ -7,7 +7,9 @@ const BASE_URL = '/api/applicant';
   - 请求方式: `GET`
   - head
     ```js
-    authorization: { token }
+    authorization: {
+    	token;
+    }
     ```
   - 示例结果
     ```js
@@ -55,7 +57,9 @@ const BASE_URL = '/api/applicant';
   - 请求方式: `GET`
   - head
     ```js
-    authorization: { token }
+    authorization: {
+    	token;
+    }
     ```
   - query
     ```ts
@@ -63,7 +67,7 @@ const BASE_URL = '/api/applicant';
       _limit: pageSize,         // 分页大小
       _page: pageId,            // 页数
       type, // [一级列表, 二级列表] -> `[采购申请-2021]`
-      sort, // 排序字段 
+      sort, // 排序字段
     },
     // sort{
     //   pos: 0=正序 1=倒序
@@ -81,7 +85,7 @@ const BASE_URL = '/api/applicant';
     {
       code: 0,
       data: [
-        { 
+        {
           "applyId": 1,
           "applyTitle": "研究1的申请",
           "applyUserName": "张三",
@@ -99,7 +103,9 @@ const BASE_URL = '/api/applicant';
   - 请求方式: `GET`
   - head
     ```js
-    authorization: { token }
+    authorization: {
+    	token;
+    }
     ```
   - query
     ```js
@@ -111,13 +117,13 @@ const BASE_URL = '/api/applicant';
     }
     // Condition {
     //   shopName: String,  // 商品名
-		//   compName: String,  // 公司名
+    //   compName: String,  // 公司名
     // }
     ```
   - 示例结果
     ```js
-		"code": 0,
-		"data": [
+    "code": 0,
+    "data": [
       {
         "goodId": 1,
         "goodName": "鸡1",
@@ -141,21 +147,23 @@ const BASE_URL = '/api/applicant';
   - 请求方式: `GET`
   - head
     ```js
-    authorization: { token }
+    authorization: {
+    	token;
+    }
     ```
   - query
     ```js
     {
-      license
+    	license;
     }
     // license {
-	  //    comp = '公司名';
-	  //    id = '许可证编号';
-	  //    imgs = [许可证图片地址组];
+    //    comp = '公司名';
+    //    id = '许可证编号';
+    //    imgs = [许可证图片地址组];
     // }
     ```
   - 示例结果
     ```js
-		"code": 0,
-		"data": 'XX公司-SYXK(川)K2017-2008'
+    "code": 0,
+    "data": 'XX公司-SYXK(川)K2017-2008'
     ```

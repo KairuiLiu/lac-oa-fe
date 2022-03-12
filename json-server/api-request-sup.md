@@ -3,19 +3,22 @@ const BASE_URL = '/api/support';
 ```
 
 - 获取获取系统信息(大屏显示用)
+
   - 地址`${BASE_URL}/sysdata`
   - 请求方式: `GET`
   - head
     ```js
-    authorization: { token }
+    authorization: {
+    	token;
+    }
     ```
   - 示例结果(类型解释见前)
     ```js
-		{
-		  "code": 0,
+    {
+      "code": 0,
       "data": {
         "searchYears": [2022, 2021, 2020],    // 搜索可用年份列表
-        "plots": {                
+        "plots": {
           "totleGoods": {           // 工作量
             "month": {
               "number": 100,
@@ -60,13 +63,15 @@ const BASE_URL = '/api/support';
     },
     ```
 
-
 - 获取订单列表
+
   - 地址`${BASE_URL}/ordersList`
   - 请求方式: `GET`
   - head
     ```js
-    authorization: { token }
+    authorization: {
+    	token;
+    }
     ```
   - query
     ```js
@@ -81,7 +86,7 @@ const BASE_URL = '/api/support';
     ```
   - 示例结果(类型解释见前)
     ```js
-		{
+    {
       code: 0,
       data: [
         {
@@ -90,7 +95,7 @@ const BASE_URL = '/api/support';
           "orderState": " 卖家已分批发货, 等待买家收货",  // 订单状态
           "orderAddress": "张三，15212346651，重庆市 北碚区 天生路2号西南大学 第一教学楼",
           "orderBatch": [     // 分批
-            {           
+            {
               "id": 1,        // 批次
               "expDate": "2022-11-11",    // 客户期望收货时间
               "shipState": "验货中",       // 该批次状态
@@ -157,17 +162,18 @@ const BASE_URL = '/api/support';
     }
     ```
 
-
 - 添加商品
   - 地址`${BASE_URL}/addgood`
   - 请求方式: `POST`
   - head
     ```js
-    authorization: { token }
+    authorization: {
+    	token;
+    }
     ```
   - body
     ```ts
-    { 
+    {
       supportId,
       config,           // 商品配置
     }
@@ -200,11 +206,13 @@ const BASE_URL = '/api/support';
   - 请求方式: `POST`
   - head
     ```js
-    authorization: { token }
+    authorization: {
+    	token;
+    }
     ```
   - body
     ```ts
-    { 
+    {
       supportId,
       goodIds,
     }
@@ -220,11 +228,13 @@ const BASE_URL = '/api/support';
   - 请求方式: `POST`
   - head
     ```js
-    authorization: { token }
+    authorization: {
+    	token;
+    }
     ```
   - body
     ```ts
-    { 
+    {
       supportId,
       goodId,
       config,
@@ -258,7 +268,9 @@ const BASE_URL = '/api/support';
   - 请求方式: `GET`
   - head
     ```js
-    authorization: { token }
+    authorization: {
+    	token;
+    }
     ```
   - query
     ```js
@@ -279,7 +291,9 @@ const BASE_URL = '/api/support';
   - 请求方式: `GET`
   - head
     ```js
-    authorization: { token }
+    authorization: {
+    	token;
+    }
     ```
   - query
     ```js
@@ -316,7 +330,9 @@ const BASE_URL = '/api/support';
   - 请求方式: `GET`
   - head
     ```js
-    authorization: { token }
+    authorization: {
+    	token;
+    }
     ```
   - query
     ```js
@@ -334,8 +350,8 @@ const BASE_URL = '/api/support';
     ```
   - 示例结果
     ```js
-		"code": 0,
-		"data": [
+    "code": 0,
+    "data": [
       {
         "goodId": 1,
         "goodName": "鸡1",
@@ -353,16 +369,19 @@ const BASE_URL = '/api/support';
     ],
     ```
 - 获取快递公司名
+
   - 地址`${BASE_URL}/shipCompList`
   - 请求方式: `GET`
   - head
     ```js
-    authorization: { token }
+    authorization: {
+    	token;
+    }
     ```
   - 示例结果
     ```js
-		"code": 0,
-		"data": {
+    "code": 0,
+    "data": {
       "code": 0,
       "data": [
         {
@@ -377,21 +396,23 @@ const BASE_URL = '/api/support';
     }
     ```
 
-
 - 获取订单详情
+
   - 地址`${BASE_URL}/orderDetail`
   - 请求方式: `GET`
   - head
     ```js
-    authorization: { token }
+    authorization: {
+    	token;
+    }
     ```
   - query
     ```js
-    orderId
+    orderId;
     ```
   - 示例结果(类型解释见前)
     ```js
-		{
+    {
       "code": 0,
       "data": {
         "getTime": "2022-01-01 11:12:22",     // 下单时间
@@ -410,7 +431,7 @@ const BASE_URL = '/api/support';
           }
         ],
         "orderBatch": [     // 分批
-          { 
+          {
             "id": 1,        // 批次
             "goods": [
               {
@@ -442,19 +463,22 @@ const BASE_URL = '/api/support';
     ```
 
 - 获取物流
+
   - 地址`${BASE_URL}/shipDetail`
   - 请求方式: `GET`
   - head
     ```js
-    authorization: { token }
+    authorization: {
+    	token;
+    }
     ```
   - query
     ```js
-    shipNumber
+    shipNumber;
     ```
   - 示例结果(类型解释见前)
     ```js
-		{
+    {
       "code": 0,
       "data": [
         "2021-11-20 17:49:00  到达【顺丰西北枢纽(西安)",
@@ -468,17 +492,18 @@ const BASE_URL = '/api/support';
     },
     ```
 
-
 - 发货
   - 地址`${BASE_URL}/addShipId`
   - 请求方式: `POST`
   - head
     ```js
-    authorization: { token }
+    authorization: {
+    	token;
+    }
     ```
   - body
     ```ts
-    { 
+    {
       shipInfo,
     }
     // shipInfo{

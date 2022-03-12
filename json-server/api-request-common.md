@@ -1,4 +1,3 @@
-
 - 登录
   - 地址`/api/user/login`
   - 请求方式: `POST`
@@ -14,38 +13,40 @@
     {
       code: 0|1; // (0=成功, 1=失败)
       userInfo: {
-				"token": "123",
-				"userId": "1234561",
-				"username": "张1",
-				"email": "123@t.com",
-				"department": "计算机学院",
-				"face": "https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png",
-				"phone": "12345678900",
-				"group": ["管理员", "全部管理员"]
-			},
+    		"token": "123",
+    		"userId": "1234561",
+    		"username": "张1",
+    		"email": "123@t.com",
+    		"department": "计算机学院",
+    		"face": "https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png",
+    		"phone": "12345678900",
+    		"group": ["管理员", "全部管理员"]
+    	},
     }
     ```
-- 采用Token登录
+- 采用 Token 登录
   - 地址`/api/user/login`
   - 请求方式: `POST`
   - head
     ```js
-    authorization: { token }
+    authorization: {
+    	token;
+    }
     ```
   - 示例结果
     ```ts
     {
       code: 0|1; // (0=成功, 1=失败)
       userInfo: {
-				"token": "123",
-				"userId": "1234561",
-				"username": "张1",
-				"email": "123@t.com",
-				"department": "计算机学院",
-				"face": "https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png",
-				"phone": "12345678900",
-				"group": ["管理员", "全部管理员"]
-			},
+    		"token": "123",
+    		"userId": "1234561",
+    		"username": "张1",
+    		"email": "123@t.com",
+    		"department": "计算机学院",
+    		"face": "https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png",
+    		"phone": "12345678900",
+    		"group": ["管理员", "全部管理员"]
+    	},
     }
     ```
 - 更新用户信息
@@ -53,7 +54,9 @@
   - 请求方式: `POST`
   - head
     ```js
-    authorization: { token }
+    authorization: {
+    	token;
+    }
     ```
   - body
     ```ts
@@ -73,7 +76,7 @@
   - 示例结果
     ```ts
     {
-      code: 0|1; // (0=成功, 1=失败)
+    	code: 0 | 1; // (0=成功, 1=失败)
     }
     ```
 - 提交申请(再想想)
@@ -82,7 +85,9 @@
   - 请求方式: `GET`
   - head
     ```js
-    authorization: { token }
+    authorization: {
+    	token;
+    }
     ```
   - query
     ```ts
@@ -206,7 +211,9 @@
   - 请求方式: `POST`
   - head
     ```js
-    authorization: { token }
+    authorization: {
+    	token;
+    }
     ```
   - body
     ```ts
@@ -217,7 +224,7 @@
   - 示例结果
     ```ts
     {
-      code: 0|1; // (0=成功, 1=失败)
+    	code: 0 | 1; // (0=成功, 1=失败)
     }
     ```
 - 图片上传接口(有两个, 我整理下)
