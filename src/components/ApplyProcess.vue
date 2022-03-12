@@ -6,6 +6,9 @@
 			</template>
 			<div v-if="state.loading" class="loadCircleWapper"><a-spin /></div>
 			<div v-else class="peocessBox">
+				<div class="percent">
+					<a-progress :percent="percent" />
+				</div>
 				<a-steps direction="vertical">
 					<a-step v-for="(item, index) in processes" :key="`${index}-${item.type}`" :title="item.title" :status="item.status">
 						<template #description>
@@ -48,12 +51,6 @@ const state = reactive({
 	process: [],
 });
 
-function close() {
-	emits('close');
-}
-
-const visible = computed(() => props.visible);
-
 const processes = computed(() => {
 	const stages = [...new Set(state.process.map(d => d.stage))];
 	const processes = stages.map(d => {
@@ -71,6 +68,14 @@ const processes = computed(() => {
 	});
 	return processes;
 });
+
+const percent = computed(() => processes.value.at(-1).type * 25 + 25);
+
+function close() {
+	emits('close');
+}
+
+const visible = computed(() => props.visible);
 
 watch(
 	() => props.visible,
@@ -103,5 +108,9 @@ export default defineComponent({
 .peocessBox {
 	max-height: calc(80vh - 100px);
 	overflow: auto;
+}
+
+.percent {
+	margin-bottom: 24px;
 }
 </style>

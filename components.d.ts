@@ -38,6 +38,7 @@ declare module 'vue' {
     APopover: typeof import('ant-design-vue/es')['Popover']
     ApplyProcess: typeof import('./src/components/ApplyProcess.vue')['default']
     ApplySearchBox: typeof import('./src/components/ApplySearchBox.vue')['default']
+    AProgress: typeof import('ant-design-vue/es')['Progress']
     ARadioButton: typeof import('ant-design-vue/es')['RadioButton']
     ARadioGroup: typeof import('ant-design-vue/es')['RadioGroup']
     ARangePicker: typeof import('ant-design-vue/es')['RangePicker']
@@ -61,7 +62,7 @@ declare module 'vue' {
     ATypographyText: typeof import('ant-design-vue/es')['TypographyText']
     ATypographyTitle: typeof import('ant-design-vue/es')['TypographyTitle']
     AUpload: typeof import('ant-design-vue/es')['Upload']
-    AUploadDragger: typeof import('ant-design-vue/es')['UploadDragger'];
+    AUploadDragger: typeof import('ant-design-vue/es')['UploadDragger']
     ChatText: typeof import('./src/components/ChatText.vue')['default']
     UserIcon: typeof import('./src/components/UserIcon.vue')['default']
     UserProfile: typeof import('./src/components/UserProfile.vue')['default']

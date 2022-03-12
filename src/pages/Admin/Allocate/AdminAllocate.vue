@@ -1,6 +1,6 @@
 <template>
 	<div class="applyWapper">
-		<ApplySearchBox @search="handleSearch"></ApplySearchBox>
+		<ApplySearchBox :admin="true" @search="handleSearch"></ApplySearchBox>
 		<div class="applyList" :scroll-y="{ enabled: true }">
 			<vxe-grid v-bind="gridOptions" class="table">
 				<template #pager>

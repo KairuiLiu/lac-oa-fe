@@ -3,6 +3,7 @@ export interface ISearchCondition {
 	applyUserName?: string;
 	applyDate?: number;
 	applyType?: number;
+	applyAduitState?: number;
 	applyProp?: number;
 	applyTitle?: string;
 	notFirst?: number;

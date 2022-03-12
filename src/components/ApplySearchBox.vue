@@ -22,11 +22,13 @@
 						</a-form-item>
 					</a-col>
 					<a-col :span="6">
-						<a-form-item name="applyType" label="申请类型">
-							<a-select ref="select" v-model:value="data.applyType" style="width: 120px" :disabled="state.disable.includes('applyType')">
+						<a-form-item name="applyAduitState" label="审核状态">
+							<a-select ref="select" v-model:value="data.applyAduitState" style="width: 120px" :disabled="state.disable.includes('applyAduitState')">
 								<a-select-option :value="-1">不限</a-select-option>
-								<a-select-option :value="0">伦理审核</a-select-option>
-								<a-select-option :value="1">采购申请</a-select-option>
+								<a-select-option :value="0">待审核</a-select-option>
+								<a-select-option :value="1">已通过</a-select-option>
+								<a-select-option :value="2">已拒绝</a-select-option>
+								<a-select-option v-if="state.admin" :value="3">待分配</a-select-option>
 							</a-select>
 						</a-form-item>
 					</a-col>
@@ -93,6 +95,7 @@ type RangeValue = [Dayjs, Dayjs];
 const props = defineProps<{
 	disable?: string[];
 	easySeach?: boolean;
+	admin?: boolean;
 }>();
 
 const emit = defineEmits<{
@@ -102,13 +105,14 @@ const emit = defineEmits<{
 const state = reactive({
 	easySeach: props.easySeach === undefined ? true : props.easySeach,
 	disable: props?.disable || [],
+	admin: props?.admin || false,
 });
 
 const searchInit = {
 	applyId: '',
 	applyUserName: '',
 	applyDate: ref<RangeValue>(),
-	applyType: -1,
+	applyAduitState: -1,
 	applyProp: -1,
 	applyTitle: '',
 	notFirst: -1,
