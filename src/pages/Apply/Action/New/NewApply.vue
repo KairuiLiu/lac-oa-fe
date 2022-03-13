@@ -58,6 +58,10 @@ export default defineComponent({
 .wapper {
 	padding: 24px;
 	.toolbar {
+		padding: 14px 0;
+		background-color: #f0f2f5;
+		position: sticky;
+		bottom: 0px;
 		display: flex;
 		gap: 14px;
 	}

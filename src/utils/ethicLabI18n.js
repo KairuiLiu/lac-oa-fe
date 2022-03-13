@@ -46,9 +46,9 @@ export default {
 			harms: '详细列出操作程序中预期可能对动物造成的伤害或不适，以及拟采取的将痛苦减至最低的措施',
 			disposal: {
 				title: '实验终末点及动物处置方式',
-				live: '存活',
-				death: '处死',
-				disposal: '动物尸体处理',
+				live: '(存活)',
+				death: '(处死)',
+				disposal: '(动物尸体处理)',
 			},
 			poisonous: {
 				title: '是否使用有毒（害）物质（感染、放射、化学毒、其他）',
@@ -87,8 +87,8 @@ export default {
 		others: {
 			agree: '同意',
 			disagree: '不同意',
-			yes: '是',
-			no: '否',
+			yes: '有',
+			no: '无',
 		},
 	},
 	en: {
@@ -140,8 +140,8 @@ export default {
 			harms: 'Description of the harms or discomfort expected to be experienced by animals and the measures to be taken to minimize the pain',
 			disposal: {
 				title: 'Experimental endpoint and animal disposal methods.',
-				live: 'Continue to live',
-				death: 'Death conduct',
+				live: '(Continue to live)',
+				death: '(Death conduct)',
 				disposal: 'Disposal of animal remains',
 			},
 			poisonous: {
@@ -174,7 +174,7 @@ export default {
 			remark: {
 				title: 'Remarks',
 				fst: 'first trial',
-				nths: 'reexamine No',
+				nths: 'reexamine No. ',
 				nthl: '',
 			},
 		},
