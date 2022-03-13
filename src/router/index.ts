@@ -114,27 +114,27 @@ const routes: RouteRecordRaw[] = [
 					{
 						path: '/applicant/apply',
 						name: 'applicant-apply',
-						component: () => import('../pages/Applicant/Apply/ApplicantApply.vue'),
+						component: () => import('../pages/Apply/Apply.vue'),
 						children: [
 							{
-								path: '/applicant/apply/edit/:applyId',
+								path: '/applicant/apply/edit/:type/:applyId',
 								name: 'applicant-apply-edit',
-								component: () => import('../pages/Applicant/Apply/Edit/ApplicantApplyEdit.vue'),
+								component: () => import('../pages/Apply/Action/Edit/EditApply.vue'),
 							},
 							{
-								path: '/applicant/apply/show/:applyId',
+								path: '/applicant/apply/show/:type/:applyId',
 								name: 'applicant-apply-show',
-								component: () => import('../pages/Applicant/Apply/Show/ApplicantApplyShow.vue'),
+								component: () => import('../pages/Apply/Action/Show/ApplicantApplyShow.vue'),
 							},
 							{
 								path: '/applicant/apply/new/:type',
 								name: 'applicant-apply-new',
-								component: () => import('../pages/Applicant/Apply/New/ApplicantApplyNew.vue'),
+								component: () => import('../pages/Apply/Action/New/NewApply.vue'),
 							},
 							{
-								path: '/applicant/apply/license/:animalId',
+								path: '/applicant/apply/goodchoose/:animalId',
 								name: 'applicant-apply-license',
-								component: () => import('../pages/Applicant/Apply/License/ApplicantApplyLicense.vue'),
+								component: () => import('../pages/Apply/Action/GoodChoose/GoodChoose.vue'),
 							},
 						],
 					},

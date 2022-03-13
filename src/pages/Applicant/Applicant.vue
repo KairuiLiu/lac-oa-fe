@@ -40,7 +40,7 @@ export default defineComponent({
 		flex-grow: 1;
 		display: flex;
 		flex-direction: column;
-		min-width: 1200px;
+		// min-width: 1200px;
 
 		.router-box {
 			position: relative;

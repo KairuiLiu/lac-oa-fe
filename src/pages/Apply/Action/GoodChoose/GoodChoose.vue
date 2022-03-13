@@ -138,7 +138,7 @@ searchEvent();
 
 <script lang="ts">
 export default defineComponent({
-	name: 'ApplicantApplyLicense',
+	name: 'GoodChoose',
 });
 </script>
 
@@ -158,5 +158,10 @@ export default defineComponent({
 
 .wapper {
 	padding: 3vh 5vw;
+}
+
+.goodsList {
+	overflow-x: auto;
+	width: 100%;
 }
 </style>

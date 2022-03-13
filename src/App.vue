@@ -9,5 +9,10 @@
 <style lang="less">
 #app {
 	height: 100%;
+	min-width: 720px;
+}
+
+.vxe-grid {
+	min-width: 960px;
 }
 </style>

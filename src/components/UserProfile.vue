@@ -193,7 +193,7 @@ export default defineComponent({
 .full-modal {
 	width: 100vw;
 	height: 100vh;
-	min-width: 1200px;
+	// min-width: 1200px;
 	.ant-modal {
 		top: 0;
 		padding-bottom: 0;
@@ -205,7 +205,7 @@ export default defineComponent({
 		display: flex;
 		flex-direction: column;
 		height: calc(100vh);
-		min-width: 1200px;
+		// min-width: 1200px;
 	}
 	.ant-modal-body {
 		flex: 1;

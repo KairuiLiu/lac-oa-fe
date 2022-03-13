@@ -227,7 +227,7 @@ export default defineComponent({
 
 <style lang="less" scoped>
 .wapper {
-	min-width: 960px;
+	// min-width: 960px;
 	display: flex;
 	flex-direction: column;
 	gap: 24px;
@@ -261,5 +261,10 @@ export default defineComponent({
 			background-color: #f0f2f5;
 		}
 	}
+}
+
+.ship-info .content {
+	overflow-x: auto;
+	width: 100%;
 }
 </style>

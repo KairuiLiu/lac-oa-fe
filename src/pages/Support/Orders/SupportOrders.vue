@@ -107,7 +107,7 @@ const gridOptions = reactive<VxeGridProps>({
 		{ field: 'expDate', title: '期望到货日期' },
 		{ field: 'orderAddress', title: '收件地址' },
 		{ field: 'finalPrice', title: '价格(元)' },
-		{ title: '订单状态', slots: { default: 'operate' }, fixed: 'right', showOverflow: false, width: 300 },
+		{ title: '订单状态', slots: { default: 'operate' }, width: 300 },
 	],
 });
 
@@ -147,3 +147,10 @@ export default defineComponent({
 	name: 'SupportOrders',
 });
 </script>
+
+<style lang="less" scoped>
+.wapper {
+	overflow-x: auto;
+	width: 100%;
+}
+</style>

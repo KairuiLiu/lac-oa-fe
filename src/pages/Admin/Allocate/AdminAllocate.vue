@@ -61,7 +61,7 @@ const gridOptions = reactive<VxeGridProps>({
 		{ field: 'applyProp', title: '申请用途' },
 		{ field: 'allocated', title: '分配人数' },
 		{ field: 'adminPassed', title: '管理员审核' },
-		{ title: '操作', slots: { default: 'operate' }, fixed: 'right', showOverflow: false, width: 300 },
+		{ title: '操作', slots: { default: 'operate' }, width: 300 },
 	],
 });
 
@@ -133,6 +133,8 @@ export default defineComponent({
 	gap: 32px;
 	.applyList {
 		flex-grow: 1;
+		overflow-x: auto;
+		width: 100%;
 		.table {
 			box-shadow: 0 0 0.6vw rgba(0, 0, 0, 0.2);
 		}

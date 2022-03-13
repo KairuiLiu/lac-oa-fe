@@ -82,20 +82,70 @@ export default defineComponent({
 <style scoped lang="less">
 .PlotsArea {
 	display: grid;
-	grid-template-columns: repeat(3, 1fr);
-	grid-template-rows: repeat(8, 20vh);
 	grid-gap: 2vw;
 	grid-auto-rows: 10vw;
 	grid-auto-columns: 1fr;
+
+	grid-template-columns: 1fr;
+	grid-template-rows: repeat(20, 250px);
 	grid-template-areas:
-		'a b c'
-		'd e f'
-		'd e f'
-		'g g h'
-		'g g h'
-		'i j k'
-		'i j l'
-		'm m l';
+		'a'
+		'b'
+		'c'
+		'k'
+		'd'
+		'd'
+		'e'
+		'e'
+		'f'
+		'f'
+		'h'
+		'h'
+		'g'
+		'i'
+		'i'
+		'j'
+		'j'
+		'l'
+		'l'
+		'm';
+}
+
+@media only screen and (min-width: 870px) {
+	.PlotsArea {
+		grid-template-columns: repeat(2, 1fr);
+		grid-template-rows: repeat(13, 270px);
+		grid-template-areas:
+			'a b'
+			'c k'
+			'd e'
+			'd e'
+			'f h'
+			'f h'
+			'g g'
+			'g g'
+			'i j'
+			'i j'
+			'l l'
+			'l l'
+			'm m';
+	}
+}
+
+@media only screen and (min-width: 1280px) {
+	.PlotsArea {
+		grid-template-columns: repeat(3, 1fr);
+		grid-template-rows: repeat(8, 20vh);
+		grid-template-areas:
+			'a b c'
+			'd e f'
+			'd e f'
+			'g g h'
+			'g g h'
+			'i j k'
+			'i j l'
+			'm m l';
+	}
 }
 
 #plot-1 {

@@ -1,7 +1,7 @@
 <template>
 	<div class="applyWapper">
 		<ApplySearchBox @search="handleSearch"></ApplySearchBox>
-		<div class="applyList" :scroll-y="{ enabled: true }">
+		<div class="applyList">
 			<vxe-grid v-bind="gridOptions" class="table">
 				<template #pager>
 					<vxe-pager
@@ -62,7 +62,7 @@ const gridOptions = reactive<VxeGridProps>({
 		{ field: 'applyType', title: '申请类型' },
 		{ field: 'applyProp', title: '申请用途' },
 		{ field: 'aduitPassed', title: '审核状态' },
-		{ title: '操作', slots: { default: 'operate' }, fixed: 'right', showOverflow: false, width: 100 },
+		{ title: '操作', slots: { default: 'operate' } },
 	],
 });
 
@@ -120,6 +120,8 @@ export default defineComponent({
 	gap: 32px;
 	.applyList {
 		flex-grow: 1;
+		overflow-x: auto;
+		width: 100%;
 		.table {
 			box-shadow: 0 0 0.6vw rgba(0, 0, 0, 0.2);
 		}

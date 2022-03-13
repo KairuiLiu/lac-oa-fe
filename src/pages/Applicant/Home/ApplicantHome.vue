@@ -184,7 +184,7 @@ const gridOptions = reactive<VxeGridProps>({
 		{ field: 'applyProp', title: '申请用途', formatter: applyFormate.formatProp },
 		{ field: 'applyDate', title: '申请日期' },
 		{ field: 'applyState', title: '审核状态', formatter: applyFormate.formatState },
-		{ title: '操作', slots: { default: 'operate' }, fixed: 'right', showOverflow: false, width: 400 },
+		{ title: '操作', slots: { default: 'operate' }, width: 400 },
 	],
 });
 

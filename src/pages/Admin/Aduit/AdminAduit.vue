@@ -113,13 +113,14 @@ export default defineComponent({
 
 <style lang="less" scoped>
 .applyWapper {
-	width: 100%;
 	flex-grow: 1;
 	display: flex;
 	flex-direction: column;
 	gap: 32px;
 	.applyList {
 		flex-grow: 1;
+		overflow-x: auto;
+		width: 100%;
 		.table {
 			box-shadow: 0 0 0.6vw rgba(0, 0, 0, 0.2);
 		}

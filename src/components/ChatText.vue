@@ -36,6 +36,7 @@ export default {
 	.suffix {
 		padding-bottom: 10px;
 		font-size: 16px;
+		white-space: nowrap;
 	}
 }
 </style>

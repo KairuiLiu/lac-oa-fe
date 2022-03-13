@@ -91,7 +91,7 @@ export default defineComponent({
 
 <style lang="less" scoped>
 .wapper {
-	min-width: 1200px;
+	// min-width: 1200px;
 	flex-grow: 1;
 	display: flex;
 	flex-direction: column;
@@ -109,12 +109,14 @@ export default defineComponent({
 	.plots {
 		padding: 3vh 0vw;
 		display: grid;
-		grid-template-columns: repeat(2, 1fr);
-		grid-template-rows: repeat(2, 20vh);
+		grid-template-columns: repeat(1, 1fr);
+		grid-template-rows: repeat(4, 250px);
 		grid-gap: 4vw;
 		grid-template-areas:
-			'a b'
-			'c d';
+			'a'
+			'b'
+			'c'
+			'd';
 		#support-plot-1 {
 			grid-area: a;
 		}
@@ -132,6 +134,16 @@ export default defineComponent({
 			border-radius: 1vw;
 			box-shadow: 0 0 0.6vw rgba(0, 0, 0, 0.2);
 			overflow: hidden;
+		}
+	}
+
+	@media only screen and (min-width: 870px) {
+		.plots {
+			grid-template-columns: repeat(2, 1fr);
+			grid-template-rows: repeat(2, 20vh);
+			grid-template-areas:
+				'a b'
+				'c d';
 		}
 	}
 }

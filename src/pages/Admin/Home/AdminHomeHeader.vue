@@ -60,4 +60,16 @@ export default defineComponent({
 		display: flex;
 	}
 }
+
+@media only screen and (max-width: 870px) {
+	.worksArea {
+		flex-direction: column;
+		.left {
+			align-self: flex-start;
+		}
+		.right {
+			align-self: flex-start;
+		}
+	}
+}
 </style>

@@ -43,12 +43,19 @@
 		<div class="r">
 			<a-form :model="state.search" name="goodSearch" autocomplete="off">
 				<div class="form-row">
-					<a-form-item label="商品名称" name="shopName">
-						<a-input v-model:value="state.search.shopName" />
-					</a-form-item>
-					<a-form-item label="添加时间" name="addTime">
-						<a-range-picker v-model:value="state.search.addTime" show-time :locale="locale" />
-					</a-form-item>
+					<a-row>
+						<a-col :xs="24" :sm="24" :md="24" :lg="24" :xl="8">
+							<a-form-item label="商品名称" name="shopName">
+								<a-input v-model:value="state.search.shopName" />
+							</a-form-item>
+						</a-col>
+						<a-col :xs="24" :sm="24" :md="24" :lg="24" :xl="16">
+							<a-form-item label="添加时间" name="addTime">
+								<a-range-picker v-model:value="state.search.addTime" show-time :locale="locale" />
+							</a-form-item>
+						</a-col>
+					</a-row>
+
 					<a-form-item :wrapper-col="{ span: 4 }">
 						<a-button type="primary" html-type="submit" @click="handleSearch"><search-outlined />搜索</a-button>
 					</a-form-item>
@@ -56,7 +63,7 @@
 			</a-form>
 		</div>
 	</div>
-	<div class="goodsList" :scroll-y="{ enabled: true }">
+	<div class="goodsList">
 		<vxe-grid ref="goodsTable" v-bind="gridOptions" class="table">
 			<template #pager>
 				<vxe-pager
@@ -157,7 +164,7 @@ const gridOptions = reactive<VxeGridProps>({
 		{ field: 'goodEnable', title: '上架', formatter: goodFormate.formatEnable },
 		{ field: 'goodStock', title: '库存状态' },
 		{ field: 'goodAddTime', title: '加入时间' },
-		{ title: '操作', slots: { default: 'operate' }, fixed: 'right', showOverflow: false, width: 300 },
+		{ title: '操作', slots: { default: 'operate' }, width: 300 },
 	],
 });
 
@@ -264,5 +271,10 @@ export default defineComponent({
 .loading {
 	display: flex;
 	justify-content: center;
+}
+
+.goodsList {
+	overflow-x: auto;
+	width: 100%;
 }
 </style>

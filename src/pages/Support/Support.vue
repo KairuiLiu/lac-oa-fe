@@ -79,7 +79,7 @@ export default defineComponent({
 		display: flex;
 		flex-direction: column;
 		padding: 16px 50px;
-		min-width: 1200px;
+		// min-width: 1200px;
 
 		.router-box {
 			position: relative;
