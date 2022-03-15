@@ -1,6 +1,7 @@
 <template>
+	{{ state }}
 	<div class="wapper">
-		<div class="content">
+		<div v-if="state.loaded" class="content">
 			<EthicLab v-if="state.applyType === 'ethic' && state.applyProps == 'lab'" ref="formRef"></EthicLab>
 			<EthicTech v-if="state.applyType === 'ethic' && state.applyProps == 'tech'" ref="formRef"></EthicTech>
 		</div>
@@ -13,39 +14,42 @@
 </template>
 
 <script setup lang="ts">
-import { message } from 'ant-design-vue';
-import { defineComponent, reactive, ref } from 'vue';
-import { useRoute, useRouter } from 'vue-router';
+import { defineComponent, reactive, onBeforeMount } from 'vue';
+import { useRoute } from 'vue-router';
+import { useStore } from 'vuex';
 import EthicLab from '../../Works/EthicLab/EthicLab.vue';
 import EthicTech from '../../Works/EthicTech/EthicTech.vue';
 
 const route = useRoute();
-const router = useRouter();
+const store = useStore();
 
-const [applyType, applyProps] = route.params.type.split('-');
+const [applyType, applyProps] = (route.params.type as string).split('-');
 
 const state = reactive({
 	applyProps,
 	applyType,
+	loaded: false,
 });
 
-const formRef = ref(null);
+// async function toSubmit() {
+// 	const res = await formRef.value.applicantSubmit();
+// 	if (res) router.go(-1);
+// 	else message.error('提交失败');
+// }
 
-async function toSubmit() {
-	const res = await formRef.value.applicantSubmit();
-	if (res) router.go(-1);
-	else message.error('提交失败');
-}
+// async function toSave() {
+// 	const res = await formRef.value.applicantSave();
+// 	if (res) message.success('草稿保存成功');
+// 	else message.error('草稿保存失败');
+// }
 
-async function toSave() {
-	const res = await formRef.value.applicantSave();
-	if (res) message.success('草稿保存成功');
-	else message.error('草稿保存失败');
-}
+// function toReset() {
+// 	formRef.value.applicantReset();
+// }
 
-function toReset() {
-	formRef.value.applicantReset();
-}
+onBeforeMount(async () => {
+	state.loaded = await store.dispatch('apply/initApply', { type: state.applyType, prop: state.applyProps, storeSelf: store });
+});
 </script>
 
 <script lang="ts">

@@ -1,4 +1,5 @@
 import { ref } from 'vue';
+import { formInit as formInitEthicLab } from '../../utils/ethicLab';
 
 const state = () => ({
 	licenses: ref([
@@ -8,6 +9,7 @@ const state = () => ({
 		{ animalId: '4', animalName: '鸟', anilicenses: ['重庆生物-87566445'] },
 		{ animalId: '5', animalName: '羊', anilicenses: ['重庆生物-87546945'] },
 	]),
+	formData: ref({}),
 });
 
 // getters
@@ -21,6 +23,16 @@ const actions = {
 	delLicense({ commit }, { animalId, idx }) {
 		commit('delLicense', { animalId, idx });
 	},
+	initApply({ commit }, { type, prop, storeSelf }) {
+		if (type === 'ethic' && prop === 'lab') {
+			commit('updateApply', { formData: formInitEthicLab(storeSelf) });
+			return true;
+		}
+		return false;
+	},
+	updateApply({ commit }, formData) {
+		commit('updateApply', { formData });
+	},
 };
 
 const mutations = {
@@ -31,6 +43,10 @@ const mutations = {
 	delLicense($state, { animalId, idx }) {
 		const animal = $state.licenses.find(d => d.animalId === animalId);
 		animal.anilicenses.splice(idx, 1);
+	},
+	updateApply($state, { formData }) {
+		$state.formData = formData;
+		return true;
 	},
 };
 

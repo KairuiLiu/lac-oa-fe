@@ -1,4 +1,6 @@
-export default {
+import { IformEthicLab } from '../types/ethicLab';
+
+export const i18n = {
 	cn: {
 		head: {
 			title: '西南大学实验动物伦理审查表',
@@ -89,6 +91,8 @@ export default {
 			disagree: '不同意',
 			yes: '有',
 			no: '无',
+			ops: '操作',
+			check: '数据检查',
 		},
 	},
 	en: {
@@ -183,6 +187,63 @@ export default {
 			disagree: 'Disagree',
 			yes: 'YES',
 			no: 'NO',
+			ops: 'operate',
+			check: 'check',
 		},
 	},
 };
+
+export function formInit(store): IformEthicLab {
+	return {
+		head: {
+			applDate: null,
+			apprDate: null,
+			iacucNo: null,
+		},
+		base: {
+			name: '',
+			source: '',
+			director: store.state.userInfo.username,
+			degree: '',
+			tel: store.state.userInfo.phone,
+			departmant: store.state.userInfo.department,
+			email: store.state.userInfo.email,
+		},
+		expers: [{ name: store.state.userInfo.username, degree: '', response: '', experLicense: '', tel: store.state.userInfo.phone, error: [], loading: false }],
+		animal: {
+			animalOrigin: '',
+			productionNo: 0,
+			certNo: 0,
+			inspecRepo: 0,
+			detail: [{ species: '', strain: '', ageWS: '', sexQF: 0, sexQM: 0, bacterio: '', viral: '', error: [] }],
+			facilitiesLicense: '',
+			facilityAddress: '',
+		},
+		detail: {
+			necessity: '',
+			reason: '',
+			expDesign: '',
+			harms: '',
+			disposal: {
+				live: '',
+				death: '',
+				disposal: '',
+			},
+			poisonous: {
+				state: 0,
+				declear: '',
+			},
+			institutionOpinion: {
+				date: null,
+				state: 0,
+				principal: '',
+				date2: null,
+			},
+			committeeOption: {
+				state: 0,
+				suggest: '',
+			},
+			commitTime: 1,
+		},
+	};
+}

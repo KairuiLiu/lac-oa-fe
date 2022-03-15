@@ -18,7 +18,7 @@
 					</a-col>
 					<a-col :span="6">
 						<a-form-item name="applyDate" label="申请日期">
-							<a-range-picker v-model:value="data.applyDate" :locale="locale" :disabled="state.disable.includes('applyDate')" />
+							<a-range-picker v-model:value="data.applyDate" :locale="locale" :disabled="state.disable.includes('applyDate')" :allow-empty="[true, true]" @ok="handleok" />
 						</a-form-item>
 					</a-col>
 					<a-col :span="6">
@@ -132,6 +132,10 @@ function handleSearch(type) {
 
 function clearSearch() {
 	data.value = JSON.parse(JSON.stringify(searchInit));
+}
+
+function handleok(dates) {
+	console.log(dates);
 }
 </script>
 

@@ -51,6 +51,28 @@ const applicantApi = {
 			{ auth: { token } }
 		);
 	},
+	reqEthicLabLicense({ token, keyword }: { token: string; keyword: any }) {
+		return ajax(
+			`${BASE_URL}/ethicLabLicenseSuggest`,
+			{
+				t: Date.now(),
+				keyword,
+			},
+			'GET',
+			{ auth: { token } }
+		);
+	},
+	reqEthicLabCheckLicense({ token, row }: { token: string; row: any }) {
+		return ajax(
+			`${BASE_URL}/ethicLabCheckLicense`,
+			{
+				t: Date.now(),
+				row,
+			},
+			'GET',
+			{ auth: { token } }
+		);
+	},
 };
 
 export default applicantApi;

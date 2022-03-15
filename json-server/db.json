@@ -30,11 +30,9 @@
 	},
 	"applytypes": {
 		"code": 0,
-		"data": [
-			{
+		"data": [{
 				"name": "全部申请",
-				"subType": [
-					{
+				"subType": [{
 						"name": "2021"
 					},
 					{
@@ -44,8 +42,7 @@
 			},
 			{
 				"name": "采购申请",
-				"subType": [
-					{
+				"subType": [{
 						"name": "2021"
 					},
 					{
@@ -55,8 +52,7 @@
 			},
 			{
 				"name": "伦理审核申请",
-				"subType": [
-					{
+				"subType": [{
 						"name": "2021"
 					},
 					{
@@ -66,8 +62,7 @@
 			}
 		]
 	},
-	"applyList": [
-		{
+	"applyList": [{
 			"applyId": 1,
 			"applyTitle": "研究1的申请",
 			"applyUserName": "张三",
@@ -269,8 +264,7 @@
 	"applyProcess": {
 		"code": 0,
 		"data": {
-			"process": [
-				{
+			"process": [{
 					"userName": "申请人1",
 					"note": "发起申请",
 					"error": false,
@@ -372,8 +366,7 @@
 			]
 		}
 	},
-	"goodList": [
-		{
+	"goodList": [{
 			"goodId": 1,
 			"goodName": "鸡1",
 			"goodPrice": {
@@ -581,5 +574,53 @@
 			"goodStock": 1523,
 			"compName": "A公司"
 		}
-	]
+	],
+	"ethicLabLicenseSuggest": {
+		"code": 0,
+		"data": [{
+				"name": "张1",
+				"license": "SWU123456"
+			},
+			{
+				"name": "张3",
+				"license": "SWU124456"
+			},
+			{
+				"name": "张2",
+				"license": "SWU123556"
+			},
+			{
+				"name": "张5",
+				"license": "SWU123456"
+			},
+			{
+				"name": "张4",
+				"license": "SWU166666"
+			},
+			{
+				"name": "张6",
+				"license": "SWU777777"
+			},
+			{
+				"name": "张8",
+				"license": "SWU888888"
+			},
+			{
+				"name": "张88",
+				"license": "SWU43216"
+			},
+			{
+				"name": "张7",
+				"license": "SWU334456"
+			},
+			{
+				"name": "张90",
+				"license": "SWU55556"
+			}
+		]
+	},
+	"ethicLabCheckLicense": {
+		"code": 0,
+		"data": ["有1错", "有2错"]
+	}
 }

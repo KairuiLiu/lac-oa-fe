@@ -22,6 +22,7 @@
 			</vxe-grid>
 		</div>
 	</div>
+	{{ state }}
 	<ApplyProcess :visible="state.visible" :applyid="state.applyId" @close="state.visible = false"></ApplyProcess>
 </template>
 
@@ -44,7 +45,7 @@ const tablePage = reactive({
 });
 const state = reactive({
 	visible: false,
-	applyId: null,
+	applyId: '',
 });
 
 const gridOptions = reactive<VxeGridProps>({

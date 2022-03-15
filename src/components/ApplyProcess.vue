@@ -53,7 +53,7 @@ const state = reactive({
 
 const processes = computed(() => {
 	const stages = [...new Set(state.process.map(d => d.stage))];
-	const processes = stages.map(d => {
+	const processest = stages.map(d => {
 		const res = state.process.filter(dd => dd.stage === d);
 		res.sort((l, r) => +new Date(l.dateTime) - +new Date(r.dateTime));
 		let status = 'process';
@@ -66,7 +66,7 @@ const processes = computed(() => {
 			processes: res,
 		};
 	});
-	return processes;
+	return processest;
 });
 
 const percent = computed(() => processes.value.at(-1).type * 25 + 25);
