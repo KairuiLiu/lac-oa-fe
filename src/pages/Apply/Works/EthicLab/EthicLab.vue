@@ -1,5 +1,4 @@
 <template>
-	{{ state.formState.animal.detail }}
 	<div class="wapper">
 		<div class="lang-switch">
 			<a-switch v-model:checked="state.langcn" checked-children="中文" un-checked-children="EN" />
@@ -363,7 +362,7 @@
 </template>
 
 <script setup lang="ts">
-import { defineComponent, defineExpose, reactive, computed, onBeforeMount, ref } from 'vue';
+import { defineComponent, defineExpose, reactive, computed, onBeforeMount, ref, watch } from 'vue';
 import { useStore } from 'vuex';
 import { PlusOutlined, DeleteOutlined } from '@ant-design/icons-vue';
 import { VxeTableInstance } from 'vxe-table';
@@ -461,6 +460,13 @@ function checkAnimalLocal(row) {
 		else if ((k === 'sexQF' || k === 'sexQM') && !(row[k] >= 0)) row.error.push('性别/数量有误');
 	});
 }
+
+watch(
+	() => state.langcn,
+	() => {
+		state.formState = JSON.parse(JSON.stringify(state.formState));
+	}
+);
 
 onBeforeMount(() => {
 	state.formState = store.state.apply.formData;

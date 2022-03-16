@@ -127,12 +127,8 @@ const state = reactive({
 					label: '教学用',
 				},
 				{
-					value: 'project',
-					label: '科研项目',
-				},
-				{
 					value: 'lab',
-					label: '科研实验',
+					label: '科研用',
 				},
 			],
 		},

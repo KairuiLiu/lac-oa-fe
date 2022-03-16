@@ -1,5 +1,6 @@
 import { ref } from 'vue';
 import { formInit as formInitEthicLab } from '../../utils/ethicLab';
+import { formInit as formInitEthicTech } from '../../utils/ethicTech';
 
 const state = () => ({
 	licenses: ref([
@@ -26,6 +27,10 @@ const actions = {
 	initApply({ commit }, { type, prop, storeSelf }) {
 		if (type === 'ethic' && prop === 'lab') {
 			commit('updateApply', { formData: formInitEthicLab(storeSelf) });
+			return true;
+		}
+		if (type === 'ethic' && prop === 'tech') {
+			commit('updateApply', { formData: formInitEthicTech(storeSelf) });
 			return true;
 		}
 		return false;
