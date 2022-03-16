@@ -29,6 +29,7 @@ export function formInit(store): IformEthicTech {
 			class: '',
 			study: '',
 			animals: [],
+			animalsOthers: '',
 			mOrganism: {
 				state: 0,
 				detial: '',

@@ -1,8 +1,7 @@
 <template>
-	{{ labels }}
 	<div class="wapper">
 		<div class="content">
-			<a-form ref="formRef" name="custom-validation" label-col="{ style: { width: '100px' } }" label-align="left" :model="state.formState">
+			<a-form ref="formRef" name="custom-validation" :label-col="{ style: { width: '100px' } }" label-align="left" :model="state.formState">
 				<!-- :rules="rules"
 				v-bind="layout"
 				@finish="handleFinish"
@@ -16,47 +15,97 @@
 				</a-row>
 				<a-row :gutter="{ xs: 8, sm: 16, md: 24, lg: 32 }" type="flex">
 					<a-col :xs="24" :sm="24" :md="24" :lg="12" :xl="12">
-						<a-form-item :label="132" name="applDate"><a-input v-model:value="state.formState.base.departmant" /></a-form-item>
+						<a-form-item label="院系（单位）" name="applDate"><a-input v-model:value="state.formState.base.department" /></a-form-item>
 					</a-col>
 					<a-col :xs="24" :sm="24" :md="24" :lg="12" :xl="12"
-						><a-form-item name="applDate"> <a-input v-model:value="state.formState.base.tel" /> </a-form-item
+						><a-form-item label="电话" name="applDate"> <a-input v-model:value="state.formState.base.tel" /> </a-form-item
 					></a-col>
 					<a-col :xs="24" :sm="24" :md="24" :lg="12" :xl="12"
-						><a-form-item name="applDate"> <a-input v-model:value="state.formState.base.major" /> </a-form-item
+						><a-form-item label="专业" name="applDate"> <a-input v-model:value="state.formState.base.major" /> </a-form-item
 					></a-col>
 					<a-col :xs="24" :sm="24" :md="24" :lg="12" :xl="12"
-						><a-form-item name="applDate"> <a-input v-model:value="state.formState.base.class" /> </a-form-item
+						><a-form-item label="年级/班级" name="applDate"> <a-input v-model:value="state.formState.base.class" /> </a-form-item
 					></a-col>
 					<a-col :xs="24" :sm="24" :md="24" :lg="24" :xl="24"
-						><a-form-item name="applDate"> <a-input v-model:value="state.formState.base.study" /> </a-form-item
+						><a-form-item label="教学课程名称" name="applDate"> <a-input v-model:value="state.formState.base.study" /> </a-form-item
 					></a-col>
 					<a-col :xs="24" :sm="24" :md="24" :lg="24" :xl="24"
-						><a-form-item name="applDate"> <a-input v-model:value="state.formState.base.animals" /> </a-form-item
-					></a-col>
-					<a-col :xs="24" :sm="24" :md="24" :lg="12" :xl="12"
-						><a-form-item name="applDate"> <a-input v-model:value="state.formState.base.source" /> </a-form-item
-					></a-col>
-					<a-col :xs="24" :sm="24" :md="24" :lg="12" :xl="12"
-						><a-form-item name="applDate"> <a-input v-model:value="state.formState.base.producNo" /> </a-form-item
-					></a-col>
-					<a-col :xs="24" :sm="24" :md="24" :lg="12" :xl="12"
-						><a-form-item name="applDate"> <a-input v-model:value="state.formState.base.certNo" /> </a-form-item
-					></a-col>
-					<a-col :xs="24" :sm="24" :md="24" :lg="12" :xl="12"
-						><a-form-item name="applDate"> <a-input v-model:value="state.formState.base.checkNo" /> </a-form-item
+						><a-form-item label="动物品种" name="applDate">
+							<a-checkbox-group v-model:value="state.formState.base.animals" name="animals">
+								<a-row>
+									<a-col :span="8"> <a-checkbox :value="0">鸡</a-checkbox> </a-col><a-col :span="8"> <a-checkbox :value="1">鸽</a-checkbox> </a-col
+									><a-col :span="8"> <a-checkbox :value="2">鸭</a-checkbox> </a-col><a-col :span="8"> <a-checkbox :value="3">鹅</a-checkbox> </a-col
+									><a-col :span="8"> <a-checkbox :value="4">小鼠</a-checkbox> </a-col><a-col :span="8"> <a-checkbox :value="5">大鼠</a-checkbox> </a-col
+									><a-col :span="8"> <a-checkbox :value="6">兔</a-checkbox> </a-col><a-col :span="8"> <a-checkbox :value="7">犬</a-checkbox> </a-col
+									><a-col :span="8"> <a-checkbox :value="8">牛</a-checkbox> </a-col><a-col :span="8"> <a-checkbox :value="9">羊</a-checkbox> </a-col
+									><a-col :span="8"> <a-checkbox :value="10">猪</a-checkbox> </a-col><a-col :span="8"> <a-checkbox :value="11">犬</a-checkbox> </a-col
+									><a-col>
+										<a-checkbox :value="12">其他</a-checkbox>
+									</a-col>
+									<a-col :span="16">
+										<a-input v-model:value="state.formState.base.animalsOthers" :disabled="!state.formState.base.animals.includes(12)" />
+									</a-col>
+								</a-row>
+							</a-checkbox-group> </a-form-item
 					></a-col>
 					<a-col :xs="24" :sm="24" :md="24" :lg="24" :xl="24"
-						><a-form-item name="applDate"> <a-input v-model:value="state.formState.base.expType.state" /> </a-form-item
+						><a-form-item label="动物微生物级别" name="applDate">
+							<a-radio-group v-model:value="state.formState.base.mOrganism.state" name="radioGroup">
+								<a-radio :value="0">普通级</a-radio>
+								<a-radio :value="1">清洁级</a-radio>
+								<a-radio :value="2">SPF级</a-radio>
+								<a-radio :value="3">其他（请说明）<a-input v-model:value="state.formState.base.mOrganism.detial" :disabled="state.formState.base.mOrganism.state !== 3" /></a-radio>
+							</a-radio-group> </a-form-item
+					></a-col>
+					<a-col :xs="24" :sm="24" :md="24" :lg="12" :xl="12"
+						><a-form-item label="动物来源" name="applDate"> <a-input v-model:value="state.formState.base.source" /> </a-form-item
+					></a-col>
+					<a-col :xs="24" :sm="24" :md="24" :lg="12" :xl="12"
+						><a-form-item label="生产许可证有无" name="applDate">
+							<a-radio-group v-model:value="state.formState.base.producNo" name="radioGroup">
+								<a-radio :value="1">有</a-radio>
+								<a-radio :value="0">无</a-radio>
+							</a-radio-group>
+						</a-form-item></a-col
+					>
+					<a-col :xs="24" :sm="24" :md="24" :lg="12" :xl="12"
+						><a-form-item label="质量合格证明" name="applDate">
+							<a-radio-group v-model:value="state.formState.base.certNo" name="radioGroup">
+								<a-radio :value="1">有</a-radio>
+								<a-radio :value="0">无</a-radio>
+							</a-radio-group>
+						</a-form-item></a-col
+					>
+					<a-col :xs="24" :sm="24" :md="24" :lg="12" :xl="12"
+						><a-form-item label="检疫合格证明" name="applDate">
+							<a-radio-group v-model:value="state.formState.base.checkNo" name="radioGroup">
+								<a-radio :value="1">有</a-radio>
+								<a-radio :value="0">无</a-radio>
+							</a-radio-group>
+						</a-form-item></a-col
+					>
+					<a-col :xs="24" :sm="24" :md="24" :lg="24" :xl="24"
+						><a-form-item label="动物实验类别" name="applDate">
+							<a-radio-group v-model:value="state.formState.base.expType.state" name="radioGroup">
+								<a-radio :value="1">常规（不具备感染性、放射性、化学危害或其他生物危害性）</a-radio>
+								<a-radio :value="0"
+									>非常规（请注明）<a-input v-model:value="state.formState.base.expType.detial" :disabled="state.formState.base.expType.state"
+								/></a-radio> </a-radio-group></a-form-item
 					></a-col>
 					<a-col :xs="24" :sm="24" :md="24" :lg="24" :xl="24"
-						><a-form-item name="applDate"> <a-input v-model:value="state.formState.base.expType" /> </a-form-item
+						><a-form-item label="数量及性别" name="applDate">
+							<a-row>
+								<a-col :span="8"><a-input :value="state.formState.base.aniQF + state.formState.base.aniQM" disabled prefix="总计" suffix="只" /></a-col>
+								<a-col :span="8"><a-input v-model:value="state.formState.base.aniQF" prefix="♀" suffix="只" /></a-col>
+								<a-col :span="8"><a-input v-model:value="state.formState.base.aniQM" prefix="♂" suffix="只" /></a-col>
+							</a-row> </a-form-item
 					></a-col>
 					<a-col :xs="24" :sm="24" :md="24" :lg="8" :xl="8"
-						><a-form-item name="applDate"> <a-input v-model:value="state.formState.base.directorName" /> </a-form-item></a-col
+						><a-form-item label="实验负责人姓名" name="applDate"> <a-input v-model:value="state.formState.base.directorName" /> </a-form-item></a-col
 					><a-col :xs="24" :sm="24" :md="24" :lg="8" :xl="8"
-						><a-form-item name="applDate"> <a-input v-model:value="state.formState.base.directorTel" /> </a-form-item></a-col
+						><a-form-item label="移动电话" name="applDate"> <a-input v-model:value="state.formState.base.directorTel" /> </a-form-item></a-col
 					><a-col :xs="24" :sm="24" :md="24" :lg="8" :xl="8"
-						><a-form-item name="applDate"> <a-input v-model:value="state.formState.base.directorEmail" /> </a-form-item
+						><a-form-item label="邮箱E-mail" name="applDate"> <a-input v-model:value="state.formState.base.directorEmail" /> </a-form-item
 					></a-col>
 				</a-row>
 				<a-row type="flex" justify="end">
@@ -102,9 +151,8 @@
 </template>
 
 <script setup lang="ts">
-import { defineComponent, defineExpose, reactive, computed, onBeforeMount } from 'vue';
+import { defineComponent, defineExpose, reactive, onBeforeMount } from 'vue';
 import { useStore } from 'vuex';
-import { i18n } from '../../../../utils/ethicTech';
 
 const store = useStore();
 const state = reactive({
@@ -115,8 +163,6 @@ const state = reactive({
 onBeforeMount(() => {
 	state.formState = store.state.apply.formData;
 });
-
-const labels = computed(() => i18n);
 
 defineExpose({});
 </script>
