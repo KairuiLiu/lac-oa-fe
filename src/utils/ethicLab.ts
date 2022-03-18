@@ -119,6 +119,7 @@ export const i18n = {
 				yes: '有',
 				no: '无',
 			},
+			nnItem: '此项目不得为空',
 		},
 	},
 	en: {
@@ -242,6 +243,7 @@ export const i18n = {
 				yes: 'have',
 				no: 'without',
 			},
+			nnItem: '此项目不得为空',
 		},
 	},
 };

@@ -4,7 +4,7 @@
 			<a-switch v-model:checked="state.langcn" checked-children="中文" un-checked-children="EN" />
 		</div>
 		<div class="content">
-			<a-form ref="formRef" name="custom-validation" :rules="rules" :label-col="{ style: { width: '100px' } }" label-align="left" :model="state.formState">
+			<a-form ref="formRef" :rules="rules" name="custom-validation" :label-col="{ style: { width: '100px' } }" label-align="left" :model="state.formState">
 				<!-- @finish="handleFinish"
 				@validate="handleValidate"
 				@finishFailed="handleFinishFailed" -->
@@ -29,9 +29,9 @@
 						><div class="subtitle">{{ labels.base.title }}</div></a-col
 					>
 				</a-row>
-				<a-form-item :label="labels.base.name" :rules="ruleNN" name="basename"> <a-input v-model:value="state.formState.base.name" /> </a-form-item>
-				<a-form-item v-if="state.langcn" :rules="ruleNN" :label="labels.base.enname">
-					<a-input v-model:value="state.formState.base.enname" name="baseenname" />
+				<a-form-item :label="labels.base.name" name="basename"> <a-input v-model:value="state.formState.base.name" /> </a-form-item>
+				<a-form-item v-if="state.langcn" :rules="ruleNN" :label="labels.base.enname" name="baseenname">
+					<a-input v-model:value="state.formState.base.enname" />
 				</a-form-item>
 				<a-row :gutter="{ xs: 8, sm: 16, md: 24, lg: 32 }" type="flex">
 					<a-col :xs="24" :sm="24" :md="24" :lg="16" :xl="16">
@@ -536,6 +536,7 @@ const rules = {
 	// pass: [{ required: true, validator: validatePass, trigger: 'change' }],
 	// checkPass: [{ validator: validatePass2, trigger: 'change' }],
 	// age: [{ validator: checkAge, trigger: 'change' }],
+	basename: [{ pattern: /1/, message: labels.value.others.nnItem, trigger: 'change' }],
 };
 
 onBeforeMount(() => {
