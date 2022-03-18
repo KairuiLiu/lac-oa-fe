@@ -4,7 +4,7 @@
 			<a-switch v-model:checked="state.langcn" checked-children="中文" un-checked-children="EN" />
 		</div>
 		<div class="content">
-			<a-form ref="formRef" name="custom-validation" :rules="rules" :label-col="{ style: { width: '100px' } }" label-align="left" :model="state.formState">
+			<a-form ref="formRef" name="custom-validation" :label-col="{ style: { width: '100px' } }" label-align="left" :model="state.formState">
 				<!-- @finish="handleFinish"
 				@validate="handleValidate"
 				@finishFailed="handleFinishFailed" -->
@@ -15,13 +15,13 @@
 				</a-row>
 				<a-row :gutter="{ xs: 8, sm: 16, md: 24, lg: 32 }" type="flex" justify="center">
 					<a-col :xs="24" :sm="24" :md="24" :lg="6" :xl="6"
-						><a-form-item :rules="ruleNN" :label="labels.head.applDate" name="applDate"><a-input v-model:value="state.formState.head.applDate" disabled /></a-form-item>
+						><a-form-item :label="labels.head.applDate" :name="['head', 'applDate']"><a-input v-model:value="state.formState.head.applDate" disabled /></a-form-item>
 					</a-col>
 					<a-col :xs="24" :sm="24" :md="24" :lg="6" :xl="6"
-						><a-form-item :rules="ruleNN" :label="labels.head.apprDate" name="apprDate"> <a-input v-model:value="state.formState.head.apprDate" disabled /> </a-form-item
+						><a-form-item :label="labels.head.apprDate" :name="['head', 'apprDate']"> <a-input v-model:value="state.formState.head.apprDate" disabled /> </a-form-item
 					></a-col>
 					<a-col :xs="24" :sm="24" :md="24" :lg="6" :xl="6"
-						><a-form-item :rules="ruleNN" :label="labels.head.iacucNo" name="iacucNo"> <a-input v-model:value="state.formState.head.iacucNo" disabled /> </a-form-item
+						><a-form-item :label="labels.head.iacucNo" :name="['head', 'iacucNo']"> <a-input v-model:value="state.formState.head.iacucNo" disabled /> </a-form-item
 					></a-col>
 				</a-row>
 				<a-row>
@@ -29,26 +29,26 @@
 						><div class="subtitle">{{ labels.base.title }}</div></a-col
 					>
 				</a-row>
-				<a-form-item :label="labels.base.name" :rules="ruleNN" name="basename"> <a-input v-model:value="state.formState.base.name" /> </a-form-item>
-				<a-form-item v-if="state.langcn" :rules="ruleNN" :label="labels.base.enname">
-					<a-input v-model:value="state.formState.base.enname" name="baseenname" />
+				<a-form-item :label="labels.base.name" :rules="ruleNN" :name="['base', 'name']"> <a-input v-model:value="state.formState.base.name" /> </a-form-item>
+				<a-form-item v-if="state.langcn" :rules="ruleNN" :label="labels.base.enname" :name="['base', 'enname']">
+					<a-input v-model:value="state.formState.base.enname" />
 				</a-form-item>
 				<a-row :gutter="{ xs: 8, sm: 16, md: 24, lg: 32 }" type="flex">
 					<a-col :xs="24" :sm="24" :md="24" :lg="16" :xl="16">
-						<a-form-item :rules="ruleNN" :label="labels.base.source" name="basesource">
+						<a-form-item :rules="ruleNN" :label="labels.base.source" :name="['base', 'source']">
 							<a-input v-model:value="state.formState.base.source" />
 						</a-form-item>
 					</a-col>
 					<a-col :xs="24" :sm="24" :md="24" :lg="8" :xl="8"
-						><a-form-item :rules="ruleNN" :label="labels.base.pexptime" name="basepexptime"
+						><a-form-item :rules="ruleNN" :label="labels.base.pexptime" :name="['base', 'pexptime']"
 							><a-date-picker v-model:value="state.formState.base.pexptime" :locale="locale" :disabled-date="disabledDate"
 						/></a-form-item>
 					</a-col>
 					<a-col :xs="24" :sm="24" :md="24" :lg="8" :xl="8"
-						><a-form-item :rules="ruleNN" :label="labels.base.director" name="basedirector"><a-input v-model:value="state.formState.base.director" /></a-form-item>
+						><a-form-item :rules="ruleNN" :label="labels.base.director" :name="['base', 'director']"><a-input v-model:value="state.formState.base.director" /></a-form-item>
 					</a-col>
 					<a-col :xs="24" :sm="24" :md="24" :lg="8" :xl="8"
-						><a-form-item :rules="ruleNN" :label="labels.base.degree" name="basedegree">
+						><a-form-item :rules="ruleNN" :label="labels.base.degree" :name="['base', 'degree']">
 							<a-select v-model:value="state.formState.base.degree">
 								<a-select-option value="professor">{{ labels.others.degree.professor }}</a-select-option>
 								<a-select-option value="associateProfessor">{{ labels.others.degree.associateProfessor }}</a-select-option>
@@ -64,13 +64,15 @@
 						</a-form-item></a-col
 					>
 					<a-col :xs="24" :sm="24" :md="24" :lg="8" :xl="8"
-						><a-form-item :rules="ruleNN" :label="labels.base.tel" name="basetel"> <a-input v-model:value="state.formState.base.tel" type="tel" /> </a-form-item
+						><a-form-item :rules="[{ required: true, validator: validateTel, message: labels.base.tel + labels.others.hasErr }]" :label="labels.base.tel" :name="['base', 'tel']">
+							<a-input v-model:value="state.formState.base.tel" type="tel" /> </a-form-item
 					></a-col>
 					<a-col :xs="24" :sm="24" :md="24" :lg="16" :xl="16"
-						><a-form-item :rules="ruleNN" :label="labels.base.departmant" name="basedepartmant"> <a-input v-model:value="state.formState.base.departmant" /> </a-form-item
+						><a-form-item :rules="ruleNN" :label="labels.base.departmant" :name="['base', 'departmant']"> <a-input v-model:value="state.formState.base.departmant" /> </a-form-item
 					></a-col>
 					<a-col :xs="24" :sm="24" :md="24" :lg="8" :xl="8"
-						><a-form-item :rules="ruleNN" :label="labels.base.email" name="baseemail"> <a-input v-model:value="state.formState.base.email" /> </a-form-item
+						><a-form-item :rules="[{ required: true, validator: validateEmail, message: labels.base.email + labels.others.hasErr }]" :label="labels.base.email" :name="['base', 'email']">
+							<a-input v-model:value="state.formState.base.email" /> </a-form-item
 					></a-col>
 				</a-row>
 				<a-row>
@@ -156,27 +158,27 @@
 				</a-row>
 				<a-row :gutter="{ xs: 8, sm: 16, md: 24, lg: 32 }" type="flex">
 					<a-col :xs="24" :sm="24" :md="24" :lg="12" :xl="6"
-						><a-form-item :rules="ruleNN" :label="labels.animal.animalOrigin" name="animalanimalOrigin"> <a-input v-model:value="state.formState.animal.animalOrigin" /> </a-form-item
+						><a-form-item :rules="ruleNN" :label="labels.animal.animalOrigin" :name="['animal', 'animalOrigin']"> <a-input v-model:value="state.formState.animal.animalOrigin" /> </a-form-item
 					></a-col>
 					<a-col :xs="24" :sm="24" :md="24" :lg="12" :xl="6"
-						><a-form-item :rules="ruleNN" :label="labels.animal.productionNo" name="animalproductionNo">
-							<a-radio-group v-model:value="state.formState.animal.productionNo" name="productionNoradioGroup">
+						><a-form-item :rules="ruleNN" :label="labels.animal.productionNo" :name="['animal', 'productionNo']">
+							<a-radio-group v-model:value="state.formState.animal.productionNo">
 								<a-radio :value="1">{{ labels.others.yes }}</a-radio>
 								<a-radio :value="0">{{ labels.others.no }}</a-radio>
 							</a-radio-group>
 						</a-form-item></a-col
 					>
 					<a-col :xs="24" :sm="24" :md="24" :lg="12" :xl="6"
-						><a-form-item :rules="ruleNN" :label="labels.animal.certNo" name="animalcertNo">
-							<a-radio-group v-model:value="state.formState.animal.certNo" name="animalcertNoradioGroup">
+						><a-form-item :rules="ruleNN" :label="labels.animal.certNo" :name="['animal', 'certNo']">
+							<a-radio-group v-model:value="state.formState.animal.certNo">
 								<a-radio :value="1">{{ labels.others.yes }}</a-radio>
 								<a-radio :value="0">{{ labels.others.no }}</a-radio>
 							</a-radio-group>
 						</a-form-item></a-col
 					>
 					<a-col :xs="24" :sm="24" :md="24" :lg="12" :xl="6"
-						><a-form-item :rules="ruleNN" :label="labels.animal.inspecRepo" name="animalinspecRepo">
-							<a-radio-group v-model:value="state.formState.animal.inspecRepo" name="animalinspecRepoGroup">
+						><a-form-item :rules="ruleNN" :label="labels.animal.inspecRepo" :name="['animal', 'inspecRepo']">
+							<a-radio-group v-model:value="state.formState.animal.inspecRepo">
 								<a-radio :value="1">{{ labels.others.yes }}</a-radio>
 								<a-radio :value="0">{{ labels.others.no }}</a-radio>
 							</a-radio-group>
@@ -245,43 +247,52 @@
 				</div>
 				<a-row :gutter="{ xs: 8, sm: 16, md: 24, lg: 32 }" type="flex">
 					<a-col :xs="24" :sm="24" :md="24" :lg="12" :xl="12"
-						><a-form-item :rules="ruleNN" :label="labels.animal.facilitiesLicense" name="facilitiesLicense"> <a-input v-model:value="state.formState.animal.facilitiesLicense" /> </a-form-item
+						><a-form-item :rules="ruleNN" :label="labels.animal.facilitiesLicense" :name="['animal', 'facilitiesLicense']">
+							<a-input v-model:value="state.formState.animal.facilitiesLicense" /> </a-form-item
 					></a-col>
 					<a-col :xs="24" :sm="24" :md="24" :lg="12" :xl="12"
-						><a-form-item :rules="ruleNN" :label="labels.animal.facilityAddress" name="facilityAddress"> <a-input v-model:value="state.formState.animal.facilityAddress" /> </a-form-item
+						><a-form-item :rules="ruleNN" :label="labels.animal.facilityAddress" :name="['animal', 'facilityAddress']"> <a-input v-model:value="state.formState.animal.facilityAddress" /> </a-form-item
 					></a-col>
 				</a-row>
 				<a-row>
 					<a-col :span="24"
 						><div class="subtitle">{{ labels.detail.necessity }}</div></a-col
 					>
-					<a-textarea v-model:value="state.formState.detail.necessity" allow-clear :rows="7" />
 				</a-row>
+				<a-form-item :rules="ruleNN" :name="['detail', 'necessity']">
+					<a-textarea v-model:value="state.formState.detail.necessity" allow-clear :rows="7" />
+				</a-form-item>
 				<a-row>
 					<a-col :span="24"
 						><div class="subtitle">{{ labels.detail.reason }}</div></a-col
 					>
-					<a-textarea v-model:value="state.formState.detail.reason" allow-clear :rows="7" />
 				</a-row>
+				<a-form-item :rules="ruleNN" :name="['detail', 'reason']">
+					<a-textarea v-model:value="state.formState.detail.reason" allow-clear :rows="7" />
+				</a-form-item>
 				<a-row>
 					<a-col :span="24"
 						><div class="subtitle">{{ labels.detail.expDesign }}</div></a-col
 					>
-					<a-textarea v-model:value="state.formState.detail.expDesign" allow-clear :rows="7" />
 				</a-row>
+				<a-form-item :rules="ruleNN" :name="['detail', 'expDesign']">
+					<a-textarea v-model:value="state.formState.detail.expDesign" allow-clear :rows="7" />
+				</a-form-item>
 				<a-row>
 					<a-col :span="24"
 						><div class="subtitle">{{ labels.detail.harms }}</div></a-col
 					>
-					<a-textarea v-model:value="state.formState.detail.harms" allow-clear :rows="7" />
 				</a-row>
+				<a-form-item :rules="ruleNN" :name="['detail', 'harms']">
+					<a-textarea v-model:value="state.formState.detail.harms" allow-clear :rows="7" />
+				</a-form-item>
 				<a-row type="flex" justify="end">
 					<a-col :span="24"
 						><div class="subtitle">{{ labels.detail.disposal.title }}</div></a-col
 					>
 					<a-col :span="23"
-						><a-form-item :rules="ruleNN" name="disposalstate">
-							<a-checkbox-group v-model:value="state.formState.detail.disposal.state" name="disposalstateradioGroup">
+						><a-form-item :rules="ruleNN" :name="['detail', 'disposal', 'state']">
+							<a-checkbox-group v-model:value="state.formState.detail.disposal.state">
 								<a-checkbox value="live">{{ labels.detail.disposal.live }}</a-checkbox>
 								<a-checkbox value="death">{{ labels.detail.disposal.death }}</a-checkbox>
 							</a-checkbox-group>
@@ -290,15 +301,19 @@
 					<a-col v-if="state.formState.detail.disposal.state.includes('death')" :span="23"
 						><div class="subsubtitle">{{ labels.detail.disposal.disposal }}</div></a-col
 					>
-					<a-col :span="23"> <a-textarea v-if="state.formState.detail.disposal.state.includes('death')" v-model:value="state.formState.detail.disposal.disposal" allow-clear :rows="3" /></a-col>
+					<a-col :span="23">
+						<a-form-item v-if="state.formState.detail.disposal.state.includes('death')" :rules="ruleNN" :name="['detail', 'disposal', 'disposal']">
+							<a-textarea v-model:value="state.formState.detail.disposal.disposal" allow-clear :rows="3" />
+						</a-form-item>
+					</a-col>
 				</a-row>
 				<a-row type="flex" justify="end">
 					<a-col :span="24"
 						><div class="subtitle">{{ labels.detail.poisonous.title }}</div></a-col
 					>
 					<a-col :xs="23" :sm="23" :md="23" :lg="23" :xl="23"
-						><a-form-item :rules="ruleNN" name="poisonousstate">
-							<a-radio-group v-model:value="state.formState.detail.poisonous.state" name="poisonousstateradioGroup">
+						><a-form-item :rules="ruleNN" :name="['detail', 'poisonous', 'state']">
+							<a-radio-group v-model:value="state.formState.detail.poisonous.state">
 								<a-radio :value="1">{{ labels.others.yes }}</a-radio>
 								<a-radio :value="0">{{ labels.others.no }}</a-radio>
 							</a-radio-group>
@@ -308,7 +323,9 @@
 						><div class="subsubtitle">{{ labels.detail.poisonous.declear }}</div></a-col
 					>
 					<a-col :span="23">
-						<a-textarea v-model:value="state.formState.detail.poisonous.declear" allow-clear :rows="7" />
+						<a-form-item :rules="ruleNN" :name="['detail', 'poisonous', 'declear']">
+							<a-textarea v-model:value="state.formState.detail.poisonous.declear" allow-clear :rows="7" />
+						</a-form-item>
 					</a-col>
 				</a-row>
 				<a-row type="flex" justify="end">
@@ -330,8 +347,8 @@
 						><div class="subtitle">{{ labels.detail.institutionOpinion.title }}</div></a-col
 					>
 					<a-col :span="23"
-						><a-form-item :rules="ruleNN" name="institutionOpinionstate">
-							<a-radio-group v-model:value="state.formState.detail.institutionOpinion.state" name="institutionOpinionstateradioGroup">
+						><a-form-item :rules="ruleNN" :name="['detail', 'institutionOpinion', 'state']">
+							<a-radio-group v-model:value="state.formState.detail.institutionOpinion.state">
 								<a-radio :value="2">{{ labels.detail.institutionOpinion.modify }}</a-radio>
 								<a-radio :value="1">{{ labels.others.agree }}</a-radio>
 								<a-radio :value="0">{{ labels.others.disagree }}</a-radio>
@@ -357,8 +374,8 @@
 						><div class="subtitle">{{ labels.detail.committeeOption.title }}</div></a-col
 					>
 					<a-col :span="23"
-						><a-form-item :rules="ruleNN" name="committeeOptionstate">
-							<a-radio-group v-model:value="state.formState.detail.committeeOption.state" name="committeeOptionstateradioGroup">
+						><a-form-item :rules="ruleNN" :name="['detail', 'committeeOption', 'state']">
+							<a-radio-group v-model:value="state.formState.detail.committeeOption.state">
 								<a-radio :value="3">{{ labels.detail.committeeOption.modifieAgree }}</a-radio>
 								<a-radio :value="2">{{ labels.detail.committeeOption.agreeReview }}</a-radio>
 								<a-radio :value="1">{{ labels.others.agree }}</a-radio>
@@ -390,8 +407,8 @@
 						><div class="subtitle">{{ labels.detail.remark.title }}</div></a-col
 					>
 					<a-col :span="23">
-						<a-form-item :rules="ruleNN" name="commitTimestate">
-							<a-radio-group v-model:value="state.formState.detail.commitTime.state" name="commitTimestateradioGroup">
+						<a-form-item :rules="ruleNN" :name="['detail', 'commitTime', 'state']">
+							<a-radio-group v-model:value="state.formState.detail.commitTime.state">
 								<a-radio :value="0">{{ labels.detail.remark.fst }}</a-radio>
 								<a-radio :value="1"
 									>{{ labels.detail.remark.nths }}<a-input-number v-model:value="state.formState.detail.commitTime.value" :disabled="state.formState.detail.commitTime.state == 0" />{{
@@ -408,17 +425,19 @@
 </template>
 
 <script setup lang="ts">
-import { defineComponent, defineExpose, reactive, computed, onBeforeMount, ref, watch } from 'vue';
+import { defineComponent, reactive, computed, onBeforeMount, ref, watch } from 'vue';
 import { useStore } from 'vuex';
 import { PlusOutlined, DeleteOutlined } from '@ant-design/icons-vue';
 import { VxeTableInstance } from 'vxe-table';
 import type { Dayjs } from 'dayjs';
 import dayjs from 'dayjs';
 import locale from 'ant-design-vue/es/date-picker/locale/zh_CN';
+import type { RuleObject } from 'ant-design-vue/es/form';
 import { i18n } from '../../../../utils/ethicLab';
 import { applicantApi } from '../../../../api';
 import { IAjaxRestlt } from '../../../../types/common';
 import 'dayjs/locale/zh-cn';
+import { checkEmail, checkPhone } from '../../../../utils/formCheck';
 
 dayjs.locale('zh-cn');
 
@@ -532,11 +551,22 @@ const disabledDate = (current: Dayjs) => {
 
 const ruleNN = [{ required: true, message: labels.value.others.nnItem }];
 
-const rules = {
-	// pass: [{ required: true, validator: validatePass, trigger: 'change' }],
-	// checkPass: [{ validator: validatePass2, trigger: 'change' }],
-	// age: [{ validator: checkAge, trigger: 'change' }],
-};
+async function validateEmail(_rule: RuleObject, value: string) {
+	if (checkEmail(value)) return Promise.resolve();
+	// eslint-disable-next-line
+	return Promise.reject(labels.value.base.email + labels.value.others.hasErr);
+}
+
+async function validateTel(_rule: RuleObject, value: string) {
+	if (checkPhone(value)) return Promise.resolve();
+	// eslint-disable-next-line
+	return Promise.reject(labels.value.base.tel + labels.value.others.hasErr);
+}
+
+function formCheck() {
+	if (true) return Promise.reject();
+	return Promise.resolve();
+}
 
 onBeforeMount(() => {
 	state.formState = store.state.apply.formData;
@@ -544,7 +574,9 @@ onBeforeMount(() => {
 	checkAnimalLocal(state.formState.animal.detail[0]);
 });
 
-defineExpose({});
+defineExpose({
+	formCheck,
+});
 </script>
 <script lang="ts">
 export default defineComponent({
