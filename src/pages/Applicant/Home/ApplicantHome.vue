@@ -82,7 +82,7 @@
 </template>
 
 <script setup lang="ts">
-import { defineComponent, onMounted, ref, reactive } from 'vue';
+import { defineComponent, onMounted, ref, reactive, nextTick } from 'vue';
 import { FileTextOutlined, CalendarOutlined, HomeFilled, EditOutlined, SortAscendingOutlined, DownloadOutlined } from '@ant-design/icons-vue';
 import { useStore } from 'vuex';
 import { message } from 'ant-design-vue';
@@ -279,6 +279,10 @@ onMounted(async () => {
 		}
 	}
 	state.applyType = store.state.applicant.applyType;
+	nextTick(() => {
+		openKeys.value = [state.applyType[0].name];
+		document.querySelector(`li[data-menu-id^="[${state.applyType[0].name}, ${state.applyType[0].subType[0].name}]"]`)?.click();
+	});
 });
 </script>
 

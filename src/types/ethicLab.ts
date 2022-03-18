@@ -9,11 +9,13 @@ export interface IformEthicLab {
 	base: {
 		name: string;
 		source: string;
+		enname: string;
 		director: string;
 		degree: string;
 		tel: string;
 		departmant: string;
 		email: string;
+		pexptime: Dayjs;
 	};
 	expers: { name: string; degree: string; response: string; experLicense: string; tel: string; error: string[]; loading: boolean }[];
 	animal: {
@@ -31,9 +33,8 @@ export interface IformEthicLab {
 		expDesign: string;
 		harms: string;
 		disposal: {
-			live: string;
-			death: string;
-			disposal: string;
+			state: [];
+			detail: string;
 		};
 		poisonous: {
 			state: number;
@@ -49,6 +50,9 @@ export interface IformEthicLab {
 			state: number;
 			suggest: string;
 		};
-		commitTime: number;
+		commitTime: {
+			state: number;
+			value: number;
+		};
 	};
 }

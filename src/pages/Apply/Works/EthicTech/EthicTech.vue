@@ -94,7 +94,7 @@
 					></a-col>
 					<a-col :xs="24" :sm="24" :md="24" :lg="24" :xl="24"
 						><a-form-item label="数量及性别" name="applDate">
-							<a-row>
+							<a-row :gutter="{ xs: 8, sm: 16, md: 24, lg: 32 }">
 								<a-col :span="8"><a-input :value="state.formState.base.aniQF + state.formState.base.aniQM" disabled prefix="总计" suffix="只" /></a-col>
 								<a-col :span="8"><a-input v-model:value="state.formState.base.aniQF" prefix="♀" suffix="只" /></a-col>
 								<a-col :span="8"><a-input v-model:value="state.formState.base.aniQM" prefix="♂" suffix="只" /></a-col>

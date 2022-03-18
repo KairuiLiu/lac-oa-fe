@@ -11,12 +11,14 @@ export const i18n = {
 		base: {
 			title: '课题基本信息',
 			name: '课题名称',
+			enname: 'Study Name',
 			source: '课题来源',
 			director: '课题负责人',
 			degree: '职称/学位',
 			tel: '联系电话',
 			departmant: '院系（单位）',
 			email: '邮箱',
+			pexptime: '拟实验时间',
 		},
 		expers: {
 			title: '参与实验人员信息',
@@ -48,9 +50,9 @@ export const i18n = {
 			harms: '详细列出操作程序中预期可能对动物造成的伤害或不适，以及拟采取的将痛苦减至最低的措施',
 			disposal: {
 				title: '实验终末点及动物处置方式',
-				live: '(存活)',
-				death: '(处死)',
-				disposal: '(动物尸体处理)',
+				live: '存活',
+				death: '处死',
+				disposal: '动物尸体处理',
 			},
 			poisonous: {
 				title: '是否使用有毒（害）物质（感染、放射、化学毒、其他）',
@@ -93,6 +95,30 @@ export const i18n = {
 			no: '无',
 			ops: '操作',
 			check: '数据检查',
+			nn: '不能为空',
+			hasErr: '存在错误',
+			degree: {
+				professor: '教授',
+				associateProfessor: '副教授',
+				researcher: '研究员',
+				associateResearcher: '副研究员',
+				lecturer: '讲师',
+				experimenter: '实验员',
+				phDStudent: '博士研究生',
+				Postgraduate: '硕士研究生',
+				Undergraduate: '本科生',
+				other: '其他',
+			},
+			bacterio: {
+				Ordinary: '普通级',
+				clean: '清洁级',
+				spf: 'SPF级',
+				sterile: '无菌级',
+			},
+			viral: {
+				yes: '有',
+				no: '无',
+			},
 		},
 	},
 	en: {
@@ -105,12 +131,14 @@ export const i18n = {
 		base: {
 			title: 'Study data',
 			name: 'Study Name',
+			enname: 'Study Name',
 			source: 'Source of Study',
 			director: 'Study Director',
 			degree: 'Titles/Degree',
 			tel: 'TEL',
 			departmant: 'Department',
 			email: 'E-mail',
+			pexptime: 'Experiment time',
 		},
 		expers: {
 			title: 'Experimenter information',
@@ -144,8 +172,8 @@ export const i18n = {
 			harms: 'Description of the harms or discomfort expected to be experienced by animals and the measures to be taken to minimize the pain',
 			disposal: {
 				title: 'Experimental endpoint and animal disposal methods.',
-				live: '(Continue to live)',
-				death: '(Death conduct)',
+				live: 'Continue to live',
+				death: 'Death conduct',
 				disposal: 'Disposal of animal remains',
 			},
 			poisonous: {
@@ -189,6 +217,31 @@ export const i18n = {
 			no: 'NO',
 			ops: 'operate',
 			check: 'check',
+			nn: 'can not be empty',
+			hasErr: 'has errors',
+			degree: {
+				professor: 'professor',
+				associateProfessor: 'Associate Professor',
+				researcher: 'researcher',
+				associateResearcher: 'associate researcher',
+				lecturer: 'lecturer',
+				experimenter: 'experimenter',
+				phDStudent: 'PhD student',
+				Postgraduate: 'Postgraduate',
+				Undergraduate: 'Undergraduate',
+				other: 'other',
+			},
+			bacterio: {
+				Ordinary: 'Ordinary grade',
+				clean: 'clean grade',
+				spf: 'SPF grade',
+				sterile: 'sterile grade',
+			},
+
+			viral: {
+				yes: 'have',
+				no: 'without',
+			},
 		},
 	},
 };
@@ -203,11 +256,13 @@ export function formInit(store): IformEthicLab {
 		base: {
 			name: '',
 			source: '',
+			enname: '',
 			director: store.state.userInfo.username,
 			degree: '',
 			tel: store.state.userInfo.phone,
 			departmant: store.state.userInfo.department,
 			email: store.state.userInfo.email,
+			pexptime: null,
 		},
 		expers: [{ name: store.state.userInfo.username, degree: '', response: '', experLicense: '', tel: store.state.userInfo.phone, error: [], loading: false }],
 		animal: {
@@ -225,9 +280,8 @@ export function formInit(store): IformEthicLab {
 			expDesign: '',
 			harms: '',
 			disposal: {
-				live: '',
-				death: '',
-				disposal: '',
+				state: [],
+				detail: '',
 			},
 			poisonous: {
 				state: 0,
@@ -243,7 +297,10 @@ export function formInit(store): IformEthicLab {
 				state: 0,
 				suggest: '',
 			},
-			commitTime: 1,
+			commitTime: {
+				state: 0,
+				value: 1,
+			},
 		},
 	};
 }

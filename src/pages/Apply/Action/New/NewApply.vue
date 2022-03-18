@@ -1,26 +1,27 @@
 <template>
-	{{ state }}
 	<div class="wapper">
 		<div v-if="state.loaded" class="content">
 			<EthicLab v-if="state.applyType === 'ethic' && state.applyProps == 'lab'" ref="formRef"></EthicLab>
 			<EthicTech v-if="state.applyType === 'ethic' && state.applyProps == 'tech'" ref="formRef"></EthicTech>
 		</div>
 		<div class="toolbar">
-			<a-button type="primary" @click="toSubmit()">提交</a-button>
+			<a-button @click="toBack()">返回</a-button>
 			<a-button @click="toSave()">保存草稿</a-button>
 			<a-button danger @click="toReset()">重置</a-button>
+			<a-button type="primary" @click="toSubmit()">提交</a-button>
 		</div>
 	</div>
 </template>
 
 <script setup lang="ts">
 import { defineComponent, reactive, onBeforeMount } from 'vue';
-import { useRoute } from 'vue-router';
+import { useRoute, useRouter } from 'vue-router';
 import { useStore } from 'vuex';
 import EthicLab from '../../Works/EthicLab/EthicLab.vue';
 import EthicTech from '../../Works/EthicTech/EthicTech.vue';
 
 const route = useRoute();
+const router = useRouter();
 const store = useStore();
 
 const [applyType, applyProps] = (route.params.type as string).split('-');
@@ -30,6 +31,10 @@ const state = reactive({
 	applyType,
 	loaded: false,
 });
+
+function toBack() {
+	router.go(-1);
+}
 
 // async function toSubmit() {
 // 	const res = await formRef.value.applicantSubmit();
