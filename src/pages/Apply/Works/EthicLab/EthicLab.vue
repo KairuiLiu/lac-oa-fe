@@ -40,8 +40,8 @@
 						</a-form-item>
 					</a-col>
 					<a-col :xs="24" :sm="24" :md="24" :lg="8" :xl="8"
-						><a-form-item :rules="ruleNN" :label="labels.base.pexptime" :name="['base', 'pexptime']"
-							><a-date-picker v-model:value="state.formState.base.pexptime" :locale="locale" :disabled-date="disabledDate"
+						><a-form-item :rules="ruleNN" :label="labels.base.pexptime" :name="['base', 'pexptime']">
+							<a-range-picker v-model:value="state.formState.base.pexptime" :locale="locale" :disabled-date="disabledDate"
 						/></a-form-item>
 					</a-col>
 					<a-col :xs="24" :sm="24" :md="24" :lg="8" :xl="8"
@@ -97,13 +97,13 @@
 									@search="handleExperNameSearch"
 									@change="handleExperNameSearch"
 									@select="handleSelectName($event, row)"
-									@blur="checkLicenseLocal(row)"
+									@blur="checkLicense(row)"
 								></a-select>
 							</template>
 						</vxe-column>
 						<vxe-column field="degree" :title="labels.expers.degree">
 							<template #default="{ row }">
-								<a-select v-model:value="row.degree" style="width: 100px" @blur="checkLicenseLocal(row)">
+								<a-select v-model:value="row.degree" style="width: 100px" @blur="checkLicense(row)">
 									<a-select-option value="professor">{{ labels.others.degree.professor }}</a-select-option>
 									<a-select-option value="associateProfessor">{{ labels.others.degree.associateProfessor }}</a-select-option>
 									<a-select-option value="researcher">{{ labels.others.degree.researcher }}</a-select-option>
@@ -119,7 +119,7 @@
 						</vxe-column>
 						<vxe-column field="response" :title="labels.expers.response">
 							<template #default="{ row }">
-								<a-input v-model:value="row.response" @blur="checkLicenseLocal(row)" />
+								<a-input v-model:value="row.response" @blur="checkLicense(row)" />
 							</template>
 						</vxe-column>
 						<vxe-column field="name" :title="labels.expers.experLicense">
@@ -129,7 +129,7 @@
 						</vxe-column>
 						<vxe-column field="tel" :title="labels.expers.tel">
 							<template #default="{ row }">
-								<a-input v-model:value="row.tel" @blur="checkLicenseLocal(row)" />
+								<a-input v-model:value="row.tel" @blur="checkLicense(row)" />
 							</template>
 						</vxe-column>
 						<vxe-column :title="labels.others.ops">
@@ -205,8 +205,8 @@
 						</vxe-column>
 						<vxe-column field="sexQF" :title="labels.animal.sexQ">
 							<template #default="{ row }">
-								<a-input v-model:value="row.sexQF" prefix="♀" @blur="checkAnimalLocal(row)" />
-								<a-input v-model:value="row.sexQM" prefix="♂" @blur="checkAnimalLocal(row)" />
+								<a-input v-model:value.number="row.sexQF" type="number" prefix="♀" @blur="checkAnimalLocal(row)" />
+								<a-input v-model:value.number="row.sexQM" type="number" prefix="♂" @blur="checkAnimalLocal(row)" />
 							</template>
 						</vxe-column>
 						<vxe-column field="bacterio" :title="labels.animal.bacterio">
@@ -411,7 +411,8 @@
 							<a-radio-group v-model:value="state.formState.detail.commitTime.state">
 								<a-radio :value="0">{{ labels.detail.remark.fst }}</a-radio>
 								<a-radio :value="1"
-									>{{ labels.detail.remark.nths }}<a-input-number v-model:value="state.formState.detail.commitTime.value" :disabled="state.formState.detail.commitTime.state == 0" />{{
+									>{{ labels.detail.remark.nths
+									}}<a-input-number v-model:value.number="state.formState.detail.commitTime.value" type="number" :disabled="state.formState.detail.commitTime.state == 0" />{{
 										labels.detail.remark.nthl
 									}}</a-radio
 								>
@@ -432,7 +433,7 @@ import { VxeTableInstance } from 'vxe-table';
 import type { Dayjs } from 'dayjs';
 import dayjs from 'dayjs';
 import locale from 'ant-design-vue/es/date-picker/locale/zh_CN';
-import type { RuleObject } from 'ant-design-vue/es/form';
+import RuleObject from 'ant-design-vue/es/form';
 import { i18n } from '../../../../utils/ethicLab';
 import { applicantApi } from '../../../../api';
 import { IAjaxRestlt } from '../../../../types/common';
@@ -504,9 +505,12 @@ function checkLicenseLocal(row) {
 	Object.keys(row).forEach(k => {
 		if (typeof row[k] !== 'object' && k !== 'loading' && k !== '_X_ROW_KEY' && !row[k]) row.error.push(`${labels.value.expers[k]} ${labels.value.others.nn}`);
 	});
+	if (!checkPhone(row.tel)) row.error.push(`${labels.value.expers.tel} ${labels.value.others.hasErr}`);
 }
 
 const dataExperNameOption = ref<any[]>([]);
+
+const formRef = ref(null);
 
 const addAnimalRow = async (row: any) => {
 	// eslint-disable-next-line
@@ -528,7 +532,7 @@ function checkAnimalLocal(row) {
 	row.error = [];
 	Object.keys(row).forEach(k => {
 		if (typeof row[k] !== 'object' && k !== '_X_ROW_KEY' && k !== 'sexQF' && k !== 'sexQM' && !row[k]) row.error.push(`${labels.value.animal[k]} ${labels.value.others.nn}`);
-		else if ((k === 'sexQF' || k === 'sexQM') && !(row[k] >= 0)) row.error.push(`${labels.value.animal.sexQ}${labels.value.others.hasErr}`);
+		else if ((k === 'sexQF' || k === 'sexQM') && (row[k] === '' || row[k] < 0)) row.error.push(`${labels.value.animal.sexQ}${labels.value.others.hasErr}`);
 	});
 }
 
@@ -551,31 +555,47 @@ const disabledDate = (current: Dayjs) => {
 
 const ruleNN = [{ required: true, message: labels.value.others.nnItem }];
 
-async function validateEmail(_rule: RuleObject, value: string) {
+async function validateEmail(_rule: InstanceType<typeof RuleObject>, value: string) {
 	if (checkEmail(value)) return Promise.resolve();
 	// eslint-disable-next-line
 	return Promise.reject(labels.value.base.email + labels.value.others.hasErr);
 }
 
-async function validateTel(_rule: RuleObject, value: string) {
+async function validateTel(_rule: InstanceType<typeof RuleObject>, value: string) {
 	if (checkPhone(value)) return Promise.resolve();
 	// eslint-disable-next-line
 	return Promise.reject(labels.value.base.tel + labels.value.others.hasErr);
 }
 
-function formCheck() {
-	if (true) return Promise.reject();
-	return Promise.resolve();
+function getFormData() {
+	return formRef.value.validate().then(
+		() => {
+			const f1 = state.formState.expers.reduce((pre, v) => pre || v.error.length, false);
+			const f2 = state.formState.animal.detail.reduce((pre, v) => pre || v.error.length, false);
+			if (!f1 && !f2) {
+				return Promise.resolve(JSON.parse(JSON.stringify(state.formState)));
+			}
+			throw new Error('表格中存在错误数据');
+		},
+		() => {
+			throw new Error('表单中存在错误数据');
+		}
+	);
 }
 
-onBeforeMount(() => {
+function initFormData() {
 	state.formState = store.state.apply.formData;
 	checkLicenseLocal(state.formState.expers[0]);
 	checkAnimalLocal(state.formState.animal.detail[0]);
+}
+
+onBeforeMount(async () => {
+	await initFormData();
 });
 
 defineExpose({
-	formCheck,
+	getFormData,
+	initFormData,
 });
 </script>
 <script lang="ts">

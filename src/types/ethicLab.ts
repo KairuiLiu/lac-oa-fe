@@ -15,7 +15,7 @@ export interface IformEthicLab {
 		tel: string;
 		departmant: string;
 		email: string;
-		pexptime: Dayjs;
+		pexptime: [Dayjs, Dayjs];
 	};
 	expers: { name: string; degree: string; response: string; experLicense: string; tel: string; error: string[]; loading: boolean }[];
 	animal: {

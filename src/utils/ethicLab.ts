@@ -247,7 +247,6 @@ export const i18n = {
 		},
 	},
 };
-
 export function formInit(store): IformEthicLab {
 	return {
 		head: {
@@ -264,7 +263,7 @@ export function formInit(store): IformEthicLab {
 			tel: store.state.userInfo.phone,
 			departmant: store.state.userInfo.department,
 			email: store.state.userInfo.email,
-			pexptime: null,
+			pexptime: [null, null],
 		},
 		expers: [{ name: store.state.userInfo.username, degree: '', response: '', experLicense: '', tel: store.state.userInfo.phone, error: [], loading: false }],
 		animal: {

@@ -25,6 +25,7 @@ export interface IformEthicTech {
 		directorTel: string;
 		directorName: string;
 		directorEmail: string;
+		animalsOthers: string;
 	};
 	overview: string;
 	promiseDate: Dayjs;
