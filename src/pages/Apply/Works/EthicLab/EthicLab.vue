@@ -29,27 +29,31 @@
 						><div class="subtitle">{{ labels.base.title }}</div></a-col
 					>
 				</a-row>
-				<a-form-item :label="labels.base.name" :rules="ruleNN" :name="['base', 'name']"> <a-input v-model:value="state.formState.base.name" /> </a-form-item>
+				<a-form-item :label="labels.base.name" :rules="ruleNN" :name="['base', 'name']">
+					<a-input v-model:value="state.formState.base.name" :disabled="['show', 'adminaduit', 'aduit'].includes(props.action)" />
+				</a-form-item>
 				<a-form-item v-if="state.langcn" :rules="ruleNN" :label="labels.base.enname" :name="['base', 'enname']">
-					<a-input v-model:value="state.formState.base.enname" />
+					<a-input v-model:value="state.formState.base.enname" :disabled="['show', 'adminaduit', 'aduit'].includes(props.action)" />
 				</a-form-item>
 				<a-row :gutter="{ xs: 8, sm: 16, md: 24, lg: 32 }" type="flex">
 					<a-col :xs="24" :sm="24" :md="24" :lg="16" :xl="16">
 						<a-form-item :rules="ruleNN" :label="labels.base.source" :name="['base', 'source']">
-							<a-input v-model:value="state.formState.base.source" />
+							<a-input v-model:value="state.formState.base.source" :disabled="['show', 'adminaduit', 'aduit'].includes(props.action)" />
 						</a-form-item>
 					</a-col>
 					<a-col :xs="24" :sm="24" :md="24" :lg="8" :xl="8"
 						><a-form-item :rules="ruleNN" :label="labels.base.pexptime" :name="['base', 'pexptime']">
-							<a-range-picker v-model:value="state.formState.base.pexptime" :locale="locale" :disabled-date="disabledDate"
+							<a-range-picker v-model:value="state.formState.base.pexptime" :disabled="['show', 'adminaduit', 'aduit'].includes(props.action)" :locale="locale" :disabled-date="disabledDate"
 						/></a-form-item>
 					</a-col>
 					<a-col :xs="24" :sm="24" :md="24" :lg="8" :xl="8"
-						><a-form-item :rules="ruleNN" :label="labels.base.director" :name="['base', 'director']"><a-input v-model:value="state.formState.base.director" /></a-form-item>
+						><a-form-item :rules="ruleNN" :label="labels.base.director" :name="['base', 'director']"
+							><a-input v-model:value="state.formState.base.director" :disabled="['show', 'adminaduit', 'aduit'].includes(props.action)"
+						/></a-form-item>
 					</a-col>
 					<a-col :xs="24" :sm="24" :md="24" :lg="8" :xl="8"
 						><a-form-item :rules="ruleNN" :label="labels.base.degree" :name="['base', 'degree']">
-							<a-select v-model:value="state.formState.base.degree">
+							<a-select v-model:value="state.formState.base.degree" :disabled="['show', 'adminaduit', 'aduit'].includes(props.action)">
 								<a-select-option value="professor">{{ labels.others.degree.professor }}</a-select-option>
 								<a-select-option value="associateProfessor">{{ labels.others.degree.associateProfessor }}</a-select-option>
 								<a-select-option value="researcher">{{ labels.others.degree.researcher }}</a-select-option>
@@ -65,14 +69,15 @@
 					>
 					<a-col :xs="24" :sm="24" :md="24" :lg="8" :xl="8"
 						><a-form-item :rules="[{ required: true, validator: validateTel, message: labels.base.tel + labels.others.hasErr }]" :label="labels.base.tel" :name="['base', 'tel']">
-							<a-input v-model:value="state.formState.base.tel" type="tel" /> </a-form-item
+							<a-input v-model:value="state.formState.base.tel" type="tel" :disabled="['show', 'adminaduit', 'aduit'].includes(props.action)" /> </a-form-item
 					></a-col>
 					<a-col :xs="24" :sm="24" :md="24" :lg="16" :xl="16"
-						><a-form-item :rules="ruleNN" :label="labels.base.departmant" :name="['base', 'departmant']"> <a-input v-model:value="state.formState.base.departmant" /> </a-form-item
+						><a-form-item :rules="ruleNN" :label="labels.base.departmant" :name="['base', 'departmant']">
+							<a-input v-model:value="state.formState.base.departmant" :disabled="['show', 'adminaduit', 'aduit'].includes(props.action)" /> </a-form-item
 					></a-col>
 					<a-col :xs="24" :sm="24" :md="24" :lg="8" :xl="8"
 						><a-form-item :rules="[{ required: true, validator: validateEmail, message: labels.base.email + labels.others.hasErr }]" :label="labels.base.email" :name="['base', 'email']">
-							<a-input v-model:value="state.formState.base.email" /> </a-form-item
+							<a-input v-model:value="state.formState.base.email" :disabled="['show', 'adminaduit', 'aduit'].includes(props.action)" /> </a-form-item
 					></a-col>
 				</a-row>
 				<a-row>
@@ -87,6 +92,7 @@
 							<template #default="{ row }">
 								<a-select
 									v-model:value="row.name"
+									:disabled="['show', 'adminaduit', 'aduit'].includes(props.action)"
 									show-search
 									style="width: 230px"
 									:default-active-first-option="false"
@@ -103,7 +109,7 @@
 						</vxe-column>
 						<vxe-column field="degree" :title="labels.expers.degree">
 							<template #default="{ row }">
-								<a-select v-model:value="row.degree" style="width: 100px" @blur="checkLicense(row)">
+								<a-select v-model:value="row.degree" style="width: 100px" :disabled="['show', 'adminaduit', 'aduit'].includes(props.action)" @blur="checkLicense(row)">
 									<a-select-option value="professor">{{ labels.others.degree.professor }}</a-select-option>
 									<a-select-option value="associateProfessor">{{ labels.others.degree.associateProfessor }}</a-select-option>
 									<a-select-option value="researcher">{{ labels.others.degree.researcher }}</a-select-option>
@@ -119,33 +125,33 @@
 						</vxe-column>
 						<vxe-column field="response" :title="labels.expers.response">
 							<template #default="{ row }">
-								<a-input v-model:value="row.response" @blur="checkLicense(row)" />
+								<a-input v-model:value="row.response" :disabled="['show', 'adminaduit', 'aduit'].includes(props.action)" @blur="checkLicense(row)" />
 							</template>
 						</vxe-column>
 						<vxe-column field="name" :title="labels.expers.experLicense">
 							<template #default="{ row }">
-								<a-input v-model:value="row.experLicense" @blur="checkLicense(row)" />
+								<a-input v-model:value="row.experLicense" :disabled="['show', 'adminaduit', 'aduit'].includes(props.action)" @blur="checkLicense(row)" />
 							</template>
 						</vxe-column>
 						<vxe-column field="tel" :title="labels.expers.tel">
 							<template #default="{ row }">
-								<a-input v-model:value="row.tel" @blur="checkLicense(row)" />
+								<a-input v-model:value="row.tel" :disabled="['show', 'adminaduit', 'aduit'].includes(props.action)" @blur="checkLicense(row)" />
 							</template>
 						</vxe-column>
 						<vxe-column :title="labels.others.ops">
 							<template #default="{ row }">
-								<a-button type="primary" shape="circle" @click="addExperRow(row)">
+								<a-button class="btnl" :disabled="['show', 'adminaduit', 'aduit'].includes(props.action)" type="primary" shape="circle" @click="addExperRow(row)">
 									<template #icon><PlusOutlined /></template>
 								</a-button>
-								<a-button v-if="state.formState.expers.length !== 1" type="primary" shape="circle" danger @click="delExperRow(row)">
+								<a-button v-if="state.formState.expers.length !== 1" :disabled="['show', 'adminaduit', 'aduit'].includes(props.action)" type="primary" shape="circle" danger @click="delExperRow(row)">
 									<template #icon><DeleteOutlined /></template>
 								</a-button>
 							</template>
 						</vxe-column>
 						<vxe-column :title="labels.others.check">
 							<template #default="{ row }">
-								<a-tag v-if="row.loading" color="processing">校验中</a-tag>
-								<a-tag v-else-if="row.error.length === 0" color="success">未检出错误</a-tag>
+								<a-tag v-if="row.loading" color="processing">{{ labels.others.message.loading }}</a-tag>
+								<a-tag v-else-if="row.error.length === 0" color="success">{{ labels.others.message.noerr }}</a-tag>
 								<a-tag v-for="(item, index) in row.error" v-else :key="index" color="error">{{ item }}</a-tag>
 							</template>
 						</vxe-column>
@@ -158,11 +164,12 @@
 				</a-row>
 				<a-row :gutter="{ xs: 8, sm: 16, md: 24, lg: 32 }" type="flex">
 					<a-col :xs="24" :sm="24" :md="24" :lg="12" :xl="6"
-						><a-form-item :rules="ruleNN" :label="labels.animal.animalOrigin" :name="['animal', 'animalOrigin']"> <a-input v-model:value="state.formState.animal.animalOrigin" /> </a-form-item
+						><a-form-item :rules="ruleNN" :label="labels.animal.animalOrigin" :name="['animal', 'animalOrigin']">
+							<a-input v-model:value="state.formState.animal.animalOrigin" :disabled="['show', 'adminaduit', 'aduit'].includes(props.action)" /> </a-form-item
 					></a-col>
 					<a-col :xs="24" :sm="24" :md="24" :lg="12" :xl="6"
 						><a-form-item :rules="ruleNN" :label="labels.animal.productionNo" :name="['animal', 'productionNo']">
-							<a-radio-group v-model:value="state.formState.animal.productionNo">
+							<a-radio-group v-model:value="state.formState.animal.productionNo" :disabled="['show', 'adminaduit', 'aduit'].includes(props.action)">
 								<a-radio :value="1">{{ labels.others.yes }}</a-radio>
 								<a-radio :value="0">{{ labels.others.no }}</a-radio>
 							</a-radio-group>
@@ -170,7 +177,7 @@
 					>
 					<a-col :xs="24" :sm="24" :md="24" :lg="12" :xl="6"
 						><a-form-item :rules="ruleNN" :label="labels.animal.certNo" :name="['animal', 'certNo']">
-							<a-radio-group v-model:value="state.formState.animal.certNo">
+							<a-radio-group v-model:value="state.formState.animal.certNo" :disabled="['show', 'adminaduit', 'aduit'].includes(props.action)">
 								<a-radio :value="1">{{ labels.others.yes }}</a-radio>
 								<a-radio :value="0">{{ labels.others.no }}</a-radio>
 							</a-radio-group>
@@ -178,7 +185,7 @@
 					>
 					<a-col :xs="24" :sm="24" :md="24" :lg="12" :xl="6"
 						><a-form-item :rules="ruleNN" :label="labels.animal.inspecRepo" :name="['animal', 'inspecRepo']">
-							<a-radio-group v-model:value="state.formState.animal.inspecRepo">
+							<a-radio-group v-model:value="state.formState.animal.inspecRepo" :disabled="['show', 'adminaduit', 'aduit'].includes(props.action)">
 								<a-radio :value="1">{{ labels.others.yes }}</a-radio>
 								<a-radio :value="0">{{ labels.others.no }}</a-radio>
 							</a-radio-group>
@@ -190,28 +197,28 @@
 						<vxe-column type="seq" width="60"></vxe-column>
 						<vxe-column field="species" :title="labels.animal.species">
 							<template #default="{ row }">
-								<a-input v-model:value="row.species" @blur="checkAnimalLocal(row)" />
+								<a-input v-model:value="row.species" :disabled="['show', 'adminaduit', 'aduit'].includes(props.action)" @blur="checkAnimalLocal(row)" />
 							</template>
 						</vxe-column>
 						<vxe-column field="strain" :title="labels.animal.strain">
 							<template #default="{ row }">
-								<a-input v-model:value="row.strain" @blur="checkAnimalLocal(row)" />
+								<a-input v-model:value="row.strain" :disabled="['show', 'adminaduit', 'aduit'].includes(props.action)" @blur="checkAnimalLocal(row)" />
 							</template>
 						</vxe-column>
 						<vxe-column field="ageWS" :title="labels.animal.ageWS">
 							<template #default="{ row }">
-								<a-input v-model:value="row.ageWS" @blur="checkAnimalLocal(row)" />
+								<a-input v-model:value="row.ageWS" :disabled="['show', 'adminaduit', 'aduit'].includes(props.action)" @blur="checkAnimalLocal(row)" />
 							</template>
 						</vxe-column>
 						<vxe-column field="sexQF" :title="labels.animal.sexQ">
 							<template #default="{ row }">
-								<a-input v-model:value.number="row.sexQF" type="number" prefix="♀" @blur="checkAnimalLocal(row)" />
-								<a-input v-model:value.number="row.sexQM" type="number" prefix="♂" @blur="checkAnimalLocal(row)" />
+								<a-input v-model:value.number="row.sexQF" type="number" prefix="♀" :disabled="['show', 'adminaduit', 'aduit'].includes(props.action)" @blur="checkAnimalLocal(row)" />
+								<a-input v-model:value.number="row.sexQM" type="number" prefix="♂" :disabled="['show', 'adminaduit', 'aduit'].includes(props.action)" @blur="checkAnimalLocal(row)" />
 							</template>
 						</vxe-column>
 						<vxe-column field="bacterio" :title="labels.animal.bacterio">
 							<template #default="{ row }">
-								<a-select v-model:value="row.bacterio" :style="{ width: '100px' }" @blur="checkAnimalLocal(row)">
+								<a-select v-model:value="row.bacterio" :style="{ width: '100px' }" :disabled="['show', 'adminaduit', 'aduit'].includes(props.action)" @blur="checkAnimalLocal(row)">
 									<a-select-option value="Ordinary">{{ labels.others.bacterio.Ordinary }}</a-select-option>
 									<a-select-option value="clean">{{ labels.others.bacterio.clean }}</a-select-option>
 									<a-select-option value="spf">{{ labels.others.bacterio.spf }}</a-select-option>
@@ -221,7 +228,7 @@
 						</vxe-column>
 						<vxe-column field="viral" :title="labels.animal.viral">
 							<template #default="{ row }">
-								<a-select v-model:value="row.viral" :style="{ width: '100px' }" @blur="checkAnimalLocal(row)">
+								<a-select v-model:value="row.viral" :style="{ width: '100px' }" :disabled="['show', 'adminaduit', 'aduit'].includes(props.action)" @blur="checkAnimalLocal(row)">
 									<a-select-option value="yes">{{ labels.others.viral.yes }}</a-select-option>
 									<a-select-option value="no">{{ labels.others.viral.no }}</a-select-option>
 								</a-select>
@@ -229,10 +236,17 @@
 						</vxe-column>
 						<vxe-column :title="labels.others.ops">
 							<template #default="{ row }">
-								<a-button type="primary" shape="circle" @click="addAnimalRow(row)">
+								<a-button class="btnl" type="primary" shape="circle" :disabled="['show', 'adminaduit', 'aduit'].includes(props.action)" @click="addAnimalRow(row)">
 									<template #icon><PlusOutlined /></template>
 								</a-button>
-								<a-button v-if="state.formState.animal.detail.length !== 1" type="primary" shape="circle" danger @click="delAnimalRow(row)">
+								<a-button
+									v-if="state.formState.animal.detail.length !== 1"
+									:disabled="['show', 'adminaduit', 'aduit'].includes(props.action)"
+									type="primary"
+									shape="circle"
+									danger
+									@click="delAnimalRow(row)"
+								>
 									<template #icon><DeleteOutlined /></template>
 								</a-button>
 							</template>
@@ -248,10 +262,11 @@
 				<a-row :gutter="{ xs: 8, sm: 16, md: 24, lg: 32 }" type="flex">
 					<a-col :xs="24" :sm="24" :md="24" :lg="12" :xl="12"
 						><a-form-item :rules="ruleNN" :label="labels.animal.facilitiesLicense" :name="['animal', 'facilitiesLicense']">
-							<a-input v-model:value="state.formState.animal.facilitiesLicense" /> </a-form-item
+							<a-input v-model:value="state.formState.animal.facilitiesLicense" :disabled="['show', 'adminaduit', 'aduit'].includes(props.action)" /> </a-form-item
 					></a-col>
 					<a-col :xs="24" :sm="24" :md="24" :lg="12" :xl="12"
-						><a-form-item :rules="ruleNN" :label="labels.animal.facilityAddress" :name="['animal', 'facilityAddress']"> <a-input v-model:value="state.formState.animal.facilityAddress" /> </a-form-item
+						><a-form-item :rules="ruleNN" :label="labels.animal.facilityAddress" :name="['animal', 'facilityAddress']">
+							<a-input v-model:value="state.formState.animal.facilityAddress" :disabled="['show', 'adminaduit', 'aduit'].includes(props.action)" /> </a-form-item
 					></a-col>
 				</a-row>
 				<a-row>
@@ -260,7 +275,7 @@
 					>
 				</a-row>
 				<a-form-item :rules="ruleNN" :name="['detail', 'necessity']">
-					<a-textarea v-model:value="state.formState.detail.necessity" allow-clear :rows="7" />
+					<a-textarea v-model:value="state.formState.detail.necessity" :disabled="['show', 'adminaduit', 'aduit'].includes(props.action)" allow-clear :rows="7" />
 				</a-form-item>
 				<a-row>
 					<a-col :span="24"
@@ -268,7 +283,7 @@
 					>
 				</a-row>
 				<a-form-item :rules="ruleNN" :name="['detail', 'reason']">
-					<a-textarea v-model:value="state.formState.detail.reason" allow-clear :rows="7" />
+					<a-textarea v-model:value="state.formState.detail.reason" :disabled="['show', 'adminaduit', 'aduit'].includes(props.action)" allow-clear :rows="7" />
 				</a-form-item>
 				<a-row>
 					<a-col :span="24"
@@ -276,7 +291,7 @@
 					>
 				</a-row>
 				<a-form-item :rules="ruleNN" :name="['detail', 'expDesign']">
-					<a-textarea v-model:value="state.formState.detail.expDesign" allow-clear :rows="7" />
+					<a-textarea v-model:value="state.formState.detail.expDesign" :disabled="['show', 'adminaduit', 'aduit'].includes(props.action)" allow-clear :rows="7" />
 				</a-form-item>
 				<a-row>
 					<a-col :span="24"
@@ -284,7 +299,7 @@
 					>
 				</a-row>
 				<a-form-item :rules="ruleNN" :name="['detail', 'harms']">
-					<a-textarea v-model:value="state.formState.detail.harms" allow-clear :rows="7" />
+					<a-textarea v-model:value="state.formState.detail.harms" :disabled="['show', 'adminaduit', 'aduit'].includes(props.action)" allow-clear :rows="7" />
 				</a-form-item>
 				<a-row type="flex" justify="end">
 					<a-col :span="24"
@@ -292,7 +307,7 @@
 					>
 					<a-col :span="23"
 						><a-form-item :rules="ruleNN" :name="['detail', 'disposal', 'state']">
-							<a-checkbox-group v-model:value="state.formState.detail.disposal.state">
+							<a-checkbox-group v-model:value="state.formState.detail.disposal.state" :disabled="['show', 'adminaduit', 'aduit'].includes(props.action)">
 								<a-checkbox value="live">{{ labels.detail.disposal.live }}</a-checkbox>
 								<a-checkbox value="death">{{ labels.detail.disposal.death }}</a-checkbox>
 							</a-checkbox-group>
@@ -303,7 +318,7 @@
 					>
 					<a-col :span="23">
 						<a-form-item v-if="state.formState.detail.disposal.state.includes('death')" :rules="ruleNN" :name="['detail', 'disposal', 'disposal']">
-							<a-textarea v-model:value="state.formState.detail.disposal.disposal" allow-clear :rows="3" />
+							<a-textarea v-model:value="state.formState.detail.disposal.disposal" :disabled="['show', 'adminaduit', 'aduit'].includes(props.action)" allow-clear :rows="3" />
 						</a-form-item>
 					</a-col>
 				</a-row>
@@ -313,7 +328,7 @@
 					>
 					<a-col :xs="23" :sm="23" :md="23" :lg="23" :xl="23"
 						><a-form-item :rules="ruleNN" :name="['detail', 'poisonous', 'state']">
-							<a-radio-group v-model:value="state.formState.detail.poisonous.state">
+							<a-radio-group v-model:value="state.formState.detail.poisonous.state" :disabled="['show', 'adminaduit', 'aduit'].includes(props.action)">
 								<a-radio :value="1">{{ labels.others.yes }}</a-radio>
 								<a-radio :value="0">{{ labels.others.no }}</a-radio>
 							</a-radio-group>
@@ -324,7 +339,7 @@
 					>
 					<a-col :span="23">
 						<a-form-item :rules="ruleNN" :name="['detail', 'poisonous', 'declear']">
-							<a-textarea v-model:value="state.formState.detail.poisonous.declear" allow-clear :rows="7" />
+							<a-textarea v-model:value="state.formState.detail.poisonous.declear" allow-clear :rows="7" :disabled="['show', 'adminaduit', 'aduit'].includes(props.action)" />
 						</a-form-item>
 					</a-col>
 				</a-row>
@@ -348,10 +363,11 @@
 					>
 					<a-col :span="23"
 						><a-form-item :rules="ruleNN" :name="['detail', 'institutionOpinion', 'state']">
-							<a-radio-group v-model:value="state.formState.detail.institutionOpinion.state" :disabled="['show'].includes(props.action)">
+							<a-radio-group v-model:value="state.formState.detail.institutionOpinion.state" :disabled="['show', 'new', 'edit', 'adminaduit'].includes(props.action)">
 								<a-radio :value="2">{{ labels.detail.institutionOpinion.modify }}</a-radio>
 								<a-radio :value="1">{{ labels.others.agree }}</a-radio>
 								<a-radio :value="0">{{ labels.others.disagree }}</a-radio>
+								<a-radio :value="-1">{{ labels.others.unset }}</a-radio>
 							</a-radio-group>
 						</a-form-item></a-col
 					>
@@ -375,18 +391,21 @@
 					>
 					<a-col :span="23"
 						><a-form-item :rules="ruleNN" :name="['detail', 'committeeOption', 'state']">
-							<a-radio-group v-model:value="state.formState.detail.committeeOption.state" :disabled="['show'].includes(props.action)">
+							<a-radio-group v-model:value="state.formState.detail.committeeOption.state" :disabled="['show', 'new', 'edit', 'adminaduit'].includes(props.action)">
 								<a-radio :value="3">{{ labels.detail.committeeOption.modifieAgree }}</a-radio>
 								<a-radio :value="2">{{ labels.detail.committeeOption.agreeReview }}</a-radio>
 								<a-radio :value="1">{{ labels.others.agree }}</a-radio>
 								<a-radio :value="0">{{ labels.others.disagree }}</a-radio>
+								<a-radio :value="-1">{{ labels.others.unset }}</a-radio>
 							</a-radio-group>
 						</a-form-item>
 					</a-col>
 					<a-col :span="23"
 						><div class="subsubtitle">{{ labels.detail.committeeOption.suggest }}</div></a-col
 					>
-					<a-col :span="23"> <a-textarea v-model:value="state.formState.detail.committeeOption.suggest" :disabled="['show'].includes(props.action)" allow-clear :rows="3" /></a-col>
+					<a-col :span="23">
+						<a-textarea v-model:value="state.formState.detail.committeeOption.suggest" :disabled="['show', 'new', 'edit', 'adminaduit'].includes(props.action)" allow-clear :rows="3"
+					/></a-col>
 				</a-row>
 				<a-row type="flex" justify="end">
 					<a-col :span="8">
@@ -408,13 +427,15 @@
 					>
 					<a-col :span="23">
 						<a-form-item :rules="ruleNN" :name="['detail', 'commitTime', 'state']">
-							<a-radio-group v-model:value="state.formState.detail.commitTime.state" :disabled="['show'].includes(props.action)">
+							<a-radio-group v-model:value="state.formState.detail.commitTime.state" :disabled="['show', 'new', 'edit', 'adminaduit'].includes(props.action)">
 								<a-radio :value="0">{{ labels.detail.remark.fst }}</a-radio>
 								<a-radio :value="1"
 									>{{ labels.detail.remark.nths
-									}}<a-input-number v-model:value.number="state.formState.detail.commitTime.value" type="number" :disabled="state.formState.detail.commitTime.state == 0" />{{
-										labels.detail.remark.nthl
-									}}</a-radio
+									}}<a-input-number
+										v-model:value.number="state.formState.detail.commitTime.value"
+										:disabled="['show', 'new', 'edit', 'adminaduit'].includes(props.action) || state.formState.detail.commitTime.state == 0"
+										type="number"
+									/>{{ labels.detail.remark.nthl }}</a-radio
 								>
 							</a-radio-group>
 						</a-form-item>
@@ -637,5 +658,9 @@ export default defineComponent({
 
 .animalList {
 	margin-bottom: 14px;
+}
+
+.btnl {
+	margin-right: 7px;
 }
 </style>

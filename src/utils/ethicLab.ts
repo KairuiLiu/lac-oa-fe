@@ -91,6 +91,7 @@ export const i18n = {
 		others: {
 			agree: '同意',
 			disagree: '不同意',
+			unset: '暂无',
 			yes: '有',
 			no: '无',
 			ops: '操作',
@@ -120,6 +121,10 @@ export const i18n = {
 				no: '无',
 			},
 			nnItem: '此项目不得为空',
+			message: {
+				loading: '校验中',
+				noerr: '未检出错误',
+			},
 		},
 	},
 	en: {
@@ -214,6 +219,7 @@ export const i18n = {
 		others: {
 			agree: 'Agree',
 			disagree: 'Disagree',
+			unset: 'Not yet',
 			yes: 'YES',
 			no: 'NO',
 			ops: 'operate',
@@ -243,7 +249,11 @@ export const i18n = {
 				yes: 'have',
 				no: 'without',
 			},
-			nnItem: '此项目不得为空',
+			nnItem: 'The item cannot be empty',
+			message: {
+				loading: 'Loading',
+				noerr: 'no error detected',
+			},
 		},
 	},
 };
@@ -290,13 +300,13 @@ export function formInit(store): IformEthicLab {
 			},
 			institutionOpinion: {
 				date: null,
-				state: 0,
-				principal: '',
+				state: -1,
+				principal: ' ',
 				date2: null,
 			},
 			committeeOption: {
-				state: 0,
-				suggest: '',
+				state: -1,
+				suggest: ' ',
 			},
 			commitTime: {
 				state: 0,

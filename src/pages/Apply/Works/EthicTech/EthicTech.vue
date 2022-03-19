@@ -15,24 +15,29 @@
 				</a-row>
 				<a-row :gutter="{ xs: 8, sm: 16, md: 24, lg: 32 }" type="flex">
 					<a-col :xs="24" :sm="24" :md="24" :lg="12" :xl="12">
-						<a-form-item :name="['base', 'department']" :rules="ruleNN" label="院系（单位）"><a-input v-model:value="state.formState.base.department" /></a-form-item>
+						<a-form-item :name="['base', 'department']" :rules="ruleNN" label="院系（单位）"
+							><a-input v-model:value="state.formState.base.department" :disabled="['show', 'adminaduit', 'aduit'].includes(props.action)"
+						/></a-form-item>
 					</a-col>
 					<a-col :xs="24" :sm="24" :md="24" :lg="12" :xl="12"
 						><a-form-item :name="['base', 'tel']" :rules="[{ required: true, validator: validateTel, message: '电话有误' }]" label="电话">
-							<a-input v-model:value="state.formState.base.tel" /> </a-form-item
+							<a-input v-model:value="state.formState.base.tel" :disabled="['show', 'adminaduit', 'aduit'].includes(props.action)" /> </a-form-item
 					></a-col>
 					<a-col :xs="24" :sm="24" :md="24" :lg="12" :xl="12"
-						><a-form-item :name="['base', 'major']" :rules="ruleNN" label="专业"> <a-input v-model:value="state.formState.base.major" /> </a-form-item
+						><a-form-item :name="['base', 'major']" :rules="ruleNN" label="专业">
+							<a-input v-model:value="state.formState.base.major" :disabled="['show', 'adminaduit', 'aduit'].includes(props.action)" /> </a-form-item
 					></a-col>
 					<a-col :xs="24" :sm="24" :md="24" :lg="12" :xl="12"
-						><a-form-item :name="['base', 'class']" :rules="ruleNN" label="年级/班级"> <a-input v-model:value="state.formState.base.class" /> </a-form-item
+						><a-form-item :name="['base', 'class']" :rules="ruleNN" label="年级/班级">
+							<a-input v-model:value="state.formState.base.class" :disabled="['show', 'adminaduit', 'aduit'].includes(props.action)" /> </a-form-item
 					></a-col>
 					<a-col :xs="24" :sm="24" :md="24" :lg="24" :xl="24"
-						><a-form-item :name="['base', 'study']" :rules="ruleNN" label="教学课程名称"> <a-input v-model:value="state.formState.base.study" /> </a-form-item
+						><a-form-item :name="['base', 'study']" :rules="ruleNN" label="教学课程名称">
+							<a-input v-model:value="state.formState.base.study" :disabled="['show', 'adminaduit', 'aduit'].includes(props.action)" /> </a-form-item
 					></a-col>
 					<a-col :xs="24" :sm="24" :md="24" :lg="24" :xl="24"
 						><a-form-item :name="['base', 'animals']" :rules="ruleNN" label="动物品种">
-							<a-checkbox-group v-model:value="state.formState.base.animals" name="animals">
+							<a-checkbox-group v-model:value="state.formState.base.animals" name="animals" :disabled="['show', 'adminaduit', 'aduit'].includes(props.action)">
 								<a-row>
 									<a-col :span="8"> <a-checkbox :value="0">鸡</a-checkbox> </a-col><a-col :span="8"> <a-checkbox :value="1">鸽</a-checkbox> </a-col
 									><a-col :span="8"> <a-checkbox :value="2">鸭</a-checkbox> </a-col><a-col :span="8"> <a-checkbox :value="3">鹅</a-checkbox> </a-col
@@ -44,7 +49,7 @@
 										<a-checkbox :value="12">其他</a-checkbox>
 									</a-col>
 									<a-col :span="16">
-										<a-input v-model:value="state.formState.base.animalsOthers" :disabled="!state.formState.base.animals.includes(12)" />
+										<a-input v-model:value="state.formState.base.animalsOthers" :disabled="['show', 'adminaduit', 'aduit'].includes(props.action) || !state.formState.base.animals.includes(12)" />
 									</a-col>
 								</a-row>
 							</a-checkbox-group> </a-form-item
@@ -55,15 +60,20 @@
 								<a-radio :value="0">普通级</a-radio>
 								<a-radio :value="1">清洁级</a-radio>
 								<a-radio :value="2">SPF级</a-radio>
-								<a-radio :value="3">其他（请说明）<a-input v-model:value="state.formState.base.mOrganism.detial" :disabled="state.formState.base.mOrganism.state !== 3" /></a-radio>
+								<a-radio :value="3"
+									>其他（请说明）<a-input
+										v-model:value="state.formState.base.mOrganism.detial"
+										:disabled="['show', 'adminaduit', 'aduit'].includes(props.action) || state.formState.base.mOrganism.state !== 3"
+								/></a-radio>
 							</a-radio-group> </a-form-item
 					></a-col>
 					<a-col :xs="24" :sm="24" :md="24" :lg="12" :xl="12"
-						><a-form-item :name="['base', 'source']" :rules="ruleNN" label="动物来源"> <a-input v-model:value="state.formState.base.source" /> </a-form-item
+						><a-form-item :name="['base', 'source']" :rules="ruleNN" label="动物来源">
+							<a-input v-model:value="state.formState.base.source" :disabled="['show', 'adminaduit', 'aduit'].includes(props.action)" /> </a-form-item
 					></a-col>
 					<a-col :xs="24" :sm="24" :md="24" :lg="12" :xl="12"
 						><a-form-item :name="['base', 'producNo']" :rules="ruleNN" label="生产许可证有无">
-							<a-radio-group v-model:value="state.formState.base.producNo" name="radioGroup">
+							<a-radio-group v-model:value="state.formState.base.producNo" :disabled="['show', 'adminaduit', 'aduit'].includes(props.action)" name="radioGroup">
 								<a-radio :value="1">有</a-radio>
 								<a-radio :value="0">无</a-radio>
 							</a-radio-group>
@@ -71,7 +81,7 @@
 					>
 					<a-col :xs="24" :sm="24" :md="24" :lg="12" :xl="12"
 						><a-form-item :name="['base', 'certNo']" :rules="ruleNN" label="质量合格证明">
-							<a-radio-group v-model:value="state.formState.base.certNo" name="radioGroup">
+							<a-radio-group v-model:value="state.formState.base.certNo" :disabled="['show', 'adminaduit', 'aduit'].includes(props.action)" name="radioGroup">
 								<a-radio :value="1">有</a-radio>
 								<a-radio :value="0">无</a-radio>
 							</a-radio-group>
@@ -79,7 +89,7 @@
 					>
 					<a-col :xs="24" :sm="24" :md="24" :lg="12" :xl="12"
 						><a-form-item :name="['base', 'checkNo']" :rules="ruleNN" label="检疫合格证明">
-							<a-radio-group v-model:value="state.formState.base.checkNo" name="radioGroup">
+							<a-radio-group v-model:value="state.formState.base.checkNo" :disabled="['show', 'adminaduit', 'aduit'].includes(props.action)" name="radioGroup">
 								<a-radio :value="1">有</a-radio>
 								<a-radio :value="0">无</a-radio>
 							</a-radio-group>
@@ -87,10 +97,12 @@
 					>
 					<a-col :xs="24" :sm="24" :md="24" :lg="24" :xl="24"
 						><a-form-item :name="['base', 'expType', 'state']" :rules="ruleNN" label="动物实验类别">
-							<a-radio-group v-model:value="state.formState.base.expType.state" name="radioGroup">
+							<a-radio-group v-model:value="state.formState.base.expType.state" :disabled="['show', 'adminaduit', 'aduit'].includes(props.action)" name="radioGroup">
 								<a-radio :value="1">常规（不具备感染性、放射性、化学危害或其他生物危害性）</a-radio>
 								<a-radio :value="0"
-									>非常规（请注明）<a-input v-model:value="state.formState.base.expType.detial" :disabled="state.formState.base.expType.state"
+									>非常规（请注明）<a-input
+										v-model:value="state.formState.base.expType.detial"
+										:disabled="['show', 'adminaduit', 'aduit'].includes(props.action) || state.formState.base.expType.state"
 								/></a-radio> </a-radio-group></a-form-item
 					></a-col>
 					<a-col :xs="24" :sm="24" :md="24" :lg="24" :xl="24"
@@ -99,24 +111,25 @@
 								<a-col :span="8"><a-input :value="state.formState.base.aniQF + state.formState.base.aniQM" disabled prefix="总计" suffix="只" /></a-col>
 								<a-col :span="8">
 									<a-form-item :name="['base', 'aniQF']" :rules="ruleNNP">
-										<a-input v-model:value.number="state.formState.base.aniQF" prefix="♀" suffix="只" />
+										<a-input v-model:value.number="state.formState.base.aniQF" :disabled="['show', 'adminaduit', 'aduit'].includes(props.action)" prefix="♀" suffix="只" />
 									</a-form-item>
 								</a-col>
 								<a-col :span="8">
 									<a-form-item :name="['base', 'aniQM']" :rules="ruleNNP">
-										<a-input v-model:value.number="state.formState.base.aniQM" prefix="♂" suffix="只" />
+										<a-input v-model:value.number="state.formState.base.aniQM" :disabled="['show', 'adminaduit', 'aduit'].includes(props.action)" prefix="♂" suffix="只" />
 									</a-form-item>
 								</a-col>
 							</a-row> </a-form-item
 					></a-col>
 					<a-col :xs="24" :sm="24" :md="24" :lg="8" :xl="8"
-						><a-form-item :rules="ruleNN" :name="['base', 'directorName']" label="实验负责人姓名"> <a-input v-model:value="state.formState.base.directorName" /> </a-form-item></a-col
+						><a-form-item :rules="ruleNN" :name="['base', 'directorName']" label="实验负责人姓名">
+							<a-input v-model:value="state.formState.base.directorName" :disabled="['show', 'adminaduit', 'aduit'].includes(props.action)" /> </a-form-item></a-col
 					><a-col :xs="24" :sm="24" :md="24" :lg="8" :xl="8"
 						><a-form-item :rules="[{ required: true, validator: validateTel, message: '电话有误' }]" label="移动电话" :name="['base', 'directorTel']">
-							<a-input v-model:value="state.formState.base.directorTel" type="tel" /> </a-form-item></a-col
+							<a-input v-model:value="state.formState.base.directorTel" :disabled="['show', 'adminaduit', 'aduit'].includes(props.action)" type="tel" /> </a-form-item></a-col
 					><a-col :xs="24" :sm="24" :md="24" :lg="8" :xl="8"
 						><a-form-item :rules="[{ required: true, validator: validateEmail, message: '邮箱有误' }]" :name="['base', 'directorEmail']" label="邮箱E-mail">
-							<a-input v-model:value="state.formState.base.directorEmail" /> </a-form-item
+							<a-input v-model:value="state.formState.base.directorEmail" :disabled="['show', 'adminaduit', 'aduit'].includes(props.action)" /> </a-form-item
 					></a-col>
 				</a-row>
 				<a-row type="flex" justify="end">
@@ -126,7 +139,7 @@
 				<a-row type="flex" justify="end">
 					<a-col :span="23">
 						<a-form-item :name="['overview']" :rules="ruleNN">
-							<a-textarea v-model:value="state.formState.overview" allow-clear :rows="7" />
+							<a-textarea v-model:value="state.formState.overview" :disabled="['show', 'adminaduit', 'aduit'].includes(props.action)" allow-clear :rows="7" />
 						</a-form-item>
 					</a-col>
 				</a-row>
@@ -168,7 +181,7 @@
 </template>
 
 <script setup lang="ts">
-import { defineComponent, defineExpose, reactive, onBeforeMount, ref } from 'vue';
+import { defineComponent, defineExpose, reactive, onBeforeMount, ref, defineProps } from 'vue';
 import { useStore } from 'vuex';
 import RuleObject from 'ant-design-vue/es/form';
 import { checkEmail, checkPhone } from '../../../../utils/formCheck';
@@ -178,6 +191,10 @@ const state = reactive({
 	langcn: true,
 	formState: null,
 });
+
+const props = defineProps<{
+	action?: string;
+}>();
 
 async function validatePos(_rule: InstanceType<typeof RuleObject>, value: string | number) {
 	// eslint-disable-next-line

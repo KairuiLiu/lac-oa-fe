@@ -1,6 +1,6 @@
 <template>
 	<div>
-		<a-modal v-model:visible="visible" title="流转过程" :closable="false">
+		<a-modal v-model:visible="visible" title="流转过程" :closable="false" width="1100px">
 			<template #footer>
 				<a-button key="back" @click="close">确定</a-button>
 			</template>
@@ -9,7 +9,7 @@
 				<div class="percent">
 					<a-progress :percent="percent" />
 				</div>
-				<a-steps direction="vertical">
+				<!-- <a-steps>
 					<a-step v-for="(item, index) in processes" :key="`${index}-${item.type}`" :title="item.title" :status="item.status">
 						<template #description>
 							<a-comment v-for="(item2, index2) in item.processes" :key="`${index}-${item.type}-${index2}`">
@@ -24,7 +24,26 @@
 							</a-comment>
 						</template>
 					</a-step>
-				</a-steps>
+				</a-steps> -->
+				<div v-for="(itemarr, index) in processes2" :key="index" class="stepsWapper">
+					<a-steps>
+						<a-step v-for="(item, index2) in itemarr" :key="`${index2}-${item.type}`" :title="item.title" :status="item.status">
+							<template #description>
+								<a-comment v-for="(item2, index3) in item.processes" :key="`${index2}-${item.type}-${index3}`">
+									<template #author>{{ item2.userName }}</template>
+									<template #avatar>
+										<a-avatar :src="item2.face" :alt="item2.userName" />
+									</template>
+									<template #content>
+										<p>备注: {{ item2.note }}</p>
+									</template>
+									<template #datetime> {{ item2.dateTime }} </template>
+								</a-comment>
+							</template>
+						</a-step>
+					</a-steps>
+					<a-divider style="height: 2px; background-color: #1890ff" />
+				</div>
 			</div>
 		</a-modal>
 	</div>
@@ -67,6 +86,36 @@ const processes = computed(() => {
 		};
 	});
 	return processest;
+});
+
+const processes2 = computed(() => {
+	const stages = [...new Set(state.process.map(d => d.stage))];
+	const processest = stages.map(d => {
+		const res = state.process.filter(dd => dd.stage === d);
+		res.sort((l, r) => +new Date(l.dateTime) - +new Date(r.dateTime));
+		let status = 'process';
+		if (res.findIndex(d => d.end) + 1) status = 'finish';
+		if (res.findIndex(d => d.error) + 1) status = 'error';
+		return {
+			type: d % 10,
+			title: getProcessTitle(d % 10),
+			status,
+			processes: res,
+		};
+	});
+	const processest2 = [];
+	let t = [];
+	processest.forEach(d => {
+		if (t.length === 0) t.push(d);
+		else if (t.at(-1).type >= d.type) {
+			processest2.push(t.concat());
+			t = [d];
+		} else {
+			t.push(d);
+		}
+	});
+	if (t.length) processest2.push(t);
+	return processest2;
 });
 
 const percent = computed(() => processes.value.at(-1).type * 25 + 25);
@@ -112,5 +161,18 @@ export default defineComponent({
 
 .percent {
 	margin-bottom: 24px;
+}
+
+.workProcess {
+	width: 800px;
+}
+
+.ant-steps-item {
+	min-width: 250px;
+	max-width: 250px;
+}
+
+.stepsWapper {
+	overflow-x: hidden;
 }
 </style>
