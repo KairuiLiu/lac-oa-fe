@@ -30,9 +30,11 @@
 	},
 	"applytypes": {
 		"code": 0,
-		"data": [{
+		"data": [
+			{
 				"name": "全部申请",
-				"subType": [{
+				"subType": [
+					{
 						"name": "2021"
 					},
 					{
@@ -42,7 +44,8 @@
 			},
 			{
 				"name": "采购申请",
-				"subType": [{
+				"subType": [
+					{
 						"name": "2021"
 					},
 					{
@@ -52,7 +55,8 @@
 			},
 			{
 				"name": "伦理审核申请",
-				"subType": [{
+				"subType": [
+					{
 						"name": "2021"
 					},
 					{
@@ -62,7 +66,8 @@
 			}
 		]
 	},
-	"applyList": [{
+	"applyList": [
+		{
 			"applyId": 1,
 			"applyTitle": "研究1的申请",
 			"applyUserName": "张三",
@@ -264,7 +269,8 @@
 	"applyProcess": {
 		"code": 0,
 		"data": {
-			"process": [{
+			"process": [
+				{
 					"userName": "申请人1",
 					"note": "发起申请",
 					"error": false,
@@ -366,7 +372,8 @@
 			]
 		}
 	},
-	"goodList": [{
+	"goodList": [
+		{
 			"goodId": 1,
 			"goodName": "鸡1",
 			"goodPrice": {
@@ -577,7 +584,8 @@
 	],
 	"ethicLabLicenseSuggest": {
 		"code": 0,
-		"data": [{
+		"data": [
+			{
 				"name": "张1",
 				"license": "SWU123456"
 			},
@@ -643,12 +651,10 @@
 					"tel": "13403693631",
 					"departmant": "计算机学院",
 					"email": "me@hututtu.me",
-					"pexptime": [
-						"2022-05-02T20:12:59.075Z",
-						"2022-05-18T20:12:59.075Z"
-					]
+					"pexptime": ["2022-05-02T20:12:59.075Z", "2022-05-18T20:12:59.075Z"]
 				},
-				"expers": [{
+				"expers": [
+					{
 						"name": "张1",
 						"degree": "professor",
 						"response": "拆解机器猫",
@@ -681,7 +687,8 @@
 					"productionNo": 1,
 					"certNo": 1,
 					"inspecRepo": 1,
-					"detail": [{
+					"detail": [
+						{
 							"species": "猫",
 							"strain": "机器猫",
 							"ageWS": "3/10",
@@ -711,10 +718,7 @@
 					"expDesign": "图一乐",
 					"harms": "图一乐",
 					"disposal": {
-						"state": [
-							"live",
-							"death"
-						],
+						"state": ["live", "death"],
 						"detail": "",
 						"disposal": "图一乐"
 					},
