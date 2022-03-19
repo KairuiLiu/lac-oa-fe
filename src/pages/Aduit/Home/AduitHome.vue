@@ -119,8 +119,8 @@ export default defineComponent({
 		padding: 3vh 0vw;
 		display: grid;
 		grid-gap: 4vw;
-		grid-template-columns: repeat(1, 1fr);
-		grid-template-rows: repeat(4, 250px);
+		// grid-template-columns: repeat(1, 1fr);
+		// grid-template-rows: repeat(4, 250px);
 		grid-template-areas:
 			'a'
 			'b'
@@ -147,8 +147,8 @@ export default defineComponent({
 	}
 	@media only screen and (min-width: 870px) {
 		.plots {
-			grid-template-columns: repeat(2, 1fr);
-			// grid-template-rows: repeat(2, 20vh);
+			// grid-template-columns: repeat(2, 1fr);
+			// grid-template-rows: repeat(2, calc(1fr - 300px));
 			grid-template-areas:
 				'a b'
 				'c d';

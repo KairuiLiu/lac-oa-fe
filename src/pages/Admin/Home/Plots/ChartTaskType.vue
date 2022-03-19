@@ -24,21 +24,24 @@ let pie: Pie;
 
 onMounted(() => {
 	pie = new Pie('ChartTaskTypeContainer', {
-		appendPadding: 10,
+		appendPadding: 0,
 		data: data.detail,
 		angleField: 'value',
 		colorField: 'type',
 		radius: 1,
-		innerRadius: 0.6,
+		innerRadius: 0.65,
 		interactions: [{ type: 'element-selected' }, { type: 'element-active' }, { type: 'pie-statistic-active' }],
 		statistic: {
 			title: {
 				offsetY: -4,
+				style: {
+					fontSize: '16px',
+				},
 				customHtml: (container, view, datum) => {
 					const { width, height } = container.getBoundingClientRect();
 					const d = Math.sqrt((width / 2) ** 2 + (height / 2) ** 2) * 4;
 					const text = datum ? datum.type : '总计';
-					return renderStatistic(d, text, { fontSize: 16 });
+					return renderStatistic(d, text, { fontSize: 20 });
 				},
 			},
 			content: {
@@ -89,8 +92,6 @@ export default {
 	overflow: hidden;
 	#ChartTaskTypeContainer {
 		height: 100%;
-		flex-shrink: 3;
-		// width: 19vw;
 	}
 	.text {
 		flex-shrink: 1;
