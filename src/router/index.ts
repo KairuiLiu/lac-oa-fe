@@ -33,15 +33,6 @@ const routes: RouteRecordRaw[] = [
 						component: () => import('../pages/Admin/Aduit/AdminAduit.vue'),
 					},
 					{
-						path: '/admin/apply/:applyId',
-						name: 'admin-apply',
-						meta: {
-							breadcrumbName: ['管理员', '申请分配', '申请管理'],
-							toMenu: '/admin/allocate',
-						},
-						component: () => import('../pages/Admin/Apply/AdminApply.vue'),
-					},
-					{
 						path: '/admin/home',
 						name: 'admin-home',
 						meta: {
@@ -84,11 +75,6 @@ const routes: RouteRecordRaw[] = [
 				component: () => import('../pages/Aduit/Aduit.vue'),
 				children: [
 					{
-						path: '/aduit/apply',
-						name: 'aduit-apply',
-						component: () => import('../pages/Aduit/Apply/AduitApply.vue'),
-					},
-					{
 						path: '/aduit/home',
 						name: 'aduit-home',
 						component: () => import('../pages/Aduit/Home/AduitHome.vue'),
@@ -117,14 +103,24 @@ const routes: RouteRecordRaw[] = [
 						component: () => import('../pages/Apply/Apply.vue'),
 						children: [
 							{
-								path: '/applicant/apply/edit/:type/:applyId',
+								path: '/applicant/apply/edit/:applyId',
 								name: 'applicant-apply-edit',
 								component: () => import('../pages/Apply/Action/Edit/EditApply.vue'),
 							},
 							{
-								path: '/applicant/apply/show/:type/:applyId',
+								path: '/applicant/apply/show/:applyId',
 								name: 'applicant-apply-show',
-								component: () => import('../pages/Apply/Action/Show/ApplicantApplyShow.vue'),
+								component: () => import('../pages/Apply/Action/Show/ShowApply.vue'),
+							},
+							{
+								path: '/applicant/apply/aduitadmin/:applyId',
+								name: 'applicant-apply-aduit-admin',
+								component: () => import('../pages/Apply/Action/AduitAdmin/AduitAdminApply.vue'),
+							},
+							{
+								path: '/applicant/apply/aduit/:applyId',
+								name: 'applicant-apply-aduit',
+								component: () => import('../pages/Apply/Action/Aduit/AduitApply.vue'),
 							},
 							{
 								path: '/applicant/apply/new/:type',

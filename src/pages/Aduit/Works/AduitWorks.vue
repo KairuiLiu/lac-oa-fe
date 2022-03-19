@@ -15,7 +15,7 @@
 				</template>
 
 				<template #operate="{ row }">
-					<a-button v-if="row.aduitPassed === '待审核'" type="link" @click="toShowApply(row.applyId)">去审批</a-button>
+					<a-button v-if="row.aduitPassed === '待审核'" type="link" @click="toAduitApply(row.applyId)">去审批</a-button>
 					<a-button v-else type="link" disabled>无权操作</a-button>
 				</template>
 			</vxe-grid>
@@ -89,9 +89,9 @@ const handlePageChange: VxePagerEvents.PageChange = ({ currentPage, pageSize }) 
 	findList();
 };
 
-function toShowApply(applyId) {
+function toAduitApply(applyId) {
 	router.push({
-		name: 'aduit-apply',
+		name: 'applicant-apply-aduit',
 		params: {
 			applyId,
 		},

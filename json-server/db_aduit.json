@@ -45,8 +45,7 @@
 				},
 				"applyRes": {
 					"totle": 7300,
-					"detail": [
-						{
+					"detail": [{
 							"type": "审核通过",
 							"value": 123
 						},
@@ -73,11 +72,9 @@
 	},
 	"applytypes": {
 		"code": 0,
-		"data": [
-			{
+		"data": [{
 				"name": "全部申请",
-				"subType": [
-					{
+				"subType": [{
 						"name": "2021"
 					},
 					{
@@ -87,8 +84,7 @@
 			},
 			{
 				"name": "采购申请",
-				"subType": [
-					{
+				"subType": [{
 						"name": "2021"
 					},
 					{
@@ -98,8 +94,7 @@
 			},
 			{
 				"name": "伦理审核申请",
-				"subType": [
-					{
+				"subType": [{
 						"name": "2021"
 					},
 					{
@@ -109,8 +104,7 @@
 			}
 		]
 	},
-	"applyList": [
-		{
+	"applyList": [{
 			"applyId": 1,
 			"applyTitle": "研究1的申请",
 			"applyUserName": "张三",
@@ -276,8 +270,7 @@
 	"applyProcess": {
 		"code": 0,
 		"data": {
-			"process": [
-				{
+			"process": [{
 					"userName": "申请人1",
 					"note": "发起申请",
 					"error": false,
@@ -378,5 +371,125 @@
 				}
 			]
 		}
+	},
+	"getapply": {
+		"code": 0,
+		"data": {
+			"applyType": "ethic",
+			"applyProps": "lab",
+			"formData": {
+				"head": {
+					"applDate": "2022-01-01",
+					"apprDate": null,
+					"iacucNo": null
+				},
+				"base": {
+					"name": "关于哆啦A梦身上有多少螺丝钉的研究",
+					"source": "漫画书",
+					"enname": "A study on how many screws Doraemon has on his body",
+					"director": "胡图图",
+					"degree": "professor",
+					"tel": "13403693631",
+					"departmant": "计算机学院",
+					"email": "me@hututtu.me",
+					"pexptime": [
+						"2022-05-02T20:12:59.075Z",
+						"2022-05-18T20:12:59.075Z"
+					]
+				},
+				"expers": [{
+						"name": "张1",
+						"degree": "professor",
+						"response": "拆解机器猫",
+						"experLicense": "SWU123456",
+						"tel": "13403693631",
+						"error": [],
+						"loading": false
+					},
+					{
+						"name": "张2",
+						"degree": "associateProfessor",
+						"response": "组装机器猫",
+						"experLicense": "SWU123556",
+						"tel": "13403693631",
+						"error": [],
+						"loading": false
+					},
+					{
+						"name": "张3",
+						"degree": "researcher",
+						"response": "撰写报告",
+						"experLicense": "SWU124456",
+						"tel": "13403693631",
+						"error": [],
+						"loading": false
+					}
+				],
+				"animal": {
+					"animalOrigin": "时光机进口",
+					"productionNo": 1,
+					"certNo": 1,
+					"inspecRepo": 1,
+					"detail": [{
+							"species": "猫",
+							"strain": "机器猫",
+							"ageWS": "3/10",
+							"sexQF": 1,
+							"sexQM": 0,
+							"bacterio": "Ordinary",
+							"viral": "yes",
+							"error": []
+						},
+						{
+							"species": "猫",
+							"strain": "玩偶猫",
+							"ageWS": "4/5",
+							"sexQF": 0,
+							"sexQM": 1,
+							"bacterio": "clean",
+							"viral": "no",
+							"error": []
+						}
+					],
+					"facilitiesLicense": "不知道",
+					"facilityAddress": "西南大学25教"
+				},
+				"detail": {
+					"necessity": "图一乐",
+					"reason": "图一乐",
+					"expDesign": "图一乐",
+					"harms": "图一乐",
+					"disposal": {
+						"state": [
+							"live",
+							"death"
+						],
+						"detail": "",
+						"disposal": "图一乐"
+					},
+					"poisonous": {
+						"state": 1,
+						"declear": "图一乐"
+					},
+					"institutionOpinion": {
+						"date": null,
+						"state": 0,
+						"principal": "",
+						"date2": null
+					},
+					"committeeOption": {
+						"state": 0,
+						"suggest": "图一乐"
+					},
+					"commitTime": {
+						"state": 0,
+						"value": 1
+					}
+				}
+			}
+		}
+	},
+	"aduitapply": {
+		"code": 0
 	}
 }

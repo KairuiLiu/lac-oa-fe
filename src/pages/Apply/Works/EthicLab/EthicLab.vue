@@ -348,7 +348,7 @@
 					>
 					<a-col :span="23"
 						><a-form-item :rules="ruleNN" :name="['detail', 'institutionOpinion', 'state']">
-							<a-radio-group v-model:value="state.formState.detail.institutionOpinion.state">
+							<a-radio-group v-model:value="state.formState.detail.institutionOpinion.state" :disabled="['show'].includes(props.action)">
 								<a-radio :value="2">{{ labels.detail.institutionOpinion.modify }}</a-radio>
 								<a-radio :value="1">{{ labels.others.agree }}</a-radio>
 								<a-radio :value="0">{{ labels.others.disagree }}</a-radio>
@@ -375,7 +375,7 @@
 					>
 					<a-col :span="23"
 						><a-form-item :rules="ruleNN" :name="['detail', 'committeeOption', 'state']">
-							<a-radio-group v-model:value="state.formState.detail.committeeOption.state">
+							<a-radio-group v-model:value="state.formState.detail.committeeOption.state" :disabled="['show'].includes(props.action)">
 								<a-radio :value="3">{{ labels.detail.committeeOption.modifieAgree }}</a-radio>
 								<a-radio :value="2">{{ labels.detail.committeeOption.agreeReview }}</a-radio>
 								<a-radio :value="1">{{ labels.others.agree }}</a-radio>
@@ -386,7 +386,7 @@
 					<a-col :span="23"
 						><div class="subsubtitle">{{ labels.detail.committeeOption.suggest }}</div></a-col
 					>
-					<a-col :span="23"> <a-textarea v-model:value="state.formState.detail.committeeOption.suggest" allow-clear :rows="3" /></a-col>
+					<a-col :span="23"> <a-textarea v-model:value="state.formState.detail.committeeOption.suggest" :disabled="['show'].includes(props.action)" allow-clear :rows="3" /></a-col>
 				</a-row>
 				<a-row type="flex" justify="end">
 					<a-col :span="8">
@@ -408,7 +408,7 @@
 					>
 					<a-col :span="23">
 						<a-form-item :rules="ruleNN" :name="['detail', 'commitTime', 'state']">
-							<a-radio-group v-model:value="state.formState.detail.commitTime.state">
+							<a-radio-group v-model:value="state.formState.detail.commitTime.state" :disabled="['show'].includes(props.action)">
 								<a-radio :value="0">{{ labels.detail.remark.fst }}</a-radio>
 								<a-radio :value="1"
 									>{{ labels.detail.remark.nths
@@ -452,6 +452,10 @@ const labels = computed(() => (state.langcn ? i18n.cn : i18n.en));
 
 const xTable = ref({} as VxeTableInstance);
 const xTableAnimal = ref({} as VxeTableInstance);
+
+const props = defineProps<{
+	action?: string;
+}>();
 
 const addExperRow = async (row: any) => {
 	// eslint-disable-next-line
@@ -583,19 +587,14 @@ function getFormData() {
 	);
 }
 
-function initFormData() {
+onBeforeMount(async () => {
 	state.formState = store.state.apply.formData;
 	checkLicenseLocal(state.formState.expers[0]);
 	checkAnimalLocal(state.formState.animal.detail[0]);
-}
-
-onBeforeMount(async () => {
-	await initFormData();
 });
 
 defineExpose({
 	getFormData,
-	initFormData,
 });
 </script>
 <script lang="ts">

@@ -35,8 +35,9 @@ const actions = {
 		}
 		return false;
 	},
-	updateApply({ commit }, formData) {
+	updateApply({ commit }, { formData }) {
 		commit('updateApply', { formData });
+		return true;
 	},
 };
 

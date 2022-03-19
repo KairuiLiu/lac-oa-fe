@@ -215,15 +215,11 @@ function getFormData() {
 	);
 }
 
-function initFormData() {
-	state.formState = store.state.apply.formData;
-}
-
 onBeforeMount(async () => {
-	await initFormData();
+	state.formState = store.state.apply.formData;
 });
 
-defineExpose({ initFormData, getFormData });
+defineExpose({ getFormData });
 </script>
 <script lang="ts">
 export default defineComponent({

@@ -9,7 +9,7 @@
 			"department": "计算机学院",
 			"face": "https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png",
 			"phone": "12345678900",
-			"group": ["申请人", "2019本科生"]
+			"group": ["审核人", "社会人士"]
 		}
 	},
 	"login": {
@@ -23,18 +23,58 @@
 				"department": "计算机学院",
 				"face": "https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png",
 				"phone": "12345678900",
-				"group": ["申请人", "2019本科生"]
+				"group": ["审核人", "社会人士"]
 			},
-			"type": "applicant"
+			"type": "aduit"
+		}
+	},
+	"sysdata": {
+		"code": 0,
+		"data": {
+			"searchYears": [2022, 2021],
+			"plots": {
+				"totleApply": {
+					"month": {
+						"number": 100,
+						"trend": [1, 3, 2, 4, 2, 6, 1]
+					},
+					"year": {
+						"number": 1000,
+						"trend": [9, 8, 7, 6, 5, 4, 3]
+					}
+				},
+				"applyRes": {
+					"totle": 7300,
+					"detail": [{
+							"type": "审核通过",
+							"value": 123
+						},
+						{
+							"type": "审核未通过",
+							"value": 123
+						},
+						{
+							"type": "待审核",
+							"value": 123
+						}
+					]
+				},
+				"applyWait": {
+					"number": 1000,
+					"trend": [9, 8, 7, 6, 5, 4, 3]
+				},
+				"workRank": {
+					"number": 40,
+					"trend": [9, 8, 7, 6, 5, 4, 3]
+				}
+			}
 		}
 	},
 	"applytypes": {
 		"code": 0,
-		"data": [
-			{
+		"data": [{
 				"name": "全部申请",
-				"subType": [
-					{
+				"subType": [{
 						"name": "2021"
 					},
 					{
@@ -44,8 +84,7 @@
 			},
 			{
 				"name": "采购申请",
-				"subType": [
-					{
+				"subType": [{
 						"name": "2021"
 					},
 					{
@@ -55,8 +94,7 @@
 			},
 			{
 				"name": "伦理审核申请",
-				"subType": [
-					{
+				"subType": [{
 						"name": "2021"
 					},
 					{
@@ -66,17 +104,14 @@
 			}
 		]
 	},
-	"applyList": [
-		{
+	"applyList": [{
 			"applyId": 1,
 			"applyTitle": "研究1的申请",
 			"applyUserName": "张三",
 			"applyDate": "2022-1-1",
 			"applyType": 0,
 			"applyProp": 1,
-			"allocated": 2,
-			"applyState": 0,
-			"adminPassed": 0
+			"aduitPassed": 2
 		},
 		{
 			"applyId": 2,
@@ -85,9 +120,7 @@
 			"applyDate": "2022-1-2",
 			"applyType": 0,
 			"applyProp": 2,
-			"allocated": 1,
-			"applyState": 1,
-			"adminPassed": 1
+			"aduitPassed": 1
 		},
 		{
 			"applyId": 3,
@@ -96,9 +129,7 @@
 			"applyDate": "2022-1-3",
 			"applyType": 0,
 			"applyProp": 0,
-			"allocated": 3,
-			"applyState": 2,
-			"adminPassed": 0
+			"aduitPassed": 0
 		},
 		{
 			"applyId": 4,
@@ -107,9 +138,7 @@
 			"applyDate": "2022-1-4",
 			"applyType": 0,
 			"applyProp": 1,
-			"allocated": 1,
-			"applyState": 3,
-			"adminPassed": 1
+			"aduitPassed": 2
 		},
 		{
 			"applyId": 5,
@@ -118,9 +147,7 @@
 			"applyDate": "2022-1-5",
 			"applyType": 0,
 			"applyProp": 2,
-			"allocated": 1,
-			"applyState": 0,
-			"adminPassed": 1
+			"aduitPassed": 1
 		},
 		{
 			"applyId": 6,
@@ -129,9 +156,7 @@
 			"applyDate": "2022-1-6",
 			"applyType": 0,
 			"applyProp": 0,
-			"allocated": 1,
-			"applyState": 1,
-			"adminPassed": 0
+			"aduitPassed": 0
 		},
 		{
 			"applyId": 7,
@@ -140,9 +165,7 @@
 			"applyDate": "2022-1-17",
 			"applyType": 0,
 			"applyProp": 1,
-			"allocated": 2,
-			"applyState": 2,
-			"adminPassed": 0
+			"aduitPassed": 0
 		},
 		{
 			"applyId": 8,
@@ -151,9 +174,7 @@
 			"applyDate": "2022-1-28",
 			"applyType": 0,
 			"applyProp": 2,
-			"allocated": 1,
-			"applyState": 3,
-			"adminPassed": 1
+			"aduitPassed": 1
 		},
 		{
 			"applyId": 9,
@@ -162,9 +183,7 @@
 			"applyDate": "2022-1-9",
 			"applyType": 0,
 			"applyProp": 0,
-			"allocated": 3,
-			"applyState": 0,
-			"adminPassed": 0
+			"aduitPassed": 2
 		},
 		{
 			"applyId": 10,
@@ -173,9 +192,7 @@
 			"applyDate": "2022-1-1",
 			"applyType": 0,
 			"applyProp": 1,
-			"allocated": 1,
-			"applyState": 1,
-			"adminPassed": 1
+			"aduitPassed": 1
 		},
 		{
 			"applyId": 15,
@@ -184,9 +201,7 @@
 			"applyDate": "2022-11-5",
 			"applyType": 0,
 			"applyProp": 2,
-			"allocated": 1,
-			"applyState": 2,
-			"adminPassed": 1
+			"aduitPassed": 1
 		},
 		{
 			"applyId": 16,
@@ -195,9 +210,7 @@
 			"applyDate": "2022-1-6",
 			"applyType": 0,
 			"applyProp": 0,
-			"allocated": 1,
-			"applyState": 3,
-			"adminPassed": 0
+			"aduitPassed": 0
 		},
 		{
 			"applyId": 21,
@@ -206,9 +219,7 @@
 			"applyDate": "2022-12-1",
 			"applyType": 0,
 			"applyProp": 1,
-			"allocated": 2,
-			"applyState": 0,
-			"adminPassed": 0
+			"aduitPassed": 0
 		},
 		{
 			"applyId": 22,
@@ -217,9 +228,7 @@
 			"applyDate": "2022-12-2",
 			"applyType": 0,
 			"applyProp": 2,
-			"allocated": 1,
-			"applyState": 1,
-			"adminPassed": 1
+			"aduitPassed": 1
 		},
 		{
 			"applyId": 23,
@@ -228,9 +237,7 @@
 			"applyDate": "2022-12-3",
 			"applyType": 0,
 			"applyProp": 0,
-			"allocated": 3,
-			"applyState": 2,
-			"adminPassed": 0
+			"aduitPassed": 0
 		},
 		{
 			"applyId": 24,
@@ -239,9 +246,7 @@
 			"applyDate": "2022-12-4",
 			"applyType": 0,
 			"applyProp": 1,
-			"allocated": 1,
-			"applyState": 3,
-			"adminPassed": 1
+			"aduitPassed": 1
 		},
 		{
 			"applyId": 25,
@@ -250,9 +255,7 @@
 			"applyDate": "2022-12-5",
 			"applyType": 0,
 			"applyProp": 2,
-			"allocated": 1,
-			"applyState": 0,
-			"adminPassed": 1
+			"aduitPassed": 1
 		},
 		{
 			"applyId": 26,
@@ -261,16 +264,13 @@
 			"applyDate": "2022-12-6",
 			"applyType": 0,
 			"applyProp": 0,
-			"allocated": 1,
-			"applyState": 2,
-			"adminPassed": 0
+			"aduitPassed": 0
 		}
 	],
 	"applyProcess": {
 		"code": 0,
 		"data": {
-			"process": [
-				{
+			"process": [{
 					"userName": "申请人1",
 					"note": "发起申请",
 					"error": false,
@@ -372,263 +372,124 @@
 			]
 		}
 	},
-	"goodList": [
-		{
-			"goodId": 1,
-			"goodName": "鸡1",
-			"goodPrice": {
-				"perPrice": 1.23,
-				"transPerPrice": 1,
-				"unit": "只",
-				"transBasePrice": 1
-			},
-			"goodLicense": "A123",
-			"goodStock": 123,
-			"compName": "A公司"
-		},
-		{
-			"goodId": 2,
-			"goodName": "鸡2",
-			"goodPrice": {
-				"unit": "斤",
-				"perPrice": 2.23,
-				"transPerPrice": 2,
-				"transBasePrice": 2
-			},
-			"goodLicense": "A123",
-			"goodStock": 223,
-			"compName": "A公司"
-		},
-		{
-			"goodId": 3,
-			"goodName": "鸡3",
-			"goodPrice": {
-				"unit": "只",
-				"perPrice": 3.23,
-				"transPerPrice": 3,
-				"transBasePrice": 3
-			},
-			"goodLicense": "A123",
-			"goodStock": 323,
-			"compName": "A公司"
-		},
-		{
-			"goodId": 4,
-			"goodName": "鸡4",
-			"goodPrice": {
-				"unit": "斤",
-				"perPrice": 4.23,
-				"transPerPrice": 4,
-				"transBasePrice": 4
-			},
-			"goodLicense": "A123",
-			"goodStock": 423,
-			"compName": "A公司"
-		},
-		{
-			"goodId": 5,
-			"goodName": "鸡5",
-			"goodPrice": {
-				"unit": "只",
-				"perPrice": 5.23,
-				"transPerPrice": 5,
-				"transBasePrice": 5
-			},
-			"goodLicense": "A123",
-			"goodStock": 523,
-			"compName": "A公司"
-		},
-		{
-			"goodId": 6,
-			"goodName": "鸡6",
-			"goodPrice": {
-				"unit": "斤",
-				"perPrice": 6.23,
-				"transPerPrice": 6,
-				"transBasePrice": 6
-			},
-			"goodLicense": "A123",
-			"goodStock": 623,
-			"compName": "A公司"
-		},
-		{
-			"goodId": 7,
-			"goodName": "鸡7",
-			"goodPrice": {
-				"unit": "只",
-				"perPrice": 7.23,
-				"transPerPrice": 7,
-				"transBasePrice": 7
-			},
-			"goodLicense": "A123",
-			"goodStock": 723,
-			"compName": "A公司"
-		},
-		{
-			"goodId": 8,
-			"goodName": "鸡8",
-			"goodPrice": {
-				"unit": "只",
-				"perPrice": 8.23,
-				"transPerPrice": 8,
-				"transBasePrice": 8
-			},
-			"goodLicense": "A123",
-			"goodStock": 823,
-			"compName": "A公司"
-		},
-		{
-			"goodId": 9,
-			"goodName": "鸡9",
-			"goodPrice": {
-				"unit": "袋",
-				"perPrice": 9.23,
-				"transPerPrice": 9,
-				"transBasePrice": 9
-			},
-			"goodLicense": "A123",
-			"goodStock": 923,
-			"compName": "A公司"
-		},
-		{
-			"goodId": 10,
-			"goodName": "鸡10",
-			"goodPrice": {
-				"unit": "只",
-				"perPrice": 10.23,
-				"transPerPrice": 10,
-				"transBasePrice": 10
-			},
-			"goodLicense": "A123",
-			"goodStock": 1023,
-			"compName": "A公司"
-		},
-		{
-			"goodId": 11,
-			"goodName": "鸡11",
-			"goodPrice": {
-				"unit": "袋",
-				"perPrice": 11.23,
-				"transPerPrice": 11,
-				"transBasePrice": 11
-			},
-			"goodLicense": "A123",
-			"goodStock": 1123,
-			"compName": "A公司"
-		},
-		{
-			"goodId": 12,
-			"goodName": "鸡12",
-			"goodPrice": {
-				"unit": "只",
-				"perPrice": 12.23,
-				"transPerPrice": 12,
-				"transBasePrice": 22
-			},
-			"goodLicense": "A123",
-			"goodStock": 1232,
-			"compName": "A公司"
-		},
-		{
-			"goodId": 13,
-			"goodName": "鸡13",
-			"goodPrice": {
-				"unit": "袋",
-				"perPrice": 13.23,
-				"transPerPrice": 13,
-				"transBasePrice": 23
-			},
-			"goodLicense": "A123",
-			"goodStock": 1223,
-			"compName": "A公司"
-		},
-		{
-			"goodId": 14,
-			"goodName": "鸡14",
-			"goodPrice": {
-				"unit": "只",
-				"perPrice": 14.23,
-				"transPerPrice": 14,
-				"transBasePrice": 24
-			},
-			"goodLicense": "A123",
-			"goodStock": 1233,
-			"compName": "A公司"
-		},
-		{
-			"goodId": 15,
-			"goodName": "鸡15",
-			"goodPrice": {
-				"unit": "只",
-				"perPrice": 15.23,
-				"transPerPrice": 15,
-				"transBasePrice": 25
-			},
-			"goodLicense": "A123",
-			"goodStock": 1423,
-			"compName": "A公司"
-		},
-		{
-			"goodId": 16,
-			"goodName": "鸡16",
-			"goodPrice": {
-				"unit": "只",
-				"perPrice": 16.23,
-				"transPerPrice": 16,
-				"transBasePrice": 26
-			},
-			"goodLicense": "A123",
-			"goodStock": 1523,
-			"compName": "A公司"
-		}
-	],
-	"ethicLabLicenseSuggest": {
+	"getapply": {
 		"code": 0,
-		"data": [
-			{
-				"name": "张1",
-				"license": "SWU123456"
-			},
-			{
-				"name": "张3",
-				"license": "SWU124456"
-			},
-			{
-				"name": "张2",
-				"license": "SWU123556"
-			},
-			{
-				"name": "张5",
-				"license": "SWU123456"
-			},
-			{
-				"name": "张4",
-				"license": "SWU166666"
-			},
-			{
-				"name": "张6",
-				"license": "SWU777777"
-			},
-			{
-				"name": "张8",
-				"license": "SWU888888"
-			},
-			{
-				"name": "张88",
-				"license": "SWU43216"
-			},
-			{
-				"name": "张7",
-				"license": "SWU334456"
-			},
-			{
-				"name": "张90",
-				"license": "SWU55556"
+		"data": {
+			"applyType": "ethic",
+			"applyProps": "lab",
+			"formData": {
+				"head": {
+					"applDate": "2022-01-01",
+					"apprDate": null,
+					"iacucNo": null
+				},
+				"base": {
+					"name": "关于哆啦A梦身上有多少螺丝钉的研究",
+					"source": "漫画书",
+					"enname": "A study on how many screws Doraemon has on his body",
+					"director": "胡图图",
+					"degree": "professor",
+					"tel": "13403693631",
+					"departmant": "计算机学院",
+					"email": "me@hututtu.me",
+					"pexptime": [
+						"2022-05-02T20:12:59.075Z",
+						"2022-05-18T20:12:59.075Z"
+					]
+				},
+				"expers": [{
+						"name": "张1",
+						"degree": "professor",
+						"response": "拆解机器猫",
+						"experLicense": "SWU123456",
+						"tel": "13403693631",
+						"error": [],
+						"loading": false
+					},
+					{
+						"name": "张2",
+						"degree": "associateProfessor",
+						"response": "组装机器猫",
+						"experLicense": "SWU123556",
+						"tel": "13403693631",
+						"error": [],
+						"loading": false
+					},
+					{
+						"name": "张3",
+						"degree": "researcher",
+						"response": "撰写报告",
+						"experLicense": "SWU124456",
+						"tel": "13403693631",
+						"error": [],
+						"loading": false
+					}
+				],
+				"animal": {
+					"animalOrigin": "时光机进口",
+					"productionNo": 1,
+					"certNo": 1,
+					"inspecRepo": 1,
+					"detail": [{
+							"species": "猫",
+							"strain": "机器猫",
+							"ageWS": "3/10",
+							"sexQF": 1,
+							"sexQM": 0,
+							"bacterio": "Ordinary",
+							"viral": "yes",
+							"error": []
+						},
+						{
+							"species": "猫",
+							"strain": "玩偶猫",
+							"ageWS": "4/5",
+							"sexQF": 0,
+							"sexQM": 1,
+							"bacterio": "clean",
+							"viral": "no",
+							"error": []
+						}
+					],
+					"facilitiesLicense": "不知道",
+					"facilityAddress": "西南大学25教"
+				},
+				"detail": {
+					"necessity": "图一乐",
+					"reason": "图一乐",
+					"expDesign": "图一乐",
+					"harms": "图一乐",
+					"disposal": {
+						"state": [
+							"live",
+							"death"
+						],
+						"detail": "",
+						"disposal": "图一乐"
+					},
+					"poisonous": {
+						"state": 1,
+						"declear": "图一乐"
+					},
+					"institutionOpinion": {
+						"date": null,
+						"state": 0,
+						"principal": "",
+						"date2": null
+					},
+					"committeeOption": {
+						"state": 0,
+						"suggest": "图一乐"
+					},
+					"commitTime": {
+						"state": 0,
+						"value": 1
+					}
+				}
 			}
-		]
+		}
 	},
-	"ethicLabCheckLicense": {
-		"code": 0,
-		"data": []
+	"aduitapply": {
+		"code": 0
 	}
 }

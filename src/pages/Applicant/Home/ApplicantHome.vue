@@ -88,7 +88,7 @@ import { useStore } from 'vuex';
 import { message } from 'ant-design-vue';
 import { VxeGridProps, VxePagerEvents } from 'vxe-table';
 import { useRouter } from 'vue-router';
-import { applicantApi, commonApi } from '../../../api';
+import { applicantApi, applyApi } from '../../../api';
 import { applyFormate } from '../../../utils/applyTypes';
 import { IAjaxRestlt } from '../../../types/common';
 
@@ -234,7 +234,7 @@ function toShowSort() {
 }
 
 async function toSubmitApply(id) {
-	const res = (await commonApi.reqApplySubmit({ token: '123', applyId: id })) as IAjaxRestlt;
+	const res = (await applyApi.reqApplySubmit({ token: '123', id })) as IAjaxRestlt;
 	if (res.code) {
 		message.error('提交失败');
 		return;
@@ -244,7 +244,7 @@ async function toSubmitApply(id) {
 }
 
 async function toDelApply(id) {
-	const res = (await commonApi.reqApplyDel({ token: '123', applyId: id })) as IAjaxRestlt;
+	const res = (await applyApi.reqApplyDel({ token: '123', id })) as IAjaxRestlt;
 	if (res.code) {
 		message.error('删除失败');
 		return;

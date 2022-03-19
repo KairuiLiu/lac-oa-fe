@@ -15,7 +15,8 @@
 				</template>
 
 				<template #operate="{ row }">
-					<a-button type="link" @click="toShowApply(row.applyId)">查看申请</a-button>
+					<a-button v-if="row.adminPassed === '未审核'" type="link" @click="toShowApply(row.applyId)">查看申请</a-button>
+					<a-button v-else type="link" @click="toAduitApply(row.applyId)">审核申请</a-button>
 					<a-button type="link" @click="toShowFollow(row.applyId)">流转过程</a-button>
 					<a-button v-if="row.adminPassed" type="link" @click="toShowAduit(row.applyId)">分配审核</a-button>
 				</template>
@@ -91,7 +92,16 @@ const handlePageChange: VxePagerEvents.PageChange = ({ currentPage, pageSize }) 
 
 function toShowApply(applyId) {
 	router.push({
-		name: 'admin-apply',
+		name: 'applicant-apply-show',
+		params: {
+			applyId,
+		},
+	});
+}
+
+function toAduitApply(applyId) {
+	router.push({
+		name: 'applicant-apply-aduit-admin',
 		params: {
 			applyId,
 		},

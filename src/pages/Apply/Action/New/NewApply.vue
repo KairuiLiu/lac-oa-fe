@@ -1,8 +1,8 @@
 <template>
 	<div class="wapper">
 		<div v-if="state.loaded" class="content">
-			<EthicLab v-if="state.applyType === 'ethic' && state.applyProps == 'lab'" ref="formRef"></EthicLab>
-			<EthicTech v-if="state.applyType === 'ethic' && state.applyProps == 'tech'" ref="formRef"></EthicTech>
+			<EthicLab v-if="state.applyType === 'ethic' && state.applyProps == 'lab'" ref="formRefWapper" action="new"></EthicLab>
+			<EthicTech v-if="state.applyType === 'ethic' && state.applyProps == 'tech'" ref="formRefWapper" action="new"></EthicTech>
 		</div>
 		<div class="toolbar">
 			<a-button @click="toBack()">返回</a-button>
@@ -14,17 +14,21 @@
 </template>
 
 <script setup lang="ts">
-import { defineComponent, reactive, onBeforeMount } from 'vue';
+import { message } from 'ant-design-vue';
+import { defineComponent, reactive, onBeforeMount, ref } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
 import { useStore } from 'vuex';
 import EthicLab from '../../Works/EthicLab/EthicLab.vue';
 import EthicTech from '../../Works/EthicTech/EthicTech.vue';
+import { applyApi } from '../../../../api';
+import { IAjaxRestlt } from '../../../../types/common';
 
 const route = useRoute();
 const router = useRouter();
 const store = useStore();
 
 const [applyType, applyProps] = (route.params.type as string).split('-');
+const formRefWapper = ref(null);
 
 const state = reactive({
 	applyProps,
@@ -36,24 +40,50 @@ function toBack() {
 	router.go(-1);
 }
 
-// async function toSubmit() {
-// 	const res = await formRef.value.applicantSubmit();
-// 	if (res) router.go(-1);
-// 	else message.error('提交失败');
-// }
+async function toSubmit() {
+	formRefWapper.value
+		.getFormData()
+		.then(async data => {
+			const res = (await applyApi.reqApplySubmit({ token: '123', data, prop: applyProps, type: applyType })) as IAjaxRestlt;
+			if (!res.code) {
+				message.success('提交成功');
+				router.go(-1);
+			} else {
+				message.error('提交失败');
+			}
+		})
+		.catch(reason => {
+			message.error(reason.message);
+		});
+}
 
-// async function toSave() {
-// 	const res = await formRef.value.applicantSave();
-// 	if (res) message.success('草稿保存成功');
-// 	else message.error('草稿保存失败');
-// }
+async function toSave() {
+	formRefWapper.value
+		.getFormData()
+		.then(async data => {
+			const res = (await applyApi.reqApplySave({ token: '123', data, prop: applyProps, type: applyType })) as IAjaxRestlt;
+			if (!res.code) {
+				message.success('草稿保存成功');
+				router.go(-1);
+			} else {
+				message.error('草稿保存失败');
+			}
+		})
+		.catch(reason => {
+			message.error(reason.message);
+		});
+}
 
-// function toReset() {
-// 	formRef.value.applicantReset();
-// }
+async function toReset() {
+	state.loaded = false;
+	state.loaded = await store.dispatch('apply/initApply', { type: state.applyType, prop: state.applyProps, storeSelf: store });
+	if (state.loaded) message.success('重置成功');
+	else message.error('重置失败');
+}
 
 onBeforeMount(async () => {
 	state.loaded = await store.dispatch('apply/initApply', { type: state.applyType, prop: state.applyProps, storeSelf: store });
+	if (!state.loaded) message.error('加载失败');
 });
 </script>
 
