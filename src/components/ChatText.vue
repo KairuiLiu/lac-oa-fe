@@ -30,7 +30,7 @@ export default {
 		line-height: 80px;
 		font-size: 36px;
 		&.bgc {
-			background: center / contain no-repeat url(../assets/paint.jpg);
+			background: center / contain no-repeat url(../assets/paint.png);
 		}
 	}
 	.suffix {

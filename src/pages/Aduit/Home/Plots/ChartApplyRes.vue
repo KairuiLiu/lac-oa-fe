@@ -90,7 +90,7 @@ export default {
 	#ChartApplyRes {
 		height: 100%;
 		flex-shrink: 3;
-		width: 19vw;
+		// width: 19vw;
 	}
 	.text {
 		flex-shrink: 1;

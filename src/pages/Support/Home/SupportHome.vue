@@ -140,7 +140,7 @@ export default defineComponent({
 	@media only screen and (min-width: 870px) {
 		.plots {
 			grid-template-columns: repeat(2, 1fr);
-			grid-template-rows: repeat(2, 20vh);
+			// grid-template-rows: repeat(2, 20vh);
 			grid-template-areas:
 				'a b'
 				'c d';
