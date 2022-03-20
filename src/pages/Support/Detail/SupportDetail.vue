@@ -1,14 +1,19 @@
 <template>
 	<div class="wapper">
-		<div v-if="state.orderInfo.getTime" class="order-date">
-			<div class="get">
-				<span>下单时间</span><br />
-				<span>{{ state.orderInfo?.getTime }}</span>
+		<div class="headline">
+			<div class="l">
+				<div v-if="state.orderInfo.getTime" class="order-date">
+					<div class="get">
+						<span>下单时间</span><br />
+						<span>{{ state.orderInfo?.getTime }}</span>
+					</div>
+					<div class="ship">
+						<span>发货时间</span><br />
+						<span>{{ state.orderInfo?.shipTime }}</span>
+					</div>
+				</div>
 			</div>
-			<div class="ship">
-				<span>发货时间</span><br />
-				<span>{{ state.orderInfo?.shipTime }}</span>
-			</div>
+			<div class="r"><a-button v-if="state.orderInfo.getTime" type="primary" @click="toPrint">打印订单</a-button></div>
 		</div>
 		<div class="state">当前订单状态: {{ state.orderInfo?.orderState }}</div>
 		<div class="infocontent">
@@ -208,6 +213,10 @@ async function handleSubmit() {
 	}
 }
 
+function toPrint() {
+	window.print();
+}
+
 onBeforeMount(async () => {
 	const res = (await supportApi.reqOrderDetail({ token: '123', orderId: state.orderId })) as IAjaxRestlt;
 	if (res.code) {
@@ -266,5 +275,9 @@ export default defineComponent({
 .ship-info .content {
 	overflow-x: auto;
 	width: 100%;
+}
+.headline {
+	display: flex;
+	justify-content: space-between;
 }
 </style>
