@@ -11,6 +11,7 @@ export interface IformEthicLab {
 		source: string;
 		enname: string;
 		director: string;
+		directorEn?: string;
 		degree: string;
 		tel: string;
 		departmant: string;

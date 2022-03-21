@@ -4,7 +4,7 @@
 			<a-switch v-model:checked="state.langcn" checked-children="中文" un-checked-children="EN" />
 		</div>
 		<div class="content">
-			<a-form ref="formRef" name="custom-validation" :label-col="{ style: { width: '100px' } }" label-align="left" :model="state.formState">
+			<a-form id="formRef" ref="formRef" :label-wrap="true" name="custom-validation" :label-col="{ style: { width: '120px' } }" label-align="left" :model="state.formState">
 				<!-- @finish="handleFinish"
 				@validate="handleValidate"
 				@finishFailed="handleFinishFailed" -->
@@ -51,6 +51,10 @@
 							><a-input v-model:value="state.formState.base.director" :disabled="['show', 'adminaduit', 'aduit'].includes(props.action)"
 						/></a-form-item>
 					</a-col>
+					<a-col v-if="state.langcn" :xs="24" :sm="24" :md="24" :lg="8" :xl="8"
+						><a-form-item v-if="state.langcn" :rules="ruleNN" :label="labels.base.directorEn" :name="['base', 'directorEn']">
+							<a-input v-model:value="state.formState.base.directorEn" :disabled="['show', 'adminaduit', 'aduit'].includes(props.action)" /> </a-form-item
+					></a-col>
 					<a-col :xs="24" :sm="24" :md="24" :lg="8" :xl="8"
 						><a-form-item :rules="ruleNN" :label="labels.base.degree" :name="['base', 'degree']">
 							<a-select v-model:value="state.formState.base.degree" :disabled="['show', 'adminaduit', 'aduit'].includes(props.action)">
@@ -68,10 +72,10 @@
 						</a-form-item></a-col
 					>
 					<a-col :xs="24" :sm="24" :md="24" :lg="8" :xl="8"
-						><a-form-item :rules="[{ required: true, validator: validateTel, message: labels.base.tel + labels.others.hasErr }]" :label="labels.base.tel" :name="['base', 'tel']">
+						><a-form-item :rules="[{ required: true, validator: validateTel, message: labels.base.tel + ' ' + labels.others.hasErr }]" :label="labels.base.tel" :name="['base', 'tel']">
 							<a-input v-model:value="state.formState.base.tel" type="tel" :disabled="['show', 'adminaduit', 'aduit'].includes(props.action)" /> </a-form-item
 					></a-col>
-					<a-col :xs="24" :sm="24" :md="24" :lg="16" :xl="16"
+					<a-col :xs="24" :sm="24" :md="24" :lg="state.langcn ? 8 : 16" :xl="state.langcn ? 8 : 16"
 						><a-form-item :rules="ruleNN" :label="labels.base.departmant" :name="['base', 'departmant']">
 							<a-input v-model:value="state.formState.base.departmant" :disabled="['show', 'adminaduit', 'aduit'].includes(props.action)" /> </a-form-item
 					></a-col>
@@ -86,20 +90,21 @@
 					>
 				</a-row>
 				<div class="experList" :scroll-y="{ enabled: true }">
-					<vxe-table ref="xTable" :scroll-y="{ enabled: false }" border :data="state.formState.expers" :edit-config="{ trigger: 'click', mode: 'cell' }" keep-source>
+					<vxe-table ref="xTable" class="vxe-form-scrollbar" :scroll-y="{ enabled: false }" border :data="state.formState.expers" :edit-config="{ trigger: 'click', mode: 'cell' }" keep-source>
 						<vxe-column type="seq" width="60"></vxe-column>
-						<vxe-column field="name" :title="labels.expers.name" width="250">
+						<vxe-column field="name" :title="labels.expers.name" width="120">
 							<template #default="{ row }">
 								<a-select
 									v-model:value="row.name"
 									:disabled="['show', 'adminaduit', 'aduit'].includes(props.action)"
 									show-search
-									style="width: 230px"
+									style="width: 100px"
 									:default-active-first-option="false"
 									:show-arrow="false"
 									:filter-option="false"
 									:not-found-content="null"
 									:options="dataExperNameOption"
+									:dropdown-match-select-width="230"
 									@search="handleExperNameSearch"
 									@change="handleExperNameSearch"
 									@select="handleSelectName($event, row)"
@@ -109,7 +114,7 @@
 						</vxe-column>
 						<vxe-column field="degree" :title="labels.expers.degree">
 							<template #default="{ row }">
-								<a-select v-model:value="row.degree" style="width: 100px" :disabled="['show', 'adminaduit', 'aduit'].includes(props.action)" @blur="checkLicense(row)">
+								<a-select v-model:value="row.degree" :style="{ width: '100%' }" :disabled="['show', 'adminaduit', 'aduit'].includes(props.action)" @blur="checkLicense(row)">
 									<a-select-option value="professor">{{ labels.others.degree.professor }}</a-select-option>
 									<a-select-option value="associateProfessor">{{ labels.others.degree.associateProfessor }}</a-select-option>
 									<a-select-option value="researcher">{{ labels.others.degree.researcher }}</a-select-option>
@@ -128,17 +133,17 @@
 								<a-input v-model:value="row.response" :disabled="['show', 'adminaduit', 'aduit'].includes(props.action)" @blur="checkLicense(row)" />
 							</template>
 						</vxe-column>
-						<vxe-column field="name" :title="labels.expers.experLicense">
+						<vxe-column field="name" :title="labels.expers.experLicense" width="170">
 							<template #default="{ row }">
 								<a-input v-model:value="row.experLicense" :disabled="['show', 'adminaduit', 'aduit'].includes(props.action)" @blur="checkLicense(row)" />
 							</template>
 						</vxe-column>
-						<vxe-column field="tel" :title="labels.expers.tel">
+						<vxe-column field="tel" :title="labels.expers.tel" width="130">
 							<template #default="{ row }">
 								<a-input v-model:value="row.tel" :disabled="['show', 'adminaduit', 'aduit'].includes(props.action)" @blur="checkLicense(row)" />
 							</template>
 						</vxe-column>
-						<vxe-column :title="labels.others.ops">
+						<vxe-column :title="labels.others.ops" width="100">
 							<template #default="{ row }">
 								<a-button class="btnl" :disabled="['show', 'adminaduit', 'aduit'].includes(props.action)" type="primary" shape="circle" @click="addExperRow(row)">
 									<template #icon><PlusOutlined /></template>
@@ -193,7 +198,7 @@
 					>
 				</a-row>
 				<div class="animalList" :scroll-y="{ enabled: true }">
-					<vxe-table ref="xTableAnimal" :scroll-y="{ enabled: false }" border :data="state.formState.animal.detail" keep-source>
+					<vxe-table ref="xTableAnimal" class="vxe-form-scrollbar" :scroll-y="{ enabled: false }" border :data="state.formState.animal.detail" keep-source>
 						<vxe-column type="seq" width="60"></vxe-column>
 						<vxe-column field="species" :title="labels.animal.species">
 							<template #default="{ row }">
@@ -218,7 +223,7 @@
 						</vxe-column>
 						<vxe-column field="bacterio" :title="labels.animal.bacterio">
 							<template #default="{ row }">
-								<a-select v-model:value="row.bacterio" :style="{ width: '100px' }" :disabled="['show', 'adminaduit', 'aduit'].includes(props.action)" @blur="checkAnimalLocal(row)">
+								<a-select v-model:value="row.bacterio" :style="{ width: '100%' }" :disabled="['show', 'adminaduit', 'aduit'].includes(props.action)" @blur="checkAnimalLocal(row)">
 									<a-select-option value="Ordinary">{{ labels.others.bacterio.Ordinary }}</a-select-option>
 									<a-select-option value="clean">{{ labels.others.bacterio.clean }}</a-select-option>
 									<a-select-option value="spf">{{ labels.others.bacterio.spf }}</a-select-option>
@@ -228,13 +233,13 @@
 						</vxe-column>
 						<vxe-column field="viral" :title="labels.animal.viral">
 							<template #default="{ row }">
-								<a-select v-model:value="row.viral" :style="{ width: '100px' }" :disabled="['show', 'adminaduit', 'aduit'].includes(props.action)" @blur="checkAnimalLocal(row)">
+								<a-select v-model:value="row.viral" :style="{ width: '100%' }" :disabled="['show', 'adminaduit', 'aduit'].includes(props.action)" @blur="checkAnimalLocal(row)">
 									<a-select-option value="yes">{{ labels.others.viral.yes }}</a-select-option>
 									<a-select-option value="no">{{ labels.others.viral.no }}</a-select-option>
 								</a-select>
 							</template>
 						</vxe-column>
-						<vxe-column :title="labels.others.ops">
+						<vxe-column :title="labels.others.ops" width="100">
 							<template #default="{ row }">
 								<a-button class="btnl" type="primary" shape="circle" :disabled="['show', 'adminaduit', 'aduit'].includes(props.action)" @click="addAnimalRow(row)">
 									<template #icon><PlusOutlined /></template>
@@ -253,7 +258,7 @@
 						</vxe-column>
 						<vxe-column :title="labels.others.check">
 							<template #default="{ row }">
-								<a-tag v-if="row.error.length === 0" color="success">未检出错误</a-tag>
+								<a-tag v-if="row.error.length === 0" color="success">{{ labels.others.message.noerr }}</a-tag>
 								<a-tag v-for="(item, index) in row.error" v-else :key="index" color="error">{{ item }}</a-tag>
 							</template>
 						</vxe-column>
@@ -261,7 +266,7 @@
 				</div>
 				<a-row :gutter="{ xs: 8, sm: 16, md: 24, lg: 32 }" type="flex">
 					<a-col :xs="24" :sm="24" :md="24" :lg="12" :xl="12"
-						><a-form-item :rules="ruleNN" :label="labels.animal.facilitiesLicense" :name="['animal', 'facilitiesLicense']">
+						><a-form-item :label-col="{ style: { width: '220px' } }" :rules="ruleNN" :label="labels.animal.facilitiesLicense" :name="['animal', 'facilitiesLicense']">
 							<a-input v-model:value="state.formState.animal.facilitiesLicense" :disabled="['show', 'adminaduit', 'aduit'].includes(props.action)" /> </a-form-item
 					></a-col>
 					<a-col :xs="24" :sm="24" :md="24" :lg="12" :xl="12"
@@ -427,17 +432,10 @@
 					>
 					<a-col :span="23">
 						<a-form-item :rules="ruleNN" :name="['detail', 'commitTime', 'state']">
-							<a-radio-group v-model:value="state.formState.detail.commitTime.state" :disabled="['show', 'new', 'edit', 'adminaduit'].includes(props.action)">
-								<a-radio :value="0">{{ labels.detail.remark.fst }}</a-radio>
-								<a-radio :value="1"
-									>{{ labels.detail.remark.nths
-									}}<a-input-number
-										v-model:value.number="state.formState.detail.commitTime.value"
-										:disabled="['show', 'new', 'edit', 'adminaduit'].includes(props.action) || state.formState.detail.commitTime.state == 0"
-										type="number"
-									/>{{ labels.detail.remark.nthl }}</a-radio
-								>
-							</a-radio-group>
+							{{ labels.detail.remark.nths
+							}}<a-input-number v-model:value.number="state.formState.detail.commitTime.value" :disabled="['show', 'new', 'edit', 'adminaduit'].includes(props.action)" type="number" />{{
+								labels.detail.remark.nthl
+							}}
 						</a-form-item>
 					</a-col>
 				</a-row>
@@ -497,29 +495,32 @@ const delExperRow = async (row: any) => {
 
 const handleExperNameSearch = async (val: string) => {
 	const res = (await applicantApi.reqEthicLabLicense({ token: '213', keyword: val })) as unknown as IAjaxRestlt;
-	dataExperNameOption.value = [];
+	dataExperNameOption.value = [
+		{
+			value: `${val}@`,
+			label: `${val}`,
+		},
+	];
 	if (!res.code) {
 		res.data.forEach(d => {
 			dataExperNameOption.value.push({
-				value: `${d.name}-${d.license}`,
-				label: `${d.name}-${d.license}`,
+				value: `${d.name}@${d.license}`,
+				label: `${d.name}@${d.license}`,
 			});
 		});
 	}
 };
 
 function handleSelectName(v, row) {
-	row.name = v.split('-')[0] as string;
-	row.experLicense = v.split('-')[1] as string;
+	row.name = v.split('@')[0] as string;
+	row.experLicense = v.split('@')[1] as string;
 	state.formState.expers = state.formState.expers.concat();
 }
 
 async function checkLicense(row) {
-	row.loading = true;
 	const res = (await applicantApi.reqEthicLabCheckLicense({ token: '123', row })) as IAjaxRestlt;
 	checkLicenseLocal(row);
 	if (!res.code) {
-		row.loading = false;
 		row.error = row.error.concat(res.data);
 	}
 	state.formState.expers = state.formState.expers.concat();
@@ -643,7 +644,7 @@ export default defineComponent({
 
 .subsubtitle {
 	font-size: 1.15rem;
-	margin: 12px 0;
+	margin: 20px 0;
 }
 
 .lang-switch {
@@ -662,5 +663,49 @@ export default defineComponent({
 
 .btnl {
 	margin-right: 7px;
+}
+
+/*滚动条整体部分*/
+.vxe-form-scrollbar ::-webkit-scrollbar {
+	width: 10px;
+	height: 10px;
+}
+/*滚动条的轨道*/
+.vxe-form-scrollbar ::-webkit-scrollbar-track {
+	background-color: #ffffff;
+}
+/*滚动条里面的小方块，能向上向下移动*/
+.vxe-form-scrollbar ::-webkit-scrollbar-thumb {
+	background-color: #bfbfbf;
+	border-radius: 5px;
+	border: 1px solid #f1f1f1;
+	box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+}
+.vxe-form-scrollbar ::-webkit-scrollbar-thumb:hover {
+	background-color: #a8a8a8;
+}
+.vxe-form-scrollbar ::-webkit-scrollbar-thumb:active {
+	background-color: #787878;
+}
+/*边角，即两个滚动条的交汇处*/
+.vxe-form-scrollbar ::-webkit-scrollbar-corner {
+	background-color: #ffffff;
+}
+
+// news
+:deep(.vxe-header--column) {
+	text-align: center;
+}
+
+#formRef :deep(.ant-calendar-picker-input.ant-input.ant-input-disabled),
+#formRef :deep(*[disabled]),
+#formRef :deep(.ant-select-disabled .ant-select-selector),
+#formRef :deep(.ant-input-affix-wrapper-disabled),
+#formRef :deep(.ant-checkbox-disabled + span),
+#formRef :deep(.ant-radio-disabled + span) {
+	color: rgba(0, 0, 0, 0.85) !important;
+	background-color: #fff !important;
+	cursor: not-allowed !important;
+	opacity: 1 !important;
 }
 </style>

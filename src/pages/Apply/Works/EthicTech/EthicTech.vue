@@ -1,7 +1,7 @@
 <template>
 	<div class="wapper">
 		<div class="content">
-			<a-form ref="formRef" name="custom-validation" :label-col="{ style: { width: '120px' } }" label-align="left" :model="state.formState">
+			<a-form ref="formRef" label-wrap="true" name="custom-validation" :label-col="{ style: { width: '120px' } }" label-align="left" :model="state.formState">
 				<!-- :rules="rules"
 				v-bind="layout"
 				@finish="handleFinish"
@@ -278,5 +278,21 @@ export default defineComponent({
 
 .animalList {
 	margin-bottom: 14px;
+}
+
+:deep(.vxe-header--column) {
+	text-align: center;
+}
+
+#formRef :deep(.ant-calendar-picker-input.ant-input.ant-input-disabled),
+#formRef :deep(*[disabled]),
+#formRef :deep(.ant-select-disabled .ant-select-selector),
+#formRef :deep(.ant-input-affix-wrapper-disabled),
+#formRef :deep(.ant-checkbox-disabled + span),
+#formRef :deep(.ant-radio-disabled + span) {
+	color: rgba(0, 0, 0, 0.85) !important;
+	background-color: #fff !important;
+	cursor: not-allowed !important;
+	opacity: 1 !important;
 }
 </style>

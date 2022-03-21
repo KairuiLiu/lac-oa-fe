@@ -23,7 +23,6 @@
 			</vxe-grid>
 		</div>
 	</div>
-	{{ state }}
 	<ApplyProcess :visible="state.visible" :applyid="state.applyId" @close="state.visible = false"></ApplyProcess>
 </template>
 
