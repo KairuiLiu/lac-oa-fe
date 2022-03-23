@@ -29,17 +29,6 @@ const commonApi = {
 			{ auth: { token } }
 		);
 	},
-	reqApplyProcess({ token, applyId }: { token: string; applyId: string }) {
-		return ajax(
-			`${BASE_URL}/applyProcess`,
-			{
-				t: Date.now(),
-				applyId,
-			},
-			'GET',
-			{ auth: { token } }
-		);
-	},
 };
 
 export default commonApi;
