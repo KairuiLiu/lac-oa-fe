@@ -20,9 +20,8 @@ const commonApi = {
 	},
 	reqUpdUserInfo({ token, config }: { token: string; config: IUserInfo }) {
 		return ajax(
-			`${BASE_URL}/user/upduserinfo`,
+			`${BASE_URL}/user/updateuserinfo`,
 			{
-				token,
 				config,
 			},
 			'POST',

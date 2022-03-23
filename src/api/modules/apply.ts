@@ -6,13 +6,11 @@ const BASE_URL = '/api/apply';
 type IApply = IformEthicLab | IformEthicTech;
 
 const applyApi = {
-	reqApplySubmit({ token, data, id, type, prop }: { token: string; id?: string; data?: IApply; type?: string; prop?: string }) {
+	reqApplySubmit({ token, data, id }: { token: string; id?: string; data?: IApply }) {
 		return ajax(
 			`${BASE_URL}/newsubmitapply`,
 			{
 				t: Date.now(),
-				type,
-				prop,
 				data,
 				id,
 			},
@@ -20,13 +18,11 @@ const applyApi = {
 			{ auth: { token } }
 		);
 	},
-	reqApplySave({ token, data, id, type, prop }: { token: string; id?: string; data?: IApply; type?: string; prop?: string }) {
+	reqApplySave({ token, data, id }: { token: string; id?: string; data?: IApply }) {
 		return ajax(
 			`${BASE_URL}/saveapply`,
 			{
 				t: Date.now(),
-				type,
-				prop,
 				data,
 				id,
 			},
@@ -34,13 +30,11 @@ const applyApi = {
 			{ auth: { token } }
 		);
 	},
-	reqApplyDel({ token, id, type, prop }: { token: string; id: string; type?: string; prop?: string }) {
+	reqApplyDel({ token, id }: { token: string; id: string }) {
 		return ajax(
 			`${BASE_URL}/delapply`,
 			{
 				t: Date.now(),
-				type,
-				prop,
 				id,
 			},
 			'GET',
@@ -58,13 +52,11 @@ const applyApi = {
 			{ auth: { token } }
 		);
 	},
-	reqApplyAduit({ token, data, type, prop, id }: { token: string; id: string; data: any; type?: string; prop?: string }) {
+	reqApplyAduit({ token, data, id }: { token: string; id: string; data: any }) {
 		return ajax(
 			`${BASE_URL}/aduitapply`,
 			{
 				t: Date.now(),
-				type,
-				prop,
 				data,
 				id,
 			},
@@ -72,13 +64,11 @@ const applyApi = {
 			{ auth: { token } }
 		);
 	},
-	reqApplyAduitAdmin({ token, data, type, prop, id }: { token: string; id: string; data: boolean; type?: string; prop?: string }) {
+	reqApplyAduitAdmin({ token, data, id }: { token: string; id: string; data: boolean }) {
 		return ajax(
 			`${BASE_URL}/aduitadminapply`,
 			{
 				t: Date.now(),
-				type,
-				prop,
 				data,
 				id,
 			},

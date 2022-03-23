@@ -21,7 +21,6 @@ export interface IAjaxRestlt {
 }
 
 export interface IUserInfo {
-	token?: string;
 	userId?: string;
 	username?: string;
 	email?: string;
