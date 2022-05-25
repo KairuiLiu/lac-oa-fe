@@ -10,11 +10,12 @@
 
 ### 👀 预览
 
-> 站点部署在学校内网, 前端demo：[lac.liukairui.me](https://lac.liukairui.me)
->  - 管理员账户: `adminXXX`, 密码随意
->  - 申请人账户: `applyXXX`, 密码随意
->  - 审核人账户: `aduitXXX`, 密码随意
->  - 供应商账户: `supportXXX`, 密码随意
+> 站点部署在学校内网, 前端 demo：[lac.liukairui.me](https://lac.liukairui.me)
+>
+> - 管理员账户: `adminXXX`, 密码随意
+> - 申请人账户: `applyXXX`, 密码随意
+> - 审核人账户: `aduitXXX`, 密码随意
+> - 供应商账户: `supportXXX`, 密码随意
 
 - 管理员
   - 首页
@@ -87,5 +88,5 @@ json-server ./app.js
 ### 📃 文档
 
 - [需求文档](./doc/需求文档.pdf)
-- [API文档](./doc/API文档.md)
+- [API 文档](./doc/API文档.md)
 - [原型图](./doc/原型图)
