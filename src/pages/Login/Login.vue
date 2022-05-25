@@ -1,6 +1,6 @@
 <template>
 	<a-layout>
-		<a-layout-header>动物伦理审核与采购系统(2022-03-21 20:44 版)</a-layout-header>
+		<a-layout-header>动物伦理审核与采购系统</a-layout-header>
 		<a-layout-content>
 			<div class="login">
 				<a-form :model="formState" name="login" class="login-form" @finish="handleSubmit">

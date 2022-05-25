@@ -22,5 +22,6 @@ module.exports = {
 		'no-param-reassign': 'off',
 		'prettier/prettier': 'error',
 		'import/prefer-default-export': 'off',
+		'import/no-extraneous-dependencies': 'off',
 	},
 };
