@@ -1,5 +1,5 @@
 {
-	"name": "vite-vue3-ts-template",
+	"name": "lac-oa-fe",
 	"version": "0.0.0",
 	"scripts": {
 		"dev": "vite",
